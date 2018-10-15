@@ -36,7 +36,6 @@ export class AuthService {
     this.afAuth.auth.signInWithRedirect(new firebase.auth.FacebookAuthProvider());
   }
 
-<<<<<<< HEAD
   loginEmailPassword(formLogin, email, password) {
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
@@ -44,30 +43,11 @@ export class AuthService {
   }
 
   registerEmailPassword(formRegister, email, password) {
-=======
-  async loginEmailPassword(formLogin, email, password) {
-    let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
-    localStorage.setItem('returnUrl', returnUrl);
-    await this.afAuth.auth.signInWithEmailAndPassword(email, password)
-    .catch(error => {
-      this.errorLogin = error.message;
-    });
-  }
-
-  async registerEmailPassword(formRegister, email, password) {
->>>>>>> fd075b2d41e95f3c6713ab29824117b723367dfa
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
     let confirmPassword = formRegister.value.confirmPassword;
     let name = formRegister.value.name;
-<<<<<<< HEAD
     this.afAuth.auth.createUserWithEmailAndPassword(email, password);
-=======
-    await this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-    .catch(error => {
-      this.errorRegister = error.message;
-    });
->>>>>>> fd075b2d41e95f3c6713ab29824117b723367dfa
   }
 
   logout() {

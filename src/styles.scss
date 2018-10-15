@@ -5,18 +5,11 @@
 @import "~font-awesome/css/font-awesome.css";
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500,700,900');
 
-<<<<<<< HEAD
 $primary-color: white;
 $primary-color-hover: #f2f2f2;
 $secondary-color: #f4852b;
 $secondary-color-hover: #e87e29;
 $dark-color: #232323;
-=======
-$primary-color: #132d4a;
-$primary-color-hover: #10263e;
-$white-color: white;
-$white-color-hover: #f2f2f2;
->>>>>>> fd075b2d41e95f3c6713ab29824117b723367dfa
 
 
 @font-face {
@@ -53,7 +46,6 @@ body {
 
 h1, h2, h3 { 
   margin-bottom: 1.5rem;
-<<<<<<< HEAD
 }
 a, a:hover, a:focus{
   outline: none;
@@ -66,9 +58,6 @@ a, a:hover, a:focus{
   background-color: $dark-color;
   padding: 1rem 1rem;
   border-bottom: 3px solid #f4852b;
-=======
-  font-family: "adineuePROKZ-Bold";
->>>>>>> fd075b2d41e95f3c6713ab29824117b723367dfa
 }
 
 .navbar-light .navbar-brand {
@@ -76,11 +65,7 @@ a, a:hover, a:focus{
 }
 
 .navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
-<<<<<<< HEAD
   color: $primary-color;
-=======
-  color: $white-color;
->>>>>>> fd075b2d41e95f3c6713ab29824117b723367dfa
 }
 
 .list-group-item.active {
@@ -130,19 +115,8 @@ input, select {
   background-color: $primary-color;
 }
 .dropdown-item:hover {
-<<<<<<< HEAD
   background-color: $primary-color-hover;
 }
 .orange-color {
   color: $secondary-color;
 }
-=======
-  background-color: $white-color-hover;
-}
-.form-control::-moz-placeholder{
-  color:#999;
-}
-.form-control {
-  border-color: #ced4da;
-}
->>>>>>> fd075b2d41e95f3c6713ab29824117b723367dfa
