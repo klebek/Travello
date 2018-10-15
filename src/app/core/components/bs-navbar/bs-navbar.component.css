@@ -1,0 +1,98 @@
+.navbarColor {
+    background: #132d4a;
+}
+.btn-default {
+    font-family: "adineuePROKZ-Black";
+    margin-top: 1.5rem;
+}
+.navbarTrans {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0));
+    transition: height 2s;
+}
+.dropdown-toggle, .dropdown-item {
+    cursor: pointer;
+}
+<<<<<<< HEAD
+=======
+.jumbotron {
+    background-image: url('https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-457776.jpg');
+    background-size: cover;
+    background-position: 20% 20%;
+    height: 500px;
+    color: white;
+    text-align: center;
+}
+.col-logo, .col-cart, .col-navbar-right {
+    display: flex;
+    justify-content: center;
+}
+.row-navbar {
+    display: flex;
+    flex-direction: row;
+}
+.col-cart {
+    display: flex;
+    align-items: center;
+}
+.shopping-cart {
+    width: 50%;
+    height: 50%;
+    margin-left: auto;
+}
+.col-navbar-right {
+    display: flex;
+    justify-content:center;
+    align-content:center;
+    flex-direction:column; /* column | row */
+    text-align: left;
+}
+li {
+    list-style-type: none;
+}
+/* .nav-item {
+    font-weight: 600;
+} */
+.badge {
+    margin-left: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    padding-top: 5px; 
+    border-radius: 100%;
+    height: 23px;
+    width: 23px;
+}
+.badge-pill-active { 
+    background-color: #dc3545;
+    color: white;
+}
+.fa-user {
+    margin-right: 10px;
+}
+.fa-shopping-cart{
+    color: white;
+    font-size: 24px;
+}
+>>>>>>> fd075b2d41e95f3c6713ab29824117b723367dfa
+.hello {
+    color: white;
+    font-weight: 500;
+}
+.navbar-collapse {
+    justify-content: flex-end;
+    flex-grow: 3;
+}
+.navbar-brand {
+    font-family: "adineuePROKZ-Black";
+    font-size: 32px;
+    color: white;
+    text-transform: uppercase;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: white;
+<<<<<<< HEAD
+}
+=======
+}
+/* MOBILE CSS */
+/* MEDIA */
+>>>>>>> fd075b2d41e95f3c6713ab29824117b723367dfa

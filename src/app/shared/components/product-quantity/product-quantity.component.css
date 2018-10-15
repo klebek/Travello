@@ -1,0 +1,36 @@
+.quantity {
+    height: 37px;
+    line-height: 37px;
+  }
+  .btn-left {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+  }
+  .btn-right {
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .btn-round {
+    border-radius: 100%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+  }
+  .btn-round-right {
+    background-color: rgb(84, 194, 84);
+    border-color: rgb(84, 194, 84);
+  }
+  .btn-round-left {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  .btn-secondary-new {
+    background: white;
+    color: #132d4a;
+    border-color: transparent;
+  }

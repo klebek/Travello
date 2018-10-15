@@ -1,0 +1,100 @@
+<<<<<<< HEAD
+<nav class="navbar navbar-expand-md navbar-light fixed-top">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">
+      <img src="../../../../assets/images/logo.png" alt="">
+=======
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Welcome to the world of sneakers!</h1>
+      <p class="lead">We are delighted to host you and we'd like to ask you for checking our new sales!</p>
+      <p>
+        <button class="btn btn-default">CHECK BRAND-NEW SNEAKERS!</button>
+      </p>
+    </div>
+  </div>
+<nav class="navbar navbar-expand-md navbar-light fixed-top" [class.navbarTrans]="!navbarColor" [class.navbarColor]="navbarColor"> 
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">
+      shoeshop
+>>>>>>> fd075b2d41e95f3c6713ab29824117b723367dfa
+    </a>
+
+    <div ngbDropdown *ngIf="appUser; else anonymousUserMobile" class="hamburger-menu">
+      <span class="hamburger-icon" id="dropdownBasic1" ngbDropdownToggle><i class="fa fa-bars"></i></span>
+      <div ngbDropdownMenu class="collapse navbar-collapse" aria-labelledby="dropdownBasic1">
+        <dropdown-menus *ngIf="cart$ | async as cart" [cart]="cart" [hamburger]="true" [appUser]="appUser"></dropdown-menus>
+      </div>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+<<<<<<< HEAD
+      <ul class="navbar-nav mr-auto">
+
+      </ul>
+
+      <ul class="navbar-nav">
+        <ng-template #anonymousUser>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">
+              <span class="hello">Login</span>
+            </a>
+          </li>
+        </ng-template>
+        <li ngbDropdown *ngIf="appUser; else anonymousUser" class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="hello">Hello, {{ appUser.email }}</span>
+          </a>
+          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+              <a class="dropdown-item" routerLink="/add-trip">Add trip</a>
+              <a class="dropdown-item" routerLink="/my/trips">My Trips</a>
+            <ng-container *ngIf="appUser.isAdmin">
+              <a class="dropdown-item" routerLink="/admin/trips">Manage Trips</a>
+              <a class="dropdown-item" routerLink="/admin/countries">Manage Countries</a>
+            </ng-container>
+            <div class="dropdown-divider"></div>
+            <a routerLink="/" class="dropdown-item" (click)="logout()">Log Out</a>
+=======
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/shopping-cart">
+            <div class="row">
+              <div class="col-3">
+                <i class="fa fa-shopping-cart"></i>
+              </div>
+              <div class="col" *ngIf="cart$ | async as cart">
+                <span class="badge badge-pill-active">
+                  {{ cart.totalItemsCount }}
+                </span>
+              </div>
+            </div>
+          </a>
+        </li>
+        <ng-template #anonymousUserDesktop>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">
+              <span class="hello hello-desktop">Login</span>
+            </a>
+          </li>
+        </ng-template>
+        <ng-template #anonymousUserMobile>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">
+              <span class="hello hello-mobile">Login</span>
+            </a>
+          </li>
+        </ng-template>
+        <li ngbDropdown *ngIf="appUser; else anonymousUserDesktop" class="nav-item dropdown">
+          <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <span class="hello">Hello, {{ appUser.email }}</span>
+          </a>
+          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+            <dropdown-menus [appUser]="appUser"></dropdown-menus>
+>>>>>>> fd075b2d41e95f3c6713ab29824117b723367dfa
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

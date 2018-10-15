@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row row-main">
+    <div class="col-sm-3 col-filtering">
+      <product-filter [(searchText)]="searchText" [(searchColor)]="searchColor" [(searchSale)]="searchSale" [product]="product" [category]="category"></product-filter>
+    </div>
+    <div class="col-sm col-products">
+      <marketing [bannerTwo]="false"></marketing>
+      <div class="row row-products" *ngIf="cart$ | async as cart">
+        <ng-container *ngFor="let p of filteredProducts | title : searchText | color : searchColor | sale : searchSale; let i = index">
+          <div *ngIf="p" class="col-sm-4">
+            <product-card [product]="p" [category]="category" [shopping-cart]="cart"></product-card>
+          </div>
+          <div *ngIf="(i + 1) % 3 === 0" class="w-100"></div>
+        </ng-container>
+      </div>
+      <div class="row row-products">
+        <div class="col-4">
+          No more results
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

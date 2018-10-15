@@ -1,0 +1,121 @@
+.row {
+  margin-left: 0;
+  margin-right: 0;
+}
+.col-price {
+  padding-left: 0;
+}
+.card { 
+    margin-bottom: 30px;
+    background-color: #f6f6f6;
+    border: none;
+  }
+  /* CARD NEW */
+  .card-new {
+    background-image: url('../../../../assets/images/bg_new.jpg');
+    /* border: 2px solid #132d4a; */
+  }
+  .card-body-new, .card-footer-new, .card-header-nosale-new, .card-img-top-new, .card-title-new a{
+    background-color: transparent !important;
+    color: white !important;
+  }
+  .btn-secondary-new {
+    background: white;
+    color: #132d4a;
+    border-color: transparent;
+  }
+  .category-logo-new {
+    filter: invert(100%);
+  }
+  /* END CARD NEW */
+  .card-body {
+    background-color: white;
+  }
+  .card-img-top {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f6f6f6;
+  }
+  .card-footer {
+    padding: 0;
+    background: #fff;
+    border: none;
+  }
+  .card-footer button {
+    cursor: pointer;
+    font-weight: 500;
+    /* text-transform: uppercase; */
+  }
+  .fa {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  .category-logo {
+    height: 35px;
+    float: right;
+    top: 0;
+  }
+  .col-category-logo {
+    padding-right: 0;
+  }
+  a {
+    text-decoration: none;
+    color: #132d4a;
+  }
+  .strike-out {
+    text-decoration: line-through;
+  }
+  .card-header-nosale {
+    background-color: transparent;
+    color: rgb(219, 219, 219);
+    border-color: transparent;
+  }
+  .card-header-sale {
+    background-color: #dc3545;
+    color: white;
+    border-color: #dc3545;
+  }
+  .col-price .card-text {
+    font-size: 18px;
+  }
+  .card-header {
+    text-align: center;
+    padding: 10px;
+    /* -webkit-clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%);
+    clip-path: polygon(0 0, 100% 1%, 100% 80%, 50% 100%, 0 80%); */
+    font-weight: 500;
+    font-size: 1rem;
+    z-index: 2;
+  }
+  .badge-danger {
+    margin-left: 10px;
+    font-size: 1.2rem;
+    font-weight: normal;
+    border-radius: calc(0.25rem - 1px);
+  }
+  .btn-secondary {
+    border-radius: 0;
+  }
+  ngx-gallery /deep/ .ngx-gallery-arrow {
+    color: #6c757d;
+    top: 90%;
+}
+
+ngx-gallery /deep/ .ngx-gallery-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #f6f6f6;
+}
+
+ngx-gallery /deep/ .ngx-gallery-preview-top {
+  top: 85%;
+}
+ngx-gallery /deep/ .ngx-gallery-icon {
+  color: #6c757d;
+}
+ngx-gallery /deep/ .ngx-gallery-preview-top  .ngx-gallery-preview-icons {
+  float: none !important;
+  text-align: center !important;
+}

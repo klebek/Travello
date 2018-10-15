@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row">
+        <div class="col-6"><input
+            #query1
+            (keyup)="filterByEmail(query1.value)"
+            type="text" class="form-control" placeholder="Search by email..."></div>
+        <div class="col"><input
+            #query2
+            (keyup)="filterByOrder(query2.value)"
+            type="text" class="form-control" placeholder="Search by order number..."></div>
+    </div>
+  <data-table
+      [items]="items"
+      [indexColumn]="false"
+      [itemCount]="itemCount"
+      [noDataMessage]="'You have not any orders'"
+      [header]="false"
+      (reload)="reloadItems($event)">
+      <data-table-column
+          [width]="'12rem'"
+          [property]="'orderId'"
+          [header]="'Order number'"
+          [resizable]="true">
+          <ng-template #dataTableCell let-item="item">
+              <span [class.font-weight-bold]="!item.read">{{ item.orderId }}</span>
+          </ng-template>
+      </data-table-column>
+      <data-table-column
+          [width]="'15rem'"
+          [property]="'userId'"
+          [header]="'Customer'"
+          [resizable]="true">
+          <ng-template #dataTableCell let-item="item">
+              <span [class.font-weight-bold]="!item.read">{{ item.shopping.name }}</span>
+          </ng-template>
+      </data-table-column>
+      <data-table-column
+          [property]="'email'"
+          [header]="'Email'"
+          [resizable]="true">
+          <ng-template #dataTableCell let-item="item">
+              <span [class.font-weight-bold]="!item.read">{{ item.shopping.email }}</span>
+          </ng-template>
+      </data-table-column>
+      <data-table-column
+          [property]="'date'"
+          [header]="'Date'"
+          [resizable]="true">
+          <ng-template #dataTableCell let-item="item">
+              <span [class.font-weight-bold]="!item.read">{{ item.datePlaced | date:'short'}}</span>
+          </ng-template>
+      </data-table-column>
+      <data-table-column
+          [property]="'$key'">
+          <ng-template #dataTableCell let-item="item">
+                  <span *ngIf="!item.read" class="badge badge-secondary">New</span>
+                  <a (click)="orderRead(item.$key)" [routerLink]="['/admin/orders/', item.$key]"><button class="btn btn-sm btn-primary">Edit</button></a>
+                  <a *ngIf="!item.read" (click)="orderRead(item.$key)"><button class="btn btn-sm btn-default">Mark as read</button></a>
+                  <a *ngIf="item.read" (click)="orderUnread(item.$key)"><button class="btn btn-sm btn-default">Mark as unread</button></a>
+          </ng-template>
+      </data-table-column>
+  </data-table>
+  </div>

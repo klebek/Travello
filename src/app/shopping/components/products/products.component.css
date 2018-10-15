@@ -1,0 +1,36 @@
+.sticky-top {
+    top: 100px;
+}
+.w-100 {
+    width: 50%;
+}
+.inputs {
+    margin-top: 25px;
+    margin-bottom: 30px;
+}
+.py-2 {
+    outline: hidden;
+    box-shadow: none;
+}
+.btn-default {
+    color: 161616;
+    background: white;
+    outline: 0;
+    margin-top: 15px;
+}
+.row-products {
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+}
+.color {
+    width: 42px;
+}
+.btn-default {
+    font-family: "adineuePROKZ-Black";
+    color: 161616;
+    background: white;
+    outline: 0;
+    margin-top: 15px;
+}
+

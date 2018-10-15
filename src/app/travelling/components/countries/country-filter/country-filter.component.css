@@ -1,0 +1,13 @@
+.list-group-item {
+    background-color: transparent;
+    border: none;
+}
+.list-group-item-action:hover {
+    color: white;
+}
+.active {
+    background: #f4852b;
+}
+a {
+    color: #f4852b;
+}

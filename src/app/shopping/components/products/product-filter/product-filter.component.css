@@ -1,0 +1,90 @@
+.sticky-top {
+    top: 100px;
+}
+.form-control:focus {
+    border-color: #ccc;
+    outline: none;
+    box-shadow: none;
+}
+option {
+    font-family: "adineuePROKZ-Bold";
+}
+input {
+    margin-top: 10px;
+}
+.category-logo {
+    height: 25px;
+    margin-right: 15px;
+}
+.input-group-text {
+    background: #ccc;
+    border-right: none;
+    color: #132d4a;
+}
+.input-group .form-control {
+    border-left-color: transparent;
+}
+.active {
+    background-color: #f1f1f1;
+    color: black;
+}
+.list-group-item {
+    border: none;
+}
+.btn-default {
+    font-family: "adineuePROKZ-Black";
+    color: 161616;
+    background: white;
+    outline: 0;
+    margin-top: 15px;
+}
+.list-sale {
+    color: #dc3545;
+    background: #fcf3f4;
+}
+.list-sale:hover{
+    background-color: #dc3545;
+    color: white;
+}
+.input-group {
+    height: 38px;
+}
+input[type="radio"] {
+    display: none;
+}
+select.form-control:not([size]):not([multiple]) {
+    height: auto;
+}
+.radios {
+    background-color: #f8f8f8;
+    border-radius: 5px;
+    width: 100%;
+    cursor: pointer;
+}
+.radios label {
+    padding: 5px 10px 5px 10px;
+    margin-bottom: 0;
+    width: 100px;
+    cursor: pointer;
+}
+.radio-active-all {
+    background-color: #ccc;
+    border-color: #ccc;
+}
+.radio-active-sale {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+.radio-round-left {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    width: 50%;
+    text-align: center;
+}
+.radio-round-right {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 50%;
+    text-align: center;
+}

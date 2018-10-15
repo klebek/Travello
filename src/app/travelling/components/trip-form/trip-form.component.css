@@ -1,0 +1,19 @@
+.container {
+    margin-top: 40px;
+}
+.form-group {
+    margin-right: 15px;
+}
+.btn-primary:not(:disabled):not(.disabled).active {
+    background-color: #c26b23;
+    border-color: #f4852b;
+}
+.btn-primary.focus, .btn-primary:not(:disabled):not(.disabled).active:focus{
+    box-shadow: none;
+}
+/deep/ .btn-link, /deep/ .ngb-dp-weekday {
+    color: #f4852b !important;
+}
+/deep/ .bg-primary {
+    background-color: #f4852b !important;
+}

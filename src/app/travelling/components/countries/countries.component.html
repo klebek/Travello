@@ -1,0 +1,34 @@
+<!-- <div class="photo-one"></div> -->
+
+<div class="card bg-dark text-white">
+    <img class="card-img photo-one">
+    <div class="card-img-overlay">
+        <div class="row">
+            <div class="col-6"></div>
+            <div class="col">
+                <h5 class="card-title">Hello travellers!</h5>
+                <p class="card-text">Welcome to Travello, the place you collect your every single trip! <br />Plan your journey, take friends and share your memories with Travello</p>
+                <button class="btn btn-primary">Start your journey</button>
+            </div>
+            <div class="col-2"></div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row row-countries">
+        <div class="col-3">
+            <country-filter [continent]="continent"></country-filter>
+        </div>
+        <div class="col">
+            <div class="row row-products">
+                <ng-container *ngFor="let c of filteredCountries">
+                    <div class="col-3">
+                        <country-card [country]="c" [continent]="continent"></country-card>
+                    </div>
+                    <div *ngIf="(i + 1) % 3 === 0" class="w-100"></div>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

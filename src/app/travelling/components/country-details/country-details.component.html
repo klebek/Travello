@@ -1,0 +1,48 @@
+<div *ngIf="countries | async as country" class="jumbotron jumbotron-fluid" [ngStyle]="{'background-image': 'url(' + country.image + ')'}">
+  <div class="container">
+    <h1 class="display-4">Fluid jumbotron</h1>
+    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+  </div>
+</div>
+<div class="container">
+  <div class="row no-gutters justify-content-md-center">
+    <div class="col">
+      <div class="card text-center">
+        <div class="card-header">
+          Country details
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4">
+              <div class="card" style="width: 18rem;" *ngIf="countries | async as country">
+                <img class="card-img-top" [src]="country.image">
+                <div class="card-body">
+                  <h5 class="card-title">{{country.name}}</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Capital: <span class="detail">{{country.capital}}</span></li>
+                  <li class="list-group-item">Language: <span class="detail">{{country.language}}</span></li>
+                  <li class="list-group-item">Population: <span class="detail">{{country.population}} mln</span></li>
+                </ul>
+                <div class="card-body card-buttons">
+                  <button class="btn btn-primary btn-sm">View visitors</button>
+                  <button class="btn btn-success btn-sm">Add your trip</button>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <h5 class="card-title">Special title treatment</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary btn-block">Read more</a>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer text-muted">
+          Last visit: 2 days ago
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

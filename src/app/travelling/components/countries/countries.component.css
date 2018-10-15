@@ -1,0 +1,29 @@
+.w-100 {
+    width: 50%;
+}
+.photo-one {
+    background: url('../../../../assets/images/photos/photo1.jpg');
+    height: 400px;
+    background-position: bottom;
+}
+.row-countries {
+    margin-top: 50px;
+}
+.card {
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+}
+.card-title {
+    text-transform: uppercase;
+}
+.card-img-overlay {
+    margin-top: 100px;
+}
+.btn-primary {
+    border-radius: 24px;
+    padding: 10px 20px 10px 20px;
+    font-size: 16px;
+
+}

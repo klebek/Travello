@@ -1,0 +1,149 @@
+<<<<<<< HEAD
+<body>
+    <div class="container">
+        <div class="row no-gutters justify-content-md-auto">
+            <div class="col-4">
+                <h1>
+                    <i class="fa fa-user"></i> Sign In</h1>
+                <form #formLogin="ngForm" class="form-sign-in">
+                    <div class="form-group">
+                        <label for="exampleInputEmail">Email address</label>
+                        <input ngModel name="email" #emailLogin="ngModel" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
+                            placeholder="Enter email" email>
+                        <div *ngIf="emailLogin.touched && emailLogin.invalid" class="alert alert-danger">
+                            <div *ngIf="emailLogin.errors.email">It is not an email adress format</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input ngModel name="password" #passwordLogin="ngModel" type="password" class="form-control" id="password" placeholder="Password">
+                        <div *ngIf="passwordLogin.touched && passwordLogin.invalid" class="alert alert-danger">
+                            <div *ngIf="passwordLogin.errors.required">Password field is required</div>
+                        </div>
+                    </div>
+                    <!-- <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                            </div> -->
+                    <button (click)="loginEmailPassword(formLogin)" type="submit" class="btn btn-primary btn-block">Sign in</button>
+                    <p class="no-account-info">Nie masz konta?
+                        <a (click)="showRegisterForm()" class="orange-color">Zarejestruj się</a>!</p>
+                    <button (click)="loginGoogle()" class="btn btn-google btn-block">
+                        <i class="fa fa-google" aria-hidden="true"></i>Sign in with Google</button>
+                    <button (click)="loginFb()" class="btn btn-facebook btn-block">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>Sign in with Facebook</button>
+                </form>
+                <img src="../../../../assets/images/logo_lg.png" class="small-logo">
+            </div>
+            <div class="col-4"></div>
+            <div *ngIf="showRegister" class="col-4 col-register">
+                <register></register>
+            </div>
+
+        </div>
+    </div>
+</body>
+=======
+<div class="row">
+    <div class="card bg-dark text-white">
+        <img class="card-img" src="/assets/images/carousel/carousel_5.jpg" alt="Card image">
+        <div class="card-img-overlay">
+            <div class="col-12">
+                <p class="card-text">
+                    <span class="card-text-intro">welcome to</span>
+                    <br /> shoeshop
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-4">
+        <h1>
+            <i class="fa fa-user"></i> Sign In</h1>
+        <form #formLogin="ngForm" class="form-sign-in">
+            <div class="form-group">
+                <label for="exampleInputEmail">Email address</label>
+                <input ngModel name="email" #emailLogin="ngModel" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
+                    placeholder="Enter email" email>
+                <div *ngIf="emailLogin.touched && emailLogin.invalid" class="alert alert-danger">
+                    <div *ngIf="emailLogin.errors.email">It is not an email adress format</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input ngModel name="password" #passwordLogin="ngModel" type="password" class="form-control" id="password" placeholder="Password">
+                <div *ngIf="passwordLogin.touched && passwordLogin.invalid" class="alert alert-danger">
+                    <div *ngIf="passwordLogin.errors.required">Password field is required</div>
+                </div>
+            </div>
+            <!-- <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div> -->
+            <div *ngIf="errorLogin" class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ errorLogin }}</div>
+            <div class="row">
+                <button (click)="loginEmailPassword(formLogin)" type="submit" class="btn btn-primary btn-block">Sign in</button>
+            </div>
+            <div class="row">
+                <button (click)="loginGoogle()" class="btn btn-google btn-block">
+                    <i class="bx bxl-google" aria-hidden="true"></i>Sign in with Google</button>
+            </div>
+            <div class="row">
+                <button (click)="loginFb()" class="btn btn-facebook btn-block">
+                    <i class="bx bxl-facebook" aria-hidden="true"></i>Sign in with Facebook</button>
+            </div>
+        </form>
+    </div>
+    <div class="col col-right">
+        <h1>
+            <i class="fa fa-user-plus"></i> Sign Up</h1>
+        <form #formRegister="ngForm" class="form-sign-up">
+            <span class="inline">
+                <div class="form-group">
+                    <label for="exampleInputEmail">Email address</label>
+                    <input required minlength="3" ngModel name="email" #email="ngModel" type="email" class="form-control" id="exampleInputEmail"
+                        aria-describedby="emailHelp" placeholder="Enter email" email>
+                    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+                        <div *ngIf="email.errors.required">Email address field is required</div>
+                        <div *ngIf="email.errors.minlength">Email address should be at least {{ email.errors.minlength.requiredLength }} characters</div>
+                        <div *ngIf="email.errors.email">It is not an email adress format</div>
+                    </div>
+                </div>
+                <div class="form-group right-input">
+                    <label for="exampleInputName">Name</label>
+                    <input required minlength="3" ngModel name="name" #name="ngModel" type="text" class="form-control" id="exampleInputName"
+                        aria-describedby="nameHelp" placeholder="Enter name">
+                    <small id="nameHelp" class="form-text text-muted">Type your username</small>
+                    <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+                        <div *ngIf="name.errors.required">Name field is required</div>
+                        <div *ngIf="name.errors.minlength">Name should be at least {{ name.errors.minlength.requiredLength }} characters</div>
+                    </div>
+                </div>
+            </span>
+            <span class="inline">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input required minlength="6" ngModel name="password" #password="ngModel" type="password" class="form-control" id="password"
+                        placeholder="Password">
+                    <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+                        <div *ngIf="password.errors.required">Password field is required</div>
+                        <div *ngIf="password.errors.minlength">Password should be at least {{ password.errors.minlength.requiredLength }} characters</div>
+                    </div>
+                </div>
+                <div class="form-group right-input">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input ngModel name="confirmPassword" #confirmPassword="ngModel" [equalTo]="password" type="password" class="form-control"
+                        id="confirmPassword" placeholder="Confirm Password">
+                    <div *ngIf="confirmPassword.touched && confirmPassword.invalid" class="alert alert-danger">
+                        <div *ngIf="confirmPassword.errors.equalTo">Confirm password</div>
+                    </div>
+                </div>
+            </span>
+            <div *ngIf="errorRegister" class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> {{ errorRegister }}</div>
+            <button (click)="register(formRegister)" [disabled]="formRegister.invalid" type="submit" class="btn btn-primary btn-block">Sign up</button>
+        </form>
+    </div>
+</div>
+>>>>>>> fd075b2d41e95f3c6713ab29824117b723367dfa

@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+      <div class="card">
+        <div class="card-body">
+          <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputName">Name your trip</label>
+                <input type="text" class="form-control" id="inputName" placeholder="Name your trip">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputStart">Start-country</label>
+                <select id="inputStart" class="form-control">
+                  <option selected>Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputParticipants">Participants</label>
+                <input type="text" class="form-control" id="inputParticipants" placeholder="Type participants">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="inputFinish">Finish-country</label>
+                <select id="inputFinish" class="form-control">
+                  <option selected>Choose...</option>
+                  <option>...</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-3">
+                <label for="startTime">Start</label>
+                <input class="form-control" id="startTime" placeholder="yyy/mm/dd" ngbDatepicker #start="ngbDatepicker" (focus)="start.open()">
+              </div>
+              <div class="form-group col-md-3">
+                <label for="endTime">Finish</label>
+                <input class="form-control" id="endTime" placeholder="yyy/mm/dd" ngbDatepicker #end="ngbDatepicker" (focus)="end.open()">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-4">
+                <label>Accessibility</label><br />
+                <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="model">
+                  <label ngbButtonLabel class="btn-primary">
+                    <input ngbButton type="radio" value="false"> Public
+                  </label>
+                  <label ngbButtonLabel class="btn-primary">
+                    <input ngbButton type="radio" value="true"> Private
+                  </label>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Add your new trip</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-2"></div>
+  </div>
+</div>

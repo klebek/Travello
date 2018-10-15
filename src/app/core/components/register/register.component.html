@@ -1,0 +1,47 @@
+<h1>
+  <i class="fa fa-user-plus"></i> Sign Up</h1>
+<form #formRegister="ngForm" class="form-sign-up">
+  <span class="inline">
+    <div class="form-group">
+      <label for="exampleInputEmail">Email address</label>
+      <input required minlength="3" ngModel name="email" #email="ngModel" type="email" class="form-control" id="exampleInputEmail"
+        aria-describedby="emailHelp" placeholder="Enter email" email>
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+        <div *ngIf="email.errors.required">Email address field is required</div>
+        <div *ngIf="email.errors.email">It is not an email adress format</div>
+      </div>
+    </div>
+    <div class="form-group right-input">
+      <label for="exampleInputName">Name</label>
+      <input required minlength="3" ngModel name="name" #name="ngModel" type="text" class="form-control" id="exampleInputName"
+        aria-describedby="nameHelp" placeholder="Enter name">
+      <small id="nameHelp" class="form-text text-muted">Type your username</small>
+      <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+        <div *ngIf="name.errors.required">Name field is required</div>
+        <div *ngIf="name.errors.minlength">Name should be at least {{ name.errors.minlength.requiredLength }} characters</div>
+      </div>
+    </div>
+  </span>
+  <span class="inline">
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input required minlength="6" ngModel name="password" #password="ngModel" type="password" class="form-control" id="password"
+        placeholder="Password">
+      <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+        <div *ngIf="password.errors.required">Password field is required</div>
+        <div *ngIf="password.errors.minlength">Password should be at least {{ password.errors.minlength.requiredLength }} characters</div>
+      </div>
+    </div>
+    <div class="form-group right-input">
+      <label for="confirmPassword">Confirm Password</label>
+      <input ngModel name="confirmPassword" #confirmPassword="ngModel" [equalTo]="password" type="password" class="form-control"
+        id="confirmPassword" placeholder="Confirm Password">
+      <div *ngIf="confirmPassword.touched && confirmPassword.invalid" class="alert alert-danger">
+        <div *ngIf="confirmPassword.errors.equalTo">Confirm password</div>
+      </div>
+    </div>
+  </span>
+
+  <button (click)="register(formRegister)" [disabled]="formRegister.invalid" type="submit" class="btn btn-primary btn-block">Sign up</button>
+</form>

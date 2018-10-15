@@ -1,0 +1,70 @@
+@media only screen and (min-width: 767px) {
+    .hamburger-menu {
+        display: none;
+    }
+    .hello-mobile {
+        display: none;
+    }
+    .jumbotron {
+        padding-top: 12rem;
+    }
+}
+@media only screen and (max-width: 767px) {
+    .container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .jumbotron {
+        padding-top: 8rem;
+    }
+    .btn-go-top {
+        background-color: rgba(19,45,74,1);
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        border-radius: 100%;
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+        z-index: 1020;
+        border: none;
+    }
+    .hello-desktop {
+        display: none;
+    }
+    .hamburger-icon {
+        font-size: 24px;
+        color: white;
+        padding: 0;
+        margin: 0;
+    }
+    .collapse {
+        min-width: 15rem;
+    }
+    .dropdown-toggle::after {
+        display: none;
+    }
+    .dropdown-item {
+        padding: 1.5rem 1.5rem;
+        }
+    .row-banner {
+        display: none;
+    }
+    .filtering {
+         padding: 10px;
+    }
+    .list-group-item {
+        padding: 1rem;
+    }
+    .row-main {
+        flex-direction: column;
+    }
+    .row-products {
+        flex-direction: column;
+    }
+    .col-sm-4 {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

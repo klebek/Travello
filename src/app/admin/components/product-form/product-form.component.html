@@ -1,0 +1,136 @@
+<div class="row">
+  <div class="col-1"></div>
+  <div class="col-6">
+    <form #f="ngForm" (ngSubmit)="save(f.value)">
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
+          <option value=""></option>
+          <option *ngFor="let c of categories$ | async" [value]="c.$key">
+            {{ c.name }}
+          </option>
+        </select>
+        <div class="alert alert-danger" *ngIf="category.touched && category.invalid">
+          Category is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required>
+        <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+          Title is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text">$</span>
+          </div>
+          <input #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control" required [min]="0">
+        </div>
+        <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
+          <div *ngIf="price.errors.required">Price is required</div>
+          <div *ngIf="price.errors.min">Price should be 0 or higher</div>
+        </div>
+      </div>
+      <div class="form-group sale-radios">
+        <div class="row row-sale">
+          <div class="col-2">
+            <div class="radio">
+              <label>
+                <input #sale="ngModel" (click)="closeDiscount()" [(ngModel)]="product.sale" type="radio" name="sale" [value]=false required>                No
+                sale
+              </label>
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="radio">
+              <label>
+                <input #sale="ngModel" (click)="showDiscount()" [(ngModel)]="product.sale" type="radio" name="sale" [value]=true required>                Sale
+              </label>
+            </div>
+          </div>
+          <div class="col">
+            <div *ngIf="product.sale" class="form-group">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">%</span>
+                </div>
+                <input #discount="ngModel" [(ngModel)]="product.discount" name="discount" placeholder="Type discount" type="number" class="form-control"
+                  required [max]="100" [min]="1">
+              </div>
+              <div class="alert alert-danger" *ngIf="discount.touched && discount.invalid">
+                <div *ngIf="discount.errors.required">Discount is required</div>
+                <div *ngIf="discount.errors.max">Discount should be between 1 and 100</div>
+                <div *ngIf="discount.errors.min">Discount should be higher than 0</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="alert alert-danger" *ngIf="sale.touched && sale.invalid">
+          <div *ngIf="sale.errors.required">Choose one</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="photo1big">#1 Photo URL</label>
+        <!-- SMALLL IMAGE -->
+        <!-- <div class="input-group">
+          <div class="input-group-prepend"><span class="input-group-text input-group-text-size" id="">Small size: </span></div>
+          <input #photo1small="ngModel" [(ngModel)]="product.photo1small" name="photo1small" id="photo1small" type="text" value=""
+            class="form-control" required url>
+        </div>
+        <div class="alert alert-danger" *ngIf="photo1small.touched && photo1small.invalid">
+          <div *ngIf="photo1small.errors.required">Image URL is required</div>
+          <div *ngIf="photo1small.errors.url">Please enter valid URL</div>
+        </div> -->
+        <div class="input-group">
+          <div class="input-group-prepend"><span class="input-group-text input-group-text-size" id="">Full size: </span></div>
+          <input #photo1big="ngModel" [(ngModel)]="product.photo1big" name="photo1big" id="photo1big" type="text" value="" class="form-control"
+            required url>
+        </div>
+        <div class="alert alert-danger" *ngIf="photo1big.touched && photo1big.invalid">
+          <div *ngIf="photo1big.errors.required">Image URL is required</div>
+          <div *ngIf="photo1big.errors.url">Please enter valid URL</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="photo2big">#2 Photo URL</label>
+        <!-- SMALL IMAGE -->
+        <!-- <div class="input-group">
+          <div class="input-group-prepend"><span class="input-group-text input-group-text-size" id="">Small size: </span></div>
+          <input #photo2small="ngModel" [(ngModel)]="product.photo2small" name="photo2small" id="photo2small" type="text" value=""
+            class="form-control" required url>
+        </div>
+        <div class="alert alert-danger" *ngIf="photo2small.touched && photo2small.invalid">
+          <div *ngIf="photo2small.errors.required">Image URL is required</div>
+          <div *ngIf="photo2small.errors.url">Please enter valid URL</div>
+        </div> -->
+        <div class="input-group">
+          <div class="input-group-prepend"><span class="input-group-text input-group-text-size" id="">Full size: </span></div>
+          <input #photo2big="ngModel" [(ngModel)]="product.photo2big" name="photo2big" id="photo2big" type="text" class="form-control"
+            required url>
+        </div>
+        <div class="alert alert-danger" *ngIf="photo2big.touched && photo2big.invalid">
+          <div *ngIf="photo2big.errors.required">Image URL is required</div>
+          <div *ngIf="photo2big.errors.url">Please enter valid URL</div>
+        </div>
+      </div>
+      <button [disabled]="!f.valid" class="btn btn-success">Save</button>
+      <button type="button" (click)="delete()" class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+  <div *ngIf="product.category" class="col-3 col-first-photo">
+    <ng-container *ngIf="categories$ | async as categories">
+      <product-card [product]="product" [show-image]="false" [show-preview]="true" [show-actions]="false" [category]="categories"></product-card>
+    </ng-container>
+  </div>
+  <div class="col-2 col-img-second">
+    <div *ngIf="product.photo2big" class="card">
+      <div [style.backgroundImage]="'url(' + product.photo2big + ')'" class="card-img-top card-img-small"></div>
+    </div>
+    <div *ngIf="product.photo1big" class="card">
+      <div [style.backgroundImage]="'url(' + product.photo1big + ')'" class="card-img-top card-img-small card-img-small-second"></div>
+    </div>
+  </div>
+</div>

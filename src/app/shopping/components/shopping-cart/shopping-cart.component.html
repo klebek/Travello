@@ -1,0 +1,70 @@
+<div class="row">
+  <div class="col">
+    <h1>
+      <i class="fa fa-shopping-cart"></i> Shopping Cart</h1>
+      <div class="thumbnail text-center">
+          <img src="/assets/images/carousel/carousel_3.jpg" alt="" class="img-responsive img-thumbnail">
+          <div class="caption">
+            <p class="small-text">
+              EVERY TIME YOU BUY
+              <br /> WE GIVE YOU A GIFT
+            </p>
+            <!-- <span class="text-danger">-50%</span><br /> -->
+            <button class="btn btn-default">CHECK THIS OUT</button>
+          </div>
+        </div>
+  </div>
+
+  <div class="col-9">
+
+    <div class="card" *ngIf="cart$ | async as cart" style="width: 100%;">
+      <div class="card-body">
+        <p>
+          You have {{ cart.totalItemsCount }} in your shopping cart.
+          <button *ngIf="cart.items.length" (click)="clearCart()" class="float-right btn btn-light btn-sm">Clear Shopping Cart
+          </button>
+        </p>
+      </div>
+      <table *ngIf="cart.items.length" class="table">
+        <thead>
+          <tr>
+            <th></th>
+            <th style="width: 230px">Product</th>
+            <th class="text-center">Quantity</th>
+            <th class="text-right" style="width: 130px">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cart.items">
+            <td>
+              <div [style.backgroundImage]="'url(' + item.photo1small + ')'" class="thumbnail-product"></div>
+            </td>
+            <td>
+              {{ item.title }}
+            </td>
+            <td>
+              <product-quantity [product]="item" [shopping-cart]="cart" [inCart]="true"></product-quantity>
+            </td>
+            <td class="text-right">
+              {{ item.totalPrice | currency:'USD':'symbol'}}
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th class="text-right">Total price: {{ cart.totalPrice | currency:'USD':'symbol'}}</th>
+          </tr>
+          <tr>
+            <th colspan="4">
+              <a routerLink="/"><button class="btn">Continue shopping</button></a>
+              <a *ngIf="cart.items.length" routerLink="/check-out" class="btn btn-primary">Check Out</a>
+            </th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="card" [class.card-new]="product.thenew">
+  <div *ngIf="product.photo1big && showPreview" [style.backgroundImage]="'url(' + product.photo1big + ')'" class="card-img-top" [class.card-img-top-new]="product.thenew"></div>
+  <a [routerLink]="['/product/', product.$key]">
+    <!-- <img *ngIf="product.photo1 && showImage" [src]="product.photo1" class="card-img-zoom"> -->
+    <div *ngIf="product.photo1big && showImage" [style.backgroundImage]="'url(' + product.photo1big + ')'" class="card-img-top" [class.card-img-top-new]="product.thenew"></div>
+    <ngx-gallery *ngIf="showGallery" [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+  </a>
+  <div *ngIf="product.sale && !product.thenew" class="card-header card-header-sale">
+      <i class="fa fa-bullhorn"></i>Sale
+  </div>
+  <div *ngIf="!product.sale && !product.thenew" class="card-header card-header-nosale" [class.card-header-new]="product.thenew">
+    shoeshop
+  </div>
+  <div *ngIf="product.thenew" class="card-header card-header-nosale" [class.card-header-nosale-new]="product.thenew">
+    <i class="fa fa-exclamation-circle"></i> THE NEW <i class="fa fa-exclamation-circle"></i>
+  </div>
+  <div *ngIf="showActions && shoppingCart" class="card-footer" [class.card-footer-new]="product.thenew">
+    <button *ngIf="shoppingCart.getQuantity(product) === 0; else updateQuantity" (click)="addToCart()" class="btn btn-secondary btn-block" [class.btn-secondary-new]="product.thenew">
+      <i class="fa fa-cart-plus"></i>Add to Cart</button>
+    <ng-template #updateQuantity>
+      <product-quantity [product]="product" [shopping-cart]="shoppingCart">
+      </product-quantity>
+    </ng-template>
+  </div>
+  <div *ngIf="showDetails">
+    <div class="card-body" [class.card-body-new]="product.thenew">
+      <h5 class="card-title" [class.card-title-new]="product.thenew">
+        <a [routerLink]="['/product/', product.$key]">{{ product.title }}</a>
+      </h5>
+      <div class="row">
+        <div class="col-sm-8 col-price">
+          <span class="card-text" [class.strike-out]="product.sale && product.discount > 0">{{ product.price |
+            currency:'USD':'symbol'}}
+            <ng-container *ngIf="product.sale && product.discount > 0">
+              <div class="card-text badge badge-danger">{{ product.price * (1 - (product.discount / 100)) |
+                currency:'USD':'symbol'}}</div>
+            </ng-container>
+          </span>
+        </div>
+        <div *ngIf="category$ | async as category" class="col-sm col-category-logo">
+          <a (click)="onTop()" *ngIf="category.name" routerLink="/" [queryParams]="{ category: category.$key }"><img *ngIf="category.logo" [src]="category.logo" class="category-logo" [class.category-logo-new]="product.thenew"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

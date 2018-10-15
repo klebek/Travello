@@ -1,0 +1,12 @@
+.form-sign-up {
+    color: white;
+    background-color: rgba(20,20,20,0.5);
+    padding: 20px;
+    border-radius: 5px;
+}
+.text-muted {
+    color: #ccc !important;
+}
+h1 {
+    text-align: center;
+}

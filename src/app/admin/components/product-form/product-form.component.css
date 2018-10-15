@@ -1,0 +1,52 @@
+.btn-danger {
+    margin-left: 10px;
+}
+/* .row {
+    margin-top: 50px;
+} */
+.input-group-text-size {
+    width: 104px;
+    justify-content: center;
+}
+.input-group {
+    margin-bottom: 15px;
+}
+.sale-radios {
+    background: #f8f8f8;
+    border: 2px solid #f8f8f8;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 0rem;
+}
+.sale-radios input {
+    margin-right: 10px;
+}
+.row-sale {
+    align-items: center;
+}
+.col-photos {
+    flex-direction: row;
+}
+.col-img-second {
+    align-self: flex-start;
+    margin-left: 0;
+}
+.card-img-small {
+    height: 180px;
+    background-size: cover;
+    background-position: bottom;
+}
+.card-img-small-second {
+    background-position: center;
+}
+.col-first-photo {
+    z-index: 2;
+}
+.card {
+    border-color: #f8f8f8;
+    margin-bottom: 30px;
+}
+.card-sale {
+    border: none;
+}
+

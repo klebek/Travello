@@ -1,0 +1,50 @@
+body {
+    background: url('../../../../assets/images/bg_trips.jpg');
+    background-repeat: no-repeat;
+    color: #232323;
+    padding-top: 40px;
+    height: 100vh;
+}
+.flag {
+    height: 18px;
+}
+.table td {
+    border-top: none;
+}
+.table th {
+    border-bottom-color: #f4852b;
+    border-top: none;
+}
+.table tr:hover {
+    background-color: #f8f8f8;
+}
+.thumbnail {
+    font-family: "adineuePROKZ-Black";
+    font-size: 3rem;
+    position: relative;
+}
+.caption {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    width: 100%;
+    color: white;
+}
+.img-thumbnail {
+    padding: 0;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+}
+.image-luggage {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 150px;
+}
+.btn {
+    margin-left: 15px;
+}
