@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 body {
     margin: 0;
     background-image: url('../../../../assets/images/bg_log.jpeg');
@@ -19,19 +18,6 @@ body {
 }
 h1 {
     text-align: center;
-=======
-.col, .col-4, .col-6 {
-    margin-left: 0px;
-    padding-left: 0;
-    padding-right: 0;
-}
-.col-right {
-    margin-left: 60px;
-}
-.row {
-    margin-left: 0;
-    margin-right: 0;
->>>>>>> fd075b2d41e95f3c6713ab29824117b723367dfa
 }
 .fa {
     padding-right: 10px;
@@ -42,11 +28,6 @@ h1 {
 .btn-primary {
     margin-top: 20px;
 }
-<<<<<<< HEAD
-=======
-.btn-block {
-}
->>>>>>> fd075b2d41e95f3c6713ab29824117b723367dfa
 .btn-google {
     background-color: #de4b39;
     margin-top: 15px;
@@ -65,42 +46,10 @@ h1 {
 .bg-dark {
     background: transparent !important;
 }
-<<<<<<< HEAD
-=======
-.card {
-    border: none;
-    margin-bottom: 40px;
-    border-radius: 20px;
-}
-.card-img {
-    vertical-align: middle;
-}
-.card-title {
-    text-align: center;
-}
-.card-text {
-    font-family: "adineuePROKZ-Black";
-    font-size: 3.5rem;
-    color: white;
-    text-transform: uppercase;
-    text-align: center;
-}
-.card-text-intro {
-    font-family: "adineuePROKZ-Black";
-    font-size: 1.5rem;
-    color: white;
-    text-transform: lowercase;
-    text-align: center;
-}
-.col .form-group {
-    width: 50%;
-}
->>>>>>> fd075b2d41e95f3c6713ab29824117b723367dfa
 .inline {
     display: flex;
     flex-direction: row;
 }
-<<<<<<< HEAD
 .form-sign-in {
     color: white;
     background-color: rgba(20,20,20,0.5);
@@ -120,18 +69,3 @@ h1 {
     margin: 10px 0 10px 0;
 }
 
-=======
-.right-input {
-    margin-left: 5%;
-}
-.form-sign-in {
-    background-color: #eeeeee;
-    padding: 20px;
-    border-radius: 5px;
-}
-.form-sign-up {
-    background-color: transparent;
-    padding: 20px;
-    border-radius: 5px;
-}
->>>>>>> fd075b2d41e95f3c6713ab29824117b723367dfa
