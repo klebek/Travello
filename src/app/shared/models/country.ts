@@ -7,4 +7,5 @@ export interface Country {
     population: number;
     capital: string;
     language: string;
+    image: string;
 }
