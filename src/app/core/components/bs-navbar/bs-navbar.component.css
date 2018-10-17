@@ -1,6 +1,9 @@
 .navbarColor {
     background: #132d4a;
 }
+.container {
+    margin-top: 0px;
+}
 .btn-default {
     font-family: "adineuePROKZ-Black";
     margin-top: 1.5rem;
