@@ -1,12 +1,9 @@
 @media only screen and (min-width: 767px) {
-    .hamburger-menu {
-        display: none;
-    }
-    .hello-mobile {
+    .hamburger-menu, .hello-mobile, .btn-go-top {
         display: none;
     }
     .jumbotron {
-        padding-top: 12rem;
+        padding-top: 10rem;
     }
 }
 @media only screen and (max-width: 767px) {
@@ -15,7 +12,7 @@
         padding-right: 10px;
     }
     .jumbotron {
-        padding-top: 8rem;
+        padding-top: 12rem;
     }
     .btn-go-top {
         background-color: #f4852b;

@@ -1,7 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~bootstrap/dist/css/bootstrap.css";
-@import "~font-awesome/css/font-awesome.css";
+@import url('https://use.fontawesome.com/releases/v5.4.1/css/all.css');
+@import url('https://fonts.googleapis.com/css?family=Hind:400,700');
 @import url('https://fonts.googleapis.com/css?family=Rubik:400,500,700,900');
 
 $primary-color: white;
@@ -40,7 +41,9 @@ body {
   margin-top: 40px;
   max-width: 1480px;
 }
-
+.jumbotron {
+  font-family: 'Hind', sans-serif;
+}
 h1, h2, h3 { 
   margin-bottom: 1.5rem;
 }
@@ -81,10 +84,10 @@ a, a:hover, a:focus{
   border-color: $secondary-color;
 }
 
-.btn-primary:hover, .btn-primary:active, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active {
+.btn-primary:hover, .btn-primary:active, .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:focus, .btn-primary:not(:disabled):not(.disabled):active {
   background-color: $secondary-color-hover;
   border-color: $secondary-color-hover;
-  box-shadow: $secondary-color;
+  box-shadow: 0 0 0 0.2rem #f4852b8e;
 }
 
 .btn-primary.disabled, .btn-primary:disabled {
@@ -96,6 +99,9 @@ a, a:hover, a:focus{
   text-align: center;
   color: #ececec;
   border-color: #ececec;
+}
+.bg-primary {
+  background-color: #e87e29 !important;
 }
 .alert-danger {
   background-color: #dc3545;

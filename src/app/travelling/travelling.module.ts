@@ -10,6 +10,7 @@ import { SharedModule } from 'shared/shared.module';
 import { MyTripsComponent } from './components/my-trips/my-trips.component';
 import { CountryDetailsComponent } from './components/country-details/country-details.component';
 import { TripFormComponent } from './components/trip-form/trip-form.component';
+import { CountryPhotosComponent } from './components/country-photos/country-photos.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { TripFormComponent } from './components/trip-form/trip-form.component';
     CountryFilterComponent,
     MyTripsComponent,
     CountryDetailsComponent,
-    TripFormComponent
+    TripFormComponent,
+    CountryPhotosComponent
   ]
 })
 export class TravellingModule { }

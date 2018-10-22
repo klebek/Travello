@@ -1,7 +1,7 @@
-<div *ngIf="countries | async as country" class="jumbotron jumbotron-fluid" [ngStyle]="{'background-image': 'url(' + country.image + ')'}">
+<div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">Fluid jumbotron</h1>
-    <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    <h1 *ngIf="countries$ | async as country" class="display-4"><span>{{country.name}}</span></h1>
+    <p class="lead"><span>Short description of the country</span></p>
   </div>
 </div>
 <div class="container">
@@ -13,8 +13,8 @@
         </div>
         <div class="card-body">
           <div class="row">
-            <div class="col-4">
-              <div class="card" style="width: 18rem;" *ngIf="countries | async as country">
+            <div class="col-sm-3">
+              <div class="card" *ngIf="countries$ | async as country">
                 <img class="card-img-top" [src]="country.image">
                 <div class="card-body">
                   <h5 class="card-title">{{country.name}}</h5>
@@ -32,17 +32,71 @@
                 </div>
               </div>
             </div>
-            <div class="col">
-              <h5 class="card-title">Special title treatment</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="#" class="btn btn-primary btn-block">Read more</a>
+            <div class="col-sm col-main-details">
+              <div class="row">
+                <div class="col-sm">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <button (click)="showTab()" class="btn btn-primary btn-block">Read more</button>
+                </div>
+              </div>
+              <div *ngIf="readMore" class="row row-tabs">
+                <div class="col-sm">
+                  <ngb-tabset [justify]="currentJustify">
+                    <ngb-tab title="Notes">
+                      <ng-template ngbTabContent>
+                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
+                          aliqua, retro synth
+                          master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit
+                          butcher retro keffiyeh
+                          dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
+                          placeat salvia cillum
+                          iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                      </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="Photos">
+                      <ng-template ngbTabContent><country-photos></country-photos>
+                      </ng-template>
+                    </ngb-tab>
+                    <ngb-tab title="Places">
+                      <ng-template ngbTabContent>
+                        <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id
+                          diam. Nulla facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis,
+                          luctus eget tincidunt eu, congue et odio. Duis pharetra et nisl at faucibus. Quisque luctus
+                          pulvinar arcu, et molestie lectus ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat
+                          volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec tristique
+                          ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque
+                          penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac
+                          lorem aliquet ultricies in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+                      </ng-template>
+                    </ngb-tab>
+                  </ngb-tabset>
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="card card-traveller">
+                <img class="card-img-top" src="https://i.imgur.com/bPM6LFi.jpg" alt="Card image cap">
+                <div class="card-header">Visited by:</div>
+                <div class="card-body">
+                  <p class="card-text">Mary Elizabeth</p>
+                </div>
+                <a href="#">
+                  <div class="card card-map text-white bg-dark mb-3">
+                    <div class="card-header">Map</div>
+                    <div class="card-body">
+                      <p class="card-title"><i class="far fa-hand-pointer"></i></p>
+                      <p class="card-title">Explore the map</p>
+                    </div>
+                  </div>
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="card-footer text-muted">
-          Last visit: 2 days ago
+          <div class="card-footer text-muted">
+            Time: 04/08/2003
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
