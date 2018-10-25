@@ -7,7 +7,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
-import { CountryCardComponent } from './components/country-card/country-card.component';
+import { TripCardComponent } from './components/trip-card/trip-card.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { CountryService } from 'shared/services/country.service';
@@ -24,9 +24,9 @@ import { UserService } from './services/user.service';
     NgbModule.forRoot(),
     RouterModule
   ],
-  declarations: [CountryCardComponent],
+  declarations: [TripCardComponent],
   exports: [
-    CountryCardComponent,
+    TripCardComponent,
     CommonModule,
     FormsModule,
     CustomFormsModule,

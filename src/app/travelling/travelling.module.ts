@@ -8,7 +8,7 @@ import { AuthGuard } from 'shared/services/auth-guard.service';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'shared/shared.module';
 import { MyTripsComponent } from './components/my-trips/my-trips.component';
-import { CountryDetailsComponent } from './components/country-details/country-details.component';
+import { TripDetailsComponent } from './components/trip-details/trip-details.component';
 import { TripFormComponent } from './components/trip-form/trip-form.component';
 import { CountryPhotosComponent } from './components/country-photos/country-photos.component';
 
@@ -17,7 +17,7 @@ import { CountryPhotosComponent } from './components/country-photos/country-phot
     SharedModule,
     RouterModule.forChild([
       { path: 'countries', component: CountriesComponent },
-      { path: 'country/:id', component: CountryDetailsComponent },
+      { path: 'country/trips/:id/1', component: TripDetailsComponent },
       { path: 'my/trips', component: MyTripsComponent },
       { path: 'add-trip', component: TripFormComponent },
     ])
@@ -26,7 +26,7 @@ import { CountryPhotosComponent } from './components/country-photos/country-phot
     CountriesComponent,
     CountryFilterComponent,
     MyTripsComponent,
-    CountryDetailsComponent,
+    TripDetailsComponent,
     TripFormComponent,
     CountryPhotosComponent
   ]

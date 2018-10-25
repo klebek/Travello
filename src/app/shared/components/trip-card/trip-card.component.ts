@@ -1,15 +1,15 @@
-import { ContinentService } from './../../services/continent.service';
-import { CountryService } from './../../services/country.service';
+import { ContinentService } from 'shared/services/continent.service';
+import { CountryService } from 'shared/services/country.service';
 import { Country } from 'shared/models/country';
 import { Component, OnInit, Input } from '@angular/core';
 import { Continent } from 'shared/models/continent';
 
 @Component({
-  selector: 'country-card',
-  templateUrl: './country-card.component.html',
-  styleUrls: ['./country-card.component.css']
+  selector: 'trip-card',
+  templateUrl: './trip-card.component.html',
+  styleUrls: ['./trip-card.component.css']
 })
-export class CountryCardComponent implements OnInit {
+export class TripCardComponent implements OnInit {
 
   @Input('country') country: Country;
   @Input('continent') continent: Continent;

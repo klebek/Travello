@@ -1,0 +1,91 @@
+.card {
+    border-radius: 0;
+    padding: 0;
+    border: none;
+}
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+.card-body-main {
+    padding: 0;
+}
+.container {
+    margin-top: 120px;
+}
+.col-padding {
+    padding: 20px;
+}
+.col-right-menu {
+    background-color: #232323;
+    padding-right: 0;
+}
+.detail {
+    font-weight: bold;
+}
+.card-buttons .btn-primary {
+    margin-right: 5px;
+}
+.card-buttons .btn-success {
+    margin-left: 5px;
+}
+/deep/ .tab-content {
+    padding-top: 10px;
+}
+.row-tabs {
+    margin-top: 20px;
+}
+.jumbotron {
+    height: 50px;
+    background-size: cover;
+    background-position: center;
+}
+h1, p {
+    text-align: center;
+}
+.jumbotron p {
+    font-weight: 700;
+}
+h1 span {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.btn {
+    color: white;
+}
+.row-tabs p {
+    text-align: justify;
+}
+h1 span, p span {
+    background-color: #232323b9;
+    color: white;
+    padding: 0 20px 0 20px;
+    text-transform: uppercase;
+}
+.card-map .card-header {
+    border: none;
+    color: #5c5c5c;
+    background-color: #c2c3c418;
+    font-size: 12px;
+    font-weight: 700;
+}
+.bg-light {
+    background-color: #c2c3c4;
+    background-image: url('https://i.imgur.com/HiWoUkb.png');
+    background-size: cover;
+    height: 156px;
+    border-radius: 2px;
+}
+.fa-hand-pointer {
+    font-size: 24px;
+    margin-top: 5px;
+    color: #5c5c5c;
+}
+.buttons {
+    margin-top: 10px;
+    background-color: #c2c3c418;
+    padding: 30px;
+}
+.buttons .btn {
+    font-size: 14px;
+}
