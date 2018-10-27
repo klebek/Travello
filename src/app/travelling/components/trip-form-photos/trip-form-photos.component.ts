@@ -15,7 +15,7 @@ export class TripFormPhotosComponent {
   description4 = false;
 
   photo1url;
-  descirption1text;
+  description1text;
 
   addCard(number){
     this.removeCard();
