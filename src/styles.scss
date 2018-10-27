@@ -31,8 +31,9 @@ $white-color: white;
 body { 
   margin-top: 40px;
   font-family: 'Rubik', sans-serif;
-  background-image: url('assets/images/bg.jpg');
-  background-repeat: repeat;
+  background-color: #1f1f1f;
+  // background-image: url('assets/images/bg.jpg');
+  // background-repeat: repeat;
   background-attachment: fixed;
   background-position: center;
 }
@@ -59,7 +60,10 @@ a, a:hover, a:focus{
   padding: 1rem 1rem;
   border-bottom: 3px solid #f4852b;
 }
-
+.fas, .far, .fab {
+  padding-right: 10px;
+  padding-left: 10px;
+}
 .navbar-light .navbar-brand {
   color: $white-color;
 }

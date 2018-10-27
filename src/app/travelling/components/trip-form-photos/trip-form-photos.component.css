@@ -1,12 +1,9 @@
-.card-buttons .btn {
+.row-card-buttons .btn {
     margin-right: 10px;
-}
-.badge {
-    font-weight: normal;
-    font-size: 18px;
-    margin-bottom: 30px;
     text-align: center;
-    color: #232323;
+}
+.row-card-buttons {
+    justify-content: center;
 }
 .input-photos {
     background-color: #f8f8f8;

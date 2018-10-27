@@ -1,19 +1,18 @@
 <div class="row input-photos">
   <div class="col-md-6">
-    <span class="badge badge-light">Add photos and descriptions to your trips</span>
     <!-- PHOTO_1 -->
     <div *ngIf="cardRow[0] === 1" class="form-row">
       <div class="form-group col-md-12">
         <label for="inputPhoto1">Photo #1</label>
-        <input type="text" class="form-control" id="inputPhoto1" url>
+        <input [(ngModel)]="photo1url" name="photo1url" type="text" class="form-control" id="inputPhoto1" url>
         <input *ngIf="!description1" (click)="showDescription(1)" type="button" class="btn btn-primary btn-block" value="Add description">
       </div>
       <div *ngIf="description1" class="form-group col-md-12">
         <label for="inputPhoto1Description">Description #1</label>
-        <textarea class="form-control" id="inputPhoto1Description" rows="1"></textarea>
-        <input (click)="showDescription(1)" type="button" class="btn btn-danger" value="Remove description">
+        <textarea [(ngModel)]="description1url" name="description1url" class="form-control" id="inputPhoto1Description" rows="1"></textarea>
+        <button (click)="showDescription(1)" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Remove description</button>
       </div>
-      <input type="button" class="btn btn-success btn-block" value="Save card">
+      <button class="btn btn-success btn-block"><i class="fas fa-save"></i>Save card</button>
     </div>
     <!-- PHOTO_2 -->
     <div *ngIf="cardRow[0] === 2" class="form-row">
@@ -25,9 +24,9 @@
       <div *ngIf="description2" class="form-group col-md-12">
         <label for="inputPhoto2Description">Description #2</label>
         <textarea class="form-control" id="inputPhoto2Description" rows="1"></textarea>
-        <input (click)="showDescription(2)" type="button" class="btn btn-danger" value="Remove description">
+        <button (click)="showDescription(2)" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Remove description</button>
       </div>
-      <input type="button" class="btn btn-success btn-block" value="Save card">
+      <button class="btn btn-success btn-block"><i class="fas fa-save"></i>Save card</button>
     </div>
     <!-- PHOTO_3 -->
     <div *ngIf="cardRow[0] === 3" class="form-row">
@@ -39,9 +38,9 @@
       <div *ngIf="description3" class="form-group col-md-12">
         <label for="inputPhoto3Description">Description #3</label>
         <textarea class="form-control" id="inputPhoto3Description" rows="1"></textarea>
-        <input (click)="showDescription(3)" type="button" class="btn btn-danger" value="Remove description">
+        <button (click)="showDescription(3)" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Remove description</button>
       </div>
-      <input type="button" class="btn btn-success btn-block" value="Save card">
+      <button class="btn btn-success btn-block"><i class="fas fa-save"></i>Save card</button>
     </div>
     <!-- PHOTO_4 -->
     <div *ngIf="cardRow[0] === 4" class="form-row">
@@ -53,19 +52,22 @@
       <div *ngIf="description4" class="form-group col-md-12">
         <label for="inputPhoto4Description">Description #4</label>
         <textarea class="form-control" id="inputPhoto4Description" rows="1"></textarea>
-        <input (click)="showDescription(4)" type="button" class="btn btn-danger" value="Remove description">
+        <button (click)="showDescription(4)" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Remove description</button>
       </div>
-      <input type="button" class="btn btn-success btn-block" value="Save card">
+      <button class="btn btn-success btn-block"><i class="fas fa-save"></i>Save card</button>
     </div>
     <hr />
-    <span class="card-buttons">
-      <input (click)="addCard(1)" value="Add card 1" type="button" class="btn btn-primary btn-sm btn-block">
-      <input (click)="addCard(2)" value="Add card 2" type="button" class="btn btn-primary btn-sm btn-block">
-      <input (click)="addCard(3)" value="Add card 3" type="button" class="btn btn-primary btn-sm btn-block">
-      <input (click)="addCard(4)" value="Add card 4" type="button" class="btn btn-primary btn-sm btn-block">
+    <span class="row row-card-buttons">
+      <button (click)="addCard(1)" class="btn btn-primary"><i class="far fa-edit"></i>Card 1</button>
+      <button (click)="addCard(2)" class="btn btn-primary"><i class="far fa-edit"></i>Card 2</button>
+      <button (click)="addCard(3)" class="btn btn-primary"><i class="far fa-edit"></i>Card 3</button>
+      <button (click)="addCard(4)" class="btn btn-primary"><i class="far fa-edit"></i>Card 4</button>
     </span>
   </div>
   <div class="col-md-6">
-    <country-photos [card1]="cardRow[0]" [card2]="cardRow[0]" [card3]="cardRow[0]" [card4]="cardRow[0]" [card5]="cardRow[0]" [card6]="cardRow[0]"></country-photos>
+    <country-photos
+    [card1]="cardRow[0]" [card2]="cardRow[0]" [card3]="cardRow[0]" [card4]="cardRow[0]" [card5]="cardRow[0]" [card6]="cardRow[0]"
+    [photo1url]="photo1url" [description1url]="description1url"
+    ></country-photos>
   </div>
 </div>

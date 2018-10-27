@@ -14,6 +14,9 @@ export class TripFormPhotosComponent {
   description3 = true;
   description4 = true;
 
+  photo1url = "https://i.imgur.com/KLi0eip.jpg";
+  description1url = "Example card text";
+
   addCard(number){
     this.removeCard();
     this.cardRow.push(number);

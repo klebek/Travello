@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-2"></div>
-    <div class="col-8">
+    <div class="col-sm-12">
       <div class="card">
         <div class="card-body">
           <form>
@@ -36,10 +35,10 @@
                 <label>Accessibility</label><br />
                 <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
                   <label ngbButtonLabel class="btn-primary">
-                    <input ngbButton type="radio" value="false"> Public
+                    <input ngbButton type="radio" value="false"><i class="fas fa-unlock-alt"></i>Public
                   </label>
                   <label ngbButtonLabel class="btn-primary">
-                    <input ngbButton type="radio" value="true"> Private
+                    <input ngbButton type="radio" value="true"><i class="fas fa-lock"></i>Private
                   </label>
                 </div>
               </div>
@@ -47,11 +46,10 @@
             <div class="col-md-12">
               <trip-form-photos></trip-form-photos>
             </div>
-            <button type="submit" class="btn btn-primary btn-block">Add your new trip</button>
+            <button type="submit" class="btn btn-success btn-block"><i class="fas fa-save"></i>Add your new trip</button>
           </form>
         </div>
       </div>
     </div>
-    <div class="col-2"></div>
   </div>
 </div>
