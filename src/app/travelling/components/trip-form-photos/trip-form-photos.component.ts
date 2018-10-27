@@ -9,13 +9,10 @@ export class TripFormPhotosComponent {
 
   cardRow = [1];
 
-  description1 = true;
-  description2 = true;
-  description3 = true;
-  description4 = true;
-
-  photo1url = "https://i.imgur.com/KLi0eip.jpg";
-  description1url = "Example card text";
+  description1 = false;
+  description2 = false;
+  description3 = false;
+  description4 = false;
 
   addCard(number){
     this.removeCard();

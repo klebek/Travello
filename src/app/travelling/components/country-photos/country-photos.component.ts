@@ -15,7 +15,10 @@ export class CountryPhotosComponent implements OnInit {
   @Input('card6') card6 = 6;
 
   @Input('photo1url') photo1url = "https://i.imgur.com/KLi0eip.jpg";
-  @Input('description1url') description1url = "Example card text";
+  @Input('description1text') description1text = "Example card text";
+
+  // @Input('photo1url') photo1url;
+  // @Input('description1text') description1text;
 
   constructor() { }
 

@@ -1,9 +1,9 @@
 <div class="card-columns">
     <div *ngIf="card1 === 1" class="card">
       <img *ngIf="photo1url" class="card-img-top" [src]="photo1url">
-      <div class="card-body">
+      <div *ngIf="description1text" class="card-body">
         <h5 class="card-title">Card title that wraps to a new line</h5>
-        <p class="card-text">{{description1url}}</p>
+        <p class="card-text">{{description1text}}</p>
       </div>
     </div>
     <div *ngIf="card2 === 2" class="card p-3">

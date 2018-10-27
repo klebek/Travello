@@ -9,7 +9,7 @@
       </div>
       <div *ngIf="description1" class="form-group col-md-12">
         <label for="inputPhoto1Description">Description #1</label>
-        <textarea [(ngModel)]="description1url" name="description1url" class="form-control" id="inputPhoto1Description" rows="1"></textarea>
+        <textarea [(ngModel)]="description1text" name="description1text" class="form-control" id="inputPhoto1Description" rows="1"></textarea>
         <button (click)="showDescription(1)" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Remove description</button>
       </div>
       <button class="btn btn-success btn-block"><i class="fas fa-save"></i>Save card</button>
@@ -67,7 +67,7 @@
   <div class="col-md-6">
     <country-photos
     [card1]="cardRow[0]" [card2]="cardRow[0]" [card3]="cardRow[0]" [card4]="cardRow[0]" [card5]="cardRow[0]" [card6]="cardRow[0]"
-    [photo1url]="photo1url" [description1url]="description1url"
+    [photo1url]="photo1url" [description1text]="description1text"
     ></country-photos>
   </div>
 </div>
