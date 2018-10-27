@@ -1,9 +1,6 @@
 .container {
     margin-top: 150px;
 }
-.form-group {
-    margin-right: 15px;
-}
 .btn-primary:not(:disabled):not(.disabled).active {
     background-color: #c26b23;
     border-color: #f4852b;

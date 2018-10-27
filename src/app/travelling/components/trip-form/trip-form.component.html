@@ -6,41 +6,33 @@
         <div class="card-body">
           <form>
             <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputName">Name your trip</label>
-                <input type="text" class="form-control" id="inputName" placeholder="Name your trip">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="inputStart">Start-country</label>
-                <select id="inputStart" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>...</option>
-                </select>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="inputParticipants">Participants</label>
-                <input type="text" class="form-control" id="inputParticipants" placeholder="Type participants">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="inputFinish">Finish-country</label>
-                <select id="inputFinish" class="form-control">
-                  <option selected>Choose...</option>
-                  <option>...</option>
-                </select>
+              <div class="form-group col-md-12">
+                <label for="inputTitle">Title</label>
+                <input type="text" class="form-control" id="inputTitle" placeholder="Type title">
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-md-3">
+              <div class="form-group col-md-6">
+                <label for="inputDescription">Description</label>
+                <textarea class="form-control" id="inputDescription" rows="6"></textarea>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="inputNotes">Notes</label>
+                <textarea class="form-control" id="inputNotes" rows="6"></textarea>
+              </div>
+              <div class="form-group col-md-6">
                 <label for="startTime">Start</label>
-                <input class="form-control" id="startTime" placeholder="yyy/mm/dd" ngbDatepicker #start="ngbDatepicker" (focus)="start.open()">
+                <input class="form-control" id="startTime" placeholder="yyy/mm/dd" ngbDatepicker #start="ngbDatepicker"
+                  (focus)="start.open()">
               </div>
-              <div class="form-group col-md-3">
+              <div class="form-group col-md-6">
                 <label for="endTime">Finish</label>
-                <input class="form-control" id="endTime" placeholder="yyy/mm/dd" ngbDatepicker #end="ngbDatepicker" (focus)="end.open()">
+                <input class="form-control" id="endTime" placeholder="yyy/mm/dd" ngbDatepicker #end="ngbDatepicker"
+                  (focus)="end.open()">
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-6">
                 <label>Accessibility</label><br />
                 <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
                   <label ngbButtonLabel class="btn-primary">
@@ -51,6 +43,9 @@
                   </label>
                 </div>
               </div>
+            </div>
+            <div class="col-md-12">
+              <trip-form-photos></trip-form-photos>
             </div>
             <button type="submit" class="btn btn-primary btn-block">Add your new trip</button>
           </form>
