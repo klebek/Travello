@@ -39,7 +39,7 @@ export class TripFormPhotosComponent {
   saveCard1(url, text){
     this.trip.photo1url = url;
     this.trip.description1text = text;
-    console.log(url + " " +text)
+    console.log(url + " " + text)
   }
 
   showDescription(number){
