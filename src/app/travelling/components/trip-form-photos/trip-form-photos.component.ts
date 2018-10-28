@@ -11,7 +11,7 @@ export class TripFormPhotosComponent {
   constructor() {
     this.trip = {
       name: "",
-      title: "",
+      title1: "",
       description1: false,
       descriptionTrip: "",
       notes: "",

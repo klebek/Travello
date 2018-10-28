@@ -1,6 +1,6 @@
 export interface Trip {
     name: string;
-    title: string;
+    title1: string;
     description1: boolean;
     descriptionTrip: string;
     notes: string;
