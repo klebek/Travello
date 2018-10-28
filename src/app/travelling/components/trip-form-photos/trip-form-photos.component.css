@@ -21,6 +21,6 @@ textarea {
     padding-left: 0;
     padding-right: 0;
 }
-/deep/ .card-columns {
+.col-md-6 /deep/ .card-columns {
     column-count: 1;
 }
