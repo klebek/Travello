@@ -1,0 +1,23 @@
+.card-traveller {
+    flex-direction: row;
+}
+.card-body {
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+    justify-content: center;
+}
+.card-body h6 {
+    margin: 0;
+}
+.card-traveller {
+    height: 3rem;
+}
+.card-img-top {
+    height: 3rem;
+    width: 3rem;
+}
+.btn {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}

@@ -1,7 +1,7 @@
 <div class="card-columns">
   <div *ngIf="card1 === 1" class="card">
     <img *ngIf="photo1url" class="card-img-top" [src]="photo1url">
-    <div *ngIf="title1" class="card-body">
+    <div *ngIf="title1 || description1text" class="card-body">
       <h5 class="card-title">{{title1}}</h5>
       <p class="card-text">{{description1text}}</p>
     </div>

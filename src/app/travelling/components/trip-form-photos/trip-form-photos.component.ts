@@ -15,10 +15,14 @@ export class TripFormPhotosComponent {
       description1: false,
       descriptionTrip: "",
       notes: "",
-      photo1url: "",
+      photo1url: "https://i.imgur.com/I0FjsTR.jpg",
       description1text: ""
     }
   }
+
+  photo1url;
+  description1text;
+  title1;
 
   cardRow = [1];
 
@@ -44,7 +48,8 @@ export class TripFormPhotosComponent {
 
   showDescription(number){
     if(number === 1) {
-      this.trip.description1text = "";
+      this.description1text = "";
+      this.title1 = "";
       this.trip.description1 = !this.trip.description1;
     }
     else if(number === 2) this.description2 = !this.description2;

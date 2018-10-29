@@ -14,6 +14,7 @@ export class TripDetailsComponent implements OnInit {
   id;
   currentJustify = 'fill';
   readMore = false;
+  visitors = false;
 
   constructor(private route: ActivatedRoute, private countryService: CountryService) {
     this.id = this.route.snapshot.params['id'];
@@ -22,7 +23,9 @@ export class TripDetailsComponent implements OnInit {
   async ngOnInit() {
     this.countries$ = await this.countryService.get(this.id);
   }
-
+  showVisitors(){
+    this.visitors = !this.visitors;
+  }
   showTab(){
     this.readMore = !this.readMore;
   }

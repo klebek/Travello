@@ -12,6 +12,7 @@ import { TripDetailsComponent } from './components/trip-details/trip-details.com
 import { TripFormComponent } from './components/trip-form/trip-form.component';
 import { CountryPhotosComponent } from './components/country-photos/country-photos.component';
 import { TripFormPhotosComponent } from './components/trip-form-photos/trip-form-photos.component';
+import { TripVisitorsComponent } from './components/trip-visitors/trip-visitors.component';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import { TripFormPhotosComponent } from './components/trip-form-photos/trip-form
     TripDetailsComponent,
     TripFormComponent,
     CountryPhotosComponent,
-    TripFormPhotosComponent
+    TripFormPhotosComponent,
+    TripVisitorsComponent
   ]
 })
 export class TravellingModule { }

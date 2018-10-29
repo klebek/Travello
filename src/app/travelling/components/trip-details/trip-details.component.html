@@ -4,7 +4,7 @@
       <div class="card text-center">
         <div class="card-body card-body-main">
           <div class="row">
-            <div class="col-sm-3 col-padding">
+            <div class="col-sm-3 col-padding col-country">
               <div class="card" *ngIf="countries$ | async as country">
                 <img class="card-img-top" [src]="country.image">
                 <div class="card-body">
@@ -34,10 +34,12 @@
                 </ul>
 
                 <div class="card-body card-buttons">
-                  <button class="btn btn-primary btn-sm">View visitors</button>
-                  <button class="btn btn-success btn-sm">Add your trip</button>
+                  <button *ngIf="!visitors" (click)="showVisitors()" class="btn btn-primary btn-sm">View visitors</button>
+                  <button *ngIf="visitors" (click)="showVisitors()" class="btn btn-danger btn-sm">Hide visitors</button>
+                  <button routerLink="/add-trip" class="btn btn-success btn-sm">Add your trip</button>
                 </div>
               </div>
+              <trip-visitors *ngIf="visitors"></trip-visitors>
             </div>
             <div class="col-sm col-main-details col-padding">
               <div class="row">

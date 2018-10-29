@@ -12,12 +12,12 @@
         <label for="inputTitle1">Title #1</label>
         <input [(ngModel)]="title1" type="text" name="title1" id="inputTitle1" class="form-control">
         <label for="inputPhoto1Description">Description #1</label>
-        <textarea [(ngModel)]="trip.description1text" name="trip.description1text" class="form-control" id="inputPhoto1Description"
+        <textarea [(ngModel)]="description1text" name="description1text" class="form-control" id="inputPhoto1Description"
           rows="1"></textarea>
         <button (click)="showDescription(1)" type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i>Remove
           description</button>
       </div>
-      <button (click)="saveCard1(photo1url, trip.description1text)" class="btn btn-success btn-block"><i class="fas fa-save"></i>Save
+      <button (click)="saveCard1(photo1url, description1text)" class="btn btn-success btn-block"><i class="fas fa-save"></i>Save
         card</button>
     </div>
 
@@ -82,6 +82,6 @@
   </div>
   <div class="col-md-6">
     <country-photos [card1]="cardRow[0]" [card2]="cardRow[0]" [card3]="cardRow[0]" [card4]="cardRow[0]" [card5]="cardRow[0]"
-      [card6]="cardRow[0]" [photo1url]="trip.photo1url" [description1text]="trip.description1text" [title1]="trip.title1"></country-photos>
+      [card6]="cardRow[0]" [photo1url]="photo1url" [description1text]="description1text" [title1]="title1"></country-photos>
   </div>
 </div>
