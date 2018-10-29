@@ -11,12 +11,15 @@ import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class AdminTripsComponent {
 
-subscription: Subscription;
-
+  blocked = false;
   
   constructor(config: NgbRatingConfig) {
     config.max = 5;
     config.readonly = true;
+  }
+
+  block() {
+    this.blocked = !this.blocked;
   }
 
 }

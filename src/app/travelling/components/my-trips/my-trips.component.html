@@ -1,35 +1,33 @@
 <body>
-    <div class="container">
-        <div class="row">
-          <div class="col-4">
-            <img src="../../../../assets/images/luggage.png" class="image-luggage">
-          </div>
-          <div class="col">
-            <h1><i class="fas fa-globe"></i> My Trips</h1>
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Country</th>
-                  <th></th>
-                  <th>Date</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr *ngFor="let country of countries$ | async">
-                  <td>{{ country.name }}</td>
-                  <td>
-                    <img [src]="country.image" class="flag" />
-                  </td>
-                  <td>16.03.2018</td>
-                  <td>
-                          <button [routerLink]="['/country/trips/' + country.$key + '/1']" class="btn btn-primary btn-sm">View</button>
-                          <button class="btn btn-success btn-sm">Share</button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <img src="../../../../assets/images/luggage.png" class="image-luggage">
       </div>
+      <div class="col">
+        <h1><i class="fas fa-globe"></i> My Trips</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Country</th>
+              <th>Title</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let country of countries$ | async">
+              <td>{{ country.name }}</td>
+              <td>Exploring Poland with Mark</td>
+              <td>
+                <button [routerLink]="['/country/trips/' + country.$key + '/1']" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i>View</button>
+                <button class="btn btn-success btn-sm"><i class="fas fa-share"></i>Share</button>
+                <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Edit</button>
+                <button class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Remove</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </body>
