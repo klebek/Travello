@@ -1,6 +1,13 @@
 .navbarColor {
     background: #132d4a;
 }
+li {
+    list-style: none;
+}
+.navbar {
+    color: white;
+    font-weight: 500;
+}
 .container {
     margin-top: 0px;
 }
@@ -15,9 +22,37 @@
 .dropdown-toggle, .dropdown-item {
     cursor: pointer;
 }
-.hello {
+.btn-primary {
+    color: #f4852b;
     color: white;
+}
+.btn-login {
+    padding: 5px 20px 5px 20px;
     font-weight: 500;
+}
+.logout-link {
+    color: #dc3545;
+    font-weight: 500;
+    margin-left: 10px;
+}
+.menu {
+    color: #f4852b;
+    font-weight: 500;
+}
+.hello {
+    margin-right: 20px;
+    margin-left: 10px;
+}
+.menu .menu-element {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.menu button {
+    padding: 5px 20px 5px 20px;
+}
+.fas {
+    padding:0;
+    padding-right: 10px;
 }
 .navbar-collapse {
     justify-content: flex-end;

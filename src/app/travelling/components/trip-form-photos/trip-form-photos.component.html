@@ -20,8 +20,7 @@
       <button (click)="saveCard1(photo1url, description1text)" class="btn btn-success btn-block"><i class="fas fa-save"></i>Save
         card</button>
     </div>
-
-    <div class="PHOTOS">
+    <!-- <div class="PHOTOS">
       
       <div *ngIf="cardRow[0] === 2" class="form-row">
         <div class="form-group col-md-12">
@@ -70,8 +69,7 @@
         </div>
         <button class="btn btn-success btn-block"><i class="fas fa-save"></i>Save card</button>
       </div>
-    </div>
-
+    </div> -->
     <hr />
     <span class="row row-card-buttons">
       <button (click)="addCard(1)" class="btn btn-light"><i class="fas fa-edit"></i>Card 1</button>
@@ -81,7 +79,6 @@
     </span>
   </div>
   <div class="col-md-6">
-    <country-photos [card1]="cardRow[0]" [card2]="cardRow[0]" [card3]="cardRow[0]" [card4]="cardRow[0]" [card5]="cardRow[0]"
-      [card6]="cardRow[0]" [photo1url]="photo1url" [description1text]="description1text" [title1]="title1"></country-photos>
+    <country-photos [card1]="cardRow[0]" [photo1url]="photo1url" [description1text]="description1text" [title1]="title1"></country-photos>
   </div>
 </div>

@@ -29,7 +29,7 @@
 .card-buttons .btn-success {
     margin-left: 5px;
 }
-/deep/ .tab-content {
+.col-sm /deep/ .tab-content {
     padding-top: 10px;
 }
 .row-tabs {
@@ -81,6 +81,14 @@ h1 span, p span {
     margin-top: 5px;
     color: #5c5c5c;
 }
+.card-map {
+    margin-top: 10px;
+    background-color: transparent;
+    height: 225px;
+}
+.card-map .card-body{
+    padding: 0;
+}
 .buttons {
     margin-top: 10px;
     background-color: #c2c3c418;
@@ -91,4 +99,27 @@ h1 span, p span {
 }
 .col-country {
     background-color: #f8f8f8;
+}
+.fa-caret-down {
+    margin-left: 10px;
+}
+.card-rating {
+    background-color: transparent;
+    padding-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.card-rating .card-header {
+    color: white;
+    font-weight: 500;
+    padding: 5px 10px 5px 10px;
+    border: none;
+}
+.card-rating /deep/ ngb-rating {
+    color: #ffc107;
+    padding: 0;
+    font-weight: 500;
+    font-size: 32px;
+    justify-content: center;
 }

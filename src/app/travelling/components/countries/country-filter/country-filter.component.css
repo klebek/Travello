@@ -11,3 +11,14 @@
 a {
     color: #f4852b;
 }
+.trips-filtering label{
+    color: white;
+}
+.trips-filtering .form-control{
+    color: white;
+    background-color: #232323;
+    border-color: #2c2c2c;
+}
+.form-control:focus, .form-control:active, .form-control:focus:active {
+    box-shadow: none;
+}

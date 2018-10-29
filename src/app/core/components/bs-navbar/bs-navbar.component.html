@@ -5,34 +5,35 @@
     </a>
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-      <ul class="navbar-nav mr-auto">
-
+        <li ngbDropdown *ngIf="appUser; else anonymousUser" class="nav-item dropdown">
+            <a *ngIf="appUser.isAdmin" ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-hammer"></i>Admin
+            </a>
+            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+              <ng-container>
+                <a class="dropdown-item" routerLink="/admin/trips">Manage Trips</a>
+                <a class="dropdown-item" routerLink="/admin/countries">Manage Countries</a>
+              </ng-container>
+            </div>
+          </li>
+      <ul *ngIf="appUser" class="navbar-nav">
+          <div class="menu mr-auto">
+              <a routerLink="/my-trips" class="menu-element"><i class="fas fa-hiking"></i>My trips</a>
+              <a routerLink="/add-trip" class="menu-element"><button class="btn btn-success"><i class="fas fa-plus"></i>Add trip</button></a>
+          </div>
       </ul>
 
       <ul class="navbar-nav">
         <ng-template #anonymousUser>
           <li class="nav-item">
             <a class="nav-link" routerLink="/login">
-              <span class="hello">Login</span>
+              <button class="btn btn-primary btn-login"><i class="fas fa-lock"></i>Login</button>
             </a>
           </li>
         </ng-template>
-        <li ngbDropdown *ngIf="appUser; else anonymousUser" class="nav-item dropdown">
-          <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="hello">Hello, {{ appUser.email }}</span>
-          </a>
-          <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-              <a class="dropdown-item" routerLink="/add-trip">Add trip</a>
-              <a class="dropdown-item" routerLink="/my/trips">My Trips</a>
-            <ng-container *ngIf="appUser.isAdmin">
-              <a class="dropdown-item" routerLink="/admin/trips">Manage Trips</a>
-              <a class="dropdown-item" routerLink="/admin/countries">Manage Countries</a>
-            </ng-container>
-            <div class="dropdown-divider"></div>
-            <a routerLink="/" class="dropdown-item" (click)="logout()">Log Out</a>
-          </div>
-        </li>
+        <span *ngIf="appUser" class="hello">Hello, {{ appUser.email }}</span>
       </ul>
+      <a *ngIf="appUser" routerLink="/" class="logout-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i>Log Out</a>
     </div>
   </div>
 </nav>

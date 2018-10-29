@@ -17,9 +17,9 @@ export class CountryPhotosComponent implements OnInit {
   // @Input('photo1url') photo1url = "https://i.imgur.com/KLi0eip.jpg";
   // @Input('description1text') description1text = "Example card text";
 
-  @Input('photo1url') photo1url;
-  @Input('description1text') description1text;
-  @Input('title1') title1;
+  @Input('photo1url') photo1url = "https://i.imgur.com/gU3Jpjv.png"
+  @Input('description1text') description1text = "Opis"
+  @Input('title1') title1 = "Tytuł";
 
   constructor() { }
 

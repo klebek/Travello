@@ -9,15 +9,8 @@
                 <img class="card-img-top" [src]="country.image">
                 <div class="card-body">
                   <h5 class="card-title">{{country.name}}</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
+                  <p class="card-text">Opis wycieczki</p>
                 </div>
-                <!-- <ul class="list-group list-group-flush">
-                  <li class="list-group-item">Capital: <span class="detail">{{country.capital}}</span></li>
-                  <li class="list-group-item">Language: <span class="detail">{{country.language}}</span></li>
-                  <li class="list-group-item">Population: <span class="detail">{{country.population}} mln</span></li>
-                </ul> -->
-
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item d-flex justify-content-between align-items-center">
                     Capital:
@@ -44,9 +37,10 @@
             <div class="col-sm col-main-details col-padding">
               <div class="row">
                 <div class="col-sm">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <button (click)="showTab()" class="btn btn-primary btn-block">Read more</button>
+                  <h5 class="card-title">Title</h5>
+                  <p class="card-text">Description</p>
+                  <button (click)="showTab()" class="btn btn-primary btn-block"><i class="fas fa-globe-americas"></i>Explore<i
+                      class="fas fa-caret-down"></i></button>
                 </div>
               </div>
               <div *ngIf="readMore" class="row row-tabs">
@@ -54,13 +48,7 @@
                   <ngb-tabset [justify]="currentJustify">
                     <ngb-tab title="Notes">
                       <ng-template ngbTabContent>
-                        <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown
-                          aliqua, retro synth
-                          master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit
-                          butcher retro keffiyeh
-                          dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip
-                          placeat salvia cillum
-                          iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                        <p>Notatki</p>
                       </ng-template>
                     </ngb-tab>
                     <ngb-tab title="Photos">
@@ -70,14 +58,7 @@
                     </ngb-tab>
                     <ngb-tab title="Places">
                       <ng-template ngbTabContent>
-                        <p>Sed commodo, leo at suscipit dictum, quam est porttitor sapien, eget sodales nibh elit id
-                          diam. Nulla facilisi. Donec egestas ligula vitae odio interdum aliquet. Duis lectus turpis,
-                          luctus eget tincidunt eu, congue et odio. Duis pharetra et nisl at faucibus. Quisque luctus
-                          pulvinar arcu, et molestie lectus ultrices et. Sed diam urna, egestas ut ipsum vel, volutpat
-                          volutpat neque. Praesent fringilla tortor arcu. Vivamus faucibus nisl enim, nec tristique
-                          ipsum euismod facilisis. Morbi ut bibendum est, eu tincidunt odio. Orci varius natoque
-                          penatibus et magnis dis parturient montes, nascetur ridiculus mus. Mauris aliquet odio ac
-                          lorem aliquet ultricies in eget neque. Phasellus nec tortor vel tellus pulvinar feugiat.</p>
+                        <p>Miejsca</p>
                       </ng-template>
                     </ngb-tab>
                   </ngb-tabset>
@@ -92,23 +73,18 @@
                   <p class="card-text">Mary Elizabeth</p>
                 </div>
               </div>
-              <div class="card">
+              <div class="card card-map">
                 <div class="card-body">
                   <a href="#">
                     <div class="card card-map text-white bg-light mb-3">
                       <div class="card-header">Explore the map</div>
-                      <div class="card-body">
-                        <p class="card-title"><i class="far fa-hand-pointer"></i></p>>
-                      </div>
                     </div>
                   </a>
                 </div>
               </div>
-              <div class="buttons">
-                <button type="button" class="btn btn-primary btn-block">Dodaj karty</button>
-                <button type="button" class="btn btn-primary btn-block">Edytuj karty</button>
-                <button type="button" class="btn btn-primary btn-block">Usuń karty</button>
-                <button type="button" class="btn btn-success btn-block">Zapisz</button>
+              <div class="card card-rating">
+                <div class="card-header">Rate trip:</div>
+                <ngb-rating [(rate)]="currentRate" [rate]="3"></ngb-rating>
               </div>
             </div>
           </div>

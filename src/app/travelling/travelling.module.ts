@@ -20,7 +20,7 @@ import { TripVisitorsComponent } from './components/trip-visitors/trip-visitors.
     RouterModule.forChild([
       { path: 'countries', component: CountriesComponent },
       { path: 'country/trips/:id/1', component: TripDetailsComponent },
-      { path: 'my/trips', component: MyTripsComponent },
+      { path: 'my-trips', component: MyTripsComponent },
       { path: 'add-trip', component: TripFormComponent },
     ])
   ],

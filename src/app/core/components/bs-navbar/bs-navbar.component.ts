@@ -19,5 +19,9 @@ export class BsNavbarComponent implements OnInit {
   async ngOnInit() {
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
   }
+
+  logout(){
+    this.auth.logout();
+  }
          
 }
