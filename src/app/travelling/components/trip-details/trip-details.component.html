@@ -82,7 +82,7 @@
                   </a>
                 </div>
               </div>
-              <div class="card card-rating">
+              <div *ngIf="appUser" class="card card-rating">
                 <div class="card-header">Rate trip:</div>
                 <ngb-rating [(rate)]="currentRate" [rate]="3"></ngb-rating>
               </div>
