@@ -18,10 +18,10 @@ import { TripVisitorsComponent } from './components/trip-visitors/trip-visitors.
   imports: [
     SharedModule,
     RouterModule.forChild([
-      { path: 'countries', component: CountriesComponent },
+      { path: 'countries', component: CountriesComponent, canActivate: [AuthGuard] },
       { path: 'country/trips/:id/1', component: TripDetailsComponent },
-      { path: 'my-trips', component: MyTripsComponent },
-      { path: 'add-trip', component: TripFormComponent },
+      { path: 'my-trips', component: MyTripsComponent, canActivate: [AuthGuard] },
+      { path: 'add-trip', component: TripFormComponent, canActivate: [AuthGuard] },
     ])
   ],
   declarations: [
