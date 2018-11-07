@@ -22,6 +22,11 @@ li {
 .dropdown-toggle, .dropdown-item {
     cursor: pointer;
 }
+.business {
+    color: rgb(85, 221, 43);
+    font-weight: 500;
+    margin-right: 50px;
+}
 .btn-primary {
     color: #f4852b;
     color: white;
@@ -40,6 +45,7 @@ li {
     font-weight: 500;
 }
 .hello {
+    color: white;
     margin-right: 20px;
     margin-left: 10px;
 }

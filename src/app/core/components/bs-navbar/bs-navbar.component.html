@@ -12,7 +12,6 @@
             <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
               <ng-container>
                 <a class="dropdown-item" routerLink="/admin/trips">Manage Trips</a>
-                <a class="dropdown-item" routerLink="/admin/countries">Manage Countries</a>
               </ng-container>
             </div>
           </li>
@@ -26,11 +25,13 @@
       <ul class="navbar-nav">
         <ng-template #anonymousUser>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/login">
-              <button class="btn btn-primary btn-login"><i class="fas fa-lock"></i>Login</button>
+            <a class="nav-link">
+              <a routerLink="/business" class="business"><i class="fas fa-user-tie"></i>Busines offer</a>
+              <button routerLink="/login" class="btn btn-primary btn-login"><i class="fas fa-lock"></i>Login</button>
             </a>
           </li>
         </ng-template>
+        <a routerLink="/profile" *ngIf="appUser" class="hello"><i class="fas fa-user"></i>Profile</a>
         <span *ngIf="appUser" class="hello">Hello, {{ appUser.email }}</span>
       </ul>
       <a *ngIf="appUser" routerLink="/" class="logout-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i>Log Out</a>

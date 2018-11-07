@@ -7,7 +7,6 @@ import { SharedModule } from 'shared/shared.module';
 import { CustomFormsModule } from 'ng2-validation';
 
 import { AdminTripsComponent } from './components/admin-trips/admin-trips.component';
-import { AdminCountriesComponent } from './components/admin-countries/admin-countries.component';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 
 @NgModule({
@@ -19,17 +18,11 @@ import { AdminAuthGuard } from './services/admin-auth-guard.service';
         path: 'admin/trips',
         component: AdminTripsComponent,
         canActivate: [AuthGuard, AdminAuthGuard]
-      },
-      {
-        path: 'admin/countries',
-        component: AdminCountriesComponent,
-        canActivate: [AuthGuard, AdminAuthGuard]
-      },
+      }
     ])
   ],
   declarations: [
-    AdminTripsComponent,
-    AdminCountriesComponent
+    AdminTripsComponent
   ],
   providers: [
     AdminAuthGuard

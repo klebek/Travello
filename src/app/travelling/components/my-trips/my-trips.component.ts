@@ -14,7 +14,7 @@ export class MyTripsComponent {
   constructor(
     private authService: AuthService,
     private countryService: CountryService) { 
-
+      
     this.countries$ = authService.user$.switchMap(u => countryService.getAll());
   }
 

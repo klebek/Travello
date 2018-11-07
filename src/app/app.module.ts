@@ -14,10 +14,12 @@ import { CoreModule } from './core/core.module';
 import { CountriesComponent } from './travelling/components/countries/countries.component';
 import { TravellingModule } from './travelling/travelling.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { TitlePipe } from './pipes/title.pipe';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TitlePipe
   ],
   imports: [
     BrowserModule,

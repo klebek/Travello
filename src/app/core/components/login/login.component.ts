@@ -11,7 +11,7 @@ export class LoginComponent {
 
   constructor(private auth: AuthService) {}
 
-  showRegister;
+  showRegister = false;
 
   showRegisterForm() {
     this.showRegister = !this.showRegister;

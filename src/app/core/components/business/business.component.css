@@ -1,0 +1,23 @@
+.card {
+    border: 2px solid rgb(85, 221, 43);
+    color: white;
+}
+.card-body {
+    background-color: rgba(85, 221, 43, 0.8);
+}
+.jumbotron {
+    background-image: url('../../../../assets/images/photos/business.png');
+    background-size: cover;
+    height: 400px;
+}
+.card-footer {
+    padding: 0;
+    border-top: none;
+}
+.btn-business, .btn-business:focus:active, .btn-business:focus, .btn-business:active {
+    background-color: rgb(85, 221, 43);
+    border-color: rgb(85, 221, 43);
+    color: white;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}

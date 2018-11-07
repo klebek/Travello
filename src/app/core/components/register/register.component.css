@@ -10,3 +10,8 @@
 h1 {
     text-align: center;
 }
+.btn-business, .btn-business:focus:active, .btn-business:focus, .btn-business:active {
+    background-color: rgb(85, 221, 43);
+    border-color: rgb(85, 221, 43);
+    color: white;
+}
