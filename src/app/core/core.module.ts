@@ -10,6 +10,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BusinessComponent } from './components/business/business.component';
+import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { BusinessComponent } from './components/business/business.component';
     LoginComponent,
     RegisterComponent,
     ProfileComponent,
-    BusinessComponent
+    BusinessComponent,
+    ProfileSettingsComponent
   ],
   exports: [
     BsNavbarComponent

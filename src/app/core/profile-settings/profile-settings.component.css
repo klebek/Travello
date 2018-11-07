@@ -1,0 +1,13 @@
+.row {
+    padding: 10px;
+}
+.col-sm-3 .btn-block {
+    cursor: default;
+}
+.btn-block:focus, .btn-block:hover, .btn-block:focus:active, .btn-primary:not(:disabled):not(.disabled):active {
+    box-shadow: none;
+}
+.btn-business {
+    background-color: rgb(85, 221, 43);
+    border-color: rgb(85, 221, 43);
+}

@@ -5,11 +5,17 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent {
 
   constructor() { }
 
-  ngOnInit() {
+  normal;
+
+  setNormal() {
+    this.normal = true;
   }
 
+  setBusiness() {
+    this.normal = false;
+  }
 }

@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-sm-2">
+    <div class="card">
+      <img class="card-img-top" src="https://i.imgur.com/C15GrGG.png" alt="Card image cap">
+    </div>
+  </div>
+  <div class="col-sm">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Email address</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+            readonly>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Change password</label>
+          <input type="password" class="form-control" id="exampleFormControlInput1">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Username</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Username">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Avatar</label>
+          <input type="text" class="form-control" id="exampleFormControlInput1">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Confirm password</label>
+          <input type="password" class="form-control" id="exampleFormControlInput1">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <label>Role</label>
+        <button *ngIf="normal" class="btn btn-primary btn-block">Traveller</button>
+        <button *ngIf="!normal" class="btn btn-primary btn-business btn-block">Business parter</button>
+      </div>
+    </div>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col-sm-12">
+    <div class="form-group">
+      <label for="exampleFormControlTextarea1">About me</label>
+      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <h3>Trips</h3>
+    <div class="card">
+        <img class="card-img-top" src="https://i.imgur.com/C3GsTD1.jpg"
+          alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">Mary Elizabeth</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+            content. This content is a little bit longer.</p>
+        </div>
+        <p class="card-footer"><small class="text-footer">Poland</small></p>
+      </div>
+  </div>
+</div>
