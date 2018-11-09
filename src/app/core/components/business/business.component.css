@@ -3,7 +3,7 @@
     color: white;
 }
 .card-body {
-    background-color: rgba(85, 221, 43, 0.8);
+    background-color: #232323;
 }
 .jumbotron {
     background-image: url('../../../../assets/images/photos/business.png');
@@ -17,7 +17,11 @@
 .btn-business, .btn-business:focus:active, .btn-business:focus, .btn-business:active {
     background-color: rgb(85, 221, 43);
     border-color: rgb(85, 221, 43);
-    color: white;
+    color: #232323;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+}
+.btn-business:hover {
+    transition: 0.5s;
+    color: white;
 }

@@ -11,3 +11,27 @@
     background-color: rgb(85, 221, 43);
     border-color: rgb(85, 221, 43);
 }
+.inline {
+    display: flex;
+    flex-direction: row;
+}
+.badge-secondary {
+    background-color: #f4852b;
+}
+.badge-business {
+    background-color: rgb(85, 221, 43);
+    color: white;
+}
+.row-trips {
+    background-color: #f8f8f8;
+    padding-top: 40px;
+}
+.row-info {
+    padding: 40px;
+}
+.btn {
+    padding: 5px 10px 5px 10px;
+}
+.col-sm-3 .badge {
+    font-size: 24px;
+}

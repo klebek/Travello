@@ -8,8 +8,29 @@ export class ProfileSettingsComponent {
 
   @Input('normal') normal;
 
-  imageUrl: "https://i.imgur.com/C15GrGG.png";
+  myprofile = true;
 
-  constructor() { }
+  imageUrl;
+  about;
+  username;
+  password;
+
+  constructor() {
+    this.imageUrl = "https://i.imgur.com/C15GrGG.png";
+    this.about = "Example of description";
+    this.username = "Example username";
+    this.password = "123456";
+  }
+
+  previewProfile() {
+    this.myprofile = !this.myprofile;
+  }
+
+  saveProfile(about, imageUrl, username, password) {
+    this.about = about;
+    this.username = username;
+    this.imageUrl = imageUrl;
+    this.password = password;
+  }
 
 }

@@ -1,10 +1,10 @@
-<div class="row">
+<div class="row row-info">
   <div class="col-sm-2">
     <div class="card">
-      <img class="card-img-top" src="https://i.imgur.com/C15GrGG.png" alt="Card image cap">
+      <img *ngIf="imageUrl" class="card-img-top" [src]="imageUrl" alt="Card image cap">
     </div>
   </div>
-  <div class="col-sm">
+  <div *ngIf="myprofile" class="col-sm">
     <div class="row">
       <div class="col-sm-3">
         <div class="form-group">
@@ -16,58 +16,79 @@
       <div class="col-sm-3">
         <div class="form-group">
           <label for="exampleFormControlInput1">Change password</label>
-          <input type="password" class="form-control" id="exampleFormControlInput1">
+          <input [(ngModel)]="password" type="password" class="form-control" id="exampleFormControlInput1">
         </div>
       </div>
       <div class="col-sm-3">
         <div class="form-group">
           <label for="exampleFormControlInput1">Username</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Username">
+          <input [(ngModel)]="username" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Username">
         </div>
+      </div>
+      <div class="col-sm">
+        <label>Options</label>
+        <button (click)="saveProfile(about,imageUrl,username,password)" class="btn btn-success btn-block"><i class="fas fa-save"></i>Save</button>
       </div>
     </div>
     <div class="row">
       <div class="col-sm-3">
         <div class="form-group">
           <label for="exampleFormControlInput1">Avatar</label>
-          <input type="text" class="form-control" id="exampleFormControlInput1">
+          <input [(ngModel)]="imageUrl" type="text" class="form-control" id="exampleFormControlInput1">
         </div>
       </div>
       <div class="col-sm-3">
         <div class="form-group">
           <label for="exampleFormControlInput1">Confirm password</label>
-          <input type="password" class="form-control" id="exampleFormControlInput1">
+          <input [(ngModel)]="password" type="password" class="form-control" id="exampleFormControlInput1">
         </div>
       </div>
       <div class="col-sm-3">
         <label>Role</label>
-        <button *ngIf="normal" class="btn btn-primary btn-block">Traveller</button>
-        <button *ngIf="!normal" class="btn btn-primary btn-business btn-block">Business parter</button>
+        <p><span *ngIf="normal" placement="right" ngbTooltip="Traveller" class="badge badge-secondary"><i class="fas fa-hiking"></i></span>
+        <span *ngIf="!normal" placement="right" ngbTooltip="Business partner" class="badge badge-business"><i class="fas fa-user-tie"></i></span></p>
+      </div>
+    </div>
+  </div>
+  <button *ngIf="myprofile" (click)="previewProfile()" placement="left" ngbTooltip="Preview profile" class="btn btn-warning"><i class="fas fa-search"></i></button>
+  <button *ngIf="!myprofile" (click)="previewProfile()" placement="right" ngbTooltip="Back to edit" class="btn btn-danger"><i class="fas fa-edit"></i></button>
+  <div *ngIf="!myprofile" class="col-sm">
+    <div class="row">
+      <div class="col-sm-6">
+        <h4>
+          {{username}}
+          <span *ngIf="normal" class="badge badge-secondary">Traveller</span>
+          <span *ngIf="!normal" class="badge badge-business">Business partner</span>
+        </h4>
+        <p>{{about}}</p>
       </div>
     </div>
   </div>
 </div>
-<hr />
-<div class="row">
-  <div class="col-sm-12">
+<div *ngIf="myprofile" class="row">
+  <div class="col-sm-6">
     <div class="form-group">
       <label for="exampleFormControlTextarea1">About me</label>
-      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      <textarea [(ngModel)]="about" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
+    <button (click)="saveProfile(about,imageUrl,username,password)" class="btn btn-success"><i class="fas fa-save"></i>Save</button>
+  </div>
+  <div *ngIf="about" class="col-sm-6">
+    <label>About me</label>
+    <p>{{about}}</p>
   </div>
 </div>
-<div class="row">
+<div class="row row-trips">
   <div class="col-sm-4">
-    <h3>Trips</h3>
+    <h3><i class="fas fa-globe-americas"></i>Trips</h3>
     <div class="card">
-        <img class="card-img-top" src="https://i.imgur.com/C3GsTD1.jpg"
-          alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Mary Elizabeth</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-            content. This content is a little bit longer.</p>
-        </div>
-        <p class="card-footer"><small class="text-footer">Poland</small></p>
+      <img class="card-img-top" src="https://i.imgur.com/C3GsTD1.jpg" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">Mary Elizabeth</h5>
+        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+          content. This content is a little bit longer.</p>
       </div>
+      <p class="card-footer"><small class="text-footer">Poland</small></p>
+    </div>
   </div>
 </div>
