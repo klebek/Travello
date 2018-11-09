@@ -7,13 +7,13 @@
             <ngb-tab id="tab-selectbyid1">
                 <ng-template ngbTabTitle><span (click)="setNormal()" class="profile"><i class="fas fa-user"></i>Profile</span></ng-template>
               <ng-template ngbTabContent>
-                <profile-settings [normal]="true"></profile-settings>
+                <profile-settings [normal]="true" [myprofile]="false"></profile-settings>
               </ng-template>
             </ngb-tab>
             <ngb-tab id="tab-selectbyid2">
               <ng-template ngbTabTitle><span (click)="setBusiness()" class="business"><i class="fas fa-user-tie"></i>Business profile</span></ng-template>
               <ng-template ngbTabContent>
-                <profile-settings [normal]="false"></profile-settings>
+                <profile-settings [normal]="false" [myprofile]="false"></profile-settings>
               </ng-template>
             </ngb-tab>
           </ngb-tabset>

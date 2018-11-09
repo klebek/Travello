@@ -7,8 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ProfileSettingsComponent {
 
   @Input('normal') normal;
-
-  myprofile = true;
+  @Input('myprofile') myprofile;
 
   imageUrl;
   about;
