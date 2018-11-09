@@ -13,6 +13,8 @@ export class BusinessComponent implements OnInit {
   // images = [1, 2, 3].map(() => `https://picsum.photos/900/450?random&t=${Math.random()}`);
   images = [1, 2, 3].map(() => `http://graphlocks.pl/projekt_pjatk/business/${Math.floor((Math.random() * 3) + 1)}.jpg`);
 
+  value = 0;
+
   constructor(config: NgbCarouselConfig) {
     config.showNavigationArrows = true;
     config.showNavigationIndicators = true;
@@ -24,5 +26,7 @@ export class BusinessComponent implements OnInit {
 
   ngOnInit() {
   }
+
+
 
 }

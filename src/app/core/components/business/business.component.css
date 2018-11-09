@@ -1,4 +1,4 @@
-.row {
+.row-main {
     padding-bottom: 50px;
 }
 .card {
@@ -34,4 +34,6 @@
 }
 p /deep/ .progress-bar {
     background-color: rgb(85, 221, 43) !important;
+    color: #232323 !important;
+    font-weight: 500;
 }

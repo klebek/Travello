@@ -1,6 +1,6 @@
 <div class="jumbotron jumbotron-fluid"></div>
 <div class="container">
-  <div class="row">
+  <div class="row row-main">
     <div class="col-sm-6">
       <div class="card mb-3">
         <div class="card-body">
@@ -15,32 +15,41 @@
         </div>
       </div>
       <div class="card mb-3">
-          <div class="card-body">
-            <h5 class="card-title">Want business offert? Check below for more details</h5>
-            <div class="row">
-              <div class="col-sm-6">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                  content. This content is a little bit longer.</p>
-                  <p><ngb-progressbar type="danger" [value]="80"></ngb-progressbar></p>
-              </div>
-              <div class="col-sm-6"></div>
+        <div class="card-body">
+          <h5 class="card-title">Check this stats and numbers below</h5>
+          <div class="row">
+            <div class="col-sm-6">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                content. This content is a little bit longer.</p>
+            </div>
+            <div class="col-sm-6">
+              <p>
+                <ngb-progressbar type="danger" height="2rem" [value]="80">Over 1.000 content clients</ngb-progressbar>
+              </p>
+              <p>
+                <ngb-progressbar type="danger" height="2rem" [value]="70">At least 200 redirected links</ngb-progressbar>
+              </p>
+              <p>
+                <ngb-progressbar type="danger" height="2rem" [value]="60">Over 600 solved issues</ngb-progressbar>
+              </p>
             </div>
           </div>
-          <div class="card-footer">
-            <button class="btn btn-business btn-block">Sign up for business</button>
-          </div>
         </div>
+        <div class="card-footer">
+          <button class="btn btn-business btn-block">Sign up for business</button>
+        </div>
+      </div>
     </div>
     <div *ngIf="images" class="col-sm-6">
-        <ngb-carousel [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
-            <ng-template ngbSlide *ngFor="let image of images">
-              <img [src]="image">
-              <!-- <div class="carousel-caption">
+      <ngb-carousel [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
+        <ng-template ngbSlide *ngFor="let image of images">
+          <img [src]="image">
+          <!-- <div class="carousel-caption">
                 <h3>No mouse navigation</h3>
                 <p>This carousel hides navigation arrows and indicators.</p>
               </div> -->
-            </ng-template>
-          </ngb-carousel>
+        </ng-template>
+      </ngb-carousel>
     </div>
   </div>
 </div>
