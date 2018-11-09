@@ -1,5 +1,9 @@
+.row {
+    padding-bottom: 50px;
+}
 .card {
-    border: 2px solid rgb(85, 221, 43);
+    /* border: 2px solid rgb(85, 221, 43); */
+    border: none;
     color: white;
 }
 .card-body {
@@ -24,4 +28,10 @@
 .btn-business:hover {
     transition: 0.5s;
     color: white;
+}
+.busines-stock {
+    width: 400px;
+}
+p /deep/ .progress-bar {
+    background-color: rgb(85, 221, 43) !important;
 }
