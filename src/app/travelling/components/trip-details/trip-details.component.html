@@ -1,15 +1,36 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row no-gutters justify-content-md-center">
     <div class="col">
       <div class="card text-center">
         <div class="card-body card-body-main">
           <div class="row">
-            <div class="col-sm-3 col-padding col-country">
-              <div class="card" *ngIf="countries$ | async as country">
-                <img class="card-img-top" [src]="country.image">
+            <div *ngIf="images" class="col-sm-3 col-padding col-country">
+              <ngb-carousel>
+                <ng-template *ngFor="let country of countries; let i = index" ngbSlide>
+                  <img [src]="images[i]" alt="Random first slide">
+                  <div class="carousel-caption">
+                    <div class="carousel-title">
+                      <h3>
+                        <p>{{country.name}}</p>
+                      </h3>
+                    </div>
+                    <div class="carousel-body">
+                      <p>Capital: {{country.capital}}</p>
+                      <p>Population: {{country.population}}</p>
+                      <p>Language: {{country.language}}</p>
+                    </div>
+                    <div class="carousel-footer">
+                      <button *ngIf="!visitors" (click)="showVisitors()" class="btn btn-sm">View visitors</button>
+                      <button *ngIf="visitors" (click)="showVisitors()" class="btn btn-sm">Hide visitors</button>
+                      <button routerLink="/add-trip" class="btn btn-sm">Add your trip</button>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-carousel>
+              <!-- <p class="card-text">Visited countries:</p> -->
+              <!-- <div class="card" *ngFor="let country of countries">
                 <div class="card-body">
                   <h5 class="card-title">{{country.name}}</h5>
-                  <p class="card-text">Opis wycieczki</p>
                 </div>
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -31,14 +52,20 @@
                   <button *ngIf="visitors" (click)="showVisitors()" class="btn btn-danger btn-sm">Hide visitors</button>
                   <button routerLink="/add-trip" class="btn btn-success btn-sm">Add your trip</button>
                 </div>
-              </div>
+              </div> -->
               <trip-visitors *ngIf="visitors"></trip-visitors>
             </div>
-            <div class="col-sm col-main-details col-padding">
+            <div class="col-sm col-main-details">
               <div class="row">
                 <div class="col-sm">
                   <h5 class="card-title">Title</h5>
-                  <p class="card-text">Description</p>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                      laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  <horizontal-timeline [timelineElements]="timeline" [showContent]="false"></horizontal-timeline>
+                  <country-photos></country-photos>
                   <button (click)="showTab()" class="btn btn-primary btn-block"><i class="fas fa-globe-americas"></i>Explore<i
                       class="fas fa-caret-down"></i></button>
                 </div>
@@ -48,17 +75,33 @@
                   <ngb-tabset [justify]="currentJustify">
                     <ngb-tab title="Notes">
                       <ng-template ngbTabContent>
-                        <p>Notatki</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                          voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                       </ng-template>
                     </ngb-tab>
-                    <ngb-tab title="Photos">
+                    <ngb-tab title="Maps">
                       <ng-template ngbTabContent>
-                        <country-photos></country-photos>
+                        <div class="card card-map">
+                          <div class="card-body">
+                            <a href="#">
+                              <div class="card card-map text-white bg-light mb-3">
+                                <div class="card-header">Explore the map</div>
+                              </div>
+                            </a>
+                          </div>
+                        </div>
                       </ng-template>
                     </ngb-tab>
                     <ngb-tab title="Places">
                       <ng-template ngbTabContent>
-                        <p>Miejsca</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                       </ng-template>
                     </ngb-tab>
                   </ngb-tabset>
@@ -66,25 +109,21 @@
               </div>
             </div>
             <div class="col-sm-2 col-right-menu">
-              <div class="card card-traveller">
-                <img class="card-img-top" src="https://i.imgur.com/bPM6LFi.jpg" alt="Card image cap">
-                <div class="card-header">Visited by:</div>
-                <div class="card-body">
-                  <p class="card-text">Mary Elizabeth</p>
+              <a routerLink="/profile">
+
+                <div class="card card-traveller mb-3">
+                  <div class="card-body">
+                    <p class="card-text">Visited by:</p>
+                    <p class="card-title">Mary Elizabeth</p>
+                  </div>
                 </div>
-              </div>
-              <div class="card card-map">
-                <div class="card-body">
-                  <a href="#">
-                    <div class="card card-map text-white bg-light mb-3">
-                      <div class="card-header">Explore the map</div>
-                    </div>
-                  </a>
-                </div>
-              </div>
+
+              </a>
               <div *ngIf="appUser" class="card card-rating">
-                <div class="card-header">Rate trip:</div>
-                <ngb-rating [(rate)]="currentRate" [rate]="3"></ngb-rating>
+                <div *ngIf="readonly" class="card-header">Trip's rate</div>
+                <div *ngIf="!readonly" class="card-header">Rate trip</div>
+                <ngb-rating (click)="showRate()" [(rate)]="currentRate" [readonly]="readonly" [rate]="3"></ngb-rating>
+                <button (click)="rateTrip()" *ngIf="readonly" class="btn btn-rating btn-sm">Rate this trip</button>
               </div>
             </div>
           </div>

@@ -2,6 +2,7 @@
     border-radius: 0;
     padding: 0;
     border: none;
+    background: transparent;
 }
 .row {
     margin-left: 0;
@@ -10,11 +11,15 @@
 .card-body-main {
     padding: 0;
 }
-.container {
+.col-main-details {
+    padding: 20px;
+    background-color: white;
+}
+.container-fluid {
     margin-top: 120px;
 }
 .col-padding {
-    padding: 20px;
+    padding: 0;
 }
 .col-right-menu {
     background-color: #232323;
@@ -97,15 +102,11 @@ h1 span, p span {
 .buttons .btn {
     font-size: 14px;
 }
-.col-country {
-    background-color: #f8f8f8;
-}
 .fa-caret-down {
     margin-left: 10px;
 }
 .card-rating {
     background-color: transparent;
-    padding-top: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -122,4 +123,58 @@ h1 span, p span {
     font-weight: 500;
     font-size: 32px;
     justify-content: center;
+}
+.col-right-menu a {
+    color: #232323;
+}
+.btn-rating {
+    background-color: #ffc107;
+    color: #232323;
+    margin-top: 10px;
+    border-radius: 0;
+}
+.carousel-caption {
+    display: flex;
+    flex-direction: column;
+    bottom: 100px;
+}
+.carousel-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.carousel-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.carousel-footer .btn {
+    color: white;
+    font-weight: 500;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 0;
+    margin-right: 5px;
+}
+.carousel-footer .btn:hover{
+    background-color: rgba(255,255,255, 0.1);
+}
+.card-traveller {
+    height: 300px;
+    color: white;
+    border-radius: 0;
+    background: url('https://i.imgur.com/bPM6LFi.jpg');
+}
+.card-traveller .card-body {
+    justify-content: center;
+    flex-direction: row;
+    display: flex;
+    background-color: rgba(0,0,0,0.5);
+    flex: 0;
+}
+.card-traveller .card-body p {
+    margin-right: 5px;
+}
+.card-traveller .card-body .card-title {
+    font-weight: 500;
 }

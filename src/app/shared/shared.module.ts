@@ -12,6 +12,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import { AuthService } from './services/auth.service';
 import { CountryService } from 'shared/services/country.service';
 import { UserService } from './services/user.service';
+import { HorizontalTimelineComponent } from './components/horizontal-timeline/horizontal-timeline.component';
 
 
 @NgModule({
@@ -24,9 +25,10 @@ import { UserService } from './services/user.service';
     NgbModule.forRoot(),
     RouterModule
   ],
-  declarations: [TripCardComponent],
+  declarations: [TripCardComponent,HorizontalTimelineComponent],
   exports: [
     TripCardComponent,
+    HorizontalTimelineComponent,
     CommonModule,
     FormsModule,
     CustomFormsModule,

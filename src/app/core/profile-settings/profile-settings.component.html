@@ -2,6 +2,10 @@
   <div class="col-sm-2">
     <div class="card">
       <img *ngIf="imageUrl" class="card-img-top" [src]="imageUrl" alt="Card image cap">
+      <button *ngIf="myprofile" (click)="previewProfile()" placement="bottom" ngbTooltip="Preview profile" class="btn btn-warning"><i
+          class="fas fa-search"></i></button>
+      <button *ngIf="!myprofile" (click)="previewProfile()" placement="bottom" ngbTooltip="Edit" class="btn btn-danger"><i
+          class="fas fa-edit"></i></button>
     </div>
   </div>
   <div *ngIf="myprofile" class="col-sm">
@@ -46,12 +50,10 @@
       <div class="col-sm-3">
         <label>Role</label>
         <p><span *ngIf="normal" placement="right" ngbTooltip="Traveller" class="badge badge-secondary"><i class="fas fa-hiking"></i></span>
-        <span *ngIf="!normal" placement="right" ngbTooltip="Business partner" class="badge badge-business"><i class="fas fa-user-tie"></i></span></p>
+          <span *ngIf="!normal" placement="right" ngbTooltip="Business partner" class="badge badge-business"><i class="fas fa-user-tie"></i></span></p>
       </div>
     </div>
   </div>
-  <button *ngIf="myprofile" (click)="previewProfile()" placement="left" ngbTooltip="Preview profile" class="btn btn-warning"><i class="fas fa-search"></i></button>
-  <button *ngIf="!myprofile" (click)="previewProfile()" placement="right" ngbTooltip="Back to edit" class="btn btn-danger"><i class="fas fa-edit"></i></button>
   <div *ngIf="!myprofile" class="col-sm">
     <div class="row">
       <div class="col-sm-6">

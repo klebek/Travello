@@ -15,6 +15,7 @@ import { CountriesComponent } from './travelling/components/countries/countries.
 import { TravellingModule } from './travelling/travelling.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TitlePipe } from './pipes/title.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { TitlePipe } from './pipes/title.pipe';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     SharedModule,
     AdminModule,
     NgbModule,

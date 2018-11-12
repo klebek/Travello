@@ -35,3 +35,7 @@
 .col-sm-3 .badge {
     font-size: 24px;
 }
+.btn-warning, .btn-danger {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
