@@ -7,52 +7,8 @@
       <button *ngIf="!myprofile" (click)="previewProfile()" placement="bottom" ngbTooltip="Edit" class="btn btn-danger"><i
           class="fas fa-edit"></i></button>
     </div>
-  </div>
-  <div *ngIf="myprofile" class="col-sm">
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label for="exampleFormControlInput1">Email address</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
-            readonly>
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label for="exampleFormControlInput1">Change password</label>
-          <input [(ngModel)]="password" type="password" class="form-control" id="exampleFormControlInput1">
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label for="exampleFormControlInput1">Username</label>
-          <input [(ngModel)]="username" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Username">
-        </div>
-      </div>
-      <div class="col-sm">
-        <label>Options</label>
-        <button (click)="saveProfile(about,imageUrl,username,password)" class="btn btn-success btn-block"><i class="fas fa-save"></i>Save</button>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label for="exampleFormControlInput1">Avatar</label>
-          <input [(ngModel)]="imageUrl" type="text" class="form-control" id="exampleFormControlInput1">
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <div class="form-group">
-          <label for="exampleFormControlInput1">Confirm password</label>
-          <input [(ngModel)]="password" type="password" class="form-control" id="exampleFormControlInput1">
-        </div>
-      </div>
-      <div class="col-sm-3">
-        <label>Role</label>
-        <p><span *ngIf="normal" placement="right" ngbTooltip="Traveller" class="badge badge-secondary"><i class="fas fa-hiking"></i></span>
-          <span *ngIf="!normal" placement="right" ngbTooltip="Business partner" class="badge badge-business"><i class="fas fa-user-tie"></i></span></p>
-      </div>
-    </div>
+    <button *ngIf="myprofile" (click)="saveProfile(about,imageUrl,username,password)" class="btn btn-success btn-block"><i
+        class="fas fa-save"></i>Save</button>
   </div>
   <div *ngIf="!myprofile" class="col-sm">
     <div class="row">
@@ -66,18 +22,61 @@
       </div>
     </div>
   </div>
-</div>
-<div *ngIf="myprofile" class="row">
-  <div class="col-sm-6">
+  <div *ngIf="myprofile" class="col-sm-6">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Email address</label>
+          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com"
+            readonly>
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Change password</label>
+          <input [(ngModel)]="password" type="password" class="form-control" id="exampleFormControlInput1">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Avatar</label>
+          <input [(ngModel)]="imageUrl" type="text" class="form-control" id="exampleFormControlInput1">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Confirm password</label>
+          <input [(ngModel)]="password" type="password" class="form-control" id="exampleFormControlInput1">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Username</label>
+          <input [(ngModel)]="username" type="text" class="form-control" id="exampleFormControlInput1" placeholder="Username">
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <label>Role</label>
+        <p><span *ngIf="normal" placement="right" ngbTooltip="Traveller" class="badge badge-secondary"><i class="fas fa-hiking"></i></span>
+          <span *ngIf="!normal" placement="right" ngbTooltip="Business partner" class="badge badge-business"><i class="fas fa-user-tie"></i></span></p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="myprofile" class="col-sm-4">
+    <!-- ABOUT -->
     <div class="form-group">
       <label for="exampleFormControlTextarea1">About me</label>
       <textarea [(ngModel)]="about" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
     </div>
-    <button (click)="saveProfile(about,imageUrl,username,password)" class="btn btn-success"><i class="fas fa-save"></i>Save</button>
-  </div>
-  <div *ngIf="about" class="col-sm-6">
-    <label>About me</label>
-    <p>{{about}}</p>
+    <div *ngIf="about" class="form-group">
+      <label>About me</label>
+      <p>{{about}}</p>
+    </div>
+    <!-- END ABOUT -->
   </div>
 </div>
 <div class="row row-trips">

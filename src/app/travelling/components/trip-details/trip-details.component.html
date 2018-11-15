@@ -19,11 +19,11 @@
                       <p>Population: {{country.population}}</p>
                       <p>Language: {{country.language}}</p>
                     </div>
-                    <div class="carousel-footer">
+                    <!-- <div class="carousel-footer">
                       <button *ngIf="!visitors" (click)="showVisitors()" class="btn btn-sm">View visitors</button>
                       <button *ngIf="visitors" (click)="showVisitors()" class="btn btn-sm">Hide visitors</button>
                       <button routerLink="/add-trip" class="btn btn-sm">Add your trip</button>
-                    </div>
+                    </div> -->
                   </div>
                 </ng-template>
               </ngb-carousel>
@@ -53,18 +53,19 @@
                   <button routerLink="/add-trip" class="btn btn-success btn-sm">Add your trip</button>
                 </div>
               </div> -->
-              <trip-visitors *ngIf="visitors"></trip-visitors>
+              <!-- <trip-visitors *ngIf="visitors"></trip-visitors> -->
             </div>
             <div class="col-sm col-main-details">
               <div class="row">
                 <div class="col-sm">
                   <h5 class="card-title">Title</h5>
-                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                      labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                      laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                      voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                  <horizontal-timeline [timelineElements]="timeline" [showContent]="false"></horizontal-timeline>
+                  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                    incididunt ut
+                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                    laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                    voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  <horizontal-timeline [timelineElements]="timeline" [showContent]="true"></horizontal-timeline>
                   <country-photos></country-photos>
                   <button (click)="showTab()" class="btn btn-primary btn-block"><i class="fas fa-globe-americas"></i>Explore<i
                       class="fas fa-caret-down"></i></button>
@@ -98,10 +99,10 @@
                     <ngb-tab title="Places">
                       <ng-template ngbTabContent>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                            cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                          labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                          voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                          cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
                       </ng-template>
                     </ngb-tab>
                   </ngb-tabset>
@@ -121,9 +122,10 @@
               </a>
               <div *ngIf="appUser" class="card card-rating">
                 <div *ngIf="readonly" class="card-header">Trip's rate</div>
-                <div *ngIf="!readonly" class="card-header">Rate trip</div>
+                <!-- <div *ngIf="!readonly" class="card-header">Rate trip</div> -->
                 <ngb-rating (click)="showRate()" [(rate)]="currentRate" [readonly]="readonly" [rate]="3"></ngb-rating>
                 <button (click)="rateTrip()" *ngIf="readonly" class="btn btn-rating btn-sm">Rate this trip</button>
+                <span *ngIf="!readonly">Rate this trip above using stars form 1 to 5</span>
               </div>
             </div>
           </div>
