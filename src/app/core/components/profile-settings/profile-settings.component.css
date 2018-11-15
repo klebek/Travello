@@ -11,9 +11,15 @@
     background-color: rgb(85, 221, 43);
     border-color: rgb(85, 221, 43);
 }
+.btn-success {
+    margin-top: 5px;
+}
 .inline {
     display: flex;
     flex-direction: row;
+}
+.row-about {
+    max-width: 50%;
 }
 .badge-secondary {
     background-color: #f4852b;

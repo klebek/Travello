@@ -10,7 +10,8 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { BusinessComponent } from './components/business/business.component';
-import { ProfileSettingsComponent } from './profile-settings/profile-settings.component';
+import { ProfileSettingsComponent } from './components/profile-settings/profile-settings.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   imports: [
@@ -30,10 +31,12 @@ import { ProfileSettingsComponent } from './profile-settings/profile-settings.co
     RegisterComponent,
     ProfileComponent,
     BusinessComponent,
-    ProfileSettingsComponent
+    ProfileSettingsComponent,
+    FooterComponent
   ],
   exports: [
-    BsNavbarComponent
+    BsNavbarComponent,
+    FooterComponent
   ]
 })
 export class CoreModule { }

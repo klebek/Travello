@@ -328,11 +328,11 @@ export class HorizontalTimelineComponent implements AfterViewInit {
     for (let component of elements) {
       let distance = HorizontalTimelineComponent.dayDiff(elements[0].date, component.date);
       let distanceNorm = Math.round(distance / eventsMinLapse);
-      timelineEventsArray[i].nativeElement.style.left = distanceNorm * min + 7.5 + '%';
+      timelineEventsArray[i].nativeElement.style.left = distanceNorm * min + 'px';
       // span
       let span: HTMLSpanElement = <HTMLSpanElement>timelineEventsArray[i].nativeElement.parentElement.children[1];
       let spanWidth = HorizontalTimelineComponent.getElementWidth(span);
-      span.style.left = distanceNorm * min + spanWidth / 2 + '%';
+      span.style.left = distanceNorm * min + spanWidth / 2 + 'px';
       i++;
     }
   }
