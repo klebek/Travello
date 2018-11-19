@@ -30,3 +30,15 @@
 .btn-success {
     margin-top: 20px;
 }
+.row /deep/ .alert-success {
+    background-color: #28a7467a;
+    color: white;
+    margin-top: 1rem;
+}
+.row /deep/ .alert-success .close {
+    color: white;
+    opacity: 0.9;
+}
+.row /deep/ .alert-success .close:hover {
+    color: white;
+}

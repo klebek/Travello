@@ -1,10 +1,10 @@
 <div class="card">
   <div class="card-header">
-      <span *ngIf="noteCard" class="header">Adding card</span>
-      <span *ngIf="!noteCard" class="header">Adding note</span>
+      <span *ngIf="noteCard" class="header">Adding note</span>
+      <span *ngIf="!noteCard" class="header">Adding card</span>
     <div class="close">
-        <i *ngIf="noteCard" (click)="changeOne($event)" class="fas fa-times"></i>
-        <i *ngIf="!noteCard" (click)="changeTwo($event)" class="fas fa-times"></i>
+        <i *ngIf="noteCard" (click)="changeShowNote($event)" class="fas fa-times"></i>
+        <i *ngIf="!noteCard" (click)="changeShowCard($event)" class="fas fa-times"></i>
     </div>
   </div>
   <div class="card-body">
@@ -37,8 +37,8 @@
           <input type="text" class="form-control" id="caption" placeholder="Caption">
         </div>
         <div class="form-group form-group-button">
-          <button *ngIf="noteCard" type="submit" class="btn btn-success"><i class="fas fa-save"></i>Save note</button>
-          <button *ngIf="!noteCard" type="submit" class="btn btn-success"><i class="fas fa-save"></i>Save card</button>
+          <button *ngIf="noteCard" (click)="changeAlertNote($event)" type="submit" class="btn btn-success"><i class="fas fa-save"></i>Save note</button>
+          <button *ngIf="!noteCard" (click)="changeAlertCard($event)" type="submit" class="btn btn-success"><i class="fas fa-save"></i>Save card</button>
         </div>
       </form>
     </div>

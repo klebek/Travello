@@ -1,13 +1,31 @@
 .w-100 {
     width: 50%;
 }
+.col-sm {
+    padding-left: 1rem;
+}
+.col-sm-12 p {
+    margin-bottom: 0;
+}
 .photo-one {
     background: url('../../../../assets/images/photos/photo1.jpg');
     height: 400px;
     background-position: bottom;
 }
+.row-business-trips {
+    border-bottom: 2px solid #55dd2b;
+    margin-bottom: 20px;
+    padding-top: 1rem;
+    background-color: #181818;
+}
 .row-countries {
     margin-top: 50px;
+}
+.business-header {
+    padding: 5px;
+    color: white;
+    font-weight: 500;
+    background-color: #55dd2b;
 }
 .card {
     padding: 0;

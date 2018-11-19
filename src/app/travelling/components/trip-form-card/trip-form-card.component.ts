@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Alert } from 'selenium-webdriver';
 
 @Component({
   selector: 'trip-form-card',
@@ -11,30 +12,42 @@ export class TripFormCardComponent implements OnInit {
 
   @Input() showNote;
   @Input() showCard;
+  @Input() alertNote;
+  @Input() alertCard;
 
   @Output() showNoteChange = new EventEmitter();
-  changeOne() {
+  changeShowNote() {
     this.showNote = false;
     this.showNoteChange.emit(false);
   }
 
   @Output() showCardChange = new EventEmitter();
-  changeTwo() {
+  changeShowCard() {
     this.showCard = false;
     this.showCardChange.emit(false);
   }
 
+  // ALERTS
+
+  @Output() alertNoteChange = new EventEmitter();
+  changeAlertNote() {
+    this.changeShowNote();
+    this.alertNote = true;
+    this.alertNoteChange.emit(true);
+  }
+
+  @Output() alertCardChange = new EventEmitter();
+  changeAlertCard() {
+    this.changeShowCard();
+    this.alertCard = true;
+    this.alertCardChange.emit(true);
+  }
+
+  // END ALERTS
+
   constructor() { }
 
   ngOnInit() {
-  }
-
-  disableNote(){
-    this.showNote = false;
-  }
-
-  disableCard() {
-    this.showCard = false;
   }
 
 }

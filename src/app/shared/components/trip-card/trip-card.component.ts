@@ -13,6 +13,7 @@ export class TripCardComponent implements OnInit {
 
   @Input('country') country: Country;
   @Input('continent') continent: Continent;
+  @Input('businessTrip') businessTrip = false;
 
   continent$;
   countries$;
