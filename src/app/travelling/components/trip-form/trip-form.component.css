@@ -8,9 +8,25 @@
 .btn-primary.focus, .btn-primary:not(:disabled):not(.disabled).active:focus{
     box-shadow: none;
 }
-/deep/ .btn-link, /deep/ .ngb-dp-weekday {
+.row /deep/ .btn-link, .row /deep/ .ngb-dp-weekday {
     color: #f4852b !important;
 }
-/deep/ .bg-primary {
+.row /deep/ .bg-primary {
     background-color: #f4852b !important;
+}
+.btn-calendar {
+    background: white;
+    border-left: none;
+    border-color: #ced4da;
+    color: #f4852b;
+}
+.btn-add {
+    margin-right: 10px;
+    padding-right: 20px;
+}
+.form-row {
+    margin-bottom: 30px;
+}
+.btn-success {
+    margin-top: 20px;
 }

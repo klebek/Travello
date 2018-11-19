@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { thisTypeAnnotation } from 'babel-types';
+import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-trip-form',
@@ -8,4 +8,18 @@ import { thisTypeAnnotation } from 'babel-types';
 })
 export class TripFormComponent {
 
+  startTime = {};
+  endTime = {};
+  showNote;
+  showCard;
+
+  constructor() {
+  }
+
+  enableNote() {
+    this.showNote = true;
+  }
+  enableCard() {
+    this.showCard = true;
+  }
 }

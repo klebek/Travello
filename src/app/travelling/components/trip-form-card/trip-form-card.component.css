@@ -1,0 +1,33 @@
+.btn-calendar {
+    background: white;
+    border-left: none;
+    border-color: #ced4da;
+    color: #f4852b;
+}
+.form-group-button {
+    text-align: center;
+}
+.form-group {
+    margin-top: 20px;
+    margin-bottom: 0;
+}
+.card-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.close {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.fa-times {
+    float: right;
+    font-size:18px;
+    color: #575757;
+}
+.header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
