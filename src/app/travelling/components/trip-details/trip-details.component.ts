@@ -13,14 +13,12 @@ import { TimelineElement } from 'shared/components/horizontal-timeline/timeline-
 })
 export class TripDetailsComponent implements OnInit {
 
+  appUser: AppUser;
   images = [1, 2, 3].map(() => `https://picsum.photos/600/850?random&t=${Math.random()}`);
-  countries$;
   id;
   currentJustify = 'fill';
   readMore = false;
-  visitors = false;
   currentRate = 4;
-  appUser: AppUser;
   readonly = true;
   countries = [
     {name: "Poland", capital: "Warsaw", language: "Polish", population: 38.44},
@@ -28,6 +26,10 @@ export class TripDetailsComponent implements OnInit {
   ]
 
   photoURL = "https://images.pexels.com/photos/1005476/pexels-photo-1005476.jpeg";
+  content = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae 
+  ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, 
+  ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam 
+  quisquam, quae, temporibus dolores porro doloribus.`;
 
   constructor(private auth: AuthService, private route: ActivatedRoute, private countryService: CountryService, configRating: NgbRatingConfig) {
     this.id = this.route.snapshot.params['id'];
@@ -37,10 +39,6 @@ export class TripDetailsComponent implements OnInit {
 
   async ngOnInit() {
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
-    this.countries$ = await this.countryService.get(this.id);
-  }
-  showVisitors(){
-    this.visitors = !this.visitors;
   }
   showTab(){
     this.readMore = !this.readMore;
@@ -51,11 +49,6 @@ export class TripDetailsComponent implements OnInit {
   showRate() {
     this.readonly = true;
   }
-
-  content = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae 
-  ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, 
-  ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam 
-  quisquam, quae, temporibus dolores porro doloribus.`;
 
   timeline: TimelineElement[] = [
     { caption: '16 Jan', date: new Date(2014, 1, 16), selected: true, title: 'Horizontal Timeline', content: this.content, photoURL: this.photoURL },
@@ -71,16 +64,4 @@ export class TripDetailsComponent implements OnInit {
     { caption: '3 Mar', date: new Date(2015, 3, 3), title: 'Event title here', content: this.content },
   ];
 
-//   load() {
-//     this.timeline = [
-//       { caption: '16 Jan', date: new Date(2014, 1, 16), selected: true, title: 'Horizontal Timeline', content: this.content },
-//       { caption: '28 Feb', date: new Date(2014, 2, 28), title: 'Event title here', content: this.content },
-//       { caption: '30 Aug', date: new Date(2014, 8, 30), title: 'Event title here', content: this.content },
-//       { caption: '15 Sep', date: new Date(2014, 9, 15), title: 'Event title here', content: this.content },
-//       { caption: '01 Nov', date: new Date(2014, 11, 1), title: 'Event title here', content: this.content },
-//       { caption: '10 Dec', date: new Date(2014, 12, 10), title: 'Event title here', content: this.content },
-//       { caption: '29 Jan', date: new Date(2015, 1, 19), title: 'Event title here', content: this.content },
-//       { caption: '3 Mar', date: new Date(2015, 3, 3), title: 'Event title here', content: this.content },
-//     ];
-// }
 }
