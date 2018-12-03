@@ -27,7 +27,7 @@ export class TripDetailsComponent implements OnInit {
     {name: "Germany", capital: "Berlin", language: "German", population: 68.23}
   ]
 
-  photoURL = "https://i.imgur.com/FqCdFbI.jpg";
+  photoURL = "https://images.pexels.com/photos/1005476/pexels-photo-1005476.jpeg";
 
   constructor(private auth: AuthService, private route: ActivatedRoute, private countryService: CountryService, configRating: NgbRatingConfig) {
     this.id = this.route.snapshot.params['id'];

@@ -8,7 +8,7 @@ import { Alert } from 'selenium-webdriver';
 })
 export class TripFormCardComponent implements OnInit {
 
-  date;
+  date: Date;
 
   @Input('noteCard') noteCard;
 
