@@ -15,7 +15,7 @@ export class TripFormCardComponent implements OnInit {
   @Input() alertNote;
   @Input() alertCard;
 
-  date;
+  date: any;
 
   @Output() showNoteChange = new EventEmitter();
   changeShowNote() {
