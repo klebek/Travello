@@ -287,6 +287,10 @@ ol, ul {
   font-weight: 500;
 }
 
+.cd-horizontal-timeline .events-content .card .card-img-top {
+  border-radius: 0;
+}
+
 .cd-horizontal-timeline .events-content .title-bar h5 {
   margin-bottom: 0;
   line-height: 1.6;  
