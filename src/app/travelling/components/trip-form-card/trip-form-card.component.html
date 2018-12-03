@@ -11,8 +11,8 @@
     <div class="card-text">
       <form>
         <div *ngIf="!noteCard" class="form-group">
-          <label for="photoURL">Photo URL</label>
-          <input type="text" class="form-control" id="photoURL" placeholder="Photo URL">
+          <label for="photoURLCard">Photo URL</label>
+          <input type="text" class="form-control" id="photoURLCard" placeholder="Photo URL">
         </div>
         <div class="form-group">
           <label for="title">Title</label>
@@ -35,6 +35,10 @@
         <div *ngIf="noteCard" class="form-group">
           <label for="caption">Caption</label>
           <input type="text" class="form-control" id="caption" placeholder="Caption">
+        </div>
+        <div *ngIf="noteCard" class="form-group">
+          <label for="photoURLNote">Photo URL</label>
+          <input type="text" class="form-control" id="photoURLNote" placeholder="Photo URL">
         </div>
         <div class="form-group form-group-button">
           <button *ngIf="noteCard" (click)="changeAlertNote($event)" type="submit" class="btn btn-success"><i class="fas fa-save"></i>Save note</button>
