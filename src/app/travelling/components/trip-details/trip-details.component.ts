@@ -27,6 +27,8 @@ export class TripDetailsComponent implements OnInit {
     {name: "Germany", capital: "Berlin", language: "German", population: 68.23}
   ]
 
+  photoURL = "https://images.pexels.com/photos/1005476/pexels-photo-1005476.jpeg";
+
   constructor(private auth: AuthService, private route: ActivatedRoute, private countryService: CountryService, configRating: NgbRatingConfig) {
     this.id = this.route.snapshot.params['id'];
     configRating.max = 5;
@@ -56,7 +58,7 @@ export class TripDetailsComponent implements OnInit {
   quisquam, quae, temporibus dolores porro doloribus.`;
 
   timeline: TimelineElement[] = [
-    { caption: '16 Jan', date: new Date(2014, 1, 16), selected: true, title: 'Horizontal Timeline', content: this.content },
+    { caption: '16 Jan', date: new Date(2014, 1, 16), selected: true, title: 'Horizontal Timeline', content: this.content, photoURL: this.photoURL },
     { caption: '28 Feb', date: new Date(2014, 2, 28), title: 'Event title here', content: this.content },
     { caption: '20 Mar', date: new Date(2014, 3, 20), title: 'Event title here', content: this.content },
     { caption: '20 May', date: new Date(2014, 5, 20), title: 'Event title here', content: this.content },

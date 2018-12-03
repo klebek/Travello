@@ -1,18 +1,18 @@
 <div class="card">
   <div class="card-header">
-      <span *ngIf="noteCard" class="header">Adding card</span>
-      <span *ngIf="!noteCard" class="header">Adding note</span>
+      <span *ngIf="noteCard" class="header">Adding note</span>
+      <span *ngIf="!noteCard" class="header">Adding card</span>
     <div class="close">
-        <i *ngIf="noteCard" (click)="changeOne($event)" class="fas fa-times"></i>
-        <i *ngIf="!noteCard" (click)="changeTwo($event)" class="fas fa-times"></i>
+        <i *ngIf="noteCard" (click)="changeShowNote($event)" class="fas fa-times"></i>
+        <i *ngIf="!noteCard" (click)="changeShowCard($event)" class="fas fa-times"></i>
     </div>
   </div>
   <div class="card-body">
     <div class="card-text">
       <form>
         <div *ngIf="!noteCard" class="form-group">
-          <label for="photoURL">Photo URL</label>
-          <input type="text" class="form-control" id="photoURL" placeholder="Photo URL">
+          <label for="photoURLCard">Photo URL</label>
+          <input type="text" class="form-control" id="photoURLCard" placeholder="Photo URL">
         </div>
         <div class="form-group">
           <label for="title">Title</label>
@@ -22,7 +22,7 @@
           <label for="note">Note</label>
           <textarea class="form-control" id="note" rows="3"></textarea>
         </div>
-        <div class="form-group">
+        <div *ngIf="noteCard" class="form-group">
           <label for="date">Date</label>
           <div class="input-group">
             <input class="form-control" placeholder="yyyy-mm-dd" (focus)="dateNote.open()" id="date" name="date"
@@ -36,11 +36,16 @@
           <label for="caption">Caption</label>
           <input type="text" class="form-control" id="caption" placeholder="Caption">
         </div>
+        <div *ngIf="noteCard" class="form-group">
+          <label for="photoURLNote">Photo URL</label>
+          <input type="text" class="form-control" id="photoURLNote" placeholder="Photo URL">
+        </div>
         <div class="form-group form-group-button">
-          <button *ngIf="noteCard" type="submit" class="btn btn-success"><i class="fas fa-save"></i>Save note</button>
-          <button *ngIf="!noteCard" type="submit" class="btn btn-success"><i class="fas fa-save"></i>Save card</button>
+          <button *ngIf="noteCard" (click)="changeAlertNote($event)" type="submit" class="btn btn-success"><i class="fas fa-save"></i>Save note</button>
+          <button *ngIf="!noteCard" (click)="changeAlertCard($event)" type="submit" class="btn btn-success"><i class="fas fa-save"></i>Save card</button>
         </div>
       </form>
     </div>
   </div>
 </div>
+

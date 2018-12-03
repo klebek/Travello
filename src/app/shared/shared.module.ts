@@ -13,6 +13,7 @@ import { AuthService } from './services/auth.service';
 import { CountryService } from 'shared/services/country.service';
 import { UserService } from './services/user.service';
 import { HorizontalTimelineComponent } from './components/horizontal-timeline/horizontal-timeline.component';
+import { BusinessTripsComponent } from './components/business-trips/business-trips.component';
 
 
 @NgModule({
@@ -25,10 +26,11 @@ import { HorizontalTimelineComponent } from './components/horizontal-timeline/ho
     NgbModule.forRoot(),
     RouterModule
   ],
-  declarations: [TripCardComponent,HorizontalTimelineComponent],
+  declarations: [TripCardComponent,HorizontalTimelineComponent, BusinessTripsComponent],
   exports: [
     TripCardComponent,
     HorizontalTimelineComponent,
+    BusinessTripsComponent,
     CommonModule,
     FormsModule,
     CustomFormsModule,

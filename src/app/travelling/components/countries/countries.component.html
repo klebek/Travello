@@ -9,7 +9,7 @@
                 <h5 class="card-title">Hello travellers!</h5>
                 <p class="card-text">Welcome to Travello, the place you collect your every single trip! <br />Plan your
                     journey, take friends and share your memories with Travello</p>
-                <button class="btn btn-primary">Start your journey</button>
+                <button routerLink="/add-trip" class="btn btn-primary">Start your journey</button>
             </div>
             <div class="col-2"></div>
         </div>
@@ -22,8 +22,18 @@
             <country-filter [continent]="continent"></country-filter>
         </div>
         <div class="col">
+            <div class="row no-gutters">
+                <div class="col-sm-12">
+                    <p class="business-header"><i class="fas fa-hand-holding-usd"></i>Sponsored trips</p>
+                </div>
+            </div>
+            <div class="row row-business-trips no-gutters">
+                <div class="col-sm">
+                    <business-trips></business-trips>
+                </div>
+            </div>
             <div class="row row-products">
-                <ng-container *ngFor="let c of filteredCountries">
+                <ng-container *ngFor="let c of filteredCountries; let i = index">
                     <div class="col-sm-4 col-cards">
                         <div class="card-group">
                             <trip-card [country]="c" [continent]="continent"></trip-card>

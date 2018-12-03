@@ -267,7 +267,7 @@ ol, ul {
 
 .cd-horizontal-timeline .events-content li > * {
   max-width: 800px;
-  margin: 0 auto;
+  margin: 1rem auto;
 }
 
 .cd-horizontal-timeline .events-content h2 {
@@ -276,25 +276,33 @@ ol, ul {
   line-height: 1.2;
 }
 
-.cd-horizontal-timeline .events-content em {
-  display: block;
-  font-size: 1.2rem;
-  font-style: italic;
-  margin: 10px auto;
-  padding: 10px;
+.cd-horizontal-timeline .events-content .title-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 4px solid #f4852b;
+  padding: 1rem;
+  color: #232323;
+  margin: 0 0 1rem 0;
+  font-weight: 500;
 }
 
-.cd-horizontal-timeline .events-content em::before {
-  content: '- ';
+.cd-horizontal-timeline .events-content .title-bar h5 {
+  margin-bottom: 0;
+  line-height: 1.6;  
+}
+
+.cd-horizontal-timeline .events-content .title-bar em {
+  font-size: 1.2rem;
 }
 
 .cd-horizontal-timeline .events-content p {
   font-size: 1.2rem;
-  color: #959595;
+  color: #232323;
   text-align: justify;
 }
 
-.cd-horizontal-timeline .events-content em, .cd-horizontal-timeline .events-content p {
+.cd-horizontal-timeline .events-content .title-bar em, .cd-horizontal-timeline .events-content p {
   line-height: 1.6;
 }
 
@@ -303,7 +311,7 @@ ol, ul {
     font-size: 2rem;
   }
 
-  .cd-horizontal-timeline .events-content em {
+  .cd-horizontal-timeline .events-content .title-bar em {
     font-size: 1.2rem;
   }
 

@@ -12,6 +12,8 @@ export class TripFormComponent {
   endTime = {};
   showNote;
   showCard;
+  alertNote;
+  alertCard;
 
   constructor() {
   }
@@ -21,5 +23,11 @@ export class TripFormComponent {
   }
   enableCard() {
     this.showCard = true;
+  }
+  closeAlertNote() {
+    this.alertNote = false;
+  }
+  closeAlertCard() {
+    this.alertCard = false;
   }
 }

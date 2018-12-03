@@ -1,31 +1,23 @@
-import { ActivatedRoute } from '@angular/router';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CountryService } from 'shared/services/country.service';
 import { Country } from 'shared/models/country';
-import "rxjs/add/operator/switchMap";
-import { AppUser } from 'shared/models/app-user';
-import { AuthService } from 'shared/services/auth.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'countries',
-  templateUrl: './countries.component.html',
-  styleUrls: ['./countries.component.css']
+  selector: 'business-trips',
+  templateUrl: './business-trips.component.html',
+  styleUrls: ['./business-trips.component.css']
 })
-export class CountriesComponent implements OnInit {
+export class BusinessTripsComponent implements OnInit {
 
   countries: Country[] = [];
   filteredCountries: Country[] = [];
   continent: string;
-  appUser: AppUser;
 
-  constructor(
-    private route: ActivatedRoute,
-    private countryService: CountryService,
-    private auth: AuthService) { }
+  constructor(private countryService: CountryService, private route: ActivatedRoute,) { }
 
   async ngOnInit() {
     this.populateCountries();
-    this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
   }
 
   private populateCountries() {
@@ -46,4 +38,5 @@ export class CountriesComponent implements OnInit {
       this.countries.filter(c => c.continent === this.continent) :
       this.countries;
   }
+
 }
