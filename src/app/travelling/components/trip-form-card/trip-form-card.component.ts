@@ -8,14 +8,14 @@ import { Alert } from 'selenium-webdriver';
 })
 export class TripFormCardComponent implements OnInit {
 
+  date;
+
   @Input('noteCard') noteCard;
 
   @Input() showNote;
   @Input() showCard;
   @Input() alertNote;
   @Input() alertCard;
-
-  date: any;
 
   @Output() showNoteChange = new EventEmitter();
   changeShowNote() {
