@@ -30,6 +30,10 @@ export class TripService {
     return this.http.get('http://localhost:9000/api/account/all');
   }
 
+  getAll(){
+    return this.http.get('http://localhost:9000/api/trip/all');
+  }
+
   getTrip(){
     return this.http.get('http://localhost:9000/api/trip/user/2');
   }

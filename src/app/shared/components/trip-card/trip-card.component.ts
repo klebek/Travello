@@ -3,6 +3,7 @@ import { CountryService } from 'shared/services/country.service';
 import { Country } from 'shared/models/country';
 import { Component, OnInit, Input } from '@angular/core';
 import { Continent } from 'shared/models/continent';
+import { Trip } from 'app/travelling/model/trip';
 
 @Component({
   selector: 'trip-card',
@@ -11,18 +12,11 @@ import { Continent } from 'shared/models/continent';
 })
 export class TripCardComponent implements OnInit {
 
-  @Input('country') country: Country;
-  @Input('continent') continent: Continent;
-  @Input('businessTrip') businessTrip = false;
+  @Input('trip') trip: Trip;
 
-  continent$;
-  countries$;
+  constructor() { }
 
-  constructor(private countryService: CountryService, private continentService: ContinentService,) { }
-
-  async ngOnInit() {
-    this.continent$ = await this.continentService.getContinent(this.country.continent);
-    this.countries$ = await this.countryService.getAll();
+  ngOnInit() {  
   }
 
 }

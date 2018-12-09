@@ -34,9 +34,10 @@
             </div>
             <div class="row row-products">
                 <ng-container>
-                    <div *ngFor="let c of filteredCountries | name : searchName; let i = index" class="col-sm-4 col-cards">
+                    <!-- <div *ngFor="let t of filteredCountries | name : searchName; let i = index" class="col-sm-4 col-cards"> -->
+                    <div *ngFor="let trip of trips | name : searchName; let i = index" class="col-sm-4 col-cards">
                         <div class="card-group">
-                            <trip-card [country]="c" [continent]="continent"></trip-card>
+                            <trip-card *ngIf="!businessTrip" [trip]="trip"></trip-card>
                         </div>
                     </div>
                     <div *ngIf="(i + 1) % 3 === 0" class="w-100"></div>

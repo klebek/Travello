@@ -11,7 +11,7 @@ import { AdminModule } from './admin/admin.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './core/components/login/login.component';
 import { CoreModule } from './core/core.module';
-import { CountriesComponent } from './travelling/components/countries/countries.component';
+import { TripsComponent } from './travelling/components/countries/trips.component';
 import { TravellingModule } from './travelling/travelling.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
@@ -36,7 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CustomFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot([
-      { path: '', component: CountriesComponent },
+      { path: '', component: TripsComponent },
       { path: 'login', component: LoginComponent }
     ])
   ],

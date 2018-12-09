@@ -1,5 +1,4 @@
 export interface Country {
-    $key: string;
     name: string;
     continent: string;
     flag: string;

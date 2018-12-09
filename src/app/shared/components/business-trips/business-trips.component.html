@@ -1,6 +1,6 @@
-<ng-container *ngFor="let c of filteredCountries; let i = index">
+<ng-container *ngFor="let trip of trips; let i = index">
     <div class="col-sm-2">
-        <trip-card [country]="c" [businessTrip]="true"></trip-card>
+        <trip-card *ngIf="trip.business" [trip]="trip"></trip-card>
         <div *ngIf="(i + 1) % 4 === 0" class="w-100"></div>
     </div>
 </ng-container>

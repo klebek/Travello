@@ -1,27 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { CountryService } from 'shared/services/country.service';
 import { Country } from 'shared/models/country';
-import { ActivatedRoute } from '@angular/router';
+import "rxjs/add/operator/switchMap";
+import { AppUser } from 'shared/models/app-user';
+import { AuthService } from 'shared/services/auth.service';
+import { Trip } from 'app/travelling/model/trip';
 import { TripService } from 'app/travelling/services/trip.service';
 
 @Component({
-  selector: 'business-trips',
-  templateUrl: './business-trips.component.html',
-  styleUrls: ['./business-trips.component.css']
+  selector: 'trips',
+  templateUrl: './trips.component.html',
+  styleUrls: ['./trips.component.css']
 })
-export class BusinessTripsComponent implements OnInit {
+export class TripsComponent implements OnInit {
 
   countries: Country[] = [];
   filteredCountries: Country[] = [];
   continent: string;
+  appUser: AppUser;
+  searchName;
 
   trips: any = [];
 
-  constructor(private tripsService: TripService, private route: ActivatedRoute,) { }
+  constructor(
+    private route: ActivatedRoute,
+    private countryService: CountryService,
+    private tripService: TripService,
+    private auth: AuthService) { }
 
-  ngOnInit() {
-    this.tripsService.getAll().subscribe(t => this.trips = t);
+  async ngOnInit() {
     // this.populateCountries();
+    this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
+    this.tripService.getAll().subscribe(t => this.trips = t);
   }
 
   // private populateCountries() {
@@ -42,5 +53,4 @@ export class BusinessTripsComponent implements OnInit {
   //     this.countries.filter(c => c.continent === this.continent) :
   //     this.countries;
   // }
-
 }

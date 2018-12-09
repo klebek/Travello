@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
-import { CountriesComponent } from './components/countries/countries.component';
+import { TripsComponent } from './components/countries/trips.component';
 import { CountryFilterComponent } from './../travelling/components/countries/country-filter/country-filter.component';
 import { FormsModule } from '@angular/forms';
 import { AuthGuard } from 'shared/services/auth-guard.service';
@@ -23,14 +23,14 @@ import { NamePipe } from './pipes/name.pipe';
     SharedModule,
     HttpClientModule,
     RouterModule.forChild([
-      { path: 'countries', component: CountriesComponent, canActivate: [AuthGuard] },
-      { path: 'country/trips/:id/1', component: TripDetailsComponent },
+      { path: 'countries', component: TripsComponent, canActivate: [AuthGuard] },
+      { path: 'trips/:id', component: TripDetailsComponent },
       { path: 'my-trips', component: MyTripsComponent, canActivate: [AuthGuard] },
       { path: 'add-trip', component: TripFormComponent, canActivate: [AuthGuard] },
     ])
   ],
   declarations: [
-    CountriesComponent,
+    TripsComponent,
     CountryFilterComponent,
     MyTripsComponent,
     TripDetailsComponent,
