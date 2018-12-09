@@ -14,10 +14,14 @@ import { CountryPhotosComponent } from './components/country-photos/country-phot
 import { TripFormPhotosComponent } from './components/trip-form-photos/trip-form-photos.component';
 import { TripVisitorsComponent } from './components/trip-visitors/trip-visitors.component';
 import { TripFormCardComponent } from './components/trip-form-card/trip-form-card.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CountryService } from 'shared/services/country.service';
+import { NamePipe } from './pipes/name.pipe';
 
 @NgModule({
   imports: [
     SharedModule,
+    HttpClientModule,
     RouterModule.forChild([
       { path: 'countries', component: CountriesComponent, canActivate: [AuthGuard] },
       { path: 'country/trips/:id/1', component: TripDetailsComponent },
@@ -34,7 +38,9 @@ import { TripFormCardComponent } from './components/trip-form-card/trip-form-car
     CountryPhotosComponent,
     TripFormPhotosComponent,
     TripVisitorsComponent,
-    TripFormCardComponent
-  ]
+    TripFormCardComponent,
+    NamePipe
+  ],
+  providers: [CountryService]
 })
 export class TravellingModule { }

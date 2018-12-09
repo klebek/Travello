@@ -1,10 +1,10 @@
-import { CountryService } from 'shared/services/country.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgbRatingConfig } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from 'shared/services/auth.service';
 import { AppUser } from 'shared/models/app-user';
 import { TimelineElement } from 'shared/components/horizontal-timeline/timeline-element';
+import { CountryService } from 'app/travelling/services/country.service';
 
 @Component({
   selector: 'app-trip-details',
@@ -20,10 +20,9 @@ export class TripDetailsComponent implements OnInit {
   readMore = false;
   currentRate = 4;
   readonly = true;
-  countries = [
-    {name: "Poland", capital: "Warsaw", language: "Polish", population: 38.44},
-    {name: "Germany", capital: "Berlin", language: "German", population: 68.23}
-  ]
+  countries$ = [];
+  names = [{ name: "Poland" },{ name: "Germany" }]
+  name = "";
 
   photoURL = "https://images.pexels.com/photos/1005476/pexels-photo-1005476.jpeg";
   content = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae 
@@ -39,6 +38,15 @@ export class TripDetailsComponent implements OnInit {
 
   async ngOnInit() {
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
+    await this.getCountry();
+    // this.countryService.getCountry(this.name).subscribe(c => this.country = c);
+  }
+  getCountry() {
+    for (let name of this.names) {
+      this.name = name.name;
+      this.countryService.getCountry(this.name).subscribe(c => this.countries$.push(c));
+      console.log(this.countries$);
+    }
   }
   showTab(){
     this.readMore = !this.readMore;

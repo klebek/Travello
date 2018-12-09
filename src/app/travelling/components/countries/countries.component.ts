@@ -17,6 +17,7 @@ export class CountriesComponent implements OnInit {
   filteredCountries: Country[] = [];
   continent: string;
   appUser: AppUser;
+  searchName;
 
   constructor(
     private route: ActivatedRoute,

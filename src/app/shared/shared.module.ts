@@ -14,6 +14,7 @@ import { CountryService } from 'shared/services/country.service';
 import { UserService } from './services/user.service';
 import { HorizontalTimelineComponent } from './components/horizontal-timeline/horizontal-timeline.component';
 import { BusinessTripsComponent } from './components/business-trips/business-trips.component';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { BusinessTripsComponent } from './components/business-trips/business-tri
     CustomFormsModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    HttpClientModule,
     NgbModule.forRoot(),
     RouterModule
   ],
@@ -33,6 +35,7 @@ import { BusinessTripsComponent } from './components/business-trips/business-tri
     BusinessTripsComponent,
     CommonModule,
     FormsModule,
+    HttpClientModule,
     CustomFormsModule,
     AngularFireDatabaseModule,
     AngularFireAuthModule,

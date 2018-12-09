@@ -1,5 +1,6 @@
 import { ContinentService } from './../../../../shared/services/continent.service';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { CountryService } from 'app/travelling/services/country.service';
 
 @Component({
   selector: 'country-filter',
@@ -8,14 +9,32 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CountryFilterComponent implements OnInit {
 
-  continents$;
   @Input('continent') continent;
+  @Input() searchName;
 
-  constructor(continentService: ContinentService) {
-    this.continents$ = continentService.getAll(); 
+  @Output() searchNameChange = new EventEmitter();
+  changeName(newSearchNameChange) {
+    this.searchName = newSearchNameChange;
+    this.searchNameChange.emit(newSearchNameChange);
+  }
+
+  continents$ = [
+    {name:"Africa", trips: 234},
+    {name:"Americas", trips: 345},
+    {name:"Asia", trips: 66},
+    {name:"Europe", trips: 543},
+    {name:"Oceania", trips: 22}
+  ];
+
+  countriesNames;
+
+  constructor(private countryService: CountryService) {
    }
 
   ngOnInit() {
+    this.countryService.getName().subscribe(c => {
+      this.countriesNames = c;
+    });
   }
 
 }
