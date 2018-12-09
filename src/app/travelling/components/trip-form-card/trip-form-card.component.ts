@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Alert } from 'selenium-webdriver';
 import { NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
+import { Note } from 'app/travelling/model/note';
+import { NoteService } from 'app/travelling/services/note.service';
 
 @Component({
   selector: 'trip-form-card',
@@ -11,6 +13,7 @@ import { NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap
 export class TripFormCardComponent implements OnInit {
 
   date: Date;
+  note: Note[] = [];
 
   @Input('noteCard') noteCard;
 
@@ -49,9 +52,17 @@ export class TripFormCardComponent implements OnInit {
 
   // END ALERTS
 
-  constructor() { }
+  constructor(private noteService: NoteService) { }
 
   ngOnInit() {
+  }
+
+  addNote(note: Note) {
+    this.noteService.addNote(note).subscribe(
+      note => {
+        // console.log(trip);
+      }
+    );
   }
 
 }

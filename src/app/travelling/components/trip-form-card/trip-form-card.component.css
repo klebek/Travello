@@ -31,3 +31,10 @@
     justify-content: center;
     flex-direction: column;
 }
+.btn-primary:not(:disabled):not(.disabled).active {
+    background-color: #c26b23;
+    border-color: #f4852b;
+}
+.btn-primary.focus, .btn-primary:not(:disabled):not(.disabled).active:focus{
+    box-shadow: none;
+}
