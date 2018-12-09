@@ -1,19 +1,13 @@
+import { Card } from "./card";
+
 export interface Trip {
-    name: string;
-    title1: string;
-    description1: boolean;
-    descriptionTrip: string;
-    notes: string;
-    photo1url: string;
-    description1text: string;
-    // photo2url: string;
-    // description2text: string;
-    // photo3url: string;
-    // description3text: string;
-    // photo4url: string;
-    // description4text: string;
-    // photo5url: string;
-    // description5text: string;
-    // photo6url: string;
-    // description6text: string;
+    acountId: number;
+    title: string;
+    account: number;
+    status: number;
+    description: string;
+    rating: number;
+    cards: Card[];
+    startDate: Date;
+    endDate: Date;
 }

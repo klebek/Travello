@@ -1,6 +1,7 @@
 import { ContinentService } from './../../../../shared/services/continent.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CountryService } from 'app/travelling/services/country.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'country-filter',
@@ -27,8 +28,12 @@ export class CountryFilterComponent implements OnInit {
   ];
 
   countriesNames;
+  param;
 
-  constructor(private countryService: CountryService) {
+  constructor(private countryService: CountryService, private route: ActivatedRoute) {
+    this.route.queryParams.subscribe(params => {
+      this.param = params['continent'];
+    });
    }
 
   ngOnInit() {

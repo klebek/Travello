@@ -21,7 +21,7 @@ export class TripDetailsComponent implements OnInit {
   currentRate = 4;
   readonly = true;
   countries$ = [];
-  names = [{ name: "Poland" },{ name: "Germany" }]
+  names = [{ name: "Poland" },{ name: "Germany" }, {name:"Colombia"}]
   name = "";
 
   photoURL = "https://images.pexels.com/photos/1005476/pexels-photo-1005476.jpeg";

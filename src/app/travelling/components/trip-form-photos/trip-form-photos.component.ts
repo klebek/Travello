@@ -9,20 +9,7 @@ import { Trip } from 'app/travelling/model/trip';
 export class TripFormPhotosComponent {
 
   constructor() {
-    this.trip = {
-      name: "",
-      title1: "",
-      description1: false,
-      descriptionTrip: "",
-      notes: "",
-      photo1url: "https://i.imgur.com/I0FjsTR.jpg",
-      description1text: ""
-    }
   }
-
-  photo1url;
-  description1text;
-  title1;
 
   cardRow = [1];
 
@@ -41,20 +28,7 @@ export class TripFormPhotosComponent {
   }
 
   saveCard1(url, text){
-    this.trip.photo1url = url;
-    this.trip.description1text = text;
     console.log(url + " " + text)
-  }
-
-  showDescription(number){
-    if(number === 1) {
-      this.description1text = "";
-      this.title1 = "";
-      this.trip.description1 = !this.trip.description1;
-    }
-    else if(number === 2) this.description2 = !this.description2;
-    else if(number === 3) this.description3 = !this.description3;
-    else if(number === 4) this.description4 = !this.description4;
   }
 
 }
