@@ -30,6 +30,9 @@
 .btn-success {
     margin-top: 20px;
 }
+.btn-add-country {
+    margin-top: 0;
+}
 .row /deep/ .alert-success {
     background-color: #28a7467a;
     color: white;

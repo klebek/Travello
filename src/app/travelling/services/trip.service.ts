@@ -12,7 +12,7 @@ export class TripService {
   constructor(private http: HttpClient) {
   }
   
-  url = "http://localhost:9000/api/user/2/add"
+  url = "http://localhost:9000/api/trip/user/0/add"
 
   addTrip(trip: Trip): Observable<Trip> { 
     let httpHeaders = new HttpHeaders({

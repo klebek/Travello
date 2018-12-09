@@ -1,10 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Alert } from 'selenium-webdriver';
+import { NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'trip-form-card',
   templateUrl: './trip-form-card.component.html',
-  styleUrls: ['./trip-form-card.component.css']
+  styleUrls: ['./trip-form-card.component.css'],
+  providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}]
 })
 export class TripFormCardComponent implements OnInit {
 

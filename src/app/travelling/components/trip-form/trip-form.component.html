@@ -3,7 +3,7 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-body">
-          <form #f="ngForm" (ngSubmit)="addTrip(f.value)">
+          <form #f="ngForm">
             <div class="form-row">
               <div class="form-group col-md-12">
                 <label for="inputTitle">Title</label>
@@ -11,44 +11,50 @@
                   placeholder="Type title">
               </div>
             </div>
-
             <div class="form-row">
-              <div class="form-group col-md-12">
-                <label for="inputAccount">Account</label>
-                <input #account="ngModel" [(ngModel)]="trip.accountId" name="account" type="number" class="form-control"
-                  id="inputAccount" placeholder="Type account">
-              </div>
-            </div>
-
-            <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-4">
                 <label for="startTime">Start</label>
+
                 <div class="input-group">
-                  <input #startDate="ngModel" [(ngModel)]="trip.startDate" name="startTime" class="form-control"
-                    placeholder="yyyy-mm-dd" (focus)="startTimeDate.open()" id="startTime" ngbDatepicker #startTimeDate="ngbDatepicker">
+                  <input class="form-control" placeholder="yyyy-mm-dd" name="startDate" #c1="ngModel" [(ngModel)]="trip.startDate"
+                    ngbDatepicker #startDate="ngbDatepicker">
                   <div class="input-group-append">
-                    <button class="btn btn-default btn-calendar calendar" (click)="startTimeDate.toggle()" type="button"><i
+                    <button class="btn btn-default btn-calendar calendar" (click)="startDate.toggle()" type="button"><i
                         class="fas fa-calendar-alt"></i></button>
                   </div>
                 </div>
-                <!-- <hr />
-                <pre>Start time: {{ startTime | json }}</pre>
-                <pre>{{startTime.day}}.{{startTime.month}}.{{startTime.year}}</pre> -->
+
               </div>
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-4">
                 <label for="endTime">Finish</label>
                 <div class="input-group">
-                  <input #endDate="ngModel" [(ngModel)]="trip.endDate" name="endTime" class="form-control" placeholder="yyyy-mm-dd"
-                    (focus)="endTimeDate.open()" id="endTime" ngbDatepicker #endTimeDate="ngbDatepicker">
-                  <div class="input-group-append">
-                    <button class="btn btn-default btn-calendar calendar" (click)="endTimeDate.toggle()" type="button"><i
-                        class="fas fa-calendar-alt"></i></button>
+
+                  <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="endDate" #c2="ngModel" [(ngModel)]="trip.endDate"
+                      ngbDatepicker #endDate="ngbDatepicker">
+                    <div class="input-group-append">
+                      <button class="btn btn-default btn-calendar calendar" (click)="endDate.toggle()" type="button"><i
+                          class="fas fa-calendar-alt"></i></button>
+                    </div>
                   </div>
+
                 </div>
                 <!-- <hr />
                   <pre>End time: {{ endTime | json }}</pre>
                   <pre>{{endTime.day}}.{{endTime.month}}.{{endTime.year}}</pre> -->
               </div>
+              <div class="col-sm-3">
+                  <label for="country">Country</label>
+                  <select #country="ngModel" [(ngModel)]="trip.countries" class="form-control"
+                    name="countries">
+                    <option></option>
+                    <option *ngFor="let country of countriesNames">{{country.name}}</option>
+                  </select>
+                </div>
+                <div class="col-sm">
+                  <label for="country">Add country</label>
+                  <button (click)="addCountry(country.value)" class="btn btn-success btn-block btn-add-country" id="country"><i class="fa fa-plus"></i></button>
+                </div>
               <div class="form-group col-md-12">
                 <label for="inputDescription">Description</label>
                 <textarea #description="ngModel" [(ngModel)]="trip.description" name="description" class="form-control"
@@ -60,11 +66,11 @@
                 <label>Accessibility</label><br />
                 <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
                   <label ngbButtonLabel class="btn-primary">
-                    <input #status="ngModel" [(ngModel)]="trip.status" name="status" ngbButton type="radio" value="1"><i
+                    <input #status="ngModel" [(ngModel)]="trip.status" name="status" ngbButton type="radio" [value]="1"><i
                       class="fas fa-unlock-alt"></i>Public
                   </label>
                   <label ngbButtonLabel class="btn-primary">
-                    <input #status="ngModel" [(ngModel)]="trip.status" name="status" ngbButton type="radio" value="0"><i
+                    <input #status="ngModel" [(ngModel)]="trip.status" name="status" ngbButton type="radio" [value]="0"><i
                       class="fas fa-lock"></i>Private
                   </label>
                 </div>
@@ -76,6 +82,7 @@
                 <button (click)="enableCard()" class="btn btn-warning btn-add" id="options"><i class="fas fa-plus"></i>Add
                   card</button>
               </div>
+              
             </div>
             <!-- <div class="col-md-12">
               <trip-form-photos></trip-form-photos>
@@ -92,7 +99,8 @@
                   card</ngb-alert>
               </div>
             </div>
-            <button [disabled]="!f.valid" class="btn btn-success btn-block"><i class="fas fa-save"></i>Add your new
+            <button (click)="addTrip(f.value)" [disabled]="!f.valid" class="btn btn-success btn-block"><i class="fas fa-save"></i>Add
+              your new
               trip</button>
             DANE: {{f.value | json}}
           </form>

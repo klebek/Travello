@@ -17,6 +17,7 @@ import { TripFormCardComponent } from './components/trip-form-card/trip-form-car
 import { HttpClientModule } from '@angular/common/http';
 import { CountryService } from 'shared/services/country.service';
 import { NamePipe } from './pipes/name.pipe';
+import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -41,6 +42,6 @@ import { NamePipe } from './pipes/name.pipe';
     TripFormCardComponent,
     NamePipe
   ],
-  providers: [CountryService]
+  providers: [ CountryService ]
 })
 export class TravellingModule { }
