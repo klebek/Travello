@@ -37,10 +37,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   tripCountries;
 
   photoURL = "https://images.pexels.com/photos/1005476/pexels-photo-1005476.jpeg";
-  content = `Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum praesentium officia, fugit recusandae 
-  ipsa, quia velit nulla adipisci? Consequuntur aspernatur at, eaque hic repellendus sit dicta consequatur quae, 
-  ut harum ipsam molestias maxime non nisi reiciendis eligendi! Doloremque quia pariatur harum ea amet quibusdam 
-  quisquam, quae, temporibus dolores porro doloribus.`;
+  content = `lul`;
 
   constructor(private auth: AuthService, private route: ActivatedRoute, private tripService: TripService, private countryService: CountryService, configRating: NgbRatingConfig) {
     this.id = this.route.snapshot.params['id'];
@@ -51,7 +48,6 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
       this.getTimeline();
     });
     this.getCountry();
-    // this.getTimeline();
   }
 
   async ngOnInit() {
@@ -64,18 +60,6 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
       this.countryService.getCountry(this.name).subscribe(c => this.countries$.push(c));
     }
   }
-  getTimeline() {
-    let date = new Date(2014, 1, 16)
-    this.timeline = [{ caption: '16 Jan', date: new Date(2014, 1, 16), selected: true, title: 'Horizontal Timeline', content: this.content, photoURL: this.photoURL },]
-    // for (let card of this.cards) {
-    //   if (card.type === 'NOTE') {
-    //     this.timeline.push(
-    //       { caption: card.title, date: date, title: card.title, content: card.description, photoURL: card.photo },
-    //     )
-    //   }
-    // }
-    console.log(this.timeline);
-  }
   showTab() {
     this.readMore = !this.readMore;
   }
@@ -86,9 +70,44 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
     this.readonly = true;
   }
 
-  // timeline: TimelineElement[] = [
-  //   { caption: '16 Jan', date: new Date(2014, 1, 16), selected: true, title: 'Horizontal Timeline', content: this.content, photoURL: this.photoURL },
-  // ];
+  getTimeline() {
+    this.timeline.push({ caption: 'test', date: new Date(2014, 1, 16), selected: true, title: 'Horizontal Timeline', content: this.content });
+    for (let card of this.cards) {
+      let date = new Date(card.date)
+      if (card.type === 'NOTE') {
+        this.timeline.push(
+          { caption: card.title, date: date, title: card.title, content: card.description, photo: card.photo },
+        )
+      }
+    }
+    // this.timeline = [
+    //   { caption: '16 Jan', date: new Date(2014, 1, 16), selected: true, title: 'Horizontal Timeline', content: this.content, photo: this.photoURL },
+    //   { caption: '28 Feb', date: new Date(2014, 2, 28), title: 'Event title here', content: this.content },
+    //   { caption: '20 Mar', date: new Date(2014, 3, 20), title: 'Event title here', content: this.content },
+    //   { caption: '20 May', date: new Date(2014, 5, 20), title: 'Event title here', content: this.content },
+    //   { caption: '09 Jul', date: new Date(2014, 7, 9), title: 'Event title here', content: this.content },
+    //   { caption: '30 Aug', date: new Date(2014, 8, 30), title: 'Event title here', content: this.content },
+    //   { caption: '15 Sep', date: new Date(2014, 9, 15), title: 'Event title here', content: this.content },
+    //   { caption: '01 Nov', date: new Date(2014, 11, 1), title: 'Event title here', content: this.content },
+    //   { caption: '10 Dec', date: new Date(2014, 12, 10), title: 'Event title here', content: this.content },
+    //   { caption: '29 Jan', date: new Date(2015, 1, 19), title: 'Event title here', content: this.content },
+    //   { caption: '3 Mar', date: new Date(2015, 3, 3), title: 'Event title here', content: this.content },
+    // ];
+    console.log(this.timeline);
+  }
+
+//   load() {
+//     this.timeline = [
+//       { caption: '16 Jan', date: new Date(2014, 1, 16), selected: true, title: 'Horizontal Timeline', content: this.content },
+//       { caption: '28 Feb', date: new Date(2014, 2, 28), title: 'Event title here', content: this.content },
+//       { caption: '30 Aug', date: new Date(2014, 8, 30), title: 'Event title here', content: this.content },
+//       { caption: '15 Sep', date: new Date(2014, 9, 15), title: 'Event title here', content: this.content },
+//       { caption: '01 Nov', date: new Date(2014, 11, 1), title: 'Event title here', content: this.content },
+//       { caption: '10 Dec', date: new Date(2014, 12, 10), title: 'Event title here', content: this.content },
+//       { caption: '29 Jan', date: new Date(2015, 1, 19), title: 'Event title here', content: this.content },
+//       { caption: '3 Mar', date: new Date(2015, 3, 3), title: 'Event title here', content: this.content },
+//     ];
+// }
 
   ngOnDestroy() {
     this.subscriptionTrip.unsubscribe();
