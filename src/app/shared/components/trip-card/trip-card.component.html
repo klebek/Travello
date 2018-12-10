@@ -1,12 +1,15 @@
 <a [routerLink]="['/trips/' + trip.id]">
-  <div class="card">
-    <!-- <img *ngIf="!businessTrip" class="card-img-top" [src]="country.image" alt="Card image cap">
-    <img *ngIf="businessTrip" class="card-img-top-business" placement="top" [ngbTooltip]="country.name" [src]="country.image" alt="Card image cap"> -->
-    <div *ngIf="!businessTrip" class="card-body">
-      <h5 class="card-title">Mary Elizabeth</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-        content. This content is a little bit longer.</p>
+  <div *ngIf="cards" class="card">
+    <div *ngFor="let card of cards; index as i">
+      <img *ngIf="i<1" class="card-img-top" [src]="card.photo" alt="Card image cap">
     </div>
-    <p *ngIf="!businessTrip" class="card-footer"><small class="text-footer">{{trip.title}}</small></p>
+    <!-- <img class="card-img-top-business" placement="top" [ngbTooltip]="country.name" [src]="country.image" alt="Card image cap"> -->
+    <div *ngIf="!businessTrip" class="card-body">
+      <h5 class="card-title">{{trip.title}}</h5>
+      <p class="card-text">{{trip.description}}</p>
+    </div>
+    <p *ngIf="!businessTrip" class="card-footer">
+      <small class="text-footer">{{trip.countries}}</small>
+    </p>
   </div>
 </a>

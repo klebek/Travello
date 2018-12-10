@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http'; 
@@ -9,10 +9,17 @@ import { Trip } from '../model/trip';
 })
 export class TripService {
 
+  idUser = 0;
+  idTrip = Math.floor(Math.random() * (999999 - 1 + 1)) + 1;
+  url;
+
   constructor(private http: HttpClient) {
+    this.url = "http://localhost:9000/api/trip/user/"+this.idUser+"/id/"+this.idTrip;
   }
-  
-  url = "http://localhost:9000/api/trip/user/0/add"
+
+  getTripId(){
+    return this.idTrip;
+  }
 
   addTrip(trip: Trip): Observable<Trip> { 
     let httpHeaders = new HttpHeaders({
@@ -23,18 +30,22 @@ export class TripService {
       headers: httpHeaders
     };
     // console.log(trip); 
-    return this.http.post<Trip>(this.url, trip, options);
+    return this.http.put<Trip>(this.url, trip, options);
   }
   
   getAccount(){
     return this.http.get('http://localhost:9000/api/account/all');
   }
 
+  getCards(id){
+    return this.http.get('http://localhost:9000/api/card/trip/'+id);
+  }
+
   getAll(){
     return this.http.get('http://localhost:9000/api/trip/all');
   }
 
-  getTrip(){
-    return this.http.get('http://localhost:9000/api/trip/user/2');
+  getTrip(id){
+    return this.http.get('http://localhost:9000/api/trip/'+id);
   }
 }

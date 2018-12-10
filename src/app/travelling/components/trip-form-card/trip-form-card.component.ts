@@ -14,6 +14,8 @@ export class TripFormCardComponent implements OnInit {
 
   date: Date;
   note: Note[] = [];
+  idTrip;
+  idCard;
 
   @Input('noteCard') noteCard;
 
@@ -52,7 +54,9 @@ export class TripFormCardComponent implements OnInit {
 
   // END ALERTS
 
-  constructor(private noteService: NoteService) { }
+  constructor(private noteService: NoteService) {
+    this.idCard = Math.floor(Math.random() * (999999 - 1 + 1)) + 1;
+  }
 
   ngOnInit() {
   }

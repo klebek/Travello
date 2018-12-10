@@ -8,4 +8,5 @@ export interface Note {
     date: Date;
     photo: string;
     caption: string;
+    type: number;
 }

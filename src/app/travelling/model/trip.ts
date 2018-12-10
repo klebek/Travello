@@ -1,6 +1,8 @@
 import { Card } from "./card";
+import { Country } from "shared/models/country";
 
 export interface Trip {
+    id: number;
     acountId: number;
     title: string;
     account: number;
@@ -10,4 +12,5 @@ export interface Trip {
     cards: Card[];
     startDate: Date;
     endDate: Date;
+    countries;
 }

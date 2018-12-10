@@ -4,6 +4,7 @@ import { Trip } from 'app/travelling/model/trip';
 import { Observable } from 'rxjs/Observable';
 import { TripService } from 'app/travelling/services/trip.service';
 import { CountryService } from 'app/travelling/services/country.service';
+import { thisExpression } from 'babel-types';
 
 @Component({
   selector: 'app-trip-form',
@@ -11,7 +12,7 @@ import { CountryService } from 'app/travelling/services/country.service';
   styleUrls: ['./trip-form.component.css'],
   providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}]
 })
-export class TripFormComponent {
+export class TripFormComponent implements OnInit  {
 
   trip: Trip = <Trip>{};
   startDate = {};
@@ -23,15 +24,16 @@ export class TripFormComponent {
   countriesNames;
   countries = [];
 
-  constructor(private tripService: TripService, private countryService: CountryService) {
-    this.tripService.getAccount().subscribe(a => console.log(a));
-    this.getTrip();
-  }
+  idTrip;
+  idCard;
+
+  constructor(private tripService: TripService, private countryService: CountryService) {}
 
   ngOnInit() {
     this.countryService.getName().subscribe(c => {
       this.countriesNames = c;
     });
+    this.idTrip = this.tripService.getTripId();
   }
   addCountry(country){
     this.countries.push(country);
@@ -40,12 +42,11 @@ export class TripFormComponent {
   addTrip(trip: Trip) {
     this.tripService.addTrip(trip).subscribe(
       trip => {
-        // console.log(trip);
       }
     );
   }
-  getTrip() {
-    this.tripService.getTrip().subscribe(t => console.log(t));
+  getTrip(id) {
+    this.tripService.getTrip(id).subscribe();
   }
 
   enableNote() {
