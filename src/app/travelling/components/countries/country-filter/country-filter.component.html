@@ -1,7 +1,7 @@
 <div class="sticky-top">
   <div class="list-group">
-    <a class="list-group-item list-group-item-action" [class.active]="!continent" routerLink="/">All Continents</a>
-    <a *ngFor="let c of continents$" routerLink="/" [queryParams]="{ continent: c.name }" [class.active]="continent === c.name"
+    <a class="list-group-item list-group-item-action" [class.active]="!continent" routerLink="/home">All Continents</a>
+    <a *ngFor="let c of continents$" routerLink="/home" [queryParams]="{ continent: c.name }" [class.active]="continent === c.name"
       class="list-group-item list-group-item-action flex-column align-items-start active">
       <div class="d-flex w-100">
         <h5 class="mb-1">{{c.name}}</h5>
@@ -20,7 +20,7 @@
     </div>
     <div class="form-group">
       <label for="countries">Search by country</label>
-      <select [ngModel]="searchName" routerLink="/" (ngModelChange)="changeName($event)" class="form-control" name="name" id="countries">
+      <select [ngModel]="searchName" routerLink="/home" (ngModelChange)="changeName($event)" class="form-control" name="name" id="countries">
         <option></option>
         <option *ngFor="let country of countriesNames">{{country.name}}</option>
       </select>

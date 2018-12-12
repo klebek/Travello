@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light fixed-top">
   <div class="container">
-    <a class="navbar-brand" routerLink="/">
+    <a class="navbar-brand" routerLink="/home" routerLinkActive="false">
       <img src="../../../../assets/images/logo.png" alt="">
     </a>
 
@@ -34,7 +34,7 @@
         <a routerLink="/profile" *ngIf="appUser" class="hello"><i class="fas fa-user"></i>Profile</a>
         <span *ngIf="appUser" class="hello">Hello, {{ appUser.email }}</span>
       </ul>
-      <a *ngIf="appUser" routerLink="/" class="logout-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+      <a *ngIf="appUser" routerLink="/home" class="logout-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i>Log Out</a>
     </div>
   </div>
 </nav>

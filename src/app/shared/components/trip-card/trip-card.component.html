@@ -1,4 +1,4 @@
-<a [routerLink]="['/trips/' + trip.id]">
+<a [routerLink]="['/trip/' + trip.id]">
   <div *ngIf="cards" class="card">
     <div *ngFor="let card of cards; index as i">
       <img *ngIf="i<1" class="card-img-top" [src]="card.photo" alt="Card image cap">

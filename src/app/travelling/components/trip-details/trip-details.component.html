@@ -15,9 +15,19 @@
                       </h3>
                     </div>
                     <div class="carousel-body">
-                      <p>Capital: {{country.capital}}</p>
-                      <p>Population: {{country.population | number:'1.0-0'}}</p>
-                      <p *ngFor="let language of country.languages">Language: {{language.name}}</p>
+                      <div class="languages-country">
+                        <p>Capital:</p>
+                        <p *ngIf="country.capital">{{country.capital}}</p>
+                        <p *ngIf="!country.capital"><i>No capital</i></p>
+                      </div>
+                      <div class="languages-country">
+                        <p>Population:</p>
+                        <p>{{country.population | number:'1.0-0'}}</p>
+                      </div>
+                      <div class="languages-country">
+                        <p>Language(s):</p>
+                        <p *ngFor="let language of country.languages">{{language.name}}</p>
+                      </div>
                     </div>
                   </div>
                 </ng-template>

@@ -17,7 +17,6 @@ import { TripFormCardComponent } from './components/trip-form-card/trip-form-car
 import { HttpClientModule } from '@angular/common/http';
 import { CountryService } from 'shared/services/country.service';
 import { NamePipe } from './pipes/name.pipe';
-import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
@@ -25,7 +24,7 @@ import { NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     RouterModule.forChild([
       { path: 'countries', component: TripsComponent, canActivate: [AuthGuard] },
-      { path: 'trips/:id', component: TripDetailsComponent },
+      { path: 'trip/:id', component: TripDetailsComponent },
       { path: 'my-trips', component: MyTripsComponent, canActivate: [AuthGuard] },
       { path: 'add-trip', component: TripFormComponent, canActivate: [AuthGuard] },
     ])

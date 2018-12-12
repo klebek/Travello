@@ -34,31 +34,48 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   names = [{ name: "Poland" }, { name: "Germany" }, { name: "Colombia" }]
   name = "";
 
-  tripCountries;
+  countriess = [];
+
+  countries;
 
   photoURL = "https://images.pexels.com/photos/1005476/pexels-photo-1005476.jpeg";
   content = `lul`;
 
   constructor(private auth: AuthService, private route: ActivatedRoute, private tripService: TripService, private countryService: CountryService, configRating: NgbRatingConfig) {
-    this.id = this.route.snapshot.params['id'];
+    // this.id = this.route.snapshot.params['id'];
+    this.id = 606569;
     configRating.max = 5;
     configRating.readonly = false;
     this.tripService.getCards(this.id).subscribe(c => {
       this.cards = c
       this.getTimeline();
     });
-    this.getCountry();
+    // this.getCountry();
   }
 
   async ngOnInit() {
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
     this.tripService.getTrip(this.id).subscribe(t => this.trip = t);
+    await this.getCountries(this.id);
   }
-  getCountry() {
-    for (let name of this.names) {
-      this.name = name.name;
-      this.countryService.getCountry(this.name).subscribe(c => this.countries$.push(c));
-    }
+  // getCountry() {
+  //   for (let country of this.countries$) {
+  //     this.name = name.name;
+  //     this.countryService.getCountry(this.name).subscribe(c => this.countries$.push(c));
+  //   }
+  // }
+  getCountries(id){
+    console.log("ID " + this.id);
+    this.tripService.getCountries(id).subscribe(c => {
+      this.countries = c;
+      for(let country of this.countries) {
+        this.countriess.push(country);
+      }
+      for (let country of this.countriess) {
+        this.name = country;
+        this.countryService.getCountry(this.name).subscribe(c => this.countries$.push(c));
+      }
+    });
   }
   showTab() {
     this.readMore = !this.readMore;
@@ -71,7 +88,9 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   }
 
   getTimeline() {
-    this.timeline.push({ caption: 'test', date: new Date(2014, 1, 16), selected: true, title: 'Horizontal Timeline', content: this.content });
+    let date = new Date('2018-12-09 00:00')
+    console.log("lol" + date);
+    this.timeline.push({ caption: '', date: date, selected: true, title: 'Horizontal Timeline', content: this.content },);
     for (let card of this.cards) {
       let date = new Date(card.date)
       if (card.type === 'NOTE') {
@@ -93,7 +112,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
     //   { caption: '29 Jan', date: new Date(2015, 1, 19), title: 'Event title here', content: this.content },
     //   { caption: '3 Mar', date: new Date(2015, 3, 3), title: 'Event title here', content: this.content },
     // ];
-    console.log(this.timeline);
+    // console.log(this.timeline);
   }
 
 //   load() {

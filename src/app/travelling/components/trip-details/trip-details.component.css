@@ -28,6 +28,14 @@
 .detail {
     font-weight: bold;
 }
+.languages-country {
+    display: flex;
+    flex-direction: column;
+    padding: 0.5rem;
+}
+.languages-country p {
+    margin-bottom: 0;
+}
 .card-buttons .btn-primary {
     margin-right: 5px;
 }

@@ -13,7 +13,7 @@ import { TripService } from 'app/travelling/services/trip.service';
   templateUrl: './trips.component.html',
   styleUrls: ['./trips.component.css']
 })
-export class TripsComponent implements OnInit {
+export class TripsComponent implements OnInit, OnDestroy {
 
   countries: Country[] = [];
   filteredCountries: Country[] = [];
@@ -33,6 +33,9 @@ export class TripsComponent implements OnInit {
     // this.populateCountries();
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
     this.tripService.getAll().subscribe(t => this.trips = t);
+  }
+
+  ngOnDestroy(){
   }
 
   // private populateCountries() {

@@ -36,7 +36,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CustomFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot([
-      { path: '', component: TripsComponent },
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
+      { path: 'home', component: TripsComponent },
       { path: 'login', component: LoginComponent }
     ])
   ],

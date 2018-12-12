@@ -37,6 +37,10 @@ export class TripService {
     return this.http.get('http://localhost:9000/api/account/all');
   }
 
+  getCountries(id) {
+    return this.http.get('http://localhost:9000/api/trip/'+id+'/countries');
+  }
+
   getCards(id){
     return this.http.get('http://localhost:9000/api/card/trip/'+id);
   }
