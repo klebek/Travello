@@ -42,7 +42,11 @@ export class TripService {
   }
 
   getCards(id){
-    return this.http.get('http://localhost:9000/api/card/trip/'+id);
+    return this.http.get('http://localhost:9000/api/card/trip/'+id+'/cards');
+  }
+
+  getNotes(id) {
+    return this.http.get('http://localhost:9000/api/card/trip/'+id+'/notes');
   }
 
   getAll(){

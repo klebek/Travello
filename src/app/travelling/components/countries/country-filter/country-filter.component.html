@@ -19,10 +19,18 @@
       <input type="text" class="form-control" id="travellersname" placeholder="Traveller's name">
     </div>
     <div class="form-group">
+      <label for="tripName">Search by trip's title</label>
+      <input [(ngModel)]="searchText" (ngModelChange)="changeText($event)" type="text" class="form-control" name="tripName"
+        id="tripName" placeholder="Trip's title">
+    </div>
+    <div class="form-group">
       <label for="countries">Search by country</label>
-      <select [ngModel]="searchName" routerLink="/home" (ngModelChange)="changeName($event)" class="form-control" name="name" id="countries">
+      <select [(ngModel)]="searchCountry" (ngModelChange)="changeCountry($event)" name="tripCountry" class="form-control">
         <option></option>
-        <option *ngFor="let country of countriesNames">{{country.name}}</option>
+        <option *ngFor="let country of countriesNames">
+          <img [src]="country.flag" [alt]="country.name" height="30px" width="30px" />
+          {{country.name}}
+        </option>
       </select>
     </div>
   </form>

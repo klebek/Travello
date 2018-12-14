@@ -1,91 +1,9 @@
-<!-- <div class="card-columns">
-  <div class="card">
-    <img *ngIf="photo1url" class="card-img-top" [src]="photo1url">
-    <div *ngIf="title1 || description1text" class="card-body">
-      <h5 class="card-title">{{title1}}</h5>
-      <p class="card-text">{{description1text}}</p>
+<div *ngIf="cards" class="card-columns">
+  <div *ngFor="let card of cards" class="card">
+    <img *ngIf="card.photo" class="card-img-top" [src]="card.photo">
+    <div *ngIf="card title" class="card-body">
+      <h5 *ngIf="card.title" class="card-title">{{card.title}}</h5>
+      <p *ngIf="card.description" class="card-text">{{card.description}}</p>
     </div>
   </div>
-  <div class="cards">
-    <div *ngIf="card2 === 2" class="card p-3">
-      <blockquote class="blockquote mb-0 card-body">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-        <footer class="blockquote-footer">
-          <small class="text-muted">
-            Someone famous in <cite title="Source Title">Source Title</cite>
-          </small>
-        </footer>
-      </blockquote>
-    </div>
-    <div *ngIf="card3 === 3" class="card">
-      <img class="card-img-top" src="https://i.imgur.com/FqCdFbI.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-    <div *ngIf="card4 === 4" class="card bg-primary text-white text-center p-3">
-      <blockquote class="blockquote mb-0">
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-        <footer class="blockquote-footer">
-          <small>
-            Someone famous in <cite title="Source Title">Source Title</cite>
-          </small>
-        </footer>
-      </blockquote>
-    </div>
-    <div *ngIf="card5 === 5" class="card text-center">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This card has a regular title and short paragraphy of text below it.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-    <div *ngIf="card6 === 6" class="card">
-      <img class="card-img" src="https://i.imgur.com/YqRxTUi.png" alt="Card image">
-    </div>
-  </div>
-</div> -->
-<div class="card-columns">
-    <div class="card">
-      <img class="card-img-top" src="https://i.imgur.com/FqCdFbI.jpg" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title that wraps to a new line</h5>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-    <div class="card">
-        <img class="card-img-top" src="https://i.imgur.com/FTP0T5m.jpg" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">Card title that wraps to a new line</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    <div class="card">
-      <img class="card-img-top" src="https://i.imgur.com/YqRxTUi.png" alt="Card image cap">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-    <div class="card text-center">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This card has a regular title and short paragraphy of text below it.</p>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card-img" src="https://i.imgur.com/lOVDHuK.jpg" alt="Card image">
-    </div>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">This is another card with title and supporting text below. This card has some additional content to make it slightly taller overall.</p>
-      </div>
-    </div>
-    <div class="card">
-        <img class="card-img" src="https://i.imgur.com/llhkQK7.png" alt="Card image">
-      </div>
-  </div>
+</div>

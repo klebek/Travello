@@ -16,7 +16,8 @@ import { TripVisitorsComponent } from './components/trip-visitors/trip-visitors.
 import { TripFormCardComponent } from './components/trip-form-card/trip-form-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CountryService } from 'shared/services/country.service';
-import { NamePipe } from './pipes/name.pipe';
+import { TitlePipe } from './pipes/title.pipe';
+import { CountryPipe } from './pipes/country.pipe';
 
 @NgModule({
   imports: [
@@ -39,7 +40,8 @@ import { NamePipe } from './pipes/name.pipe';
     TripFormPhotosComponent,
     TripVisitorsComponent,
     TripFormCardComponent,
-    NamePipe
+    TitlePipe,
+    CountryPipe
   ],
   providers: [ CountryService ]
 })

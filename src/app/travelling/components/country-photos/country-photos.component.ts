@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { TripCardComponent } from 'shared/components/trip-card/trip-card.component';
+import { TripService } from 'app/travelling/services/trip.service';
 
 @Component({
   selector: 'country-photos',
@@ -7,23 +9,14 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class CountryPhotosComponent implements OnInit {
 
-  @Input('card1') card1 = 1;
-  @Input('card2') card2 = 2;
-  @Input('card3') card3 = 3;
-  @Input('card4') card4 = 4;
-  @Input('card5') card5 = 5;
-  @Input('card6') card6 = 6;
+  @Input('trip') trip;
 
-  // @Input('photo1url') photo1url = "https://i.imgur.com/KLi0eip.jpg";
-  // @Input('description1text') description1text = "Example card text";
+  cards;
 
-  @Input('photo1url') photo1url = "https://i.imgur.com/gU3Jpjv.png"
-  @Input('description1text') description1text = "Opis"
-  @Input('title1') title1 = "Tytuł";
-
-  constructor() { }
+  constructor(private tripService: TripService) { }
 
   ngOnInit() {
+    this.tripService.getCards(this.trip.id).subscribe(c => this.cards = c);
   }
 
 }

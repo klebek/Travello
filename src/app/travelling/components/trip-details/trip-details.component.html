@@ -43,7 +43,7 @@
                   <h5 class="card-title">{{trip.title}}</h5>
                   <p class="card-text">{{trip.description}}</p>
                   <horizontal-timeline [timelineElements]="timeline" [showContent]="true"></horizontal-timeline>
-                  <country-photos></country-photos>
+                  <country-photos [trip]="trip"></country-photos>
                   <button (click)="showTab()" class="btn btn-primary btn-block"><i class="fas fa-globe-americas"></i>Explore<i
                       class="fas fa-caret-down"></i></button>
                 </div>
@@ -100,7 +100,7 @@
               <div *ngIf="appUser" class="card card-rating">
                 <div *ngIf="readonly" class="card-header">Trip's rate</div>
                 <!-- <div *ngIf="!readonly" class="card-header">Rate trip</div> -->
-                <ngb-rating (click)="showRate()" [(rate)]="currentRate" [readonly]="readonly" [rate]="3"></ngb-rating>
+                <ngb-rating (click)="showRate()" [(rate)]="trip.publicRating" [readonly]="readonly" [rate]="trip.publicRating"></ngb-rating>
                 <button (click)="rateTrip()" *ngIf="readonly" class="btn btn-rating btn-sm">Rate this trip</button>
                 <span *ngIf="!readonly">Rate this trip above using stars form 1 to 5</span>
               </div>

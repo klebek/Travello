@@ -7,19 +7,23 @@ import { AppUser } from 'shared/models/app-user';
 import { AuthService } from 'shared/services/auth.service';
 import { Trip } from 'app/travelling/model/trip';
 import { TripService } from 'app/travelling/services/trip.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'trips',
   templateUrl: './trips.component.html',
-  styleUrls: ['./trips.component.css']
+  styleUrls: ['./trips.component.css'],
 })
 export class TripsComponent implements OnInit, OnDestroy {
 
   countries: Country[] = [];
   filteredCountries: Country[] = [];
-  continent: string;
+  countriess;
   appUser: AppUser;
-  searchName;
+  searchText;
+  searchCountry;
+  filteredTrips;
+  subscription: Subscription;
 
   trips: any = [];
 
@@ -32,28 +36,44 @@ export class TripsComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     // this.populateCountries();
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
-    this.tripService.getAll().subscribe(t => this.trips = t);
+    this.subscription = this.tripService.getAll().subscribe(t => this.filteredTrips = this.trips = t);
   }
 
-  ngOnDestroy(){
+  filter(query: string) {
+    this.filteredTrips = (query) ?
+      this.trips.filter(t => {
+        for (let c of t.countries) {
+          let i = 0;
+          c[i].toLowerCase().includes(query.toLowerCase())
+          i++;
+        }
+      }) :
+      this.trips;
+    console.log(query);
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   // private populateCountries() {
-  //   this.countryService
+  //   this.tripService
   //     .getAll()
-  //     .switchMap(countries => {
-  //       this.countries = countries;
+  //     .switchMap(trips => {
+  //       this.trips = trips;
   //       return this.route.queryParamMap;
   //     })
   //     .subscribe(params => {
-  //       this.continent = params.get('continent');
+  //       this.countriess = params;
+  //       console.log("from populateSubscirbe " + this.countriess);
   //       this.applyFilter();
   //     });
   // }
 
   // private applyFilter() {
-  //   this.filteredCountries = (this.continent) ?
-  //     this.countries.filter(c => c.continent === this.continent) :
+  //   this.filteredCountries = (this.trips) ?
+  //     this.countries.filter(c => c.name === this.trips) :
   //     this.countries;
+  //     console.log("from applyFilter " + this.countries);
   // }
 }

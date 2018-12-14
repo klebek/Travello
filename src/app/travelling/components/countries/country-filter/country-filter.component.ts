@@ -1,7 +1,10 @@
 import { ContinentService } from './../../../../shared/services/continent.service';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { CountryService } from 'app/travelling/services/country.service';
 import { ActivatedRoute } from '@angular/router';
+import { TripService } from 'app/travelling/services/trip.service';
+import { Subscription } from 'rxjs/Subscription';
+import { Trip } from 'app/travelling/model/trip';
 
 @Component({
   selector: 'country-filter',
@@ -10,13 +13,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class CountryFilterComponent implements OnInit {
 
-  @Input('continent') continent;
-  @Input() searchName;
+  @Input() searchText;
+  @Input() searchCountry;
 
-  @Output() searchNameChange = new EventEmitter();
-  changeName(newSearchNameChange) {
-    this.searchName = newSearchNameChange;
-    this.searchNameChange.emit(newSearchNameChange);
+  @Output() searchTextChange = new EventEmitter();
+  changeText(newSearchTextChange) {
+    this.searchText = newSearchTextChange;
+    this.searchTextChange.emit(newSearchTextChange);
+  }
+
+  @Output() searchCountryChange = new EventEmitter();
+  changeCountry(newSearchCountryChange) {
+    this.searchCountry = newSearchCountryChange;
+    this.searchCountryChange.emit(newSearchCountryChange);
   }
 
   continents$ = [
@@ -30,7 +39,7 @@ export class CountryFilterComponent implements OnInit {
   countriesNames;
   param;
 
-  constructor(private countryService: CountryService, private route: ActivatedRoute) {
+  constructor(private countryService: CountryService, private tripService: TripService, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
       this.param = params['continent'];
     });

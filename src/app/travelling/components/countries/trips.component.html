@@ -19,7 +19,7 @@
 <div class="container">
     <div class="row row-countries">
         <div class="col-sm-3">
-            <country-filter [(searchName)]="searchName" [continent]="continent"></country-filter>
+            <country-filter [(searchText)]="searchText" [(searchCountry)]="searchCountry"></country-filter>
         </div>
         <div class="col">
             <div class="row no-gutters">
@@ -34,8 +34,8 @@
             </div>
             <div class="row row-products">
                 <ng-container>
-                    <!-- <div *ngFor="let t of filteredCountries | name : searchName; let i = index" class="col-sm-4 col-cards"> -->
-                    <div *ngFor="let trip of trips | name : searchName; let i = index" class="col-sm-4 col-cards">
+                    <!-- <div *ngFor="let t of filteredCountries | name : searchText; let i = index" class="col-sm-4 col-cards"> -->
+                    <div *ngFor="let trip of filteredTrips | title : searchText | country : searchCountry; let i = index" class="col-sm-4 col-cards">
                         <div class="card-group">
                             <trip-card *ngIf="!businessTrip" [trip]="trip"></trip-card>
                         </div>
