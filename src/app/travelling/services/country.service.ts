@@ -14,7 +14,7 @@ export class CountryService {
     return this.http.get('https://restcountries.eu/rest/v2/all?fields=name;capital;population;languages');
   }
   getName(): Observable<any> {
-    return this.http.get('https://restcountries.eu/rest/v2/all?fields=name');
+    return this.http.get('https://restcountries.eu/rest/v2/all?fields=name;flag');
   }
   getCountry(name): Observable<any> {
     return this.http.get('https://restcountries.eu/rest/v2/name/' + name);

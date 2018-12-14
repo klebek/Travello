@@ -28,10 +28,10 @@
       <select [(ngModel)]="searchCountry" (ngModelChange)="changeCountry($event)" name="tripCountry" class="form-control">
         <option></option>
         <option *ngFor="let country of countriesNames">
-          <img [src]="country.flag" [alt]="country.name" height="30px" width="30px" />
           {{country.name}}
         </option>
       </select>
+      <!-- <img *ngFor="let country of countriesNames" [src]="country.flag" class="flag-country" height="20px" width="30px" /> -->
     </div>
   </form>
 </div>

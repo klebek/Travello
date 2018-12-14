@@ -45,10 +45,8 @@ export class CountryFilterComponent implements OnInit {
     });
    }
 
-  ngOnInit() {
-    this.countryService.getName().subscribe(c => {
-      this.countriesNames = c;
-    });
+  async ngOnInit() {
+    await this.countryService.getName().subscribe(c => this.countriesNames = c);
   }
 
 }
