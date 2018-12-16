@@ -23,6 +23,7 @@ export class TripFormCardComponent implements OnInit {
   @Input() showCard;
   @Input() alertNote;
   @Input() alertCard;
+  @Input() type;
 
   @Output() showNoteChange = new EventEmitter();
   changeShowNote() {
@@ -56,6 +57,7 @@ export class TripFormCardComponent implements OnInit {
 
   constructor(private noteService: NoteService) {
     this.idCard = Math.floor(Math.random() * (999999 - 1 + 1)) + 1;
+    console.log(this.type);
   }
 
   ngOnInit() {

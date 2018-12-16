@@ -17,12 +17,14 @@ export class TripFormComponent implements OnInit  {
   trip: Trip = <Trip>{};
   startDate = {};
   endDate = {};
-  showNote;
-  showCard;
+  showNote = false;
+  showCard = false;
   alertNote;
   alertCard;
   countriesNames;
   countries = [];
+
+  type;
 
   idTrip;
   idCard;
@@ -51,9 +53,11 @@ export class TripFormComponent implements OnInit  {
 
   enableNote() {
     this.showNote = true;
+    this.type = 1;
   }
   enableCard() {
     this.showCard = true;
+    this.type = 0;
   }
   closeAlertNote() {
     this.alertNote = false;

@@ -44,16 +44,18 @@
           <input #photoCard="ngModel" [(ngModel)]="note.photo" name="photo" type="text" class="form-control" id="photoCard"
             placeholder="Photo URL">
         </div>
-        <div class="form-group form-group-button">
+
+        <div class="form-group form-group-button form-disabled">
           <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
             <label ngbButtonLabel class="btn-primary">
-              <input #type="ngModel" [(ngModel)]="note.type" name="type" ngbButton type="radio" [value]="1">Note
+              <input #typeNote="ngModel" [(ngModel)]="type" name="type" ngbButton type="radio" [value]="1">Note
             </label>
             <label ngbButtonLabel class="btn-primary">
-              <input #type="ngModel" [(ngModel)]="note.type" name="type" ngbButton type="radio" [value]="0">Card
+              <input #typeNote="ngModel" [(ngModel)]="type" name="type" ngbButton type="radio" [value]="0">Card
             </label>
           </div>
         </div>
+        Type {{type}};
         <div class="form-group form-group-button">
           <button (click)="addNote(f.value)" *ngIf="noteCard" (click)="changeAlertNote($event)" type="submit" class="btn btn-success"><i
               class="fas fa-save"></i>Save note</button>

@@ -131,3 +131,9 @@ input, select {
   background-color: $secondary-color;
   padding: 10px 20px 10px 20px;
 }
+.input-group > .form-control {
+  margin-bottom: 0;
+}
+.alert {
+  margin-top: 15px;
+}

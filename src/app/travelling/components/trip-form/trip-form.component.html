@@ -8,47 +8,50 @@
               <div class="form-group col-md-12">
                 <label for="inputTitle">Title</label>
                 <input #title="ngModel" [(ngModel)]="trip.title" name="title" type="text" class="form-control" id="inputTitle"
-                  placeholder="Type title">
+                  placeholder="Type title" required>
+                <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
+                  <div *ngIf="title.errors.required">Title is required</div>
+                </div>
               </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-4">
                 <label for="startTime">Start</label>
-
                 <div class="input-group">
                   <input class="form-control" placeholder="yyyy-mm-dd" name="startDate" #c1="ngModel" [(ngModel)]="trip.startDate"
-                    ngbDatepicker #startDate="ngbDatepicker">
+                    ngbDatepicker #startDate="ngbDatepicker" required>
                   <div class="input-group-append">
                     <button class="btn btn-default btn-calendar calendar" (click)="startDate.toggle()" type="button"><i
                         class="fas fa-calendar-alt"></i></button>
                   </div>
                 </div>
-
+                <div class="alert alert-danger" *ngIf="c1.touched && c1.invalid">
+                  <div *ngIf="c1.errors.required">Start date is required</div>
+                </div>
               </div>
               <div class="form-group col-md-4">
                 <label for="endTime">Finish</label>
                 <div class="input-group">
-
-                  <div class="input-group">
-                    <input class="form-control" placeholder="yyyy-mm-dd" name="endDate" #c2="ngModel" [(ngModel)]="trip.endDate"
-                      ngbDatepicker #endDate="ngbDatepicker">
-                    <div class="input-group-append">
-                      <button class="btn btn-default btn-calendar calendar" (click)="endDate.toggle()" type="button"><i
-                          class="fas fa-calendar-alt"></i></button>
-                    </div>
+                  <input class="form-control" placeholder="yyyy-mm-dd" name="endDate" #c2="ngModel" [(ngModel)]="trip.endDate"
+                    ngbDatepicker #endDate="ngbDatepicker" required>
+                  <div class="input-group-append">
+                    <button class="btn btn-default btn-calendar calendar" (click)="endDate.toggle()" type="button"><i
+                        class="fas fa-calendar-alt"></i></button>
                   </div>
-
                 </div>
-                <!-- <hr />
-                  <pre>End time: {{ endTime | json }}</pre>
-                  <pre>{{endTime.day}}.{{endTime.month}}.{{endTime.year}}</pre> -->
+                <div class="alert alert-danger" *ngIf="c2.touched && c2.invalid">
+                  <div *ngIf="c2.errors.required">End date is required</div>
+                </div>
               </div>
               <div class="col-sm-3">
                 <label for="country">Country</label>
-                <select #country="ngModel" [(ngModel)]="trip.countries" class="form-control" name="countries">
+                <select #country="ngModel" [(ngModel)]="trip.countries" class="form-control" name="countries" required>
                   <option></option>
                   <option *ngFor="let country of countriesNames">{{country.name}}</option>
                 </select>
+                <div class="alert alert-danger" *ngIf="country.touched && country.invalid">
+                  <div *ngIf="country.errors.required">Country is required</div>
+                </div>
               </div>
               <div class="col-sm">
                 <label for="country">Add country</label>
@@ -58,7 +61,10 @@
               <div class="form-group col-md-12">
                 <label for="inputDescription">Description</label>
                 <textarea #description="ngModel" [(ngModel)]="trip.description" name="description" class="form-control"
-                  id="inputDescription" rows="6"></textarea>
+                  id="inputDescription" rows="6" required></textarea>
+              </div>
+              <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+                <div *ngIf="description.errors.required">Description is required</div>
               </div>
             </div>
             <div class="form-row">
@@ -66,42 +72,49 @@
                 <label>Accessibility</label><br />
                 <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
                   <label ngbButtonLabel class="btn-primary">
-                    <input #status="ngModel" [(ngModel)]="trip.status" name="status" ngbButton type="radio" [value]="1"><i
-                      class="fas fa-unlock-alt"></i>Public
+                    <input #status="ngModel" [(ngModel)]="trip.status" name="status" ngbButton type="radio" [value]="1"
+                      required><i class="fas fa-unlock-alt"></i>Public
                   </label>
                   <label ngbButtonLabel class="btn-primary">
-                    <input #status="ngModel" [(ngModel)]="trip.status" name="status" ngbButton type="radio" [value]="0"><i
-                      class="fas fa-lock"></i>Private
+                    <input #status="ngModel" [(ngModel)]="trip.status" name="status" ngbButton type="radio" [value]="0"
+                      required><i class="fas fa-lock"></i>Private
+                  </label>
+                </div>
+                <div class="alert alert-danger" *ngIf="status.touched && status.invalid">
+                  <div *ngIf="status.errors.required">Status is required</div>
+                </div>
+              </div>
+              <div *ngIf="trip" class="form-group col-md-6">
+                <label for="options">Options</label><br />
+                <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioType">
+                  <label ngbButtonLabel class="btn btn-warning btn-add">
+                    <input (click)="enableNote()" (click)="addTrip(f.value)" #typeNote="ngModel" [(ngModel)]="type"
+                      name="type" ngbButton type="radio" [value]="0" [disabled]="showCard || !f.valid"><i class="fas fa-plus"></i>Add
+                    note
+                  </label>
+                  <label ngbButtonLabel class="btn btn-warning btn-add">
+                    <input (click)="enableCard()" (click)="addTrip(f.value)" #typeNote="ngModel" [(ngModel)]="type"
+                      name="type" ngbButton type="radio" [value]="1" [disabled]="showNote || !f.valid"><i class="fas fa-plus"></i>Add
+                    card
                   </label>
                 </div>
               </div>
-              <div class="form-group col-md-6">
-                <label for="options">Options</label><br />
-                <button (click)="enableNote()" (click)="addTrip(f.value)" class="btn btn-warning btn-add" id="options"><i
-                    class="fas fa-plus"></i>Add
-                  note</button>
-                <button (click)="enableCard()" (click)="addTrip(f.value)" class="btn btn-warning btn-add" id="options"><i
-                    class="fas fa-plus"></i>Add
-                  card</button>
-              </div>
-
             </div>
-            <!-- <div class="col-md-12">
-              <trip-form-photos></trip-form-photos>
-            </div> -->
             <div class="row">
               <div class="col-sm-6">
-                <trip-form-card *ngIf="showNote" [(alertNote)]="alertNote" [(showNote)]="showNote" [noteCard]="true"></trip-form-card>
+                <trip-form-card *ngIf="showNote" [(alertNote)]="alertNote" [(showNote)]="showNote" [noteCard]="true"
+                  [type]="type"></trip-form-card>
                 <ngb-alert *ngIf="alertNote" (click)="closeAlertNote()" type="success"><i class="fas fa-check-circle"></i>Saved
                   note</ngb-alert>
               </div>
               <div class="col-sm-6">
-                <trip-form-card *ngIf="showCard" [(alertCard)]="alertCard" [(showCard)]="showCard" [noteCard]="false"></trip-form-card>
+                <trip-form-card *ngIf="showCard" [(alertCard)]="alertCard" [(showCard)]="showCard" [noteCard]="false"
+                  [type]="type"></trip-form-card>
                 <ngb-alert *ngIf="alertCard" (click)="closeAlertCard()" type="success"><i class="fas fa-check-circle"></i>Saved
                   card</ngb-alert>
               </div>
             </div>
-            <button (click)="addTrip(f.value)" [disabled]="!f.valid" class="btn btn-success btn-block"><i class="fas fa-save"></i>Add
+            <button (click)="addTrip(f.value)" [disabled]="countries.length < 1 || !f.valid" class="btn btn-success btn-block"><i class="fas fa-save"></i>Add
               your new trip</button>
           </form>
         </div>
