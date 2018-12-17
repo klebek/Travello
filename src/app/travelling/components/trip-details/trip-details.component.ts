@@ -16,13 +16,13 @@ import { Subscription } from 'rxjs';
 })
 export class TripDetailsComponent implements OnInit, OnDestroy {
 
+  id;
   appUser: AppUser;
   trip;
   subscriptionTrip: Subscription;
   subscriptionCountry: Subscription;
   subscriptionCards: Subscription;
   images = [1, 2, 3].map(() => `https://picsum.photos/600/850?random&t=${Math.random()}`);
-  id;
   timeline: TimelineElement[] = [];
   notes;
   currentJustify = 'fill';
@@ -38,9 +38,9 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   firstDate;
 
   constructor(private auth: AuthService, private route: ActivatedRoute, private tripService: TripService, private countryService: CountryService, configRating: NgbRatingConfig) {
-    this.id = this.route.snapshot.params['id'];
     configRating.max = 5;
     configRating.readonly = false;
+    this.id = this.route.snapshot.params['id'];
     this.tripService.getNotes(this.id).subscribe(n => {
       this.notes = n
       this.getTimeline();

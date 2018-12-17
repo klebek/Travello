@@ -16,14 +16,12 @@ export class TripCardComponent implements OnInit {
   @Input('trip') trip: Trip;
 
   cards;
-  id;
 
   constructor(private tripService: TripService) {
   }
 
   ngOnInit() {
-    this.id = this.trip.id;
-    this.getCards(this.id);  
+    this.getCards(this.trip.id);  
   }
 
   getCards(id){

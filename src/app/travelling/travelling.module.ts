@@ -24,6 +24,7 @@ import { CountryPipe } from './pipes/country.pipe';
     SharedModule,
     HttpClientModule,
     RouterModule.forChild([
+      { path: 'trips', component: TripsComponent },
       { path: 'countries', component: TripsComponent, canActivate: [AuthGuard] },
       { path: 'trip/:id', component: TripDetailsComponent },
       { path: 'my-trips', component: MyTripsComponent, canActivate: [AuthGuard] },

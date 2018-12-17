@@ -62,13 +62,13 @@
                 <label for="inputDescription">Description</label>
                 <textarea #description="ngModel" [(ngModel)]="trip.description" name="description" class="form-control"
                   id="inputDescription" rows="6" required></textarea>
-              </div>
-              <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
-                <div *ngIf="description.errors.required">Description is required</div>
+                <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+                  <div *ngIf="description.errors.required">Description is required</div>
+                </div>
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-md-6">
+              <div class="form-group col-md-2">
                 <label>Accessibility</label><br />
                 <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
                   <label ngbButtonLabel class="btn-primary">
@@ -84,6 +84,7 @@
                   <div *ngIf="status.errors.required">Status is required</div>
                 </div>
               </div>
+              <div class="col-sm"></div>
               <div *ngIf="trip" class="form-group col-md-6">
                 <label for="options">Options</label><br />
                 <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioType">
@@ -114,7 +115,8 @@
                   card</ngb-alert>
               </div>
             </div>
-            <button (click)="addTrip(f.value)" [disabled]="countries.length < 1 || !f.valid" class="btn btn-success btn-block"><i class="fas fa-save"></i>Add
+            <button (click)="addTrip(f.value)" [disabled]="countries.length < 1 || !f.valid" class="btn btn-success btn-block"><i
+                class="fas fa-save"></i>Add
               your new trip</button>
           </form>
         </div>
