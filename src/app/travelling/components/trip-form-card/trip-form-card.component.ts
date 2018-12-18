@@ -13,11 +13,11 @@ import { NoteService } from 'app/travelling/services/note.service';
 export class TripFormCardComponent implements OnInit {
 
   date: Date;
-  note;
-  idTrip;
+  note = [];
   idCard;
 
   @Input('noteCard') noteCard;
+  @Input('idTrip') idTrip;
 
   @Input() showNote;
   @Input() showCard;
@@ -57,7 +57,6 @@ export class TripFormCardComponent implements OnInit {
 
   constructor(private noteService: NoteService) {
     this.idCard = Math.floor(Math.random() * (999999 - 1 + 1)) + 1;
-    console.log(this.type);
   }
 
   ngOnInit() {

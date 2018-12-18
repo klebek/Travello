@@ -27,10 +27,10 @@ import { TripEditComponent } from './components/trip-edit/trip-edit.component';
     RouterModule.forChild([
       { path: 'trips', component: TripsComponent },
       { path: 'countries', component: TripsComponent, canActivate: [AuthGuard] },
-      { path: 'trip/:id', component: TripDetailsComponent },
+      { path: 'trip/:id', component: TripDetailsComponent, pathMatch: 'full' },
       { path: 'my-trips', component: MyTripsComponent, canActivate: [AuthGuard] },
       { path: 'add-trip', component: TripFormComponent, canActivate: [AuthGuard] },
-      { path: 'edit-trip/:id', component: TripEditComponent, canActivate: [AuthGuard] },
+      { path: 'edit-trip/:id', component: TripEditComponent, canActivate: [AuthGuard], pathMatch: 'full' },
     ])
   ],
   declarations: [

@@ -13,8 +13,8 @@ import { CountryService } from 'app/travelling/services/country.service';
 export class TripFormComponent implements OnInit  {
 
   trip: Trip = <Trip>{};
-  startDate = {};
-  endDate = {};
+  startDateApp;
+  endDate;
   showNote = false;
   showCard = false;
   alertNote;
@@ -27,7 +27,8 @@ export class TripFormComponent implements OnInit  {
   idTrip;
   idCard;
 
-  constructor(private tripService: TripService, private countryService: CountryService) {}
+  constructor(private tripService: TripService, private countryService: CountryService) {
+  }
 
   ngOnInit() {
     this.countryService.getName().subscribe(c => {

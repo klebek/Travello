@@ -108,7 +108,7 @@
             </div>
             <button (click)="editTrip(trip.id, f.value)" [disabled]="countries.length < 1 || !f.valid" class="btn btn-success btn-block"><i
                 class="fas fa-save"></i>Edit trip</button>
-            DANE: {{f.value | json}}
+            <!-- DANE: {{f.value | json}} -->
           </form>
         </div>
       </div>
@@ -167,7 +167,9 @@
             </div>
             <hr />
           </div>
+          <button (click)="showAddNote()" class="btn btn-success"><i class="fas fa-plus"></i>Add note</button>
         </div>
+        <trip-form-card *ngIf="addNote" [noteCard]="true" [idTrip]="id"></trip-form-card>
       </div>
       <div *ngIf="editCards" class="card">
         <div class="card">
@@ -207,7 +209,9 @@
             </div>
             <hr />
           </div>
+          <button (click)="showAddCard()" class="btn btn-success"><i class="fas fa-plus"></i>Add card</button>
         </div>
+        <trip-form-card *ngIf="addCard" [noteCard]="false" [idTrip]="id"></trip-form-card>
       </div>
     </div>
     <div class="col-sm-2 col-edit">

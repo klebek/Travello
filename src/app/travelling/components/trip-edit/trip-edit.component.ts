@@ -23,6 +23,9 @@ export class TripEditComponent implements OnInit, OnDestroy {
   startDateApp;
   endDateApp;
 
+  addNote = false;
+  addCard = false;
+
   notes;
   cards;
 
@@ -94,6 +97,13 @@ export class TripEditComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscriptionTrip.unsubscribe();
     this.subscriptionTripCountries.unsubscribe();
+  }
+
+  showAddNote(){
+    this.addNote = true;
+  }
+  showAddCard(){
+    this.addCard = true;
   }
 
   enableEditTrip() {

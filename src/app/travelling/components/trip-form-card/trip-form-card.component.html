@@ -14,11 +14,17 @@
           <label for="photoNote">Photo URL</label>
           <input #photoNote="ngModel" [(ngModel)]="note.photo" name="photo" type="text" class="form-control" id="photoNote"
             placeholder="Photo URL">
+            <div class="alert alert-danger" *ngIf="photoNote.touched && photoNote.invalid">
+              <div *ngIf="photoNote.errors.required">Title is required</div>
+            </div>
         </div>
         <div class="form-group">
           <label for="title">Title</label>
           <input #titleNote="ngModel" [(ngModel)]="note.title" name="title" type="text" class="form-control" id="title"
-            placeholder="Title">
+            placeholder="Title" required>
+            <div class="alert alert-danger" *ngIf="titleNote.touched && titleNote.invalid">
+              <div *ngIf="titleNote.errors.required">Title is required</div>
+            </div>
         </div>
         <div class="form-group">
           <label for="note">Note</label>

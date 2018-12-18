@@ -7,7 +7,7 @@ import { AppUser } from 'shared/models/app-user';
 import { AuthService } from 'shared/services/auth.service';
 import { Trip } from 'app/travelling/model/trip';
 import { TripService } from 'app/travelling/services/trip.service';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'trips',

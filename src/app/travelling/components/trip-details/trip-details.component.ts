@@ -7,7 +7,7 @@ import { TimelineElement } from 'shared/components/horizontal-timeline/timeline-
 import { CountryService } from 'app/travelling/services/country.service';
 import { Trip } from 'app/travelling/model/trip';
 import { TripService } from 'app/travelling/services/trip.service';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-trip-details',
@@ -21,7 +21,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   trip;
   subscriptionTrip: Subscription;
   subscriptionCountry: Subscription;
-  subscriptionCards: Subscription;
+  subscriptionNotes: Subscription;
   images = [1, 2, 3].map(() => `https://picsum.photos/600/850?random&t=${Math.random()}`);
   timeline: TimelineElement[] = [];
   notes;
@@ -41,7 +41,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
     configRating.max = 5;
     configRating.readonly = false;
     this.id = this.route.snapshot.params['id'];
-    this.tripService.getNotes(this.id).subscribe(n => {
+    this.subscriptionNotes = this.tripService.getNotes(this.id).subscribe(n => {
       this.notes = n
       this.getTimeline();
     });
@@ -49,19 +49,19 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
-    this.tripService.getTrip(this.id).subscribe(t => this.trip = t);
+    this.subscriptionTrip = this.tripService.getTrip(this.id).subscribe(t => this.trip = t);
     await this.getCountries(this.id);
   }
   getCountries(id) {
     console.log("ID " + this.id);
-    this.tripService.getCountries(id).subscribe(c => {
+    this.subscriptionCountry = this.tripService.getCountries(id).subscribe(c => {
       this.countries = c;
       for (let country of this.countries) {
         this.countriess.push(country);
       }
       for (let country of this.countriess) {
         this.name = country;
-        this.countryService.getCountry(this.name).subscribe(c => this.countries$.push(c));
+        this.subscriptionCountry = this.countryService.getCountry(this.name).subscribe(c => this.countries$.push(c));
       }
     });
   }
@@ -95,7 +95,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscriptionTrip.unsubscribe();
     this.subscriptionCountry.unsubscribe();
-    this.subscriptionCards.unsubscribe();
+    this.subscriptionNotes.unsubscribe();
   }
 
 }
