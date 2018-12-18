@@ -15,6 +15,7 @@ import { UserService } from './services/user.service';
 import { HorizontalTimelineComponent } from './components/horizontal-timeline/horizontal-timeline.component';
 import { BusinessTripsComponent } from './components/business-trips/business-trips.component';
 import { HttpClientModule } from '@angular/common/http';
+import { TripFormComponent } from 'app/travelling/components/trip-form/trip-form.component';
 
 
 @NgModule({
@@ -25,8 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     HttpClientModule,
-    NgbModule.forRoot(),
-    RouterModule
+    RouterModule,
+    NgbModule.forRoot()
   ],
   declarations: [TripCardComponent,HorizontalTimelineComponent, BusinessTripsComponent],
   exports: [

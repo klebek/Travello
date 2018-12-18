@@ -1,0 +1,55 @@
+.container {
+    margin-top: 150px;
+}
+.btn-primary:not(:disabled):not(.disabled).active {
+    background-color: #c26b23;
+    border-color: #f4852b;
+}
+.btn-primary.focus, .btn-primary:not(:disabled):not(.disabled).active:focus{
+    box-shadow: none;
+}
+.row /deep/ .btn-link, .row /deep/ .ngb-dp-weekday {
+    color: #f4852b !important;
+}
+.row /deep/ .bg-primary {
+    background-color: #f4852b !important;
+}
+.btn-calendar {
+    background: white;
+    border-left: none;
+    border-color: #ced4da;
+    color: #f4852b;
+}
+.badge-primary {
+    margin-right: 1rem;
+    padding: 5px 10px 5px 10px;
+}
+.fa-times {
+    padding-right: 0;
+    cursor: pointer;
+}
+.btn-add {
+    margin-right: 10px;
+    padding-right: 20px;
+}
+.form-row {
+    margin-bottom: 30px;
+}
+.btn-success {
+    margin-top: 20px;
+}
+.btn-add-country {
+    margin-top: 0;
+}
+.row /deep/ .alert-success {
+    background-color: #28a7467a;
+    color: white;
+    margin-top: 1rem;
+}
+.row /deep/ .alert-success .close {
+    color: white;
+    opacity: 0.9;
+}
+.row /deep/ .alert-success .close:hover {
+    color: white;
+}

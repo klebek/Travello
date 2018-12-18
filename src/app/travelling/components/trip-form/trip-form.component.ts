@@ -1,13 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { NgbCalendar, NgbDateParserFormatter, NgbDateStruct, NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { Trip } from 'app/travelling/model/trip';
-import { Observable } from 'rxjs/Observable';
 import { TripService } from 'app/travelling/services/trip.service';
 import { CountryService } from 'app/travelling/services/country.service';
-import { thisExpression } from 'babel-types';
 
 @Component({
-  selector: 'app-trip-form',
+  selector: 'trip-form',
   templateUrl: './trip-form.component.html',
   styleUrls: ['./trip-form.component.css'],
   providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}]

@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CountryService } from 'shared/services/country.service';
 import { TitlePipe } from './pipes/title.pipe';
 import { CountryPipe } from './pipes/country.pipe';
+import { TripEditComponent } from './components/trip-edit/trip-edit.component';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { CountryPipe } from './pipes/country.pipe';
       { path: 'trip/:id', component: TripDetailsComponent },
       { path: 'my-trips', component: MyTripsComponent, canActivate: [AuthGuard] },
       { path: 'add-trip', component: TripFormComponent, canActivate: [AuthGuard] },
+      { path: 'edit-trip/:id', component: TripEditComponent, canActivate: [AuthGuard] },
     ])
   ],
   declarations: [
@@ -42,7 +44,8 @@ import { CountryPipe } from './pipes/country.pipe';
     TripVisitorsComponent,
     TripFormCardComponent,
     TitlePipe,
-    CountryPipe
+    CountryPipe,
+    TripEditComponent
   ],
   providers: [ CountryService ]
 })
