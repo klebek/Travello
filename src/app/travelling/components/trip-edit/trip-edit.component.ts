@@ -20,6 +20,8 @@ export class TripEditComponent implements OnInit, OnDestroy {
   countries = [];
   tripCountries;
   tripStatus;
+  startDateApp;
+  endDateApp;
 
   subscriptionTrip: Subscription;
   subscriptionTripCountries: Subscription;
@@ -28,8 +30,12 @@ export class TripEditComponent implements OnInit, OnDestroy {
     this.id = this.route.snapshot.params['id'];
     this.subscriptionTrip = this.tripService.getTrip(this.id).subscribe(t => {
       this.trip = t;
-      if(this.trip.status == "PUBLIC") { this.tripStatus = 1; }
-      else if(this.trip.status == "PRIVATE") { this.tripStatus = 0; }
+      if(this.trip.status == "PUBLIC") { this.tripStatus = 1; this.trip.status = 1}
+      else if(this.trip.status == "PRIVATE") { this.tripStatus = 0; this.trip.status = 0}
+      console.log("tripStatus: " + this.tripStatus);
+      console.log("trip.status: " + this.trip.status);
+      this.startDateApp = new Date(this.trip.startDate);
+      this.endDateApp = new Date(this.trip.endDate);
     });
     this.subscriptionTripCountries = this.tripService.getCountries(this.id).subscribe(c => {
       this.tripCountries = c;

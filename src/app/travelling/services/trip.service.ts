@@ -12,9 +12,11 @@ export class TripService {
   idUser = 0;
   idTrip = Math.floor(Math.random() * (999999 - 1 + 1)) + 1;
   url;
+  editUrl;
 
   constructor(private http: HttpClient) {
     this.url = "http://localhost:9000/api/trip/user/"+this.idUser+"/id/"+this.idTrip;
+    this.editUrl = "http://loalhost:900/api/trip/user/"+this.idUser+"/id/";
   }
 
   getTripId(){
@@ -32,6 +34,18 @@ export class TripService {
     // console.log(trip); 
     return this.http.put<Trip>(this.url, trip, options);
   }
+
+  editTrip(id, trip: Trip) {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Cache-Control': 'no-cache'
+    });   
+    let options = {
+      headers: httpHeaders
+    };
+    return this.http.put(this.editUrl+id, trip, options) 
+  }
+  
   
   getAccount(){
     return this.http.get('http://localhost:9000/api/account/all');
