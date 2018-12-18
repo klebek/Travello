@@ -23,20 +23,20 @@ export class TripEditComponent implements OnInit, OnDestroy {
   startDateApp;
   endDateApp;
 
+  notes;
+  cards;
+
+  noteDates = [];
+
+  editCards = false;
+  editNotes = false;
+  editTripp = true;
+
   subscriptionTrip: Subscription;
   subscriptionTripCountries: Subscription;
 
   constructor(private route: ActivatedRoute, private tripService: TripService, private countryService: CountryService) {
     this.id = this.route.snapshot.params['id'];
-    this.subscriptionTrip = this.tripService.getTrip(this.id).subscribe(t => {
-      this.trip = t;
-      if(this.trip.status == "PUBLIC") { this.tripStatus = 1; this.trip.status = 1}
-      else if(this.trip.status == "PRIVATE") { this.tripStatus = 0; this.trip.status = 0}
-      console.log("tripStatus: " + this.tripStatus);
-      console.log("trip.status: " + this.trip.status);
-      this.startDateApp = new Date(this.trip.startDate);
-      this.endDateApp = new Date(this.trip.endDate);
-    });
     this.subscriptionTripCountries = this.tripService.getCountries(this.id).subscribe(c => {
       this.tripCountries = c;
       this.countries = this.tripCountries;
@@ -44,6 +44,21 @@ export class TripEditComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.subscriptionTrip = this.tripService.getTrip(this.id).subscribe(t => {
+      this.trip = t;
+      if(this.trip.status == "PUBLIC") { this.tripStatus = 1; this.trip.status = 1}
+      else if(this.trip.status == "PRIVATE") { this.tripStatus = 0; this.trip.status = 0}
+      this.startDateApp = new Date(this.trip.startDate);
+      this.endDateApp = new Date(this.trip.endDate);
+    });
+    this.tripService.getCards(this.id).subscribe(n => this.cards = n);
+    this.tripService.getNotes(this.id).subscribe(n => {
+      this.notes = n
+      for(let note of this.notes) {
+        note.date = new Date(note.date);
+        console.log(note.date);
+      }
+    });
     this.countryService.getName().subscribe(c => {
       this.countriesNames = c;
     });
@@ -66,14 +81,36 @@ export class TripEditComponent implements OnInit, OnDestroy {
 
   addTrip(trip: Trip) {
     this.tripService.addTrip(trip).subscribe(
-      trip => {
-      }
+      trip => {}
     );
+  }
+
+  editTrip(id, trip: Trip) {
+    // console.log(id + " " + trip.title);
+    this.tripService.editTrip(id, trip).subscribe(
+      trip => {}
+    )
   }
 
   ngOnDestroy() {
     this.subscriptionTrip.unsubscribe();
     this.subscriptionTripCountries.unsubscribe();
+  }
+
+  enableEditTrip() {
+    this.editTripp = true;
+    this.editNotes = false;
+    this.editCards = false;
+  }
+  enableEditNotes() {
+    this.editNotes = true;
+    this.editTripp = false;
+    this.editCards = false;
+  }
+  enableEditCards() {
+    this.editCards = true;
+    this.editTripp = false;
+    this.editNotes = false;
   }
 
 }

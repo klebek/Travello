@@ -16,7 +16,7 @@ export class TripService {
 
   constructor(private http: HttpClient) {
     this.url = "http://localhost:9000/api/trip/user/"+this.idUser+"/id/"+this.idTrip;
-    this.editUrl = "http://loalhost:900/api/trip/user/"+this.idUser+"/id/";
+    this.editUrl = "http://localhost:9000/api/trip/user/"+this.idUser+"/id/";
   }
 
   getTripId(){
