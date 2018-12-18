@@ -56,7 +56,6 @@ export class TripEditComponent implements OnInit, OnDestroy {
       this.notes = n
       for(let note of this.notes) {
         note.date = new Date(note.date);
-        console.log(note.date);
       }
     });
     this.countryService.getName().subscribe(c => {

@@ -156,7 +156,7 @@
                       <button (click)="addNote(f.value)" (click)="changeAlertNote($event)" type="submit" class="btn btn-success"><i
                           class="fas fa-save"></i>Update note</button>
                     </div>
-                    DANE: {{f.value | json}}
+                    <!-- DANE: {{f.value | json}} -->
                   </div>
                   <div class="col-sm-4 col-sm-4-img">
                     <label for="note-img">Preview of photo</label>
@@ -196,7 +196,7 @@
                           class="fas fa-save"></i>Update
                         card</button>
                     </div>
-                    DANE: {{f.value | json}}
+                    <!-- DANE: {{f.value | json}} -->
                   </div>
                   <div class="col-sm-4 col-sm-4-img">
                     <label for="card-img">Preview of photo</label>
@@ -211,9 +211,9 @@
       </div>
     </div>
     <div class="col-sm-2 col-edit">
-      <button *ngIf="editTripp" (click)="enableEditCards()" class="btn btn-warning"><i class="fas fa-edit"></i>Edit
+      <button *ngIf="editTripp || editNotes" (click)="enableEditCards()" class="btn btn-warning"><i class="fas fa-edit"></i>Edit
         cards</button>
-      <button *ngIf="editTripp" (click)="enableEditNotes()" class="btn btn-warning"><i class="fas fa-edit"></i>Edit
+      <button *ngIf="editTripp || editCards" (click)="enableEditNotes()" class="btn btn-warning"><i class="fas fa-edit"></i>Edit
         notes</button>
       <button *ngIf="editCards || editNotes" (click)="enableEditTrip()" class="btn btn-warning"><i class="fas fa-edit"></i>Edit
         trip</button>
