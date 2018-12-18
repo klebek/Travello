@@ -16,6 +16,8 @@ export class CountryFilterComponent implements OnInit {
   @Input() searchText;
   @Input() searchCountry;
 
+  continent;
+
   @Output() searchTextChange = new EventEmitter();
   changeText(newSearchTextChange) {
     this.searchText = newSearchTextChange;

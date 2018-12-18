@@ -13,7 +13,7 @@ import { NoteService } from 'app/travelling/services/note.service';
 export class TripFormCardComponent implements OnInit {
 
   date: Date;
-  note: Note[] = [];
+  note;
   idTrip;
   idCard;
 

@@ -21,6 +21,7 @@ export class TripsComponent implements OnInit, OnDestroy {
   countriess;
   appUser: AppUser;
   searchText;
+  i;
   searchCountry;
   filteredTrips;
   subscription: Subscription;
