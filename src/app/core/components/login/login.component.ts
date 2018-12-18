@@ -1,6 +1,7 @@
-import { AngularFireAuth } from 'angularfire2/auth';
 import { AuthService } from 'shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
+import {HttpErrorResponse} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,24 +10,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent {
 
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService, private router: Router) {}
 
   showRegister = false;
 
   showRegisterForm() {
     this.showRegister = !this.showRegister;
   }
-
-  loginGoogle() {
-    this.auth.loginGoogle();
-  }
-
-  loginFb() {
-    this.auth.loginFb();
-  }
+  //
+  // loginGoogle() {
+  //   this.auth.loginGoogle();
+  // }
+  //
+  // loginFb() {
+  //   this.auth.loginFb();
+  // }
 
   loginEmailPassword(formLogin) {
-    this.auth.loginEmailPassword(formLogin, formLogin.value.email, formLogin.value.password);
+    this.auth.userAuthentication(formLogin.value.email, formLogin.value.password).subscribe((data: any) => {
+      localStorage.setItem('token', data.access_token);
+      this.router.navigate(['/home']);
+    },
+      (err: HttpErrorResponse) => {});
   }
 
 }

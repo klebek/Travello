@@ -14,9 +14,12 @@ import { CoreModule } from './core/core.module';
 import { TripsComponent } from './travelling/components/countries/trips.component';
 import { TravellingModule } from './travelling/travelling.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { TitlePipe } from './pipes/title.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {UserService} from "shared/services/user.service";
+import {AuthGuard} from "shared/services/auth-guard.service";
+import {AuthInterceptor} from "shared/services/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -41,6 +44,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       { path: 'login', component: LoginComponent }
     ])
   ],
+  providers: [UserService, AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   exports: [NgbModule],
   bootstrap: [AppComponent]
 })

@@ -12,6 +12,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { BusinessComponent } from './components/business/business.component';
 import { ProfileSettingsComponent } from './components/profile-settings/profile-settings.component';
 import { FooterComponent } from './components/footer/footer.component';
+import {AuthGuard} from 'shared/services/auth-guard.service';
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import { FooterComponent } from './components/footer/footer.component';
     NgbModule.forRoot(),
     RouterModule.forChild([]),
     RouterModule.forRoot([
-      { path: 'profile', component: ProfileComponent },
+      { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
       { path: 'business', component: BusinessComponent }
     ])
   ],
