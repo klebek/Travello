@@ -13,7 +13,7 @@ import { NoteService } from 'app/travelling/services/note.service';
 export class TripFormCardComponent implements OnInit {
 
   date: Date;
-  note;
+  note = [];
   idCard;
 
   @Input('noteCard') noteCard;

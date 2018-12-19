@@ -51,6 +51,15 @@ export class TripService {
     return this.http.get('http://localhost:9000/api/account/all');
   }
 
+  getUserTrip(id){
+    id = this.idUser;
+    return this.http.get('http://localhost:9000/api/trip/user/'+id);
+  }
+
+  deleteTrip(id) {
+    return this.http.delete('http://localhost:9000/api/trip/'+id);
+  }
+
   getCountries(id) {
     return this.http.get('http://localhost:9000/api/trip/'+id+'/countries');
   }
