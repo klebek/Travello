@@ -2,20 +2,30 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="id"><i class="fas fa-sort-numeric-down"></i></span>
+                        </div>
+                        <input #query1 (keyup)="filterById(query1.value)" type="text" class="form-control" placeholder="Search by id...">
+                    </div>
+                </div>
+                <div class="col-sm-4">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="title"><i class="fas fa-hand-point-right"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Search by title">
+                        <input #query2 (keyup)="filterByTitle(query2.value)" type="text" class="form-control"
+                            placeholder="Search by title...">
                     </div>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <div class="input-group mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text" id="traveller"><i class="fas fa-hiking"></i></span>
                         </div>
-                        <input type="text" class="form-control" placeholder="Search by traveller">
+                        <input #query3 (keyup)="filterByTraveller(query3.value)" type="text" class="form-control"
+                            placeholder="Search by traveller...">
                     </div>
                 </div>
             </div>
@@ -31,13 +41,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let trip of trips; let i = index">
+                    <tr *ngFor="let trip of filteredTrips; let i = index">
                         <th scope="row">{{trip.id}}</th>
                         <td>Mark Otto</td>
                         <td>{{trip.title}}</td>
                         <td>
-                            <span *ngIf="!blocked" class="badge badge-pill badge-success">Published</span>
-                            <span *ngIf="blocked" class="badge badge-pill badge-danger">Blocked</span>
+                            <span *ngIf="!blocked" class="badge badge-pill badge-success">{{trip.status}}</span>
+                            <span *ngIf="blocked" class="badge badge-pill badge-danger">{{trip.status}}</span>
                         </td>
                         <td>
                             <ngb-rating [rate]="trip.publicRating"></ngb-rating>
