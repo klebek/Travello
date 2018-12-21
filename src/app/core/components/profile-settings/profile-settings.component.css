@@ -1,4 +1,4 @@
-.row {
+.form-row {
     padding: 10px;
 }
 .col-sm-3 .btn-block {
@@ -47,4 +47,15 @@
 }
 .card p {
     margin-bottom: 0;
+}
+.col-cards {
+    padding: 0.5rem;
+}
+trip-card {
+    width: 100% !important;
+}
+.card-group /deep/ .card{
+    background: #f8f8f8;
+    border-radius: 0;
+    color: #232323;
 }

@@ -32,12 +32,12 @@
                     <business-trips></business-trips>
                 </div>
             </div>
-            <div class="row row-products">
+            <div class="row row-products no-gutters">
                 <ng-container>
                     <!-- <div *ngFor="let t of filteredCountries | name : searchText; let i = index" class="col-sm-4 col-cards"> -->
                     <div *ngFor="let trip of filteredTrips | title : searchText | country : searchCountry; let i = index" class="col-sm-4 col-cards">
                         <div class="card-group">
-                            <trip-card *ngIf="!businessTrip" [trip]="trip"></trip-card>
+                            <trip-card *ngIf="!businessTrip && trip.status === 'PUBLIC'" [trip]="trip"></trip-card>
                         </div>
                     </div>
                     <div *ngIf="(i + 1) % 3 === 0" class="w-100"></div>

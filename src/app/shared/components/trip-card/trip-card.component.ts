@@ -14,6 +14,7 @@ import { TripService } from 'app/travelling/services/trip.service';
 export class TripCardComponent implements OnInit {
 
   @Input('trip') trip: Trip;
+  @Input('profile') profile: boolean = false;
 
   cards;
 

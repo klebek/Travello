@@ -175,7 +175,8 @@ h1 span, p span {
 }
 .card-traveller .card-body {
     justify-content: center;
-    flex-direction: row;
+    flex-direction: column;
+    text-align: center;
     display: flex;
     background-color: rgba(0,0,0,0.5);
     flex: 0;
@@ -186,8 +187,8 @@ h1 span, p span {
     text-align: center;
     padding: 10px;
 }
-.card-traveller .card-body p {
-    margin-right: 5px;
+.card-traveller .card-body .card-title {
+    margin-bottom: 0;
 }
 .card-traveller .card-body .card-title {
     font-weight: 500;

@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Alert } from 'selenium-webdriver';
 import { NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { Note } from 'app/travelling/model/note';
 import { NoteService } from 'app/travelling/services/note.service';

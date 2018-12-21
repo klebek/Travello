@@ -46,5 +46,7 @@
     border-radius: 24px;
     padding: 10px 20px 10px 20px;
     font-size: 16px;
-
+}
+trip-card {
+    width: 100% !important;
 }
