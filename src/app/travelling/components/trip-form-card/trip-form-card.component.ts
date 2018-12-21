@@ -17,12 +17,12 @@ export class TripFormCardComponent implements OnInit {
 
   @Input('noteCard') noteCard;
   @Input('idTrip') idTrip;
+  @Input('type') type;
 
   @Input() showNote;
   @Input() showCard;
   @Input() alertNote;
   @Input() alertCard;
-  @Input() type;
 
   @Output() showNoteChange = new EventEmitter();
   changeShowNote() {
@@ -62,7 +62,7 @@ export class TripFormCardComponent implements OnInit {
   }
 
   addNote(note: Note) {
-    this.noteService.addNote(note).subscribe(
+    this.noteService.addNote(this.idTrip, note).subscribe(
       note => {
         // console.log(trip);
       }

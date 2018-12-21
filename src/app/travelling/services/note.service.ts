@@ -14,11 +14,11 @@ export class NoteService {
 
   constructor(private http: HttpClient, private tripService: TripService) {
     this.idTrip = this.tripService.getTripId();
-    this.url = "http://localhost:9000/api/card/trip/"+this.idTrip+"/add";
+    this.url = "http://localhost:9000/api/card/trip/";
     console.log("Z notatki:" + this.idTrip);
   }
 
-  addNote(note: Note): Observable<Note> { 
+  addNote(id: number, note: Note): Observable<Note> { 
     let httpHeaders = new HttpHeaders({
       'Content-Type' : 'application/json',
       'Cache-Control': 'no-cache'
@@ -27,6 +27,6 @@ export class NoteService {
       headers: httpHeaders
     };
     // console.log(trip); 
-    return this.http.post<Note>(this.url, note, options);
+    return this.http.post<Note>(this.url+id+"/add", note, options);
   }
 }

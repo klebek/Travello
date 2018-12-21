@@ -5,6 +5,8 @@ import { Subscription } from 'rxjs/Subscription';
 import { CountryService } from 'app/travelling/services/country.service';
 import { Trip } from 'app/travelling/model/trip';
 import { NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
+import { Card } from 'app/travelling/model/card';
+import { NoteService } from 'app/travelling/services/note.service';
 
 @Component({
   selector: 'trip-edit',
@@ -29,6 +31,10 @@ export class TripEditComponent implements OnInit, OnDestroy {
   notes;
   cards;
 
+  type;
+
+  card = [];
+
   noteDates = [];
 
   editCards = false;
@@ -38,7 +44,7 @@ export class TripEditComponent implements OnInit, OnDestroy {
   subscriptionTrip: Subscription;
   subscriptionTripCountries: Subscription;
 
-  constructor(private route: ActivatedRoute, private tripService: TripService, private countryService: CountryService) {
+  constructor(private route: ActivatedRoute, private tripService: TripService, private countryService: CountryService, private noteService: NoteService) {
     this.id = this.route.snapshot.params['id'];
     this.subscriptionTripCountries = this.tripService.getCountries(this.id).subscribe(c => {
       this.tripCountries = c;
@@ -64,6 +70,12 @@ export class TripEditComponent implements OnInit, OnDestroy {
     this.countryService.getName().subscribe(c => {
       this.countriesNames = c;
     });
+  }
+
+  addCardFunction(id, note) {
+    this.noteService.addNote(id, note).subscribe(
+      card => {}
+    );
   }
 
   deleteCountry(name: string) {
@@ -101,9 +113,11 @@ export class TripEditComponent implements OnInit, OnDestroy {
 
   showAddNote(){
     this.addNote = true;
+    this.type = 1;
   }
   showAddCard(){
     this.addCard = true;
+    this.type = 0;
   }
 
   enableEditTrip() {
