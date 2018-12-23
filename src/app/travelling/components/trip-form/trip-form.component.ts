@@ -21,7 +21,8 @@ export class TripFormComponent implements OnInit  {
   alertCard;
   countriesNames;
   countries = [];
-
+  continents = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
+  region;
   type;
 
   idTrip;
@@ -35,19 +36,27 @@ export class TripFormComponent implements OnInit  {
       this.countriesNames = c;
     });
     this.idTrip = this.tripService.getTripId();
+    this.tripService.getCountries(this.idTrip).subscribe((c: any[]) => {
+      this.countries = c;
+    });
   }
   addCountry(country){
     this.countries.push(country);
     this.trip.countries = this.countries;
   }
+  // addCountry(country: string) {
+  //   this.tripService.addCountry(country).subscribe(country =>{});
+  //   console.log("Po dodaniu: " + this.countries);
+  // }
   addTrip(trip: Trip) {
-    this.tripService.addTrip(trip).subscribe(
-      trip => {
-      }
-    );
+    this.tripService.addTrip(trip).subscribe(trip => {});
   }
   getTrip(id) {
     this.tripService.getTrip(id).subscribe();
+  }
+
+  showContinent(value){
+    this.region = value;
   }
 
   enableNote() {

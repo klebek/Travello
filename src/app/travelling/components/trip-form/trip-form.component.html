@@ -15,7 +15,7 @@
               </div>
             </div>
             <div class="form-row">
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-3">
                 <label for="startTime">Start</label>
                 <div class="input-group">
                   <input class="form-control" placeholder="yyyy-mm-dd" name="startDate" #c1="ngModel" [(ngModel)]="startDateApp"
@@ -29,7 +29,7 @@
                   <div *ngIf="c1.errors.required">Start date is required</div>
                 </div>
               </div>
-              <div class="form-group col-md-4">
+              <div class="form-group col-md-3">
                 <label for="endTime">Finish</label>
                 <div class="input-group">
                   <input class="form-control" placeholder="yyyy-mm-dd" name="endDate" #c2="ngModel" [(ngModel)]="trip.endDate"
@@ -47,13 +47,20 @@
                 <label for="country">Country</label>
                 <select #country="ngModel" [(ngModel)]="trip.countries" class="form-control" name="countries" required>
                   <option></option>
-                  <option *ngFor="let country of countriesNames">{{country.name}}</option>
+                  <option (click)="showContinent(country.region)" *ngFor="let country of countriesNames">{{country.name}}</option>
                 </select>
                 <div class="alert alert-danger" *ngIf="country.touched && country.invalid">
                   <div *ngIf="country.errors.required">Country is required</div>
                 </div>
               </div>
-
+              <div class="col-sm-2 col-continent">
+                <label for="continent">Continent</label>
+                <input #continent="ngModel" [ngModel]="region" name="continent" type="text" class="form-control" id="continent"
+                  required>
+                <div class="alert alert-danger" *ngIf="continent.touched && continent.invalid">
+                  <div *ngIf="continent.errors.required">Continent is required</div>
+                </div>
+              </div>
               <div class="col-sm">
                 <label for="country">Add country</label>
                 <button (click)="addCountry(country.value)" class="btn btn-success btn-block btn-add-country" id="country"><i
@@ -119,7 +126,7 @@
             <button (click)="addTrip(f.value)" [disabled]="countries.length < 1 || !f.valid" class="btn btn-success btn-block"><i
                 class="fas fa-save"></i>Add
               your new trip</button>
-              DANE: {{f.value | json}}
+            DANE: {{f.value | json}}
           </form>
         </div>
       </div>

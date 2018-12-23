@@ -16,8 +16,6 @@ export class CountryFilterComponent implements OnInit {
   @Input() searchText;
   @Input() searchCountry;
 
-  continent;
-
   @Output() searchTextChange = new EventEmitter();
   changeText(newSearchTextChange) {
     this.searchText = newSearchTextChange;
@@ -30,13 +28,7 @@ export class CountryFilterComponent implements OnInit {
     this.searchCountryChange.emit(newSearchCountryChange);
   }
 
-  continents$ = [
-    {name:"Africa", trips: 234},
-    {name:"Americas", trips: 345},
-    {name:"Asia", trips: 66},
-    {name:"Europe", trips: 543},
-    {name:"Oceania", trips: 22}
-  ];
+  continents = ["Africa","Americas","Asia","Europe","Oceania"];
 
   countriesNames;
   param;

@@ -16,17 +16,29 @@ export class TripCardComponent implements OnInit {
   @Input('trip') trip: Trip;
   @Input('profile') profile: boolean = false;
 
-  cards;
+  notes;
+  countries = [];
+  deleted = false;
 
   constructor(private tripService: TripService) {
   }
 
-  ngOnInit() {
-    this.getCards(this.trip.id);  
+  async ngOnInit() {
+    await this.getNotes(this.trip.id);
+    await this.getCountries(this.trip.id);
   }
 
-  getCards(id){
-    this.tripService.getCards(id).subscribe(c => this.cards = c);
+  deleteTrip(id){
+    this.tripService.deleteTrip(id).subscribe(trip =>{});
+    this.deleted = true;
+  }
+
+  getNotes(id){
+    this.tripService.getNotes(id).subscribe(n => this.notes = n);
+  }
+
+  getCountries(id){
+    this.tripService.getCountries(id).subscribe((c:any[]) => this.countries = c);
   }
 
 }

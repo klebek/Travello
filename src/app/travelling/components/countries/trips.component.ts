@@ -16,9 +16,8 @@ import { Subscription } from 'rxjs';
 })
 export class TripsComponent implements OnInit, OnDestroy {
 
-  countries: Country[] = [];
-  filteredCountries: Country[] = [];
-  countriess;
+  countries = [];
+  continent;
   appUser: AppUser;
   searchText;
   i;
@@ -30,17 +29,16 @@ export class TripsComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private countryService: CountryService,
     private tripService: TripService,
-    private auth: AuthService) { }
+    private auth: AuthService) {
+    }
 
   async ngOnInit() {
-    // this.populateCountries();
+    this.populateTrips();
     this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
     this.subscription = this.tripService.getAll().subscribe(t => {
       this.filteredTrips = this.trips = t;
       this.filteredTrips = this.filteredTrips.filter(s => s.status !== "PRIVATE");
-      console.log(this.filteredTrips);
     });
   }
 
@@ -54,31 +52,28 @@ export class TripsComponent implements OnInit, OnDestroy {
         }
       }) :
       this.trips;
-    console.log(query);
   }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 
-  // private populateCountries() {
-  //   this.tripService
-  //     .getAll()
-  //     .switchMap(trips => {
-  //       this.trips = trips;
-  //       return this.route.queryParamMap;
-  //     })
-  //     .subscribe(params => {
-  //       this.countriess = params;
-  //       console.log("from populateSubscirbe " + this.countriess);
-  //       this.applyFilter();
-  //     });
-  // }
+  private populateTrips() {
+    this.tripService
+      .getAll()
+      .switchMap(trips => {
+        this.trips = trips;
+        return this.route.queryParamMap;
+      })
+      .subscribe(params => {
+        this.continent = params.get('continent');
+        this.applyFilter();
+      });
+  }
 
-  // private applyFilter() {
-  //   this.filteredCountries = (this.trips) ?
-  //     this.countries.filter(c => c.name === this.trips) :
-  //     this.countries;
-  //     console.log("from applyFilter " + this.countries);
-  // }
+  private applyFilter() {
+    this.filteredTrips = (this.continent) ?
+      this.trips.filter(t => t.continent === this.continent) :
+      this.trips;
+  }
 }

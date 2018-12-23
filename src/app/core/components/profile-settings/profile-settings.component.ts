@@ -35,7 +35,7 @@ export class ProfileSettingsComponent implements OnDestroy {
   }
 
   getTrips(id){
-    this.subscriptionTrips = this.tripService.getUserTrip(id).subscribe((t:Trip[]) => this.trips = t);
+    this.tripService.getUserTrip(id).subscribe((t:Trip[]) => this.trips = t);
   }
 
   saveProfile(imageUrl) {
@@ -43,7 +43,7 @@ export class ProfileSettingsComponent implements OnDestroy {
   }
 
   ngOnDestroy(){
-    this.subscriptionTrips.unsubscribe();
+    // this.subscriptionTrips.unsubscribe();
   }
 
 }

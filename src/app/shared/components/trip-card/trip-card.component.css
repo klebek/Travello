@@ -31,3 +31,19 @@ p {
 .col-buttons .btn {
   margin-left: 0.5rem;
 }
+.card-deleted {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding: 2rem;
+  color: white !important;
+  font-weight: 600;
+  background-color: #dc3545 !important;
+  border: 2px solid #ca2d3d;
+  border-radius: 5px !important;
+  cursor: default;
+}
+.card-deleted:hover {
+  background-color: #dc3545 !important;
+  color: white !important;
+}

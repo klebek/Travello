@@ -1,14 +1,14 @@
 <div class="sticky-top">
   <div class="list-group">
-    <a class="list-group-item list-group-item-action" [class.active]="!continent" routerLink="/">All Continents</a>
-    <a *ngFor="let c of continents$" routerLink="/" [queryParams]="{ continent: c.name }" [class.active]="continent === c.name"
+    <a class="list-group-item list-group-item-action" [class.active]="!param" routerLink="/">All Continents</a>
+    <a *ngFor="let c of continents" routerLink="/" [queryParams]="{ continent: c }" [class.active]="param === c"
       class="list-group-item list-group-item-action flex-column align-items-start active">
       <div class="d-flex w-100">
-        <h5 class="mb-1">{{c.name}}</h5>
+        <h5 class="mb-1">{{c}}</h5>
       </div>
       <div class="d-flex w-100 justify-content-between">
         <small>Hold trips</small>
-        <small>{{c.trips}}</small>
+        <small>420</small>
       </div>
     </a>
   </div>
