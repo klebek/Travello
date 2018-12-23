@@ -3,6 +3,7 @@ import { NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap
 import { Trip } from 'app/travelling/model/trip';
 import { TripService } from 'app/travelling/services/trip.service';
 import { CountryService } from 'app/travelling/services/country.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'trip-form',
@@ -25,10 +26,12 @@ export class TripFormComponent implements OnInit  {
   region;
   type;
 
+  disabledButton = true;
+
   idTrip;
   idCard;
 
-  constructor(private tripService: TripService, private countryService: CountryService) {
+  constructor(private tripService: TripService, private countryService: CountryService, private router: Router) {
   }
 
   ngOnInit() {
@@ -53,6 +56,7 @@ export class TripFormComponent implements OnInit  {
   }
   getTrip(id) {
     this.tripService.getTrip(id).subscribe();
+
   }
 
   showContinent(value){

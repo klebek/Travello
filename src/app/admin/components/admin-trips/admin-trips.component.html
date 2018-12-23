@@ -46,8 +46,8 @@
                         <td>Mark Otto</td>
                         <td>{{trip.title}}</td>
                         <td>
-                            <span *ngIf="!blocked" class="badge badge-pill badge-success">{{trip.status}}</span>
-                            <span *ngIf="blocked" class="badge badge-pill badge-danger">{{trip.status}}</span>
+                            <span *ngIf="trip.status == 'PUBLIC'" class="badge badge-pill badge-success">{{trip.status}}</span>
+                            <span *ngIf="trip.status == 'PRIVATE'" class="badge badge-pill badge-danger">{{trip.status}}</span>
                         </td>
                         <td>
                             <ngb-rating [rate]="trip.publicRating"></ngb-rating>
@@ -55,8 +55,8 @@
                         <td>
                             <a [routerLink]="['/trip', trip.id]"><button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i>View</button></a>
                             <button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Send warning</button>
-                            <button *ngIf="!blocked" (click)="block(trip.id)" class="btn btn-danger btn-sm"><i class="fas fa-ban"></i>Block</button>
-                            <button *ngIf="blocked" (click)="publish(trip.id)" class="btn btn-success btn-sm"><i class="fas fa-globe-americas"></i>Publish</button>
+                            <button *ngIf="trip.status === 'PUBLIC'" (click)="changeStatus(trip.id, privateStatus)" class="btn btn-danger btn-sm"><i class="fas fa-ban"></i>Block</button>
+                            <button *ngIf="trip.status === 'PRIVATE'" (click)="changeStatus(trip.id, publicStatus)" class="btn btn-success btn-sm"><i class="fas fa-globe-americas"></i>Publish</button>
                         </td>
                     </tr>
                 </tbody>

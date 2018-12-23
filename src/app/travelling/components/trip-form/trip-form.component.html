@@ -111,7 +111,7 @@
             </div>
             <div class="row">
               <div class="col-sm-6">
-                <trip-form-card *ngIf="showNote" [(alertNote)]="alertNote" [(showNote)]="showNote" [noteCard]="true"
+                <trip-form-card *ngIf="showNote" [(disabledButton)]="disabledButton" [(alertNote)]="alertNote" [(showNote)]="showNote" [noteCard]="true"
                   [type]="type" [idTrip]="idTrip"></trip-form-card>
                 <ngb-alert *ngIf="alertNote" (click)="closeAlertNote()" type="success"><i class="fas fa-check-circle"></i>Saved
                   note</ngb-alert>
@@ -123,10 +123,10 @@
                   card</ngb-alert>
               </div>
             </div>
-            <button (click)="addTrip(f.value)" [disabled]="countries.length < 1 || !f.valid" class="btn btn-success btn-block"><i
-                class="fas fa-save"></i>Add
-              your new trip</button>
-            DANE: {{f.value | json}}
+            <a routerLink="/"><button (click)="addTrip(f.value)" [disabled]="countries.length < 1 || !f.valid" class="btn btn-success btn-block"
+                [disabled]="!f.valid || disabledButton"><i class="fas fa-save"></i>Add
+                your new trip</button></a>
+            <!-- DANE: {{f.value | json}} -->
           </form>
         </div>
       </div>

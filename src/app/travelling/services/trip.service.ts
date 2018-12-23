@@ -89,7 +89,7 @@ export class TripService {
     return this.http.get('http://localhost:9000/api/trip/all');
   }
 
-  changeStatus(id, trip, status){
+  changeStatus(id, status) {
     let httpHeaders = new HttpHeaders({
       'Content-Type' : 'application/json',
       'Cache-Control': 'no-cache'
@@ -97,7 +97,8 @@ export class TripService {
     let options = {
       headers: httpHeaders
     };
-    return this.http.put("http://localhost:9000/api/trip/"+id+"/status/"+status, trip, options);
+    console.log("serwis ID: " + id + " , " + status);
+    return this.http.put("http://localhost:9000/api/trip/"+id+"/status/"+status, options);
   }
 
   getTrip(id){

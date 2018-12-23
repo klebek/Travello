@@ -23,6 +23,7 @@ export class TripFormCardComponent implements OnInit {
   @Input() showCard;
   @Input() alertNote;
   @Input() alertCard;
+  @Input() disabledButton;
 
   @Output() showNoteChange = new EventEmitter();
   changeShowNote() {
@@ -34,6 +35,12 @@ export class TripFormCardComponent implements OnInit {
   changeShowCard() {
     this.showCard = false;
     this.showCardChange.emit(false);
+  }
+
+  @Output() disabledButtonChange = new EventEmitter();
+  changeDisabledButton() {
+    this.disabledButton = false;
+    this.disabledButtonChange.emit(false);
   }
 
   // ALERTS
@@ -62,11 +69,7 @@ export class TripFormCardComponent implements OnInit {
   }
 
   addNote(note: Note) {
-    this.noteService.addNote(this.idTrip, note).subscribe(
-      note => {
-        // console.log(trip);
-      }
-    );
+    this.noteService.addNote(this.idTrip, note).subscribe(note => {});
   }
 
 }

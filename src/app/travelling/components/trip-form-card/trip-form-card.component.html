@@ -63,9 +63,9 @@
         </div>
         Type {{type}};
         <div class="form-group form-group-button">
-          <button (click)="addNote(f.value)" *ngIf="noteCard" (click)="changeAlertNote($event)" type="submit" class="btn btn-success"><i
+          <button (click)="addNote(f.value)" *ngIf="noteCard" (click)="changeDisabledButton($event)" (click)="changeAlertNote($event)" type="submit" class="btn btn-success"><i
               class="fas fa-save"></i>Save note</button>
-          <button (click)="addNote(f.value)" *ngIf="!noteCard" (click)="changeAlertCard($event)" type="submit" class="btn btn-success"><i class="fas fa-save"></i>Save
+          <button (click)="addNote(f.value)" *ngIf="!noteCard" (click)="changeDisabledButton($event)" (click)="changeAlertCard($event)" type="submit" class="btn btn-success"><i class="fas fa-save"></i>Save
             card</button>
         </div>
         DANE: {{f.value | json}}
