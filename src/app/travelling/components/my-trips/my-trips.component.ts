@@ -11,30 +11,35 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class MyTripsComponent implements OnDestroy {
 
-  countries$;
-
-  trips;
+  
   filteredTrips;
   subscription: Subscription;
   idUser = 0;
-  
-  constructor(
-    private authService: AuthService, private countryService: CountryService, private tripService: TripService) { 
-      this.countries$ = authService.user$.switchMap(u => countryService.getAll());
-      this.subscription = this.tripService.getUserTrip(this.idUser).subscribe(t => this.filteredTrips = this.trips = t);
+  deleted = false;
+
+  trips = [];
+
+  constructor(private authService: AuthService, private tripService: TripService) {
+    this.getTrips();
   }
 
   filter(query: string) {
     this.filteredTrips = (query) ?
-      this.trips.filter(t => t.title.toLowerCase().includes(query.toLowerCase())) : 
+      this.trips.filter(t => t.title.toLowerCase().includes(query.toLowerCase())) :
       this.trips;
   }
 
-  deleteTrip(id){
-    this.tripService.deleteTrip(id);
+  getTrips() {
+    this.subscription = this.tripService.getUserTrip(this.idUser).subscribe((t: any[]) => this.filteredTrips = this.trips = t);
   }
 
-  ngOnDestroy(){
+  deleteTrip(id, pos) {
+    this.filteredTrips.splice(pos, 1);
+    this.filteredTrips = [...this.filteredTrips];
+    this.tripService.deleteTrip(id).subscribe(trip => { });
+  }
+
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 

@@ -7,6 +7,7 @@ import { Trip } from 'app/travelling/model/trip';
 import { NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { Card } from 'app/travelling/model/card';
 import { NoteService } from 'app/travelling/services/note.service';
+import { Note } from 'app/travelling/model/note';
 
 @Component({
   selector: 'trip-edit',
@@ -94,16 +95,17 @@ export class TripEditComponent implements OnInit, OnDestroy {
   }
 
   addTrip(trip: Trip) {
-    this.tripService.addTrip(trip).subscribe(
-      trip => {}
-    );
+    this.tripService.addTrip(trip).subscribe(trip => {});
   }
 
   editTrip(id, trip: Trip) {
     // console.log(id + " " + trip.title);
-    this.tripService.editTrip(id, trip).subscribe(
-      trip => {}
-    )
+    this.tripService.editTrip(id, trip).subscribe(trip => {});
+  }
+
+  editNote(id, note: Note) {
+    // console.log(id + " " + note);
+    this.noteService.editNote(id, note).subscribe(note => {});
   }
 
   ngOnDestroy() {
@@ -129,11 +131,13 @@ export class TripEditComponent implements OnInit, OnDestroy {
     this.editNotes = true;
     this.editTripp = false;
     this.editCards = false;
+    this.type = 1;
   }
   enableEditCards() {
     this.editCards = true;
     this.editTripp = false;
     this.editNotes = false;
+    this.type = 0;
   }
 
 }

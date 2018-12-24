@@ -30,6 +30,9 @@
           <label for="note">Note</label>
           <textarea #description="ngModel" [(ngModel)]="note.description" name="description" class="form-control" id="note"
             rows="3"></textarea>
+            <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+                <div *ngIf="description.errors.required">Description is required</div>
+              </div>
         </div>
         <div *ngIf="noteCard" class="form-group">
           <label for="date">Date</label>

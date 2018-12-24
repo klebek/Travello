@@ -29,4 +29,15 @@ export class NoteService {
     // console.log(trip); 
     return this.http.post<Note>(this.url+id+"/add", note, options);
   }
+
+  editNote(id, note) {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Cache-Control': 'no-cache'
+    });   
+    let options = {
+      headers: httpHeaders
+    };
+    return this.http.put<Note>("http://localhost:9000/api/card/"+id, note, options)
+  }
 }

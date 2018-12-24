@@ -151,9 +151,14 @@
                             id="photoCard" placeholder="Photo URL">
                         </div>
                       </div>
+                      TYPE: {{type}}
+                      <div class="form-group form-group-button form-disabled">
+                          <input #typeNote="ngModel" [(ngModel)]="type" name="type" type="radio" [value]="1">
+                          <input #typeNote="ngModel" [(ngModel)]="type" name="type" type="radio" [value]="0">
+                        </div>
                     </div>
                     <div class="form-group form-group-button">
-                      <button (click)="addNote(fNote.value)" (click)="changeAlertNote($event)" type="submit" class="btn btn-success"><i
+                      <button (click)="editNote(note.id, fNote.value)" type="submit" class="btn btn-success"><i
                           class="fas fa-save"></i>Update note</button>
                     </div>
                     DANE: {{fNote.value | json}}

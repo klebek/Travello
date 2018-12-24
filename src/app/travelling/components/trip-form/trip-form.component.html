@@ -98,12 +98,12 @@
                 <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioType">
                   <label ngbButtonLabel class="btn btn-warning btn-add">
                     <input (click)="enableNote()" (click)="addTrip(f.value)" #typeNote="ngModel" [(ngModel)]="type"
-                      name="type" ngbButton type="radio" [value]="0" [disabled]="showCard || !f.valid"><i class="fas fa-plus"></i>Add
+                      name="type" ngbButton type="radio" [value]="0" [disabled]="!notNullCountry"><i class="fas fa-plus"></i>Add
                     note
                   </label>
                   <label ngbButtonLabel class="btn btn-warning btn-add">
                     <input (click)="enableCard()" (click)="addTrip(f.value)" #typeNote="ngModel" [(ngModel)]="type"
-                      name="type" ngbButton type="radio" [value]="1" [disabled]="showNote || !f.valid"><i class="fas fa-plus"></i>Add
+                      name="type" ngbButton type="radio" [value]="1" [disabled]="!notNullCountry"><i class="fas fa-plus"></i>Add
                     card
                   </label>
                 </div>
@@ -123,10 +123,11 @@
                   card</ngb-alert>
               </div>
             </div>
+            not null: {{notNullCountry}}
             <a routerLink="/"><button (click)="addTrip(f.value)" [disabled]="countries.length < 1 || !f.valid" class="btn btn-success btn-block"
-                [disabled]="!f.valid || disabledButton"><i class="fas fa-save"></i>Add
+                [disabled]="!notNullCountry"><i class="fas fa-save"></i>Add
                 your new trip</button></a>
-            <!-- DANE: {{f.value | json}} -->
+            DANE: {{f.value | json}}
           </form>
         </div>
       </div>

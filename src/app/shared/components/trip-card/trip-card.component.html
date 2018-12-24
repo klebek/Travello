@@ -1,33 +1,5 @@
-<div *ngIf="!profile">
-  <a [routerLink]="['/trip/', trip.id]">
-    <div *ngIf="notes" class="card">
-      <div *ngFor="let note of notes; index as i">
-        <img *ngIf="i<1" class="card-img-top" [src]="note.photo" alt="Card image cap">
-      </div>
-      <!-- <img class="card-img-top-business" placement="top" [ngbTooltip]="country.name" [src]="country.image" alt="Card image cap"> -->
-      <div *ngIf="!businessTrip" class="card-body">
-        <h5 class="card-title">{{trip.title}}</h5>
-        <p class="card-text">{{trip.description}}</p>
-      </div>
-      <div *ngIf="!businessTrip" class="card-footer">
-        <div class="row">
-          <div *ngIf="countries" class="col-sm">
-            <small *ngFor="let country of countries" class="text-footer">{{country}} </small>
-          </div>
-          <div *ngIf="profile" class="col-sm-6 col-buttons">
-            <a [routerLink]="['/edit-trip', trip.id]"><button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Edit</button></a>
-            <button (click)="deleteTrip(trip.id)" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Delete</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </a>
-</div>
-<div *ngIf="profile">
-  <div *ngIf="deleted" class="card card-deleted">
-    Card deleted
-  </div>
-  <div *ngIf="!deleted" class="card">
+<a [routerLink]="['/trip/', trip.id]">
+  <div *ngIf="notes" class="card">
     <div *ngFor="let note of notes; index as i">
       <img *ngIf="i<1" class="card-img-top" [src]="note.photo" alt="Card image cap">
     </div>
@@ -41,11 +13,11 @@
         <div *ngIf="countries" class="col-sm">
           <small *ngFor="let country of countries" class="text-footer">{{country}} </small>
         </div>
-        <div class="col-sm-6 col-buttons">
+        <div *ngIf="profile" class="col-sm-6 col-buttons">
           <a [routerLink]="['/edit-trip', trip.id]"><button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Edit</button></a>
           <button (click)="deleteTrip(trip.id)" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Delete</button>
         </div>
       </div>
     </div>
   </div>
-</div>
+</a>

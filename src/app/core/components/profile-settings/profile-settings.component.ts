@@ -17,13 +17,13 @@ export class ProfileSettingsComponent implements OnDestroy {
 
 
   imageUrl;
-  id = 0;
-  trips: Trip[];
-  subscriptionTrips: Subscription;
+  idUser = 0;
+  trips = [];
+  subscription: Subscription;
 
   constructor(private userService: UserService, private tripService: TripService) {
     this.imageUrl = "https://i.imgur.com/C15GrGG.png";
-    this.getTrips(this.id);
+    this.getTrips();
   }
 
   previewProfile() {
@@ -31,19 +31,25 @@ export class ProfileSettingsComponent implements OnDestroy {
   }
 
   saveUser(user){
-    this.userService.editUser(this.id, user);
+    this.userService.editUser(this.idUser, user);
   }
 
-  getTrips(id){
-    this.tripService.getUserTrip(id).subscribe((t:Trip[]) => this.trips = t);
+  getTrips(){
+    this.subscription = this.tripService.getUserTrip(this.idUser).subscribe((t:any[]) => this.trips = t);
   }
 
   saveProfile(imageUrl) {
     this.imageUrl = imageUrl;
   }
 
+  deleteTrip(id, pos) {
+    this.trips.splice(pos, 1);
+    this.trips = [...this.trips];
+    this.tripService.deleteTrip(id).subscribe(trip => { });
+  }
+
   ngOnDestroy(){
-    // this.subscriptionTrips.unsubscribe();
+    this.subscription.unsubscribe();
   }
 
 }

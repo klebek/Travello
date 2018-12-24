@@ -25,6 +25,7 @@ export class TripFormComponent implements OnInit  {
   continents = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
   region;
   type;
+  notNullCountry = false;
 
   disabledButton = true;
 
@@ -46,6 +47,7 @@ export class TripFormComponent implements OnInit  {
   addCountry(country){
     this.countries.push(country);
     this.trip.countries = this.countries;
+    this.notNullCountry = true;
   }
   // addCountry(country: string) {
   //   this.tripService.addCountry(country).subscribe(country =>{});
