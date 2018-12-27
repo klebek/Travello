@@ -6,8 +6,37 @@
     border: none;
     color: white;
 }
+.card-title-small {
+    text-transform: uppercase;
+}
 .card-body {
     background-color: #232323;
+}
+.card-stats {
+    min-height: 340px;
+}
+.card-stats .card-title {
+    margin-bottom: 2.5rem;
+}
+.card-text {
+    text-align: justify;
+}
+.col-icon .card-text {
+    display: flex;
+    justify-content: center;
+}
+.card-text .fas {
+    font-size: 8rem;
+    color: #55dd2b;
+}
+.card-text-bold {
+    font-weight: 600;
+}
+.first h6 {
+    margin-top: 0;
+}
+.first h5 {
+    margin-bottom: 0;
 }
 .jumbotron {
     background-image: url('../../../../assets/images/photos/business.png');

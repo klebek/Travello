@@ -3,18 +3,68 @@
   <div class="row row-main">
     <div class="col-sm-6">
       <div class="card mb-3">
-        <div class="card-body">
-          <h5 class="card-title">Want business offert? Check below for more details</h5>
+        <div class="card-body first">
+          <h5 class="card-title">Business cooperation</h5>
+          <h6 class="card-title card-title-small"><small>For travel agencies</small></h6>
           <div class="row">
             <div class="col-sm-6">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
-                content. This content is a little bit longer.</p>
+              <p class="card-text card-text-bold">Socially</p>
+              <p class="card-text">Reach clients genuinely interested in travelling. Let people judge and promote your
+                offerings by assigning their memories to your trips. We have a high growth potencial for our userbase
+                based on lack of direct competition.</p>
             </div>
-            <div class="col-sm-6"></div>
+            <div class="col-sm-6 col-icon">
+              <p class="card-text card-text-bold">What can you gain?</p>
+              <p class="card-text"><i class="fas fa-users"></i></p>
+            </div>
           </div>
         </div>
       </div>
       <div class="card mb-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <p class="card-text card-text-bold">Technically</p>
+              <p class="card-text">Easy way to present your offer in a beautiful shape and form. You don’t need any
+                professional skills to present your trips in a spectacular way. You can use our website as your main
+                tool to exhibityour offer. Thanks to our intuitive administration panel it will be way easier than
+                running and maintain your own website.</p>
+            </div>
+            <div class="col-sm-6 col-icon">
+              <p class="card-text card-text-bold">What can you gain?</p>
+              <p class="card-text"><i class="fas fa-tv"></i></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-6">
+              <p class="card-text card-text-bold">Financial</p>
+              <p class="card-text">Our monthly plans start from 25$. You gain all the functionalities. Using tools we
+                prepared you save time and money that you would have to spend on designing and maintaining your own
+                website.</p>
+            </div>
+            <div class="col-sm-6 col-icon">
+              <p class="card-text card-text-bold">What can you gain?</p>
+              <p class="card-text"><i class="fas fa-coins"></i></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="images" class="col-sm-6">
+      <ngb-carousel [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
+        <ng-template ngbSlide *ngFor="let image of images">
+          <img [src]="image">
+          <!-- <div class="carousel-caption">
+                <h3>No mouse navigation</h3>
+                <p>This carousel hides navigation arrows and indicators.</p>
+              </div> -->
+        </ng-template>
+      </ngb-carousel>
+      <div class="card mb-3 card-stats">
         <div class="card-body">
           <h5 class="card-title">Check this stats and numbers below</h5>
           <div class="row">
@@ -36,20 +86,9 @@
           </div>
         </div>
         <div class="card-footer">
-          <button class="btn btn-business btn-block">Sign up for business</button>
+          <a routerLink="/login"><button class="btn btn-business btn-block">Sign up for business</button></a>
         </div>
       </div>
-    </div>
-    <div *ngIf="images" class="col-sm-6">
-      <ngb-carousel [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
-        <ng-template ngbSlide *ngFor="let image of images">
-          <img [src]="image">
-          <!-- <div class="carousel-caption">
-                <h3>No mouse navigation</h3>
-                <p>This carousel hides navigation arrows and indicators.</p>
-              </div> -->
-        </ng-template>
-      </ngb-carousel>
     </div>
   </div>
 </div>
