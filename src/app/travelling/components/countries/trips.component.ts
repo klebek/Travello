@@ -35,7 +35,7 @@ export class TripsComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.populateTrips();
-    this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
+    this.auth.user$.subscribe(appUser => this.appUser = appUser);
     this.subscription = this.tripService.getAll().subscribe(t => {
       this.filteredTrips = this.trips = t;
       this.filteredTrips = this.filteredTrips.filter(s => s.status !== "PRIVATE");
@@ -55,7 +55,10 @@ export class TripsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    if(this.subscription){
+      this.subscription.unsubscribe();
+    }
+
   }
 
   private populateTrips() {

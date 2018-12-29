@@ -48,7 +48,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
-    this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
+    this.auth.user$.subscribe(appUser => this.appUser = appUser);
     this.subscriptionTrip = this.tripService.getTrip(this.id).subscribe(t => this.trip = t);
     await this.getCountries(this.id);
   }

@@ -17,7 +17,7 @@ export class BsNavbarComponent implements OnInit {
   constructor(private auth: AuthService) {}
 
   async ngOnInit() {
-    this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
+    // this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
   }
 
   logout(){

@@ -17,16 +17,20 @@ export class LoginComponent {
     this.showRegister = !this.showRegister;
   }
 
-  loginGoogle() {
-    this.auth.loginGoogle();
-  }
+  // loginGoogle() {
+  //   this.auth.loginGoogle();
+  // }
 
-  loginFb() {
-    this.auth.loginFb();
-  }
+  // loginFb() {
+  //   this.auth.loginFb();
+  // }
+
+  // loginEmailPassword(formLogin) {
+  //   this.auth.loginEmailPassword(formLogin, formLogin.value.email, formLogin.value.password);
+  // }
 
   loginEmailPassword(formLogin) {
-    this.auth.loginEmailPassword(formLogin, formLogin.value.email, formLogin.value.password);
+    this.auth.userAuthentication(formLogin.value.email, formLogin.value.password)
   }
 
 }
