@@ -1,7 +1,7 @@
 # base image
 FROM node:10.15
 # The qq is for silent output in the console
-WORKDIR $NODE_ROOT
+WORKDIR /app
 # Copies all the content
 COPY . .
 # Install all the packages
