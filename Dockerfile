@@ -7,17 +7,17 @@ FROM node:10.15.0
 #RUN apt-get update && apt-get install -yq google-chrome-stable
 
 # set working directory
-RUN mkdir /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir /
+WORKDIR /
 
 
 # install and cache app dependencies
-COPY package.json /Travello/src/package.json
+COPY package.json /package.json
 RUN npm install
 RUN npm install -g @angular/cli@6.01
 
 # add app
-COPY . /usr/src/app
+COPY . /app
 
 # start app
 CMD ng serve --host 0.0.0.0
