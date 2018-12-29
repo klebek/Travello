@@ -14,7 +14,7 @@ WORKDIR /usr/src/app
 # install and cache app dependencies
 COPY package.json /Travello/src/package.json
 RUN npm install
-RUN npm install -g @angular/cli@1.4.5
+RUN npm install -g @angular/cli@6.01
 
 # add app
 COPY . /usr/src/app
