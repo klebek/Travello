@@ -7,8 +7,8 @@ RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable 
 RUN apt-get update && apt-get install -yq google-chrome-stable
 
 # set working directory
-RUN mkdir /Travello/src/app
-WORKDIR /Travello/src/app
+RUN mkdir /usr/src/app
+WORKDIR /usr/src/app
 
 
 # install and cache app dependencies
@@ -17,7 +17,7 @@ RUN npm install
 RUN npm install -g @angular/cli@1.4.5
 
 # add app
-COPY . /Travello/src/app
+COPY . /usr/src/app
 
 # start app
 CMD ng serve --host 0.0.0.0
