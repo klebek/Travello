@@ -15,3 +15,5 @@ COPY . .
 RUN npm install -g @angular/cli
 
 EXPOSE 4200 49153
+
+CMD ng serve
