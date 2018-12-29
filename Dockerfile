@@ -6,10 +6,9 @@ COPY / /app
 WORKDIR /app
 # Install all the packages
 RUN npm install
-CMD $(npm bin)/ng build
-
+RUN $(npm bin)/ng build
+CMD $(npm bin)/ng serve
 EXPOSE 4200
-
 
 #S2
 
