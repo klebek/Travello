@@ -14,6 +14,6 @@ RUN $(npm bin)/ng build
 
 FROM nginx
 
-COPY --from=builder /app/src/* /usr/share/nginx/html
+COPY --from=builder /app/src/* /usr/share/nginx/html/
 
 EXPOSE 80
