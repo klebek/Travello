@@ -1,19 +1,19 @@
 # base image
-FROM node:10.15
+FROM node:10.15 as builder
 # The qq is for silent output in the console
-WORKDIR /app
 # Copies all the content
-COPY . .
+COPY /src/ /app
+WORKDIR /app
 # Install all the packages
 RUN npm install
+RUN $(npm bin)/ng build
 
-ARG env=prod
 
-RUN npm run build -- --prod --enviroment $env
 
 #S2
 
-FROM nginx:alpine
-VOLUME /var/cache/nginx
-COPY --from=node /app/dist /usr/share/nginx/html
-COPY ./config/nginx.conf /etc/nginx/conf.d/default.conf
+FROM nginx
+
+COPY --from=builder /app/dist/* /usr/share/nginx/html
+
+EXPOSE 80
