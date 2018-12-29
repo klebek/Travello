@@ -2,7 +2,7 @@
 FROM node:10.15 as builder
 # The qq is for silent output in the console
 # Copies all the content
-COPY /src/ /app
+COPY / /app
 WORKDIR /app
 # Install all the packages
 RUN npm install
