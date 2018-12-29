@@ -7,13 +7,13 @@ WORKDIR /app
 # Install all the packages
 RUN npm install
 RUN $(npm bin)/ng build
-#CMD $(npm bin)/ng serve
-#EXPOSE 4200
+CMD $(npm bin)/ng serve
+EXPOSE 4200
 
 #S2
 
-FROM nginx
+#FROM nginx
 
-COPY --from=builder /app/src/* /usr/share/nginx/html/
+#COPY --from=builder /app/src/* /usr/share/nginx/html/
 
-EXPOSE 80
+#EXPOSE 80
