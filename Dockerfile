@@ -1,20 +1,21 @@
 # base image
-FROM node:10.15.0
+FROM node:10.15
+# The qq is for silent output in the console
+# You are welcome to modify this part as it
 
-# install chrome for protractor tests
-#RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-#RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-#RUN apt-get update && apt-get install -yq google-chrome-stable
-
-# set working directory
-WORKDIR /
-
-
-# install and cache app dependencies
-RUN npm install
-RUN npm install -g @angular/cli@6.01
-
-# add app
-
-# start app
-CMD ng serve --host 0.0.0.0
+# Sets the path where the app is going to be installed
+ENV NODE_ROOT /usr/app/
+# Creates the directory and all the parents (if they don’t exist)
+RUN mkdir -p $NODE_ROOT
+# Sets the /usr/app as the active directory
+WORKDIR $NODE_ROOT
+# Copies all the content
+COPY . .
+# Install all the packages
+RUN npm install -g @angular/cli
+RUN yarn install
+# Uncomment this if you went with Option #2 in Step #2 (Windows Only)
+# RUN npm rebuild node-sass --force
+# The default port from ng serve (4200)
+# and 49153 for Webpack Hot Module Reload
+EXPOSE 4200 49153
