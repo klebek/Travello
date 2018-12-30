@@ -8,7 +8,7 @@ WORKDIR /app
 RUN npm install
 EXPOSE 4200
 RUN $(npm bin)/ng build
-CMD $(npm bin)/ng serve --host 0.0.0.0
+CMD $(npm bin)/ng serve
 
 #S2
 
