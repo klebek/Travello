@@ -63,7 +63,9 @@ export class AuthService {
       new HttpHeaders({ 'Content-Type' : 'application/json'});
 
 
-    return this.http.post(this.root + '/account/register', body, {headers : header} );
+    return this.http.post(this.root + '/account/register', body, {headers : header} ).subscribe(data =>{
+      console.log('registered')
+    });
   }
 
   logout() {

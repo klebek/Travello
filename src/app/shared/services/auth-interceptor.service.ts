@@ -8,16 +8,15 @@ export class AuthInterceptorService implements HttpInterceptor {
   constructor(private authService: AuthService) {
   }
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return Observable.fromPromise(this.handleAccess(request, next));
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    return Observable.fromPromise(this.handleAccess(req, next));
   }
 
   private async handleAccess(request: HttpRequest<any>, next: HttpHandler):
     Promise<HttpEvent<any>> {
-
-
+    let newRequest = request;
     const token = await localStorage.getItem('token');
-    let changedRequest = request;
+
     const headerSettings: {[name: string]: string | string[]; } = {};
 
     for (const key of request.headers.keys()) {
@@ -32,15 +31,13 @@ export class AuthInterceptorService implements HttpInterceptor {
           headerSettings['Authorization'] = 'Bearer ' + token;
         }
       }
-
-
     }
 
     const newHeader = new HttpHeaders(headerSettings);
 
-    changedRequest = request.clone({
+    newRequest = request.clone({
       headers: newHeader});
-    return next.handle(changedRequest).toPromise();
+    return next.handle(newRequest).toPromise();
   }
 
 }
