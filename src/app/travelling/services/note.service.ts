@@ -41,7 +41,7 @@ export class NoteService {
     return this.http.delete<Note>("http://localhost:9000/api/card/" + id, options)
   }
 
-  editNote(id, note) {
+  editNote(id, tripId, note) {
     let httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
       'Cache-Control': 'no-cache'
@@ -49,6 +49,6 @@ export class NoteService {
     let options = {
       headers: httpHeaders
     };
-    return this.http.put<Note>("http://localhost:9000/api/card/" + id, note, options)
+    return this.http.put<Note>("http://localhost:9000/api/card/trip/" + tripId + "/" + id, note, options)
   }
 }

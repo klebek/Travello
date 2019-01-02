@@ -15,6 +15,10 @@ hr {
 .card-img-top {
     padding: 2rem 2rem 2rem 0;
 }
+
+.card-body {
+    padding: 3.25rem;
+}
 .col-sm-4-img {
     padding-left: 2rem;
 }

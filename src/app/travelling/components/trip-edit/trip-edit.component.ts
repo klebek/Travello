@@ -35,6 +35,7 @@ export class TripEditComponent implements OnInit, OnDestroy {
   type;
 
   card = [];
+  note = [];
 
   noteDates = [];
 
@@ -85,6 +86,10 @@ export class TripEditComponent implements OnInit, OnDestroy {
     this.noteService.addNote(id, note).subscribe(
       card => { }
     );
+    this.addCard = false;
+    this.addNote = false;
+    this.getCards();
+    this.getNotes();
   }
 
   deleteCountry(name: string) {
@@ -111,11 +116,16 @@ export class TripEditComponent implements OnInit, OnDestroy {
   }
 
   editNote(id, note: Note) {
-    this.noteService.editNote(id, note).subscribe(note => { });
+    let tripId = this.id;
+    this.noteService.editNote(id, tripId, note).subscribe(note => { });
+    this.getCards();
+    this.getNotes();
   }
 
   deleteNote(id) {
     this.noteService.deleteNote(id).subscribe(res => { });
+    this.getCards();
+    this.getNotes();
   }
 
   ngOnDestroy() {
