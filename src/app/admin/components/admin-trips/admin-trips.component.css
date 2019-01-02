@@ -19,6 +19,7 @@ td, th{
 }
 .badge {
     color: #232323;
+    padding: 0.4rem 0.6rem 0.4rem 0.6rem;
 }
 .input-group-text {
     background-color: transparent;

@@ -10,9 +10,9 @@ export class BusinessComponent implements OnInit {
 
   showNavigationArrows = false;
   showNavigationIndicators = false;
-  images = [1, 2, 3].map(() => `https://picsum.photos/900/450?random&t=${Math.random()}`);
-  // images = [1, 2, 3].map(() => `https://graphlocks.pl/projekt_pjatk/business/${Math.floor((Math.random() * 3) + 1)}.jpg`);
+  // images = [1, 2, 3].map(() => `https://picsum.photos/900/450?random&t=${Math.random()}`);
   showBusiness = false;
+  showContact = false;
 
   constructor(config: NgbCarouselConfig) {
     config.showNavigationArrows = true;
@@ -25,6 +25,10 @@ export class BusinessComponent implements OnInit {
 
   businessForm(){
     this.showBusiness = !this.showBusiness;
+  }
+
+  contactForm(){
+    this.showContact = !this.showContact;
   }
 
   ngOnInit() {

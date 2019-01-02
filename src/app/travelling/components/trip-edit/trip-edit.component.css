@@ -58,8 +58,11 @@ hr {
 .form-row {
     margin-bottom: 30px;
 }
-.btn-success {
+.btn-success, .btn-danger {
     margin-top: 20px;
+}
+.btn-success {
+    margin-right: 15px;
 }
 .btn-add-country {
     margin-top: 0;

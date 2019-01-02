@@ -22,8 +22,7 @@ import { EmailFormComponent } from './core/components/email-form/email-form.comp
 @NgModule({
   declarations: [
     AppComponent,
-    TitlePipe,
-    EmailFormComponent
+    TitlePipe
   ],
   imports: [
     BrowserModule,
@@ -39,7 +38,8 @@ import { EmailFormComponent } from './core/components/email-form/email-form.comp
     AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot([
       { path: '', component: TripsComponent},
-      { path: 'login', component: LoginComponent }
+      { path: 'login', component: LoginComponent },
+      { path: '**', redirectTo: ''}
     ])
   ],
   exports: [NgbModule],

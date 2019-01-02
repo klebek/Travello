@@ -10,3 +10,7 @@ h1 {
 .form-row {
     margin-bottom: 15px;
 }
+.btn-business {
+    background-color: #55dd2b;
+    border-color: #55dd2b;
+}

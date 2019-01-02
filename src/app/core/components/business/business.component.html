@@ -1,7 +1,7 @@
 <div class="jumbotron jumbotron-fluid"></div>
 <div class="container">
   <div class="row row-main">
-    <div class="col-sm-6">
+    <div *ngIf="!showContact" class="col-sm-6">
       <div class="card mb-3">
         <div class="card-body first">
           <h5 class="card-title">Business cooperation</h5>
@@ -52,6 +52,17 @@
             </div>
           </div>
         </div>
+        <div class="card-footer">
+          <button (click)="contactForm()" class="btn btn-business btn-block">Contact us</button>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="showContact" class="col-sm-6">
+      <contact></contact>
+      <div class="row">
+        <div class="col-sm-12 col-undo">
+          <span (click)="contactForm()">Undo</span>
+        </div>
       </div>
     </div>
     <div *ngIf="showBusiness" class="col-sm-6">
@@ -62,16 +73,8 @@
         </div>
       </div>
     </div>
-    <div *ngIf="images && !showBusiness" class="col-sm-6">
-      <ngb-carousel [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
-        <ng-template ngbSlide *ngFor="let image of images">
-          <img [src]="image">
-          <!-- <div class="carousel-caption">
-                <h3>No mouse navigation</h3>
-                <p>This carousel hides navigation arrows and indicators.</p>
-              </div> -->
-        </ng-template>
-      </ngb-carousel>
+    <div *ngIf="!showBusiness" class="col-sm-6">
+      <div class="card-img-top"></div>
       <div class="card mb-3 card-stats">
         <div class="card-body">
           <h5 class="card-title">Check this stats and numbers below</h5>

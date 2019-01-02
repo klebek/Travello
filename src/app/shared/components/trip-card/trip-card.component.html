@@ -1,8 +1,13 @@
 <a [routerLink]="['/trip/', trip.id]">
-  <div *ngIf="notes" class="card">
-    <div *ngFor="let note of notes; index as i">
-      <img *ngIf="i<1" class="card-img-top" [src]="note.photo" alt="Card image cap">
-    </div>
+  <div class="card">
+    <ng-container *ngIf="notes">
+      <div *ngFor="let note of notes; index as i">
+        <img *ngIf="i<1" class="card-img-top" [src]="note.photo" alt="Card image cap">
+      </div>
+    </ng-container>
+    <ng-container *ngIf="cards">
+      <img *ngIf="cards.length < 1 || notes.length < 1" class="card-img-top" src="../../../../assets/images/default_trip.jpg" alt="Card image cap">
+    </ng-container>
     <!-- <img class="card-img-top-business" placement="top" [ngbTooltip]="country.name" [src]="country.image" alt="Card image cap"> -->
     <div *ngIf="!businessTrip" class="card-body">
       <h5 class="card-title">{{trip.title}}</h5>

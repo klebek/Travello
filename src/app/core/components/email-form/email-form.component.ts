@@ -1,12 +1,9 @@
 
-import { Component, OnInit } from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {HttpErrorResponse} from '@angular/common/http';
-import {Note} from "../../../travelling/model/note";
+import { Component } from '@angular/core';
 import { MailService } from 'app/core/services/mail.service';
 
 @Component({
-  selector: 'app-email-form',
+  selector: 'contact',
   templateUrl: './email-form.component.html',
   styleUrls: ['./email-form.component.css']
 })

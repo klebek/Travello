@@ -58,7 +58,16 @@ export class TripFormComponent implements OnInit  {
   }
   getTrip(id) {
     this.tripService.getTrip(id).subscribe();
+  }
 
+  deleteCountry(name: string) {
+    const index: number = this.countries.indexOf(name);
+    // console.log(index)
+    if (index !== -1) {
+      this.countries.splice(index, 1);
+    }
+    if(this.countries.length < 1) this.notNullCountry = false;
+    // console.log(this.countries);
   }
 
   showContinent(value){

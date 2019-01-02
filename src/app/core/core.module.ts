@@ -22,8 +22,7 @@ import { EmailFormComponent } from './components/email-form/email-form.component
     RouterModule.forChild([]),
     RouterModule.forRoot([
       { path: 'profile/:id', component: ProfileComponent },
-      { path: 'business', component: BusinessComponent },
-      { path: 'contact', component: EmailFormComponent }
+      { path: 'business', component: BusinessComponent }
     ])
   ],
   declarations: [
@@ -31,6 +30,7 @@ import { EmailFormComponent } from './components/email-form/email-form.component
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+    EmailFormComponent,
     ProfileComponent,
     BusinessComponent,
     ProfileSettingsComponent,
