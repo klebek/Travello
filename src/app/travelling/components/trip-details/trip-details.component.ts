@@ -17,7 +17,7 @@ import { Subscription } from 'rxjs/Subscription';
 export class TripDetailsComponent implements OnInit, OnDestroy {
 
   id;
-  appUser: AppUser;
+  appUser: any;
   trip;
   subscriptionTrip: Subscription;
   subscriptionCountry: Subscription;
@@ -48,7 +48,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
-    this.auth.user$.subscribe(appUser => this.appUser = appUser);
+    this.appUser = JSON.parse(localStorage.getItem('user'));
     this.subscriptionTrip = this.tripService.getTrip(this.id).subscribe(t => this.trip = t);
     await this.getCountries(this.id);
   }

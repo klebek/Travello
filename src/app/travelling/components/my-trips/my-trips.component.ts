@@ -11,15 +11,16 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class MyTripsComponent implements OnDestroy {
 
-  
+
   filteredTrips;
   subscription: Subscription;
-  idUser = 0;
+  idUser: number;
   deleted = false;
 
   trips = [];
 
   constructor(private authService: AuthService, private tripService: TripService) {
+    this.idUser = JSON.parse(localStorage.getItem('user')).userId;
     this.getTrips();
   }
 

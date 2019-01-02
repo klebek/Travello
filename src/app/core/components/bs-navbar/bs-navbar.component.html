@@ -32,7 +32,7 @@
           </li>
         </ng-template>
         <a routerLink="/profile" *ngIf="appUser" class="hello"><i class="fas fa-user"></i>Profile</a>
-        <span *ngIf="appUser" class="hello">Hello, {{ appUser.email }}</span>
+        <span *ngIf="appUser" class="hello">Hello, {{ appUser.username }}</span>
       </ul>
       <a *ngIf="appUser" routerLink="/" class="logout-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i>Log Out</a>
     </div>

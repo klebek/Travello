@@ -10,13 +10,7 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  // save(user: firebase.User) {
-  //   this.db.object('/users/' + user.uid).update({
-  //     name: user.displayName,
-  //     email: user.email
-  //   });
-  // }
-  //
+
   // get(name: string): Observable<AppUser> {
   //   return null;
   // }

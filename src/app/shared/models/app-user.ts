@@ -1,6 +1,5 @@
 export interface AppUser {
-    name: string;
-    email: string;
-    isAdmin: boolean;
-    authorities: string;
+    userId: number;
+    username: string;
+    authorities: string[];
 }

@@ -12,16 +12,16 @@ import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 })
 export class BsNavbarComponent implements OnInit {
 
-  appUser: AppUser;
+  appUser: any;
 
   constructor(private auth: AuthService) {}
 
   async ngOnInit() {
-    // this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
+    this.appUser = JSON.parse(localStorage.getItem('user'));
   }
 
   logout(){
     this.auth.logout();
   }
-         
+
 }

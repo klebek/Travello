@@ -18,7 +18,7 @@ export class TripsComponent implements OnInit, OnDestroy {
 
   countries = [];
   continent;
-  appUser: AppUser;
+  appUser: any;
   searchText;
   i;
   searchCountry;
@@ -35,7 +35,7 @@ export class TripsComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.populateTrips();
-    this.auth.user$.subscribe(appUser => this.appUser = appUser);
+    this.appUser = JSON.parse(localStorage.getItem('user'));
     this.subscription = this.tripService.getAll().subscribe(t => {
       this.filteredTrips = this.trips = t;
       this.filteredTrips = this.filteredTrips.filter(s => s.status !== "PRIVATE");

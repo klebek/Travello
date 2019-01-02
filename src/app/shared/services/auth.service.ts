@@ -12,9 +12,8 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
   providedIn: 'root'
 })
 export class AuthService {
-  readonly root = 'https://localhost:9000/api';
+  readonly root = 'http://localhost:9000/api';
 
-  user$: Observable<AppUser>;
   errorLogin;
   errorRegister;
 
@@ -23,28 +22,31 @@ export class AuthService {
     private userService: UserService,
     private route: ActivatedRoute) {}
 
-  userAuthentication(username, password) {
+  authenticateUser(username, password) {
     const data = 'username=' + username + '&password=' + password + '&grant_type=password';
     const header =
-      new HttpHeaders({ 'Content-Type' : 'application/x-www-form-urlencoded', 'Authorization': 'Basic ' + btoa("my-trusted-client:secret") });
+      new HttpHeaders({ 'Content-Type' : 'application/x-www-form-urlencoded'});
 
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
 
     return this.http.post( 'http://localhost:9000/oauth/token', data, {headers : header}).subscribe((data : any)=>{
-        localStorage.setItem('userToken', data.access_token);
-        console.log(data.access_token)
+        localStorage.setItem('token', data.access_token);
+        this.setCurrentUser();
       },
       (err : HttpErrorResponse)=>{
         console.log(err)
       });
+  }
+  setCurrentUser() {
+    const header = new HttpHeaders({ 'Content-Type' : 'application/json'});
 
+    this.http.get('http://localhost:9000/principal', {headers : header}).subscribe((data : any)=>{
+      localStorage.setItem('user', JSON.stringify(data.principal)) ;
+    });
   }
 
-  registerUsernamePassword(formRegister, username, password) {
-    let confirmPassword = formRegister.value.confirmPassword;
-    let name = formRegister.value.name;
-
+  registerUsernamePassword(formRegister) {
     let data = {
       "username": formRegister.value.username,
       "password": formRegister.value.password,
@@ -53,29 +55,28 @@ export class AuthService {
       "admin": false
     };
     let body = JSON.stringify(data);
-    const header = new HttpHeaders({ 'Content-Type' : 'application/json', 'No-Auth': 'True' });
 
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
 
-    return this.http.post(this.root + '/account/register', body, {headers: header})
+    const header =
+      new HttpHeaders({ 'Content-Type' : 'application/json'});
+
+
+    return this.http.post(this.root + '/account/register', body, {headers : header} );
   }
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
   }
 
   getAllUsers() {
     return this.http.get(this.root + '/account/all');
 }
 
-  // get appUser$() : Observable<AppUser> {
-  //   return this.user$
-  //   .switchMap(user => {
-  //    // if (user) return this.userService.get(user.name);
-  //
-  //     return Observable.of(null);
-  //   });
-  // }
+  isLoggedIn(){
+    return localStorage.getItem('user') !== null;
+  };
 
 }

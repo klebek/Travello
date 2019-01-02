@@ -12,9 +12,12 @@ export class ProfileComponent implements OnDestroy {
 
   user: User;
   subscription: Subscription;
-  id = 0;
+  id : number;
+  principal : any;
 
   constructor(private userService: UserService) {
+    this.principal = JSON.parse(localStorage.getItem('user'));
+    this.id = this.principal.userId;
     this.subscription = this.userService.getUser(this.id).subscribe((u:User) => this.user = u);
   }
 

@@ -14,8 +14,9 @@ import { CountryService } from 'shared/services/country.service';
 import { UserService } from './services/user.service';
 import { HorizontalTimelineComponent } from './components/horizontal-timeline/horizontal-timeline.component';
 import { BusinessTripsComponent } from './components/business-trips/business-trips.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { TripFormComponent } from 'app/travelling/components/trip-form/trip-form.component';
+import {AuthInterceptorService} from "shared/services/auth-interceptor.service";
 
 
 @NgModule({
@@ -46,7 +47,11 @@ import { TripFormComponent } from 'app/travelling/components/trip-form/trip-form
     AuthService,
     AuthGuard,
     UserService,
-    CountryService
+    CountryService,
+    { provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    },
   ]
 })
 export class SharedModule { }

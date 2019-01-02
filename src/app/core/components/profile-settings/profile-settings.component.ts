@@ -18,11 +18,14 @@ export class ProfileSettingsComponent implements OnDestroy {
 
   imageUrl;
   idUser = 0;
+  appUser: any;
   trips = [];
   subscription: Subscription;
 
   constructor(private userService: UserService, private tripService: TripService) {
     this.imageUrl = "https://i.imgur.com/C15GrGG.png";
+    this.appUser = JSON.parse(localStorage.getItem('user'));
+    this.idUser = this.appUser.id;
     this.getTrips();
   }
 

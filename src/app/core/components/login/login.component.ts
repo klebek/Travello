@@ -25,12 +25,8 @@ export class LoginComponent {
   //   this.auth.loginFb();
   // }
 
-  // loginEmailPassword(formLogin) {
-  //   this.auth.loginEmailPassword(formLogin, formLogin.value.email, formLogin.value.password);
-  // }
-
   loginEmailPassword(formLogin) {
-    this.auth.userAuthentication(formLogin.value.email, formLogin.value.password)
+    this.auth.authenticateUser(formLogin.value.email, formLogin.value.password)
   }
 
 }
