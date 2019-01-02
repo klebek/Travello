@@ -1,5 +1,3 @@
-import { Observable } from 'rxjs/internal/Observable';
-import { AppUser } from 'shared/models/app-user';
 import { AuthService } from 'shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';

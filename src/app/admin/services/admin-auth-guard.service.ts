@@ -17,9 +17,14 @@ export class AdminAuthGuard implements CanActivate {
 
   canActivate(): Observable<boolean> {
     this.principal = JSON.parse(localStorage.getItem('user'));
-    this.isAdmin = this.principal.isAdmin;
+    this.isAdmin = this.principal.admin;
 
-    return Observable.of(this.isAdmin);
+    if(this.isAdmin) {
+      return Observable.of(true);
+    } else {
+      return Observable.of(false);
+    }
+
 
   }
 

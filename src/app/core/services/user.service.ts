@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'; 
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../model/user';
 
 @Injectable({
@@ -18,8 +18,7 @@ export class UserService {
   editUser(id:number, user: User){
     let httpHeaders = new HttpHeaders({
       'Content-Type' : 'application/json',
-      'Cache-Control': 'no-cache'
-    });   
+    });
     let options = {
       headers: httpHeaders
     };

@@ -18,23 +18,21 @@ export class NoteService {
     console.log("Z notatki:" + this.idTrip);
   }
 
-  addNote(id: number, note: Note): Observable<Note> { 
+  addNote(id: number, note: Note): Observable<Note> {
     let httpHeaders = new HttpHeaders({
       'Content-Type' : 'application/json',
-      'Cache-Control': 'no-cache'
-    });   
+    });
     let options = {
       headers: httpHeaders
     };
-    // console.log(trip); 
+    // console.log(trip);
     return this.http.post<Note>(this.url+id+"/add", note, options);
   }
 
   editNote(id, note) {
     let httpHeaders = new HttpHeaders({
       'Content-Type' : 'application/json',
-      'Cache-Control': 'no-cache'
-    });   
+    });
     let options = {
       headers: httpHeaders
     };

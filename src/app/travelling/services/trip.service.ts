@@ -31,7 +31,6 @@ export class TripService {
   addTrip(trip: Trip): Observable<Trip> {
     let httpHeaders = new HttpHeaders({
       'Content-Type' : 'application/json',
-      'Cache-Control': 'no-cache'
     });
     let options = {
       headers: httpHeaders
@@ -43,7 +42,6 @@ export class TripService {
   editTrip(id, trip: Trip) {
     let httpHeaders = new HttpHeaders({
       'Content-Type' : 'application/json',
-      'Cache-Control': 'no-cache'
     });
     let options = {
       headers: httpHeaders
@@ -95,7 +93,6 @@ export class TripService {
   changeStatus(id, status) {
     let httpHeaders = new HttpHeaders({
       'Content-Type' : 'application/json',
-      'Cache-Control': 'no-cache'
     });
     let options = {
       headers: httpHeaders

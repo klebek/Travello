@@ -6,7 +6,7 @@
 
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <li ngbDropdown *ngIf="appUser; else anonymousUser" class="nav-item dropdown">
-            <a *ngIf="appUser.isAdmin" ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <a *ngIf="appUser.admin" ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-hammer"></i>Admin
             </a>
             <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
