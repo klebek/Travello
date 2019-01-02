@@ -13,7 +13,7 @@ import { Note } from 'app/travelling/model/note';
   selector: 'trip-edit',
   templateUrl: './trip-edit.component.html',
   styleUrls: ['./trip-edit.component.css'],
-  providers: [{provide: NgbDateAdapter, useClass: NgbDateNativeAdapter}]
+  providers: [{ provide: NgbDateAdapter, useClass: NgbDateNativeAdapter }]
 })
 export class TripEditComponent implements OnInit, OnDestroy {
 
@@ -35,6 +35,7 @@ export class TripEditComponent implements OnInit, OnDestroy {
   type;
 
   card = [];
+  note = [];
 
   noteDates = [];
 
@@ -56,36 +57,48 @@ export class TripEditComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscriptionTrip = this.tripService.getTrip(this.id).subscribe(t => {
       this.trip = t;
-      if(this.trip.status == "PUBLIC") { this.tripStatus = 1; this.trip.status = 1}
-      else if(this.trip.status == "PRIVATE") { this.tripStatus = 0; this.trip.status = 0}
+      if (this.trip.status == "PUBLIC") { this.tripStatus = 1; this.trip.status = 1 }
+      else if (this.trip.status == "PRIVATE") { this.tripStatus = 0; this.trip.status = 0 }
       this.startDateApp = new Date(this.trip.startDate);
       this.endDateApp = new Date(this.trip.endDate);
     });
-    this.tripService.getCards(this.id).subscribe(n => this.cards = n);
-    this.tripService.getNotes(this.id).subscribe(n => {
-      this.notes = n
-      for(let note of this.notes) {
-        note.date = new Date(note.date);
-      }
-    });
+    this.getCards();
+    this.getNotes();
     this.countryService.getName().subscribe(c => {
       this.countriesNames = c;
     });
   }
 
+  getCards() {
+    this.tripService.getCards(this.id).subscribe(n => this.cards = n);
+  }
+
+  getNotes() {
+    this.tripService.getNotes(this.id).subscribe(n => {
+      this.notes = n
+      for (let note of this.notes) {
+        note.date = new Date(note.date);
+      }
+    });
+  }
+
   addCardFunction(id, note) {
     this.noteService.addNote(id, note).subscribe(
-      card => {}
+      card => { }
     );
+    this.addCard = false;
+    this.addNote = false;
+    this.getCards();
+    this.getNotes();
   }
 
   deleteCountry(name: string) {
     const index: number = this.tripCountries.indexOf(name);
-    console.log(index)
+    // console.log(index)
     if (index !== -1) {
       this.tripCountries.splice(index, 1);
     }
-    console.log(this.tripCountries);
+    // console.log(this.tripCountries);
   }
 
   addCountry(country) {
@@ -95,17 +108,24 @@ export class TripEditComponent implements OnInit, OnDestroy {
   }
 
   addTrip(trip: Trip) {
-    this.tripService.addTrip(trip).subscribe(trip => {});
+    this.tripService.addTrip(trip).subscribe(trip => { });
   }
 
   editTrip(id, trip: Trip) {
-    // console.log(id + " " + trip.title);
-    this.tripService.editTrip(id, trip).subscribe(trip => {});
+    this.tripService.editTrip(id, trip).subscribe(trip => { });
   }
 
   editNote(id, note: Note) {
-    // console.log(id + " " + note);
-    this.noteService.editNote(id, note).subscribe(note => {});
+    let tripId = this.id;
+    this.noteService.editNote(id, tripId, note).subscribe(note => { });
+    this.getCards();
+    this.getNotes();
+  }
+
+  deleteNote(id) {
+    this.noteService.deleteNote(id).subscribe(res => { });
+    this.getCards();
+    this.getNotes();
   }
 
   ngOnDestroy() {
@@ -113,11 +133,11 @@ export class TripEditComponent implements OnInit, OnDestroy {
     this.subscriptionTripCountries.unsubscribe();
   }
 
-  showAddNote(){
+  showAddNote() {
     this.addNote = true;
     this.type = 1;
   }
-  showAddCard(){
+  showAddCard() {
     this.addCard = true;
     this.type = 0;
   }

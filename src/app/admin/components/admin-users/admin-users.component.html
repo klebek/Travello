@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="row">
+      <div class="col-sm-12">
+          <div class="row">
+              <div class="col-sm-4">
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text" id="id"><i class="fas fa-sort-numeric-down"></i></span>
+                      </div>
+                      <input #query1 (keyup)="filterById(query1.value)" type="text" class="form-control" placeholder="Search by id...">
+                  </div>
+              </div>
+              <div class="col-sm-4">
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text" id="username"><i class="fas fa-hand-point-right"></i></span>
+                      </div>
+                      <input #query2 (keyup)="filterByUsername(query2.value)" type="text" class="form-control"
+                          placeholder="Search by username...">
+                  </div>
+              </div>
+              <div class="col-sm-4">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="email"><i class="fas fa-envelope"></i></span>
+                    </div>
+                    <input #query3 (keyup)="filterByEmail(query3.value)" type="text" class="form-control"
+                        placeholder="Search by email...">
+                </div>
+            </div>
+          </div>
+          <table class="table table-hover table-striped table-dark">
+              <thead>
+                  <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Username</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Options</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let user of filteredUsers; let i = index">
+                      <th scope="row">{{user.id}}</th>
+                      <td>{{user.email}}</td>
+                      <td>{{user.username}}</td>
+                      <td>
+                          <span *ngIf="!user.business" class="badge badge-pill badge-primary">DEFAULT</span>
+                          <span *ngIf="user.business" class="badge badge-pill badge-primary badge-business">BUSINESS</span>
+                      </td>
+                      <td>
+                          <a [routerLink]="['/profile', user.id]"><button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i>View</button></a>
+                          <button *ngIf="!user.business" (click)="changeStatus(user.id, businessStatus)" class="btn btn-success btn-sm"><i class="fas fa-user-tie"></i>Set business</button>
+                          <button *ngIf="user.business" (click)="changeStatus(user.id, !businessStatus)" class="btn btn-primary btn-sm"><i class="fas fa-globe-americas"></i>Set default</button>
+                      </td>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>

@@ -108,7 +108,7 @@
             </div>
             <button (click)="editTrip(trip.id, fTrip.value)" [disabled]="countries.length < 1 || !fTrip.valid" class="btn btn-success btn-block"><i
                 class="fas fa-save"></i>Edit trip</button>
-            DANE fTrip: {{fTrip.value | json}}
+            <!-- DANE fTrip: {{fTrip.value | json}} -->
           </form>
         </div>
       </div>
@@ -151,17 +151,19 @@
                             id="photoCard" placeholder="Photo URL">
                         </div>
                       </div>
-                      TYPE: {{type}}
+                      <!-- TYPE: {{type}} -->
                       <div class="form-group form-group-button form-disabled">
-                          <input #typeNote="ngModel" [(ngModel)]="type" name="type" type="radio" [value]="1">
-                          <input #typeNote="ngModel" [(ngModel)]="type" name="type" type="radio" [value]="0">
-                        </div>
+                        <input #typeNote="ngModel" [(ngModel)]="type" name="type" type="radio" [value]="1">
+                        <input #typeNote="ngModel" [(ngModel)]="type" name="type" type="radio" [value]="0">
+                      </div>
                     </div>
                     <div class="form-group form-group-button">
-                      <button (click)="editNote(note.id, fNote.value)" type="submit" class="btn btn-success"><i
-                          class="fas fa-save"></i>Update note</button>
+                      <button (click)="editNote(note.id, fNote.value)" type="submit" class="btn btn-success"><i class="fas fa-save"></i>Update
+                        note</button>
+                      <button (click)="deleteNote(note.id)" type="submit" class="btn btn-danger"><i class="fas fa-trash"></i>Delete
+                        note</button>
                     </div>
-                    DANE: {{fNote.value | json}}
+                    <!-- DANE: {{fNote.value | json}} -->
                   </div>
                   <div class="col-sm-4 col-sm-4-img">
                     <label for="note-img">Preview of photo</label>
@@ -172,9 +174,72 @@
             </div>
             <hr />
           </div>
-          <button (click)="showAddNote()" class="btn btn-success"><i class="fas fa-plus"></i>Add note</button>
         </div>
-        <trip-form-card *ngIf="addNote" [type]="1" [noteCard]="true" [idTrip]="id"></trip-form-card>
+
+        <!-- START -->
+
+        <div *ngIf="addNote" class="card">
+          <div class="card-body">
+            <div class="card-text">
+              <form #fAddNote="ngForm">
+                <div *ngIf="!noteCard" class="form-group">
+                  <label for="photoNote">Photo URL</label>
+                  <input #photoNote="ngModel" [(ngModel)]="note.photo" name="photo" type="text" class="form-control" id="photoNote"
+                    placeholder="Photo URL">
+                  <div class="alert alert-danger" *ngIf="photoNote.touched && photoNote.invalid">
+                    <div *ngIf="photoNote.errors.required">Title is required</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="title">Title</label>
+                  <input #titleNote="ngModel" [(ngModel)]="note.title" name="title" type="text" class="form-control" id="title"
+                    placeholder="Title" required>
+                  <div class="alert alert-danger" *ngIf="titleNote.touched && titleNote.invalid">
+                    <div *ngIf="titleNote.errors.required">Title is required</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="note">Note</label>
+                  <textarea #description="ngModel" [(ngModel)]="note.description" name="description" class="form-control"
+                    id="note" rows="3"></textarea>
+                  <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+                    <div *ngIf="description.errors.required">Description is required</div>
+                  </div>
+                </div>
+                <div *ngIf="noteCard" class="form-group">
+                  <label for="date">Date</label>
+                  <div class="input-group">
+                    <input [(ngModel)]="note.date" name="date" class="form-control" placeholder="yyyy-mm-dd" (focus)="dateNote.open()"
+                      id="date" name="date" ngbDatepicker #dateNote="ngbDatepicker">
+                    <div class="input-group-append">
+                      <button class="btn btn-default btn-calendar calendar" (click)="dateNote.toggle()" type="button"><i
+                          class="fas fa-calendar-alt"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="noteCard" class="form-group">
+                  <label for="photoCard">Photo URL</label>
+                  <input #photoCard="ngModel" [(ngModel)]="note.photo" name="photo" type="text" class="form-control" id="photoCard"
+                    placeholder="Photo URL">
+                </div>
+
+                <div class="form-group form-group-button form-disabled">
+                  <input #typeNote="ngModel" [(ngModel)]="type" name="type" type="radio" [value]="1">
+                  <input #typeNote="ngModel" [(ngModel)]="type" name="type" type="radio" [value]="0">
+                </div>
+
+                <div class="form-group form-group-button">
+                  <button (click)="addCardFunction(trip.id, fAddNote.value)" type="submit" class="btn btn-success"><i
+                      class="fas fa-save"></i>Save note</button>
+                </div>
+                <!-- DANE: {{f.value | json}} -->
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- END -->
+
       </div>
       <div *ngIf="editCards" class="card">
         <div class="card">
@@ -188,6 +253,11 @@
                       <input #photoNote="ngModel" [(ngModel)]="card.photo" name="photo" type="text" class="form-control"
                         id="photoNote" placeholder="Photo URL">
                     </div>
+                    <!-- TYPE: {{type}} -->
+                    <div class="form-group form-group-button form-disabled">
+                      <input #typeNote="ngModel" [(ngModel)]="type" name="type" type="radio" [value]="1">
+                      <input #typeNote="ngModel" [(ngModel)]="type" name="type" type="radio" [value]="0">
+                    </div>
                     <div class="form-group">
                       <label for="title">Title</label>
                       <input #titleNote="ngModel" [(ngModel)]="card.title" name="title" type="text" class="form-control"
@@ -199,11 +269,12 @@
                         id="note" rows="3"></textarea>
                     </div>
                     <div class="form-group form-group-button">
-                      <button (click)="addCardFunction(trip.id, fAddNote.value)" type="submit" class="btn btn-success"><i
-                          class="fas fa-save"></i>Update
+                      <button (click)="editNote(card.id, fCard.value)" type="submit" class="btn btn-success"><i class="fas fa-save"></i>Update
+                        card</button>
+                      <button (click)="deleteNote(card.id)" type="submit" class="btn btn-danger"><i class="fas fa-trash"></i>Delete
                         card</button>
                     </div>
-                    DANE: {{fCard.value | json}}
+                    <!-- DANE: {{fCard.value | json}} -->
                   </div>
                   <div class="col-sm-4 col-sm-4-img">
                     <label for="card-img">Preview of photo</label>
@@ -214,7 +285,6 @@
             </div>
             <hr />
           </div>
-          <button (click)="showAddCard()" class="btn btn-success"><i class="fas fa-plus"></i>Add card</button>
         </div>
         <div *ngIf="addCard" class="row row-adding-card">
           <div class="card-body">
@@ -243,10 +313,9 @@
                     </div>
                     <div class="form-group form-group-button">
                       <button (click)="addCardFunction(trip.id, fAddCard.value)" type="submit" class="btn btn-success"><i
-                          class="fas fa-save"></i>Add card
-                        card</button>
+                          class="fas fa-save"></i>Save card</button>
                     </div>
-                    DANE: {{fAddCard.value | json}}
+                    <!-- DANE: {{fAddCard.value | json}} -->
                   </div>
                   <div class="col-sm-4 col-sm-4-img">
                     <label for="card-img">Preview of photo</label>
@@ -259,6 +328,10 @@
           </div>
         </div>
       </div>
+      <button *ngIf="!addCard && editCards" (click)="showAddCard()" class="btn btn-success btn-block"><i class="fas fa-plus"></i>Add
+        card</button>
+      <button *ngIf="!addCard && editNotes" (click)="showAddNote()" class="btn btn-success btn-block"><i class="fas fa-plus"></i>Add
+        note</button>
     </div>
     <div class="col-sm-2 col-edit">
       <button *ngIf="editTripp || editNotes" (click)="enableEditCards()" class="btn btn-warning"><i class="fas fa-edit"></i>Edit

@@ -66,6 +66,11 @@
                 <button (click)="addCountry(country.value)" class="btn btn-success btn-block btn-add-country" id="country"><i
                     class="fa fa-plus"></i></button>
               </div>
+              <div *ngIf="countries.length > 0" class="form-group col-md-12">
+                <span *ngFor="let country of trip.countries; let i = index" class="badge badge-primary">
+                  {{country}}
+                  <i (click)="deleteCountry(country)" class="fas fa-times"></i></span>
+              </div>
               <div class="form-group col-md-12">
                 <label for="inputDescription">Description</label>
                 <textarea #description="ngModel" [(ngModel)]="trip.description" name="description" class="form-control"
@@ -111,8 +116,8 @@
             </div>
             <div class="row">
               <div class="col-sm-6">
-                <trip-form-card *ngIf="showNote" [(disabledButton)]="disabledButton" [(alertNote)]="alertNote" [(showNote)]="showNote" [noteCard]="true"
-                  [type]="type" [idTrip]="idTrip"></trip-form-card>
+                <trip-form-card *ngIf="showNote" [(disabledButton)]="disabledButton" [(alertNote)]="alertNote"
+                  [(showNote)]="showNote" [noteCard]="true" [type]="type" [idTrip]="idTrip"></trip-form-card>
                 <ngb-alert *ngIf="alertNote" (click)="closeAlertNote()" type="success"><i class="fas fa-check-circle"></i>Saved
                   note</ngb-alert>
               </div>
@@ -123,11 +128,11 @@
                   card</ngb-alert>
               </div>
             </div>
-            not null: {{notNullCountry}}
+            <!-- not null: {{notNullCountry}} -->
             <a routerLink="/"><button (click)="addTrip(f.value)" [disabled]="countries.length < 1 || !f.valid" class="btn btn-success btn-block"
                 [disabled]="!notNullCountry"><i class="fas fa-save"></i>Add
                 your new trip</button></a>
-            DANE: {{f.value | json}}
+            <!-- DANE: {{f.value | json}} -->
           </form>
         </div>
       </div>

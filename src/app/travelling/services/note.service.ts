@@ -26,16 +26,26 @@ export class NoteService {
       headers: httpHeaders
     };
     // console.log(trip);
-    return this.http.post<Note>(this.url+id+"/add", note, options);
+    return this.http.post<Note>(this.url + id + "/add", note, options);
   }
 
-  editNote(id, note) {
+  deleteNote(id) {
     let httpHeaders = new HttpHeaders({
       'Content-Type' : 'application/json',
     });
     let options = {
       headers: httpHeaders
     };
-    return this.http.put<Note>("http://localhost:9000/api/card/"+id, note, options)
+    return this.http.delete<Note>("http://localhost:9000/api/card/" + id, options)
+  }
+
+  editNote(id, tripId, note) {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json',
+    });
+    let options = {
+      headers: httpHeaders
+    };
+    return this.http.put<Note>("http://localhost:9000/api/card/trip/" + tripId + "/" + id, note, options)
   }
 }

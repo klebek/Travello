@@ -12,6 +12,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { BusinessComponent } from './components/business/business.component';
 import { ProfileSettingsComponent } from './components/profile-settings/profile-settings.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { EmailFormComponent } from './components/email-form/email-form.component';
 
 @NgModule({
   imports: [
@@ -20,7 +21,7 @@ import { FooterComponent } from './components/footer/footer.component';
     NgbModule.forRoot(),
     RouterModule.forChild([]),
     RouterModule.forRoot([
-      { path: 'profile', component: ProfileComponent },
+      { path: 'profile/:id', component: ProfileComponent },
       { path: 'business', component: BusinessComponent }
     ])
   ],
@@ -29,6 +30,7 @@ import { FooterComponent } from './components/footer/footer.component';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
+    EmailFormComponent,
     ProfileComponent,
     BusinessComponent,
     ProfileSettingsComponent,

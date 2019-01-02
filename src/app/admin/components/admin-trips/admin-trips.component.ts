@@ -27,8 +27,12 @@ export class AdminTripsComponent implements OnDestroy {
   constructor(config: NgbRatingConfig, private tripService: TripService) {
     config.max = 5;
     config.readonly = true;
+    this.getTrips();
+  }
+
+  getTrips(){
     this.subscription = this.tripService.getAll()
-      .subscribe((t: Trip[]) => this.filteredTrips = this.trips = t);
+    .subscribe((t: Trip[]) => this.filteredTrips = this.trips = t);
   }
 
   filterById(query1: number) {
@@ -52,6 +56,7 @@ export class AdminTripsComponent implements OnDestroy {
 
   changeStatus(id, status) {
     this.tripService.changeStatus(id, status).subscribe(status => {});
+    this.getTrips();
   }
 
   ngOnDestroy() {

@@ -8,6 +8,8 @@ import { AuthService } from 'shared/services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
+  @Input('business') business = false;
+
   constructor(private auth: AuthService) { }
 
   ngOnInit() {

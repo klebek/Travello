@@ -15,6 +15,10 @@ hr {
 .card-img-top {
     padding: 2rem 2rem 2rem 0;
 }
+
+.card-body {
+    padding: 3.25rem;
+}
 .col-sm-4-img {
     padding-left: 2rem;
 }
@@ -58,8 +62,11 @@ hr {
 .form-row {
     margin-bottom: 30px;
 }
-.btn-success {
+.btn-success, .btn-danger {
     margin-top: 20px;
+}
+.btn-success {
+    margin-right: 15px;
 }
 .btn-add-country {
     margin-top: 0;

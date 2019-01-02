@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule } from '@angular/common/http';
 import { TitlePipe } from './pipes/title.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EmailFormComponent } from './core/components/email-form/email-form.component';
 
 @NgModule({
   declarations: [
@@ -36,8 +37,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CustomFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot([
-      { path: '', component: TripsComponent },
-      { path: 'login', component: LoginComponent }
+      { path: '', component: TripsComponent},
+      { path: 'login', component: LoginComponent },
+      { path: '**', redirectTo: ''}
     ])
   ],
   exports: [NgbModule],
