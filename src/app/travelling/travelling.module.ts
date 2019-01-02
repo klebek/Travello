@@ -11,8 +11,6 @@ import { MyTripsComponent } from './components/my-trips/my-trips.component';
 import { TripDetailsComponent } from './components/trip-details/trip-details.component';
 import { TripFormComponent } from './components/trip-form/trip-form.component';
 import { CountryPhotosComponent } from './components/country-photos/country-photos.component';
-import { TripFormPhotosComponent } from './components/trip-form-photos/trip-form-photos.component';
-import { TripVisitorsComponent } from './components/trip-visitors/trip-visitors.component';
 import { TripFormCardComponent } from './components/trip-form-card/trip-form-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { CountryService } from 'shared/services/country.service';
@@ -40,8 +38,6 @@ import { TripEditComponent } from './components/trip-edit/trip-edit.component';
     TripDetailsComponent,
     TripFormComponent,
     CountryPhotosComponent,
-    TripFormPhotosComponent,
-    TripVisitorsComponent,
     TripFormCardComponent,
     TitlePipe,
     CountryPipe,
