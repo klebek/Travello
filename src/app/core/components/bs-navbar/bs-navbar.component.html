@@ -12,6 +12,7 @@
             <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
               <ng-container>
                 <a class="dropdown-item" routerLink="/admin/trips">Manage Trips</a>
+                <a class="dropdown-item" routerLink="/admin/users">Manage Users</a>
               </ng-container>
             </div>
           </li>
@@ -31,7 +32,7 @@
             </a>
           </li>
         </ng-template>
-        <a routerLink="/profile" *ngIf="appUser" class="hello"><i class="fas fa-user"></i>Profile</a>
+        <a [routerLink]="['/profile', userId]" *ngIf="appUser" class="hello"><i class="fas fa-user"></i>Profile</a>
         <span *ngIf="appUser" class="hello">Hello, {{ appUser.email }}</span>
       </ul>
       <a *ngIf="appUser" routerLink="/" class="logout-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i>Log Out</a>

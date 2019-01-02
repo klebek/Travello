@@ -61,6 +61,13 @@
 .busines-stock {
     width: 400px;
 }
+.col-undo {
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin-top: 15px;
+    cursor: pointer;
+}
 p /deep/ .progress-bar {
     background-color: rgb(85, 221, 43) !important;
     color: #232323 !important;

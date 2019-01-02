@@ -1,5 +1,4 @@
-<h1>
-  <i class="fas fa-user-plus"></i> Sign Up</h1>
+<h1 *ngIf="!business"><i class="fas fa-user-plus"></i> Sign Up</h1>
 <form #formRegister="ngForm" class="form-sign-up">
   <span class="inline">
     <div class="form-group">
@@ -12,14 +11,26 @@
         <div *ngIf="email.errors.email">It is not an email adress format</div>
       </div>
     </div>
-    <div class="form-group right-input">
+    <div *ngIf="!business" class="form-group right-input">
       <label for="exampleInputUsername">Username</label>
       <input required minlength="3" ngModel name="username" #username="ngModel" type="text" class="form-control" id="exampleInputUsername"
         aria-describedby="usernameHelp" placeholder="Enter username">
       <small id="usernameHelp" class="form-text text-muted">Type your username</small>
       <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
         <div *ngIf="username.errors.required">Username field is required</div>
-        <div *ngIf="username.errors.minlength">Username should be at least {{ username.errors.minlength.requiredLength }} characters</div>
+        <div *ngIf="username.errors.minlength">Username should be at least {{ username.errors.minlength.requiredLength
+          }} characters</div>
+      </div>
+    </div>
+    <div *ngIf="business" class="form-group right-input">
+      <label for="exampleInputName">Name</label>
+      <input required minlength="3" ngModel name="name" #name="ngModel" type="text" class="form-control" id="exampleInputName"
+        aria-describedby="nameHelp" placeholder="Enter name">
+      <small id="nameHelp" class="form-text text-muted">Type your name</small>
+      <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+        <div *ngIf="name.errors.required">Name field is required</div>
+        <div *ngIf="name.errors.minlength">Name should be at least {{ name.errors.minlength.requiredLength }}
+          characters</div>
       </div>
     </div>
   </span>
@@ -30,7 +41,8 @@
         placeholder="Password">
       <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
         <div *ngIf="password.errors.required">Password field is required</div>
-        <div *ngIf="password.errors.minlength">Password should be at least {{ password.errors.minlength.requiredLength }} characters</div>
+        <div *ngIf="password.errors.minlength">Password should be at least {{ password.errors.minlength.requiredLength
+          }} characters</div>
       </div>
     </div>
     <div class="form-group right-input">
@@ -43,6 +55,8 @@
     </div>
   </span>
 
-  <button (click)="register(formRegister)" [disabled]="formRegister.invalid" type="submit" class="btn btn-primary btn-block">Sign up</button>
-  <button (click)="register(formRegister)" [disabled]="formRegister.invalid" type="submit" class="btn btn-business btn-block">Sign up for business</button>
+  <button *ngIf="!business" (click)="register(formRegister)" [disabled]="formRegister.invalid" type="submit" class="btn btn-primary btn-block">Sign
+    up</button>
+  <button *ngIf="business" (click)="register(formRegister)" [disabled]="formRegister.invalid" type="submit" class="btn btn-business btn-block">Sign
+    up for business</button>
 </form>

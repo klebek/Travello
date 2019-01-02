@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { User } from 'app/core/model/user';
 import { Subscription } from 'rxjs/Subscription';
 import { UserService } from 'app/core/services/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -12,9 +13,10 @@ export class ProfileComponent implements OnDestroy {
 
   user: User;
   subscription: Subscription;
-  id = 0;
+  id;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private route: ActivatedRoute) {
+    this.id = this.route.snapshot.params['id'];
     this.subscription = this.userService.getUser(this.id).subscribe((u:User) => this.user = u);
   }
 

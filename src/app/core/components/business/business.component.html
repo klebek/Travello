@@ -54,7 +54,15 @@
         </div>
       </div>
     </div>
-    <div *ngIf="images" class="col-sm-6">
+    <div *ngIf="showBusiness" class="col-sm-6">
+      <register [business]="true"></register>
+      <div class="row">
+        <div class="col-sm-12 col-undo">
+          <span (click)="businessForm()">Undo</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="images && !showBusiness" class="col-sm-6">
       <ngb-carousel [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
         <ng-template ngbSlide *ngFor="let image of images">
           <img [src]="image">
@@ -86,7 +94,7 @@
           </div>
         </div>
         <div class="card-footer">
-          <a routerLink="/login"><button class="btn btn-business btn-block">Sign up for business</button></a>
+          <button (click)="businessForm()" class="btn btn-business btn-block">Sign up for business</button>
         </div>
       </div>
     </div>

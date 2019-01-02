@@ -1,0 +1,12 @@
+.container {
+    margin-top: 150px;
+    padding: 50px;
+}
+h1 {
+    text-align: left;
+    color: white;
+    font-weight: 700;
+}
+.form-row {
+    margin-bottom: 15px;
+}

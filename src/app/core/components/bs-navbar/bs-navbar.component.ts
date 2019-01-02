@@ -13,6 +13,7 @@ import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 export class BsNavbarComponent implements OnInit {
 
   appUser: AppUser;
+  userId = 2;
 
   constructor(private auth: AuthService) {}
 

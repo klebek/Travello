@@ -11,6 +11,10 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
+  getAll(){
+    return this.http.get('http://localhost:9000/api/account/all');
+  }
+
   getUser(id:number){
     return this.http.get('http://localhost:9000/api/account/'+id);
   }

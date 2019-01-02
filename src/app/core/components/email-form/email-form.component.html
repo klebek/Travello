@@ -1,25 +1,50 @@
-<p>
-<div style="text-align:center">
-  <div class="container">
-    <div class="email-form">
-      <div class="form-area">
-        <form role="form">
-          <div class="form-group">
-            <input type="text" class="form-control" id="name" name="name" placeholder="Name" [(ngModel)]="name" required>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm">
+      <h1>Contact us!</h1>
+      <div class="email-form">
+        <form #f="ngForm">
+          <div class="form-row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input #nameForm="ngModel" type="text" class="form-control" id="name" name="name" placeholder="Name"
+                  [(ngModel)]="name" required>
+              </div>
+              <div class="alert alert-danger" *ngIf="nameForm.touched && nameForm.invalid">
+                <div *ngIf="nameForm.errors.required">Name is required</div>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <input #emailForm="ngModel" type="email" class="form-control" id="email" name="email" placeholder="Email"
+                  [(ngModel)]="email" required>
+              </div>
+              <div class="alert alert-danger" *ngIf="emailForm.touched && emailForm.invalid">
+                  <div *ngIf="emailForm.errors.required">Email is required</div>
+                </div>
+            </div>
           </div>
           <div class="form-group">
-            <input type="email" class="form-control" id="email" name="email" placeholder="Email" [(ngModel)]="email" required>
+            <input #subjectForm="ngModel" type="text" class="form-control" id="subject" name="subject" placeholder="Subject"
+              [(ngModel)]="subject" required>
           </div>
+          <div class="alert alert-danger" *ngIf="subjectForm.touched && subjectForm.invalid">
+              <div *ngIf="subjectForm.errors.required">Subject is required</div>
+            </div>
           <div class="form-group">
-            <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" [(ngModel)]="subject" required>
+            <textarea #messageForm="ngModel" class="form-control" type="textarea" id="message" name="message"
+              placeholder="Message" [(ngModel)]="message" minlength="30" maxlength="140" rows="7" required></textarea>
           </div>
-          <div class="form-group">
-            <textarea class="form-control" type="textarea" id="message" name="message" placeholder="Message" [(ngModel)]="message" maxlength="140" rows="7"></textarea>
-          </div>
-          <button type="button" id="submit" name="submit" class="btn btn-primary pull-right" (click)="save(name, email, subject, message)">Send</button>
+          <div class="alert alert-danger" *ngIf="messageForm.touched && messageForm.invalid">
+              <div *ngIf="messageForm.errors.required">Message is required</div>
+              <div *ngIf="messageForm.errors.minlength">Min length is 30</div>
+              <div *ngIf="messageForm.errors.maxlength">Max length is 140</div>
+            </div>
+          <button type="button" id="submit" name="submit" class="btn btn-primary btn-block" (click)="save(f.value)"><i class="fas fa-envelope"></i>Send</button>
         </form>
       </div>
     </div>
+    <div class="col-sm-2"></div>
   </div>
 </div>
-<p>
