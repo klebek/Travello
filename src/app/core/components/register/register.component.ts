@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   }
 
   register(formRegister) {
-    this.auth.registerUsernamePassword(formRegister);
+    this.auth.registerTraveller(formRegister);
   }
 
 

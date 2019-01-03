@@ -46,13 +46,37 @@ export class AuthService {
     });
   }
 
-  registerUsernamePassword(formRegister) {
+  registerTraveller(formRegister) {
     let data = {
       "username": formRegister.value.username,
       "password": formRegister.value.password,
       "email": formRegister.value.email,
       "business": false,
-      "admin": false
+      "admin": false,
+      "isActive": true
+    };
+    let body = JSON.stringify(data);
+
+    let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+    localStorage.setItem('returnUrl', returnUrl);
+
+    const header =
+      new HttpHeaders({ 'Content-Type' : 'application/json'});
+
+
+    return this.http.post(this.root + '/account/register', body, {headers : header} ).subscribe(data =>{
+      console.log('registered')
+    });
+  }
+
+  registerBusinessPartner(formRegister) {
+    let data = {
+      "username": formRegister.value.username,
+      "password": formRegister.value.password,
+      "email": formRegister.value.email,
+      "business": true,
+      "admin": false,
+      "isActive": false
     };
     let body = JSON.stringify(data);
 
