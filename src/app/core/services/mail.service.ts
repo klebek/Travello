@@ -10,8 +10,7 @@ export class MailService {
 
   sendMail(mail) {
     let httpHeaders = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Cache-Control': 'no-cache'
+      'Content-Type': 'application/json'
     });
     let options = {
       headers: httpHeaders
