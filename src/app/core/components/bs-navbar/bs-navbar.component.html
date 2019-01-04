@@ -4,9 +4,9 @@
       <img src="../../../../assets/images/logo.png" alt="">
     </a>
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <li ngbDropdown *ngIf="appUser; else anonymousUser" class="nav-item dropdown">
-            <a *ngIf="appUser.admin" ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div  class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <li ngbDropdown *ngIf="auth.isLoggedIn | async;else anonymousUser" class="nav-item dropdown">
+            <a *ngIf="auth.isLoggedIn | async;else anonymousUser"  ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="fas fa-hammer"></i>Admin
             </a>
             <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
@@ -16,7 +16,7 @@
               </ng-container>
             </div>
           </li>
-      <ul *ngIf="appUser" class="navbar-nav">
+      <ul *ngIf="auth.isLoggedIn | async"  class="navbar-nav">
           <div class="menu mr-auto">
               <a routerLink="/my-trips" class="menu-element"><i class="fas fa-hiking"></i>My trips</a>
               <a routerLink="/add-trip" class="menu-element"><button class="btn btn-success"><i class="fas fa-plus"></i>Add trip</button></a>
@@ -34,10 +34,10 @@
         </ng-template>
         <!--<a routerLink="/profile" *ngIf="appUser" class="hello"><i class="fas fa-user"></i>Profile</a>-->
         <!--<span *ngIf="appUser" class="hello">Hello, {{ appUser.username }}</span>-->
-        <a [routerLink]="['/profile', appUser.userId]" *ngIf="appUser" class="hello"><i class="fas fa-user"></i>Profile</a>
-        <span *ngIf="appUser" class="hello">Hello, {{ appUser.username }}</span>
+        <a [routerLink]="['/profile', appUser.userId]" *ngIf="auth.isLoggedIn | async" class="hello"><i class="fas fa-user"></i>Profile</a>
+        <span *ngIf="auth.isLoggedIn | async" class="hello">Hello, {{ appUser.username }}</span>
       </ul>
-      <a *ngIf="appUser" routerLink="/" class="logout-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+      <a *ngIf="auth.isLoggedIn | async" routerLink="/" class="logout-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i>Log Out</a>
     </div>
   </div>
 </nav>
