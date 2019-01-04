@@ -53,7 +53,7 @@ export class AuthService {
       "email": formRegister.value.email,
       "business": false,
       "admin": false,
-      "isActive": true
+      "active": true
     };
     let body = JSON.stringify(data);
 
@@ -76,7 +76,7 @@ export class AuthService {
       "email": formRegister.value.email,
       "business": true,
       "admin": false,
-      "isActive": false
+      "active": false
     };
     let body = JSON.stringify(data);
 
