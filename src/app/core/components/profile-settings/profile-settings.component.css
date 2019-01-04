@@ -1,61 +1,81 @@
 .form-row {
-    padding: 10px;
+  padding: 10px;
 }
 .col-sm-3 .btn-block {
-    cursor: default;
+  cursor: default;
 }
-.btn-block:focus, .btn-block:hover, .btn-block:focus:active, .btn-primary:not(:disabled):not(.disabled):active {
-    box-shadow: none;
+.btn-block:focus,
+.btn-block:hover,
+.btn-block:focus:active,
+.btn-primary:not(:disabled):not(.disabled):active {
+  box-shadow: none;
+}
+.col-buttons button {
+    margin-left: 10px;
+}
+.col-buttons {
+    justify-content: flex-end;
+    display: flex;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.form-disabled {
+  display: none;
 }
 .btn-business {
-    background-color: rgb(85, 221, 43);
-    border-color: rgb(85, 221, 43);
+  background-color: rgb(85, 221, 43);
+  border-color: rgb(85, 221, 43);
+}
+.btn-saved {
+  background-color: transparent;
+  color: #28a745;
 }
 .btn-success {
-    margin-top: 5px;
+  margin-top: 5px;
 }
 .inline {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 .row-about {
-    max-width: 50%;
+  max-width: 50%;
 }
 .badge-secondary {
-    background-color: #f4852b;
+  background-color: #f4852b;
 }
 .badge-business {
-    background-color: rgb(85, 221, 43);
-    color: white;
+  background-color: rgb(85, 221, 43);
+  color: white;
 }
 .row-trips {
-    background-color: #f8f8f8;
-    padding-top: 40px;
+  background-color: #f8f8f8;
+  padding-top: 40px;
 }
 .row-info {
-    padding: 40px;
+  padding: 40px;
 }
 .btn {
-    padding: 5px 10px 5px 10px;
+  padding: 5px 10px 5px 10px;
 }
 .col-sm-3 .badge {
-    font-size: 24px;
+  font-size: 24px;
 }
-.btn-warning, .btn-danger {
-    border-top-right-radius: 0;
-    border-top-left-radius: 0;
+.btn-warning,
+.btn-danger {
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
 }
 .card p {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 .col-cards {
-    padding: 0.5rem;
+  padding: 0.5rem;
 }
 trip-card {
-    width: 100% !important;
+  width: 100% !important;
 }
-.card-group /deep/ .card{
-    background: #f8f8f8;
-    border-radius: 0;
-    color: #232323;
+.card-group /deep/ .card {
+  background: #f8f8f8;
+  border-radius: 0;
+  color: #232323;
 }

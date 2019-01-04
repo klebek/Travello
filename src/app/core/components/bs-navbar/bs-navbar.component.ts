@@ -11,16 +11,24 @@ import { NgbDropdownConfig } from '@ng-bootstrap/ng-bootstrap';
 export class BsNavbarComponent implements OnInit {
 
   appUser: any;
+  logged;
 
+  showLogout = false;
 
-  constructor(public auth: AuthService) {}
+  constructor(public auth: AuthService) {
+  }
 
   async ngOnInit() {
     this.appUser = JSON.parse(localStorage.getItem('user'));
-    console.log("ADMIN: " + this.appUser.admin)
+    if(this.appUser) this.showLogout = true;
+    else this.showLogout = false;
+    // console.log("ADMIN: " + this.appUser.admin)
   }
 
   logout(){
-    this.auth.logout();}
+    this.auth.logout();
+    // window.location.reload();
+    localStorage.removeItem('user');
+  }
 
 }

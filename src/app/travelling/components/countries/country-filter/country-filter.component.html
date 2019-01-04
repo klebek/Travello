@@ -15,10 +15,6 @@
   <hr />
   <form class="trips-filtering">
     <div class="form-group">
-      <label for="travellersname">Search by traveller's name</label>
-      <input type="text" class="form-control" id="travellersname" placeholder="Traveller's name">
-    </div>
-    <div class="form-group">
       <label for="tripName">Search by trip's title</label>
       <input [(ngModel)]="searchText" (ngModelChange)="changeText($event)" type="text" class="form-control" name="tripName"
         id="tripName" placeholder="Trip's title">

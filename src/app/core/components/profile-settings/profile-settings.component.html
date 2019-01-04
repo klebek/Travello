@@ -8,6 +8,7 @@
           class="fas fa-edit"></i></button>
     </div>
     <button *ngIf="myprofile" (click)="saveUser(f.value)" class="btn btn-success btn-block"><i class="fas fa-save"></i>Save</button>
+    <button *ngIf="saved" class="btn btn-success btn-block btn-saved">Saved</button>
   </div>
   <div class="col-sm">
     <form #f="ngForm">
@@ -32,12 +33,31 @@
                 <input #email="ngModel" [(ngModel)]="user.email" name="email" type="email" class="form-control" id="exampleFormControlInput1"
                   placeholder="name@example.com" readonly>
               </div>
+              <!-- TROJCA BOOLEANOW -->
+              <div class="form-disabled">
+                <div class="form-group">
+                  <input #active="ngModel" [(ngModel)]="user.active" name="active" type="radio" [value]="user.active"
+                    class="form-control" id="exampleFormControlInput1" readonly>
+                </div>
+                <div class="form-group">
+                  <input #admin="ngModel" [(ngModel)]="user.admin" name="admin" type="radio" [value]="user.admin" class="form-control"
+                    id="exampleFormControlInput1" readonly>
+                </div>
+                <div class="form-group">
+                  <input #business="ngModel" [(ngModel)]="user.business" name="business" type="radio" [value]="user.business"
+                    class="form-control" id="exampleFormControlInput1" readonly>
+                </div>
+              </div>
+              <!-- KONIEC TROJCY -->
             </div>
             <div class="col-sm-4">
               <div class="form-group">
                 <label for="password">Password</label>
                 <input #password="ngModel" [(ngModel)]="user.password" name="password" type="password" class="form-control"
-                  id="password">
+                  id="password" required>
+              </div>
+              <div class="alert alert-danger" *ngIf="password.touched && password.invalid">
+                <div *ngIf="password.errors.required">Password is required</div>
               </div>
             </div>
           </div>
@@ -47,12 +67,18 @@
                 <label for="photo">Avatar</label>
                 <input #photo="ngModel" [(ngModel)]="user.photo" name="photo" type="text" class="form-control" id="photo">
               </div>
+              <div class="alert alert-danger" *ngIf="photo.touched && photo.invalid">
+                <div *ngIf="photo.errors.required">Photo is required</div>
+              </div>
             </div>
             <div class="col-sm-3">
               <div class="form-group">
                 <label for="exampleFormControlInput1">Username</label>
                 <input #username="ngModel" [(ngModel)]="user.username" name="username" type="text" class="form-control"
-                  id="exampleFormControlInput1" placeholder="Username">
+                  id="exampleFormControlInput1" placeholder="Username" required>
+              </div>
+              <div class="alert alert-danger" *ngIf="username.touched && username.invalid">
+                <div *ngIf="username.errors.required">Username is required</div>
               </div>
             </div>
             <div class="col-sm-3">
@@ -113,17 +139,22 @@
         </div>
         <!-- <img class="card-img-top-business" placement="top" [ngbTooltip]="country.name" [src]="country.image" alt="Card image cap"> -->
         <div *ngIf="!businessTrip" class="card-body">
-          <h5 class="card-title">{{trip.id}}</h5>
+          <h5 class="card-title">{{trip.title}}</h5>
           <p class="card-text">{{trip.description}}</p>
         </div>
         <div *ngIf="!businessTrip" class="card-footer">
           <div class="row">
             <div *ngIf="trip.countries" class="col-sm">
-              <small *ngFor="let country of trip.countries" class="text-footer">{{country}}</small>
+              <small *ngFor="let country of trip.countries" class="text-footer">{{country}} </small>
             </div>
-            <div class="col-sm-6 col-buttons">
-              <a [routerLink]="['/edit-trip', trip.id]"><button class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Edit</button></a>
-              <button (click)="deleteTrip(trip.id, i)" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Delete</button>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-sm col-buttons">
+              <a *ngIf="settings" [routerLink]="['/edit-trip', trip.id]"><button class="btn btn-warning btn-sm"><i
+                    class="fas fa-edit"></i>Edit</button></a>
+              <button *ngIf="settings" (click)="deleteTrip(trip.id, i)" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Delete</button>
+              <a [routerLink]="['/trip', trip.id]"><button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i>View</button></a>
             </div>
           </div>
         </div>

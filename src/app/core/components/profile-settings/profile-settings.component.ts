@@ -4,6 +4,7 @@ import { UserService } from 'app/core/services/user.service';
 import { TripService } from 'app/travelling/services/trip.service';
 import { Trip } from 'app/travelling/model/trip';
 import { Subscription } from 'rxjs/Subscription';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'profile-settings',
   templateUrl: './profile-settings.component.html',
@@ -22,26 +23,30 @@ export class ProfileSettingsComponent implements OnInit, OnDestroy {
   appUser: any;
   trips = [];
   subscription: Subscription;
+  saved = false;
 
-  constructor(private userService: UserService, private tripService: TripService) {
+  constructor(private userService: UserService, private tripService: TripService, private route: ActivatedRoute) {
     this.appUser = JSON.parse(localStorage.getItem('user'));
-    this.idUser = this.appUser.userId;
-    this.getTrips();
   }
 
-  async ngOnInit(){
+  async ngOnInit() {
+    this.idUser = this.route.snapshot.params['id'];
+    this.getTrips();
+    console.log(this.idUser);
   }
 
   previewProfile() {
     this.myprofile = !this.myprofile;
   }
 
-  saveUser(user){
+  saveUser(user) {
     this.userService.editUser(this.idUser, user);
+    this.saved = true;
   }
 
-  getTrips(){
-    this.subscription = this.tripService.getUserTrip(this.idUser).subscribe((t:any[]) => this.trips = t);
+  getTrips() {
+    console.log("Z funkcji: " + this.idUser)
+    this.subscription = this.tripService.getUserTrip(this.idUser).subscribe((t: Trip[]) => this.trips = t);
   }
 
   deleteTrip(id, pos) {
@@ -50,7 +55,7 @@ export class ProfileSettingsComponent implements OnInit, OnDestroy {
     this.tripService.deleteTrip(id).subscribe(trip => { });
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 

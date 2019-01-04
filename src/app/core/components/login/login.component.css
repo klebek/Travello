@@ -6,6 +6,13 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 }
+.alert-success {
+    font-weight: 500;
+    text-transform: uppercase;
+    color: white;
+    background-color: #28a745;
+    border-color: #28a745;
+}
 .container {
     padding-top: 140px;
     padding-bottom: 130px;

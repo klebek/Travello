@@ -54,8 +54,11 @@ export class TripService {
     return this.http.get('http://localhost:9000/api/account/all');
   }
 
+  getTraveller(id){
+    return this.http.get('http://localhost:9000/api/trip/'+id+'/owner');
+  }
+
   getUserTrip(id){
-    id = this.idUser;
     return this.http.get('http://localhost:9000/api/trip/user/'+id);
   }
 

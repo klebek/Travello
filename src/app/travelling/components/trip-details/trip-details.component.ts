@@ -22,6 +22,8 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   subscriptionTrip: Subscription;
   subscriptionCountry: Subscription;
   subscriptionNotes: Subscription;
+  subscriptionTraveller: Subscription;
+
   images = [1, 2, 3].map(() => `https://picsum.photos/600/850?random&t=${Math.random()}`);
   timeline: TimelineElement[] = [];
   notes;
@@ -29,6 +31,8 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   readMore = false;
   currentRate = 4;
   readonly = true;
+
+  traveller;
 
   countries$ = [];
   countriess = [];
@@ -50,10 +54,14 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     this.appUser = JSON.parse(localStorage.getItem('user'));
     this.subscriptionTrip = this.tripService.getTrip(this.id).subscribe(t => this.trip = t);
+    this.subscriptionTraveller = this.tripService.getTraveller(this.id).subscribe(t => {
+      this.traveller = t
+      if (this.traveller.photo === null || this.traveller.photo === "") this.traveller.photo = "https://i.imgur.com/C15GrGG.png";
+    });
     await this.getCountries(this.id);
   }
   getCountries(id) {
-    console.log("ID " + this.id);
+    // console.log("ID " + this.id);
     this.subscriptionCountry = this.tripService.getCountries(id).subscribe(c => {
       this.countries = c;
       for (let country of this.countries) {
@@ -77,11 +85,13 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
 
   getTimeline() {
     let date = new Date('2018-12-09 00:00')
-    console.log("lol" + date);
-    this.firstDate = new Date(this.notes[0].date);
-    let firstDateString = this.firstDate.toDateString();
-    console.log("firstdate: " + this.firstDate);
-    this.timeline.push({ caption: firstDateString, date: this.firstDate, selected: true, title: this.notes[0].title, content: this.notes[0].description, photo: this.notes[0].photo });
+    // console.log("lol" + date);
+    if (this.notes[0]) {
+      this.firstDate = new Date(this.notes[0].date);
+      let firstDateString = this.firstDate.toDateString();
+      // console.log("firstdate: " + this.firstDate);
+      this.timeline.push({ caption: firstDateString, date: this.firstDate, selected: true, title: this.notes[0].title, content: this.notes[0].description, photo: this.notes[0].photo });
+    }
     for (let note of this.notes) {
       let date = new Date(note.date);
       let dateString = date.toDateString();
@@ -96,6 +106,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
     this.subscriptionTrip.unsubscribe();
     this.subscriptionCountry.unsubscribe();
     this.subscriptionNotes.unsubscribe();
+    this.subscriptionTraveller.unsubscribe();
   }
 
 }

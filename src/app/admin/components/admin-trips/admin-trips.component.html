@@ -33,7 +33,6 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Traveller</th>
                         <th scope="col">Title</th>
                         <th scope="col">Status</th>
                         <th scope="col">Rating</th>
@@ -43,7 +42,6 @@
                 <tbody>
                     <tr *ngFor="let trip of filteredTrips; let i = index">
                         <th scope="row">{{trip.id}}</th>
-                        <td>Mark Otto</td>
                         <td>{{trip.title}}</td>
                         <td>
                             <span *ngIf="trip.status == 'PUBLIC'" class="badge badge-pill badge-success">{{trip.status}}</span>

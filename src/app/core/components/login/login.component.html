@@ -2,9 +2,8 @@
     <div class="container">
         <div class="row no-gutters justify-content-md-auto">
             <div class="col-sm-4">
-                <h1>
-                    <i class="fas fa-user"></i> Sign In</h1>
-                <form #formLogin="ngForm" class="form-sign-in">
+                <h1><i class="fas fa-user"></i> Sign In</h1>
+                <form *ngIf="!user" #formLogin="ngForm" class="form-sign-in">
                     <div class="form-group">
                         <label for="exampleInputEmail">Email address</label>
                         <input ngModel name="email" #emailLogin="ngModel" type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp"
@@ -32,6 +31,7 @@
                     <!--<button (click)="loginFb()" class="btn btn-facebook btn-block">-->
                         <!--<i class="fab fa-facebook-f" aria-hidden="true"></i>Sign in with Facebook</button>-->
                 </form>
+                <div *ngIf="user" class="alert alert-success">Zalogowano</div>
                 <img src="../../../../assets/images/logo_lg.png" class="small-logo">
             </div>
             <div class="col-sm-4"></div>

@@ -171,7 +171,9 @@ h1 span, p span {
     height: 300px;
     color: white;
     border-radius: 0;
-    background: url('https://i.imgur.com/bPM6LFi.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 .card-traveller .card-body {
     justify-content: center;

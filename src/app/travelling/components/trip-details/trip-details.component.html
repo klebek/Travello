@@ -42,13 +42,13 @@
                 <div class="col-sm">
                   <h5 class="card-title">{{trip.title}}</h5>
                   <p class="card-text">{{trip.description}}</p>
-                  <horizontal-timeline [timelineElements]="timeline" [showContent]="true"></horizontal-timeline>
+                  <horizontal-timeline *ngIf="notes.length > 0" [timelineElements]="timeline" [showContent]="true"></horizontal-timeline>
                   <country-photos [trip]="trip"></country-photos>
-                  <button (click)="showTab()" class="btn btn-primary btn-block"><i class="fas fa-globe-americas"></i>Explore<i
-                      class="fas fa-caret-down"></i></button>
+                  <!-- <button (click)="showTab()" class="btn btn-primary btn-block"><i class="fas fa-globe-americas"></i>Explore<i
+                      class="fas fa-caret-down"></i></button> -->
                 </div>
               </div>
-              <div *ngIf="readMore" class="row row-tabs">
+              <!-- <div *ngIf="readMore" class="row row-tabs">
                 <div class="col-sm">
                   <ngb-tabset [justify]="currentJustify">
                     <ngb-tab title="Notes">
@@ -84,14 +84,14 @@
                     </ngb-tab>
                   </ngb-tabset>
                 </div>
-              </div>
+              </div> -->
             </div>
             <div class="col-sm-2 col-right-menu">
-              <a routerLink="/profile">
+              <a *ngIf="traveller" [routerLink]="['/profile', traveller.id]">
 
-                <div class="card card-traveller mb-3">
+                <div class="card card-traveller mb-3" [ngStyle]="{'background-image': 'url(' + traveller.photo + ')'}">
                   <div class="card-body">
-                    <p class="card-title">Mary Elizabeth</p>
+                    <p class="card-title">{{traveller.username}}</p>
                   </div>
                 </div>
 

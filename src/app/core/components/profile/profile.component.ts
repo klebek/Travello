@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   async ngOnInit(){
     this.subscription = await this.userService.getUser(this.id).subscribe((u: User) => {
       this.user = u
-      if (this.user.photo === null) this.user.photo = "https://i.imgur.com/C15GrGG.png";
+      if (this.user.photo === null || this.user.photo === "") this.user.photo = "https://i.imgur.com/C15GrGG.png";
       let userEmail = this.user.email;
       let principalEmail = this.principal.username;
       if (userEmail === principalEmail) {
