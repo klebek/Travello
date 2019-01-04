@@ -15,3 +15,6 @@ h1 {
     border-color: rgb(85, 221, 43);
     color: white;
 }
+.alert-danger {
+    text-transform: capitalize;
+}

@@ -11,8 +11,8 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
 
-  // get(name: string): Observable<AppUser> {
-  //   return null;
+  // get(): Observable<AppUser> {
+  //   return JSON.parse(localStorage.getItem('user'));
   // }
 
 }

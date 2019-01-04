@@ -11,20 +11,27 @@ import 'rxjs/add/operator/map';
 export class AdminAuthGuard implements CanActivate {
 
   principal : any;
-  isAdmin : boolean;
+  admin : boolean;
 
   constructor(private auth: AuthService, private userService: UserService) { }
 
-  canActivate(): Observable<boolean> {
-    this.principal = JSON.parse(localStorage.getItem('user'));
-    this.isAdmin = this.principal.admin;
+  canActivate(): Observable<any> {
+    return this.principal
+    .map(appUser => {
+      return this.principal = appUser
+    })
+    .subscribe(x => console.log(x));
 
-    if(this.isAdmin) {
-      return Observable.of(true);
-    } else {
-      return Observable.of(false);
-    }
+    // this.principal = JSON.parse(localStorage.getItem('user'));
+    // this.admin = this.principal.admin;
+    // console.log("admin: " + this.admin);
+    // console.log("principal.admin: " + this.principal.admin);
 
+    // if(this.admin) {
+    //   return Observable.of(true);
+    // } else {
+    //   return Observable.of(false);
+    // }
 
   }
 

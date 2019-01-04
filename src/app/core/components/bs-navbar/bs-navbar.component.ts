@@ -16,6 +16,7 @@ export class BsNavbarComponent implements OnInit {
 
   async ngOnInit() {
     this.appUser = JSON.parse(localStorage.getItem('user'));
+    console.log("ADMIN: " + this.appUser.admin)
   }
 
   logout(){

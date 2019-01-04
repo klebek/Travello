@@ -11,7 +11,7 @@
         <div *ngIf="email.errors.email">It is not an email adress format</div>
       </div>
     </div>
-    <div *ngIf="!business" class="form-group right-input">
+    <div class="form-group right-input">
       <label for="exampleInputUsername">Username</label>
       <input required minlength="3" ngModel name="username" #username="ngModel" type="text" class="form-control" id="exampleInputUsername"
         aria-describedby="usernameHelp" placeholder="Enter username">
@@ -20,17 +20,6 @@
         <div *ngIf="username.errors.required">Username field is required</div>
         <div *ngIf="username.errors.minlength">Username should be at least {{ username.errors.minlength.requiredLength
           }} characters</div>
-      </div>
-    </div>
-    <div *ngIf="business" class="form-group right-input">
-      <label for="exampleInputName">Name</label>
-      <input required minlength="3" ngModel name="name" #name="ngModel" type="text" class="form-control" id="exampleInputName"
-        aria-describedby="nameHelp" placeholder="Enter name">
-      <small id="nameHelp" class="form-text text-muted">Type your name</small>
-      <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
-        <div *ngIf="name.errors.required">Name field is required</div>
-        <div *ngIf="name.errors.minlength">Name should be at least {{ name.errors.minlength.requiredLength }}
-          characters</div>
       </div>
     </div>
   </span>
@@ -59,4 +48,7 @@
     up</button>
   <button *ngIf="business" (click)="register(formRegister)" [disabled]="formRegister.invalid" type="submit" class="btn btn-business btn-block">Sign
     up for business</button>
+  <div *ngIf="errorRegister" class="alert alert-danger">
+    <div>{{errorRegister}}</div>
+  </div>
 </form>

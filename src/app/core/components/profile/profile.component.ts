@@ -9,17 +9,29 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnDestroy {
+export class ProfileComponent implements OnInit, OnDestroy {
 
   user: User;
   subscription: Subscription;
-  id : number;
-  principal : any;
+  id: number;
+  principal: any;
+  settings = false;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private route: ActivatedRoute) {
     this.principal = JSON.parse(localStorage.getItem('user'));
-    this.id = this.principal.userId;
-    this.subscription = this.userService.getUser(this.id).subscribe((u:User) => this.user = u);
+    this.id = this.route.snapshot.params['id'];
+  }
+
+  async ngOnInit(){
+    this.subscription = await this.userService.getUser(this.id).subscribe((u: User) => {
+      this.user = u
+      if (this.user.photo === null) this.user.photo = "https://i.imgur.com/C15GrGG.png";
+      let userEmail = this.user.email;
+      let principalEmail = this.principal.username;
+      if (userEmail === principalEmail) {
+        this.settings = true;
+      }
+    });
   }
 
   normal;
@@ -32,7 +44,7 @@ export class ProfileComponent implements OnDestroy {
     this.normal = false;
   }
 
-  ngOnDestroy(){
+  ngOnDestroy() {
     this.subscription.unsubscribe();
   }
 }

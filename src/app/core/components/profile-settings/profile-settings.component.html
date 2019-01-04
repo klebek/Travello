@@ -1,7 +1,7 @@
-<div *ngIf="user" class="row row-info">
+<div *ngIf="user && settings" class="row row-info">
   <div class="col-sm-2">
     <div class="card">
-      <img *ngIf="imageUrl" class="card-img-top" [src]="imageUrl" alt="Card image cap">
+      <img class="card-img-top" [src]="user.photo" alt="Card image cap">
       <button *ngIf="myprofile" (click)="previewProfile()" placement="bottom" ngbTooltip="Preview profile" class="btn btn-warning"><i
           class="fas fa-search"></i></button>
       <button *ngIf="!myprofile" (click)="previewProfile()" placement="bottom" ngbTooltip="Edit" class="btn btn-danger"><i
@@ -35,24 +35,17 @@
             </div>
             <div class="col-sm-4">
               <div class="form-group">
-                <label for="exampleFormControlInput1">Change password</label>
+                <label for="password">Password</label>
                 <input #password="ngModel" [(ngModel)]="user.password" name="password" type="password" class="form-control"
-                  id="exampleFormControlInput1">
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Confirm password</label>
-                <input #password="ngModel" [(ngModel)]="user.password" name="password" type="password" class="form-control"
-                  id="exampleFormControlInput1">
+                  id="password">
               </div>
             </div>
           </div>
           <div class="form-row">
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="exampleFormControlInput1">Avatar</label>
-                <input [(ngModel)]="imageUrl" name="imageUrl" type="text" class="form-control" id="exampleFormControlInput1">
+                <label for="photo">Avatar</label>
+                <input #photo="ngModel" [(ngModel)]="user.photo" name="photo" type="text" class="form-control" id="photo">
               </div>
             </div>
             <div class="col-sm-3">
@@ -89,6 +82,25 @@
       </div>
     </form>
     <!-- DANE: {{f.value | json}} -->
+  </div>
+</div>
+<div *ngIf="user && !settings" class="row row-info">
+  <div class="col-sm-2">
+    <div class="card">
+      <img class="card-img-top" [src]="user.photo" alt="Card image cap">
+    </div>
+  </div>
+  <div class="col-sm">
+    <div class="row">
+      <div class="col-sm-6">
+        <h4>
+          {{user.username}}
+          <span *ngIf="!user.business" class="badge badge-secondary">Traveller</span>
+          <span *ngIf="user.business" class="badge badge-business">Business partner</span>
+        </h4>
+        <p>{{user.description}}</p>
+      </div>
+    </div>
   </div>
 </div>
 <h3><i class="fas fa-globe-americas"></i>Trips</h3>

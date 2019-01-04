@@ -8,5 +8,6 @@ export interface User {
     description: string;
     trips: Trip[];
     business: boolean;
+    photo: string;
     admin: boolean;
 }

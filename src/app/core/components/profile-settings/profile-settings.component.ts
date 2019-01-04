@@ -9,10 +9,11 @@ import { Subscription } from 'rxjs/Subscription';
   templateUrl: './profile-settings.component.html',
   styleUrls: ['./profile-settings.component.css']
 })
-export class ProfileSettingsComponent implements OnDestroy {
+export class ProfileSettingsComponent implements OnInit, OnDestroy {
 
   @Input('user') user: User;
   @Input('normal') normal;
+  @Input('settings') settings;
   @Input('myprofile') myprofile;
 
 
@@ -23,10 +24,12 @@ export class ProfileSettingsComponent implements OnDestroy {
   subscription: Subscription;
 
   constructor(private userService: UserService, private tripService: TripService) {
-    this.imageUrl = "https://i.imgur.com/C15GrGG.png";
     this.appUser = JSON.parse(localStorage.getItem('user'));
     this.idUser = this.appUser.userId;
     this.getTrips();
+  }
+
+  async ngOnInit(){
   }
 
   previewProfile() {
@@ -39,10 +42,6 @@ export class ProfileSettingsComponent implements OnDestroy {
 
   getTrips(){
     this.subscription = this.tripService.getUserTrip(this.idUser).subscribe((t:any[]) => this.trips = t);
-  }
-
-  saveProfile(imageUrl) {
-    this.imageUrl = imageUrl;
   }
 
   deleteTrip(id, pos) {
