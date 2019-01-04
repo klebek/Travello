@@ -12,14 +12,14 @@ export class BsNavbarComponent implements OnInit {
 
   appUser: any;
 
-  constructor(private auth: AuthService) {}
+
+  constructor(public auth: AuthService) {}
 
   async ngOnInit() {
-    this.appUser = JSON.parse(localStorage.getItem('user'));
+      this.appUser = JSON.parse(localStorage.getItem('user'));
   }
 
   logout(){
-    this.auth.logout();
-  }
+    this.auth.logout();}
 
 }
