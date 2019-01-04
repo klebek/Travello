@@ -46,8 +46,11 @@
 
   <button *ngIf="!business" (click)="register(formRegister)" [disabled]="formRegister.invalid" type="submit" class="btn btn-primary btn-block">Sign
     up</button>
-  <button *ngIf="business" (click)="register(formRegister)" [disabled]="formRegister.invalid" type="submit" class="btn btn-business btn-block">Sign
+  <button *ngIf="business" (click)="registerBusinessPartner(formRegister)" [disabled]="formRegister.invalid" type="submit" class="btn btn-business btn-block">Sign
     up for business</button>
+    <div *ngIf="infoRegister" class="alert" [class.alert-primary]="!business" [class.alert-business]="business">
+      {{infoRegister}}
+    </div>
   <div *ngIf="errorRegister" class="alert alert-danger">
     <div>{{errorRegister}}</div>
   </div>

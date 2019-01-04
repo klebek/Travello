@@ -1,20 +1,35 @@
 .form-sign-up {
-    color: white;
-    background-color: rgba(20,20,20,0.5);
-    padding: 20px;
-    border-radius: 5px;
+  color: white;
+  background-color: rgba(20, 20, 20, 0.5);
+  padding: 20px;
+  border-radius: 5px;
 }
 .text-muted {
-    color: #ccc !important;
+  color: #ccc !important;
 }
 h1 {
-    text-align: center;
+  text-align: center;
 }
-.btn-business, .btn-business:focus:active, .btn-business:focus, .btn-business:active {
-    background-color: rgb(85, 221, 43);
-    border-color: rgb(85, 221, 43);
-    color: white;
+.btn-business,
+.btn-business:focus:active,
+.btn-business:focus,
+.btn-business:active {
+  background-color: rgb(85, 221, 43);
+  border-color: rgb(85, 221, 43);
+  color: white;
 }
 .alert-danger {
-    text-transform: capitalize;
+  text-transform: capitalize;
+}
+.alert-business {
+  background-color: rgb(85, 221, 43);
+  border-color: rgb(85, 221, 43);
+  color: white;
+  margin-top: 10px;
+}
+.alert-primary {
+    background-color: #f4852b;
+    border-color: #f4852b;
+    color: white;
+    margin-top: 10px;
 }

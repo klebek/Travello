@@ -1,16 +1,26 @@
 .container {
-    margin-top: 150px;
-    padding: 50px;
+  margin-top: 150px;
+  padding: 50px;
 }
 h1 {
-    text-align: left;
-    color: white;
-    font-weight: 700;
+  text-align: left;
+  color: white;
+  font-weight: 700;
 }
 .form-row {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 .btn-business {
-    background-color: #55dd2b;
-    border-color: #55dd2b;
+  background-color: #55dd2b;
+  border-color: #55dd2b;
+}
+.alert-danger {
+  text-transform: capitalize;
+  margin-top: 10px;
+}
+.alert-business {
+  background-color: rgb(85, 221, 43);
+  border-color: rgb(85, 221, 43);
+  color: white;
+  margin-top: 10px;
 }

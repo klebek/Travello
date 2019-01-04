@@ -11,18 +11,22 @@
                 <input #nameForm="ngModel" type="text" class="form-control" id="name" name="name" placeholder="Name"
                   [(ngModel)]="name" required>
               </div>
-              <div class="alert alert-danger" *ngIf="nameForm.touched && nameForm.invalid">
-                <div *ngIf="nameForm.errors.required">Name is required</div>
-              </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
                 <input #emailForm="ngModel" required minlength="3" name="email" [(ngModel)]="email" type="email" class="form-control"
                   id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Email" email>
-                <div *ngIf="emailForm.touched && emailForm.invalid" class="alert alert-danger">
-                  <div *ngIf="emailForm.errors.required">Email address field is required</div>
-                  <div *ngIf="emailForm.errors.email">It is not an email adress format</div>
-                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-sm-12">
+              <div class="alert alert-danger" *ngIf="nameForm.touched && nameForm.invalid">
+                <div *ngIf="nameForm.errors.required">Name is required</div>
+              </div>
+              <div *ngIf="emailForm.touched && emailForm.invalid" class="alert alert-danger">
+                <div *ngIf="emailForm.errors.required">Email address field is required</div>
+                <div *ngIf="emailForm.errors.email">It is not an email adress format</div>
               </div>
             </div>
           </div>
@@ -42,8 +46,17 @@
             <div *ngIf="messageForm.errors.minlength">Min length is 30</div>
             <div *ngIf="messageForm.errors.maxlength">Max length is 140</div>
           </div>
-          <button type="button" id="submit" name="submit" class="btn btn-business btn-block" (click)="save(f.value)"><i
+          <button type="button" id="submit" name="submit" class="btn btn-business btn-block" (click)="sendMail(f.value)"><i
               class="fas fa-envelope"></i>Send</button>
+          <div *ngIf="serverError" class="alert alert-danger">
+            {{serverError}}
+          </div>
+          <div *ngIf="clientError" class="alert alert-danger">
+            {{clientError}}
+          </div>
+          <div *ngIf="emailSent" class="alert alert-business">
+              {{emailSent}}
+            </div>
         </form>
       </div>
     </div>

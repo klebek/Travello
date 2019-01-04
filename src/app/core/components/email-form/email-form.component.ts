@@ -1,6 +1,7 @@
 
 import { Component } from '@angular/core';
 import { MailService } from 'app/core/services/mail.service';
+import { HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'contact',
@@ -11,10 +12,29 @@ export class EmailFormComponent{
   
   mail = [];
 
-  constructor(private mailService: MailService){}
+  clientError;
+  serverError;
+  emailSent;
 
-  save(mail){
-    this.mailService.sendMail(mail);
+  constructor(private mailService: MailService, private http: HttpClient){}
+
+  sendMail(mail) {
+    let httpHeaders = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    let options = {
+      headers: httpHeaders
+    };
+    this.http.put<any>('http://localhost:9000/api/mail/send', mail, options)
+    .subscribe( res => {
+      console.log(res)
+      this.emailSent =  "Message successfuly sent"
+    },
+      (err: HttpErrorResponse) => {
+        if (err.error instanceof Error) this.clientError = "Client-side error occured.";
+        else this.serverError = "Server-side error occurred.";
+      });
+      console.log(mail);
   }
   
 }

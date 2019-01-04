@@ -52,52 +52,52 @@ export class AuthService {
     });
   }
 
-  registerTraveller(formRegister) {
-    let data = {
-      "username": formRegister.value.username,
-      "password": formRegister.value.password,
-      "email": formRegister.value.email,
-      "business": false,
-      "admin": false,
-      "active": true
-    };
-    let body = JSON.stringify(data);
+  // registerTraveller(formRegister) {
+  //   let data = {
+  //     "username": formRegister.value.username,
+  //     "password": formRegister.value.password,
+  //     "email": formRegister.value.email,
+  //     "business": false,
+  //     "admin": false,
+  //     "active": true
+  //   };
+  //   let body = JSON.stringify(data);
 
-    let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
-    localStorage.setItem('returnUrl', returnUrl);
+  //   let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+  //   localStorage.setItem('returnUrl', returnUrl);
 
-    const header =
-      new HttpHeaders({ 'Content-Type' : 'application/json'});
+  //   const header =
+  //     new HttpHeaders({ 'Content-Type' : 'application/json'});
 
-    console.log(body);
+  //   console.log(body);
 
-    return this.http.post(this.root + '/account/register', body, {headers : header} ).subscribe(data =>{
-      console.log(body);
-      console.log('registered')
-    });
-  }
+  //   return this.http.post(this.root + '/account/register', body, {headers : header} ).subscribe(data =>{
+  //     console.log(body);
+  //     console.log('registered')
+  //   });
+  // }
 
-  registerBusinessPartner(formRegister) {
-    let data = {
-      "username": formRegister.value.username,
-      "password": formRegister.value.password,
-      "email": formRegister.value.email,
-      "business": true,
-      "admin": false,
-      "active": false
-    };
-    let body = JSON.stringify(data);
+  // registerBusinessPartner(formRegister) {
+  //   let data = {
+  //     "username": formRegister.value.username,
+  //     "password": formRegister.value.password,
+  //     "email": formRegister.value.email,
+  //     "business": true,
+  //     "admin": false,
+  //     "active": false
+  //   };
+  //   let body = JSON.stringify(data);
 
-    let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
-    localStorage.setItem('returnUrl', returnUrl);
+  //   let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
+  //   localStorage.setItem('returnUrl', returnUrl);
 
-    const header =
-      new HttpHeaders({ 'Content-Type': 'application/json' });
+  //   const header =
+  //     new HttpHeaders({ 'Content-Type': 'application/json' });
 
 
-    return this.http.post(this.root + '/account/register', body, {headers : header} ).subscribe(data =>{
-    });
-  }
+  //   return this.http.post(this.root + '/account/register', body, {headers : header} ).subscribe(data =>{
+  //   });
+  // }
 
   logout() {
     localStorage.removeItem('token');

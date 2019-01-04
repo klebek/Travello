@@ -19,6 +19,10 @@ export class UserService {
     return this.http.get('http://localhost:9000/api/account/'+id);
   }
 
+  changeStatus(){
+    console.log("Status changed")
+  }
+
   editUser(id:number, user: User){
     let httpHeaders = new HttpHeaders({
       'Content-Type' : 'application/json',

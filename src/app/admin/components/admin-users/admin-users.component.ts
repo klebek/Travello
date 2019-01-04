@@ -45,9 +45,9 @@ export class AdminUsersComponent implements OnDestroy {
       this.users;
   }
 
-  // changeStatus(id, status) {
-  //   this.userService.changeStatus(id, status).subscribe(status => {});
-  // }
+  changeStatus(id, status) {
+    this.userService.changeStatus();
+  }
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
