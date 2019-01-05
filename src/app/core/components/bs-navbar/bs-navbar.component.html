@@ -4,40 +4,48 @@
       <img src="../../../../assets/images/logo.png" alt="">
     </a>
 
-    <div  class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <li ngbDropdown *ngIf="appUser;else anonymousUser" class="nav-item dropdown">
-            <a *ngIf="appUser.admin"  ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="fas fa-hammer"></i>Admin
-            </a>
-            <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-              <ng-container>
-                <a class="dropdown-item" routerLink="/admin/trips">Manage Trips</a>
-                <a class="dropdown-item" routerLink="/admin/users">Manage Users</a>
-              </ng-container>
-            </div>
-          </li>
-      <ul *ngIf="appUser"  class="navbar-nav">
-          <div class="menu mr-auto">
-              <a routerLink="/my-trips" class="menu-element"><i class="fas fa-hiking"></i>My trips</a>
-              <a routerLink="/add-trip" class="menu-element"><button class="btn btn-success"><i class="fas fa-plus"></i>Add trip</button></a>
-          </div>
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <li ngbDropdown *ngIf="userek && logged" class="nav-item dropdown">
+        <a *ngIf="userek.admin" ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-hammer"></i>Admin
+        </a>
+        <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+          <ng-container>
+            <a class="dropdown-item" routerLink="/admin/trips">Manage Trips</a>
+            <a class="dropdown-item" routerLink="/admin/users">Manage Users</a>
+          </ng-container>
+        </div>
+      </li>
+      <ul *ngIf="logged" class="navbar-nav">
+        <div class="menu mr-auto">
+          <a routerLink="/my-trips" class="menu-element"><i class="fas fa-hiking"></i>My trips</a>
+          <a routerLink="/add-trip" class="menu-element"><button class="btn btn-success"><i class="fas fa-plus"></i>Add
+              trip</button></a>
+        </div>
       </ul>
 
+      <!-- <span>logged: {{logged}}</span>
+      <span>userek: {{userek.username}}</span> -->
+
       <ul class="navbar-nav">
-        <ng-template #anonymousUser>
+        <ng-container *ngIf="!userek || !logged" #anonymousUser>
           <li class="nav-item">
             <a class="nav-link">
               <a routerLink="/business" class="business"><i class="fas fa-user-tie"></i>Busines offer</a>
               <button routerLink="/login" class="btn btn-primary btn-login"><i class="fas fa-lock"></i>Login</button>
             </a>
           </li>
-        </ng-template>
-        <!--<a routerLink="/profile" *ngIf="appUser" class="hello"><i class="fas fa-user"></i>Profile</a>-->
-        <!--<span *ngIf="appUser" class="hello">Hello, {{ appUser.username }}</span>-->
-        <a [routerLink]="['/profile', appUser.userId]" *ngIf="appUser" class="hello"><i class="fas fa-user"></i>Profile</a>
-        <span *ngIf="appUser" class="hello">Hello, {{ appUser.username }}</span>
+        </ng-container>
+        <!--<a routerLink="/profile" *ngIf="user" class="hello"><i class="fas fa-user"></i>Profile</a>-->
+        <!--<span *ngIf="user" class="hello">Hello, {{ user.username }}</span>-->
+        <a [routerLink]="['/profile', user.userId]" *ngIf="user" class="hello"><i class="fas fa-user"></i>Profile</a>
+        <ng-container *ngIf="logged">
+          <span *ngIf="userek && logged" class="hello">Hello, {{ userek.username }}</span>
+        </ng-container>
       </ul>
-      <a *ngIf="showLogout" routerLink="/" class="logout-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i>Log Out</a>
+      <a *ngIf="logged" routerLink="/" class="logout-link" (click)="logout()"><i class="fas fa-sign-out-alt"></i>Log
+        Out</a>
     </div>
   </div>
 </nav>

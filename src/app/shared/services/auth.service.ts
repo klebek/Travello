@@ -1,29 +1,33 @@
 import { AngularFireAuth } from 'angularfire2/auth';
-import {EventEmitter, Injectable, Output} from '@angular/core';
+import { EventEmitter, Injectable, Output } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AppUser } from 'shared/models/app-user';
 import { UserService } from 'shared/services/user.service';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
-import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
-import {BsNavbarComponent} from "../../core/components/bs-navbar/bs-navbar.component";
-import {BehaviorSubject} from "rxjs/Rx";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+import { BsNavbarComponent } from "../../core/components/bs-navbar/bs-navbar.component";
+import { BehaviorSubject } from "rxjs/Rx";
+import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+
+  onMainEventLogged: EventEmitter<any> = new EventEmitter();
+  onMainEventUser: EventEmitter<any> = new EventEmitter();
+
   readonly root = 'http://localhost:9000/api';
   public loggedIn = new BehaviorSubject<boolean>(false);
-
+  user$: Observable<AppUser>
 
   get isLoggedIn() {
     return this.loggedIn.asObservable();
   }
 
-
-  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private userService: UserService) { }
+  constructor(private http: HttpClient, private route: ActivatedRoute, private router: Router, private userService: UserService, protected localStorage: LocalStorage) { }
 
   authenticateUser(username, password) {
     const data = 'username=' + username + '&password=' + password + '&grant_type=password';
@@ -33,12 +37,12 @@ export class AuthService {
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
 
-    return this.http.post( 'http://localhost:9000/oauth/token', data, {headers : header}).subscribe((data : any)=>{
-        localStorage.setItem('token', data.access_token);
-        this.setCurrentUser();
-        this.loggedIn.next(true);
-      },
-      (err : HttpErrorResponse)=>{
+    return this.http.post('http://localhost:9000/oauth/token', data, { headers: header }).subscribe((data: any) => {
+      localStorage.setItem('token', data.access_token);
+      this.setCurrentUser();
+      this.loggedIn.next(true);
+    },
+      (err: HttpErrorResponse) => {
         console.log(err)
       });
 
@@ -50,6 +54,15 @@ export class AuthService {
     this.http.get('http://localhost:9000/principal', { headers: header }).subscribe((data: any) => {
       localStorage.setItem('user', JSON.stringify(data.principal));
     });
+  }
+
+  get appUser$(): Observable<AppUser> {
+    return this.user$
+      .switchMap(user => {
+        if (user) return this.userService.get(user.userId);
+
+        return Observable.of(null);
+      });
   }
 
   // registerTraveller(formRegister) {
@@ -102,6 +115,9 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
+    this.localStorage.removeItem('user').subscribe(() => { });
+    localStorage.removeItem('user');
+    window.localStorage.removeItem('user');
     this.loggedIn.next(false);
     this.router.navigate(['/']);
   }
