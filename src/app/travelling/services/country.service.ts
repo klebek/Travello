@@ -11,7 +11,7 @@ export class CountryService {
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<any> {
-    return this.http.get('https://restcountries.eu/rest/v2/all?fields=name;capital;population;languages');
+    return this.http.get('https://restcountries.eu/rest/v2/all?fields=name;capital;population;languages;flag');
   }
   getName(): Observable<any> {
     return this.http.get('https://restcountries.eu/rest/v2/all?fields=name;flag;region');

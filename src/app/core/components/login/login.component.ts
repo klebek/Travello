@@ -49,6 +49,7 @@ export class LoginComponent {
     },
       (err: HttpErrorResponse) => {
         this.errorLogin = "Incorrect username and/or password";
+        if(err.error.error_description === "User account is locked") this.errorLogin = "User account is locked";
       });
 
 

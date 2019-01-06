@@ -31,7 +31,7 @@ export class ProfileSettingsComponent implements OnInit, OnDestroy {
   async ngOnInit() {
     this.idUser = this.route.snapshot.params['id'];
     this.getTrips();
-    console.log(this.idUser);
+    // console.log(this.idUser);
   }
 
   previewProfile() {
@@ -44,7 +44,7 @@ export class ProfileSettingsComponent implements OnInit, OnDestroy {
   }
 
   getTrips() {
-    console.log("Z funkcji: " + this.idUser)
+    // console.log("Z funkcji: " + this.idUser)
     this.subscription = this.tripService.getUserTrip(this.idUser).subscribe((t: Trip[]) => this.trips = t);
   }
 

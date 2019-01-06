@@ -19,6 +19,10 @@
     margin-top: 5px;
     margin-bottom: 5px;
 }
+.badge-admin {
+  background-color: #ffc107;
+  border-color: #ffc107;
+}
 .form-disabled {
   display: none;
 }

@@ -18,7 +18,8 @@
           <div class="col-sm-6">
             <h4>
               {{user.username}}
-              <span *ngIf="!user.business" class="badge badge-secondary">Traveller</span>
+              <span *ngIf="!user.business && !user.admin" class="badge badge-secondary">Traveller</span>
+              <span *ngIf="!user.business && user.admin" class="badge badge-admin">Admin</span>
               <span *ngIf="user.business" class="badge badge-business">Business partner</span>
             </h4>
             <p>{{user.description}}</p>
@@ -110,7 +111,7 @@
         </div>
       </div>
     </form>
-    DANE: {{f.value | json}}
+    <!-- DANE: {{f.value | json}} -->
   </div>
 </div>
 <div *ngIf="user && !settings" class="row row-info">

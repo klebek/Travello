@@ -27,6 +27,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   images = [1, 2, 3].map(() => `https://picsum.photos/600/850?random&t=${Math.random()}`);
   timeline: TimelineElement[] = [];
   notes;
+  i = 0;
   currentJustify = 'fill';
   readMore = false;
   currentRate = 4;
@@ -49,6 +50,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
       this.notes = n
       this.getTimeline();
     });
+    // console.log(this.images)
   }
 
   async ngOnInit() {
@@ -69,7 +71,9 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
       }
       for (let country of this.countriess) {
         this.name = country;
-        this.subscriptionCountry = this.countryService.getCountry(this.name).subscribe(c => this.countries$.push(c));
+        this.subscriptionCountry = this.countryService.getCountry(this.name).subscribe(c => {
+          this.countries$.push(c)
+        });
       }
     });
   }

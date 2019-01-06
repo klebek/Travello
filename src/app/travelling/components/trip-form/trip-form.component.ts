@@ -6,6 +6,7 @@ import { CountryService } from 'app/travelling/services/country.service';
 import { Router } from '@angular/router';
 import { NoteService } from 'app/travelling/services/note.service';
 import { Note } from 'app/travelling/model/note';
+import { Alert } from 'selenium-webdriver';
 
 @Component({
   selector: 'trip-form',
@@ -37,6 +38,7 @@ export class TripFormComponent implements OnInit  {
   notNullCountry = false;
 
   disabledButton = true;
+  staticAlertClosed = false;
 
   idTrip;
   idCard;
@@ -45,6 +47,7 @@ export class TripFormComponent implements OnInit  {
   }
 
   ngOnInit() {
+    // setTimeout(() => this.staticAlertClosed = true, 20000);
     this.countryService.getName().subscribe(c => {
       this.countriesNames = c;
     });

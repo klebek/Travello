@@ -53,17 +53,17 @@
 .btn-add-country {
   margin-top: 0;
 }
-.row /deep/ .alert-success {
-  background-color: #28a7467a;
-  color: white;
+.row /deep/ .alert-warning {
+  color: #856404;
+background-color: #fff3cd;
+border-color: #ffeeba;
   margin-top: 1rem;
 }
-.row /deep/ .alert-success .close {
-  color: white;
-  opacity: 0.9;
+.row /deep/ .alert-warning .close {
+  cursor: pointer;
 }
-.row /deep/ .alert-success .close:hover {
-  color: white;
+.row /deep/ .alert-warning .close:hover {
+  color: black;
 }
 /* 
 CARD
