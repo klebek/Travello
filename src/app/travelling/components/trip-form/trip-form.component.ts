@@ -35,6 +35,10 @@ export class TripFormComponent implements OnInit  {
   continents = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
   region;
   type;
+
+  // ZMIEN TO ZEBY USTAWIANO W NG ON INIT-> 
+  businessUser = true;
+
   notNullCountry = false;
 
   disabledButton = true;

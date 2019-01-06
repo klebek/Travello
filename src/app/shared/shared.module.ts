@@ -13,7 +13,6 @@ import { AuthService } from './services/auth.service';
 import { CountryService } from 'shared/services/country.service';
 import { UserService } from './services/user.service';
 import { HorizontalTimelineComponent } from './components/horizontal-timeline/horizontal-timeline.component';
-import { BusinessTripsComponent } from './components/business-trips/business-trips.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { TripFormComponent } from 'app/travelling/components/trip-form/trip-form.component';
 import {AuthInterceptorService} from "shared/services/auth-interceptor.service";
@@ -30,11 +29,10 @@ import {AuthInterceptorService} from "shared/services/auth-interceptor.service";
     RouterModule,
     NgbModule.forRoot()
   ],
-  declarations: [TripCardComponent,HorizontalTimelineComponent, BusinessTripsComponent],
+  declarations: [TripCardComponent,HorizontalTimelineComponent],
   exports: [
     TripCardComponent,
     HorizontalTimelineComponent,
-    BusinessTripsComponent,
     CommonModule,
     FormsModule,
     HttpClientModule,
