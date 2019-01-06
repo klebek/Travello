@@ -17,7 +17,6 @@ export class ProfileSettingsComponent implements OnInit, OnDestroy {
   @Input('settings') settings;
   @Input('myprofile') myprofile;
 
-
   imageUrl;
   idUser;
   appUser: any;
@@ -50,6 +49,7 @@ export class ProfileSettingsComponent implements OnInit, OnDestroy {
   }
 
   deleteTrip(id, pos) {
+    if (!confirm('Are you sure you want to delete this trip?')) return;
     this.trips.splice(pos, 1);
     this.trips = [...this.trips];
     this.tripService.deleteTrip(id).subscribe(trip => { });

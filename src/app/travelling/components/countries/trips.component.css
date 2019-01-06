@@ -13,7 +13,7 @@
     background-position: bottom;
 }
 .row-business-trips {
-    border-bottom: 2px solid #55dd2b;
+    border-bottom: 2px solid #3d7ef0;
     margin-bottom: 20px;
     padding-top: 1rem;
     background-color: #181818;
@@ -25,7 +25,7 @@
     padding: 5px;
     color: white;
     font-weight: 500;
-    background-color: #55dd2b;
+    background-color: #3d7ef0;
 }
 .card {
     padding: 0;

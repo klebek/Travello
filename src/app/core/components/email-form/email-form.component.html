@@ -2,8 +2,8 @@
   <div class="row">
     <div class="col-sm-1"></div>
     <div class="col-sm">
-      <h1>Contact us!</h1>
-      <div class="email-form">
+      <div *ngIf="showForm" class="email-form">
+        <h1>Contact us!</h1>
         <form #f="ngForm">
           <div class="form-row">
             <div class="col-sm-6">
@@ -48,16 +48,16 @@
           </div>
           <button type="button" id="submit" name="submit" class="btn btn-business btn-block" (click)="sendMail(f.value)"><i
               class="fas fa-envelope"></i>Send</button>
-          <div *ngIf="serverError" class="alert alert-danger">
-            {{serverError}}
-          </div>
-          <div *ngIf="clientError" class="alert alert-danger">
-            {{clientError}}
-          </div>
-          <div *ngIf="emailSent" class="alert alert-business">
-              {{emailSent}}
-            </div>
         </form>
+      </div>
+      <div *ngIf="serverError" class="alert alert-danger">
+        {{serverError}}
+      </div>
+      <div *ngIf="clientError" class="alert alert-danger">
+        {{clientError}}
+      </div>
+      <div *ngIf="emailSent" class="alert alert-business">
+        {{emailSent}}
       </div>
     </div>
     <div class="col-sm-1"></div>

@@ -2,7 +2,7 @@
     padding-bottom: 50px;
 }
 .card {
-    /* border: 2px solid rgb(85, 221, 43); */
+    /* border: 2px solid #3d7ef0; */
     border: none;
     color: white;
 }
@@ -27,7 +27,7 @@
 }
 .card-text .fas {
     font-size: 8rem;
-    color: #55dd2b;
+    color: #3d7ef0;
 }
 .card-text-bold {
     font-weight: 600;
@@ -48,8 +48,8 @@
     border-top: none;
 }
 .btn-business, .btn-business:focus:active, .btn-business:focus, .btn-business:active {
-    background-color: rgb(85, 221, 43);
-    border-color: rgb(85, 221, 43);
+    background-color: #3d7ef0;
+    border-color: #3d7ef0;
     color: #232323;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -69,7 +69,7 @@
     cursor: pointer;
 }
 p /deep/ .progress-bar {
-    background-color: rgb(85, 221, 43) !important;
+    background-color: #3d7ef0 !important;
     color: #232323 !important;
     font-weight: 500;
 }

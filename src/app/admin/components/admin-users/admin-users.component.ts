@@ -8,9 +8,9 @@ import { UserService } from 'app/core/services/user.service';
   templateUrl: './admin-users.component.html',
   styleUrls: ['./admin-users.component.css']
 })
-export class AdminUsersComponent implements OnDestroy {
+export class AdminUsersComponent implements OnDestroy, OnInit {
 
-  businessStatus = true;
+  activeStatus = true;
 
   trip;
   privateStatus = 0;
@@ -22,6 +22,9 @@ export class AdminUsersComponent implements OnDestroy {
   filteredUsers: User[];
 
   constructor(private userService: UserService) {
+  }
+
+  ngOnInit() {
     this.subscription = this.userService.getAll()
       .subscribe((u: User[]) => this.filteredUsers = this.users = u);
   }
@@ -46,7 +49,9 @@ export class AdminUsersComponent implements OnDestroy {
   }
 
   changeStatus(id, status) {
-    this.userService.changeStatus();
+    console.log(id + " " + status);
+    this.ngOnInit();
+    // this.userService.changeStatus();
   }
 
   ngOnDestroy() {

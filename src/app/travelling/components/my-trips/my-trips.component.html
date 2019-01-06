@@ -23,14 +23,14 @@
           </thead>
           <tbody>
             <tr *ngFor="let trip of filteredTrips; index as i">
-                <td>{{trip.title}}</td>
-                <td class="text-center">{{trip.countries.length}}</td>
-                <td>
-                  <button [routerLink]="['/trip/',trip.id]" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i>View</button>
-                  <button class="btn btn-success btn-sm"><i class="fas fa-share"></i>Share</button>
-                  <button [routerLink]="['/edit-trip/',trip.id]" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Edit</button>
-                  <button (click)="deleteTrip(trip.id, i)" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Remove</button>
-                </td>
+              <td><i *ngIf="trip.status === 'BLOCKED'" class="fas fa-exclamation-triangle" placement="left" ngbTooltip="This trip is blocked, contact with us to unblock"></i>{{trip.title}}</td>
+              <td class="text-center">{{trip.countries.length}}</td>
+              <td>
+                <button [routerLink]="['/trip/',trip.id]" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i>View</button>
+                <button ngbTooltip="Copy to clipboard" triggers="click:blur" (click)="share(trip.id)"class="btn btn-success btn-sm"><i class="fas fa-share"></i>Share</button>
+                <button [routerLink]="['/edit-trip/',trip.id]" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Edit</button>
+                <button (click)="deleteTrip(trip.id, i)" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Remove</button>
+              </td>
             </tr>
           </tbody>
         </table>

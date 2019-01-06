@@ -39,3 +39,7 @@ td, th{
     border-left: none;
     box-shadow: none;
 }
+.badge-business {
+    background-color: #3d7ef0;
+    border-color: #3d7ef0;
+}

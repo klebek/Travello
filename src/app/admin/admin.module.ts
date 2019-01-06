@@ -9,6 +9,7 @@ import { CustomFormsModule } from 'ng2-validation';
 import { AdminTripsComponent } from './components/admin-trips/admin-trips.component';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { AdminUsersComponent } from './components/admin-users/admin-users.component';
+import { WarningComponent } from './components/warning/warning.component';
 
 @NgModule({
   imports: [
@@ -27,9 +28,11 @@ import { AdminUsersComponent } from './components/admin-users/admin-users.compon
       }
     ])
   ],
+  entryComponents: [WarningComponent],
   declarations: [
     AdminTripsComponent,
-    AdminUsersComponent
+    AdminUsersComponent,
+    WarningComponent
   ],
   providers: [
     AdminAuthGuard

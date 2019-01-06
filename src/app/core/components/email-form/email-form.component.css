@@ -11,16 +11,16 @@ h1 {
   margin-bottom: 15px;
 }
 .btn-business {
-  background-color: #55dd2b;
-  border-color: #55dd2b;
+  background-color: #3d7ef0;
+  border-color: #3d7ef0;
 }
 .alert-danger {
   text-transform: capitalize;
   margin-top: 10px;
 }
 .alert-business {
-  background-color: rgb(85, 221, 43);
-  border-color: rgb(85, 221, 43);
+  background-color: #3d7ef0;
+  border-color: #3d7ef0;
   color: white;
   margin-top: 10px;
 }

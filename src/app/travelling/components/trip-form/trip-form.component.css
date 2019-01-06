@@ -34,11 +34,18 @@
 }
 .badge-primary {
   margin-right: 1rem;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
   padding: 5px 10px 5px 10px;
 }
 .fa-times {
   padding-right: 0;
   cursor: pointer;
+}
+.red {
+  font-weight: 400;
+  color: #dc3545;
+  margin-left: 5px;
 }
 .btn-success {
   margin-top: 20px;

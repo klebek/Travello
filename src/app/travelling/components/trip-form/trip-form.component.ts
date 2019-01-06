@@ -70,6 +70,7 @@ export class TripFormComponent implements OnInit  {
   }
 
   deleteCountry(name: string) {
+    if (!confirm('Are you sure you want to delete this?')) return;
     const index: number = this.countries.indexOf(name);
     // console.log(index)
     if (index !== -1) {
@@ -102,6 +103,7 @@ export class TripFormComponent implements OnInit  {
   }
 
   deleteNote(id, note: Note) {
+    if (!confirm('Are you sure you want to delete this?')) return;
     const index: number = this.notes.indexOf(note);
     // console.log(index)
     if (index !== -1) {
@@ -112,6 +114,7 @@ export class TripFormComponent implements OnInit  {
     // console.log(this.countries);
   }
   deleteCard(id, card) {
+    if (!confirm('Are you sure you want to delete this?')) return;
     const index: number = this.cards.indexOf(card);
     // console.log(index)
     if (index !== -1) {

@@ -5,8 +5,15 @@
         <div class="card-body">
           <form #fTrip="ngForm">
             <div class="form-row">
+              <div class="col-sm-12">
+                <div class="alert alert-danger" *ngIf="trip.status === 'BLOCKED'">
+                  Your trip is BLOCKED
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
               <div class="form-group col-md-12">
-                <label for="inputTitle">Title</label>
+                <label for="inputTitle">Title<span class="red">*</span></label>
                 <input #title="ngModel" [(ngModel)]="trip.title" name="title" type="text" class="form-control" id="inputTitle"
                   placeholder="Type title" required>
                 <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
@@ -16,7 +23,7 @@
             </div>
             <div class="form-row">
               <div class="form-group col-md-4">
-                <label for="startTime">Start</label>
+                <label for="startTime">Start<span class="red">*</span></label>
                 <div class="input-group">
                   <input #startDate="ngModel" [(ngModel)]="startDateApp" name="startDate" class="form-control"
                     ngbDatepicker #startDatePicker="ngbDatepicker" required>
@@ -30,7 +37,7 @@
                 </div>
               </div>
               <div class="form-group col-md-4">
-                <label for="endTime">Finish</label>
+                <label for="endTime">Finish<span class="red">*</span></label>
                 <div class="input-group">
                   <input class="form-control" name="endDate" #c2="ngModel" [(ngModel)]="endDateApp" ngbDatepicker
                     #endDate="ngbDatepicker" required>
@@ -44,7 +51,7 @@
                 </div>
               </div>
               <div class="col-sm-3">
-                <label for="country">Country</label>
+                <label for="country">Country<span class="red">*</span></label>
                 <select #country="ngModel" [(ngModel)]="tripCountries" class="form-control" name="countries" required>
                   <option></option>
                   <option *ngFor="let country of countriesNames">{{country.name}}</option>
@@ -60,12 +67,12 @@
                     class="fa fa-plus"></i></button>
               </div>
               <div *ngIf="trip.countries.length > 0" class="form-group col-md-12">
-                <span *ngFor="let country of tripCountries; let i = index" class="badge badge-primary">
+                <span *ngFor="let country of countries; let i = index" class="badge badge-primary">
                   {{country}}
                   <i (click)="deleteCountry(country)" class="fas fa-times"></i></span>
               </div>
               <div class="form-group col-md-12">
-                <label for="inputDescription">Description</label>
+                <label for="inputDescription">Description<span class="red">*</span></label>
                 <textarea #description="ngModel" [(ngModel)]="trip.description" name="description" class="form-control"
                   id="inputDescription" rows="6" required></textarea>
                 <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
@@ -73,9 +80,9 @@
                 </div>
               </div>
             </div>
-            <div class="form-row">
+            <div *ngIf="trip.status != 'BLOCKED'" class="form-row">
               <div class="form-group col-md-2">
-                <label>Accessibility</label><br />
+                <label>Accessibility<span class="red">*</span></label><br />
                 <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
                   <label ngbButtonLabel class="btn-primary">
                     <input #status="ngModel" [(ngModel)]="tripStatus" name="status" ngbButton type="radio" [value]="1"
@@ -121,9 +128,12 @@
                 <div class="row no-gutters">
                   <div class="col-sm-8">
                     <div class="form-group">
-                      <label for="title">Title</label>
+                      <label for="title">Title<span class="red">*</span></label>
                       <input #titleNote="ngModel" [(ngModel)]="note.title" name="title" type="text" class="form-control"
-                        id="title" placeholder="Title">
+                        id="title" placeholder="Title" required>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="titleNote.touched && titleNote.invalid">
+                      <div *ngIf="titleNote.errors.required">Title is required</div>
                     </div>
                     <div class="form-group">
                       <label for="note">Note</label>
@@ -133,22 +143,26 @@
                     <div class="row no-gutters">
                       <div class="col-sm-4 col-photo-date">
                         <div class="form-group">
-                          <label for="date">Date</label>
+                          <label for="date">Date<span class="red">*</span></label>
                           <div class="input-group">
                             <input #noteDate="ngModel" [(ngModel)]="note.date" name="date" class="form-control"
-                              placeholder="yyyy-mm-dd" (focus)="dateNote.open()" id="date" ngbDatepicker #dateNote="ngbDatepicker">
+                              placeholder="yyyy-mm-dd" (focus)="dateNote.open()" id="date" ngbDatepicker #dateNote="ngbDatepicker"
+                              required>
                             <div class="input-group-append">
                               <button class="btn btn-default btn-calendar calendar" (click)="dateNote.toggle()" type="button"><i
                                   class="fas fa-calendar-alt"></i></button>
                             </div>
                           </div>
                         </div>
+                        <div class="alert alert-danger" *ngIf="dateNote.touched && dateNote.invalid">
+                          <div *ngIf="dateNote.errors.required">Date is required</div>
+                        </div>
                       </div>
                       <div class="col-sm">
                         <div class="form-group">
                           <label for="photoCard">Photo URL</label>
                           <input #photoCard="ngModel" [(ngModel)]="note.photo" name="photo" type="text" class="form-control"
-                            id="photoCard" placeholder="Photo URL">
+                            id="photoCard" placeholder="Photo URL" url>
                         </div>
                       </div>
                       <!-- TYPE: {{type}} -->
@@ -158,14 +172,15 @@
                       </div>
                     </div>
                     <div class="form-group form-group-button">
-                      <button (click)="editNote(note.id, fNote.value)" type="submit" class="btn btn-success"><i class="fas fa-save"></i>Update
+                      <button (click)="editNote(note.id, fNote.value)" type="submit" class="btn btn-success" [disabled]="fNote.invalid"><i
+                          class="fas fa-save"></i>Update
                         note</button>
                       <button (click)="deleteNote(note.id)" type="submit" class="btn btn-danger"><i class="fas fa-trash"></i>Delete
                         note</button>
                     </div>
                     <!-- DANE: {{fNote.value | json}} -->
                   </div>
-                  <div class="col-sm-4 col-sm-4-img">
+                  <div *ngIf="note.photo" class="col-sm-4 col-sm-4-img">
                     <label for="note-img">Preview of photo</label>
                     <img [src]="note.photo" alt="" id="note-img" class="card-img-top">
                   </div>
@@ -185,13 +200,10 @@
                 <div *ngIf="!noteCard" class="form-group">
                   <label for="photoNote">Photo URL</label>
                   <input #photoNote="ngModel" [(ngModel)]="note.photo" name="photo" type="text" class="form-control" id="photoNote"
-                    placeholder="Photo URL">
-                  <div class="alert alert-danger" *ngIf="photoNote.touched && photoNote.invalid">
-                    <div *ngIf="photoNote.errors.required">Title is required</div>
-                  </div>
+                    placeholder="Photo URL" url>
                 </div>
                 <div class="form-group">
-                  <label for="title">Title</label>
+                  <label for="title">Title<span class="red">*</span></label>
                   <input #titleNote="ngModel" [(ngModel)]="note.title" name="title" type="text" class="form-control" id="title"
                     placeholder="Title" required>
                   <div class="alert alert-danger" *ngIf="titleNote.touched && titleNote.invalid">
@@ -202,22 +214,22 @@
                   <label for="note">Note</label>
                   <textarea #description="ngModel" [(ngModel)]="note.description" name="description" class="form-control"
                     id="note" rows="3"></textarea>
-                  <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
-                    <div *ngIf="description.errors.required">Description is required</div>
-                  </div>
                 </div>
-                <div *ngIf="noteCard" class="form-group">
-                  <label for="date">Date</label>
+                <div class="form-group">
+                  <label for="date">Date<span class="red">*</span></label>
                   <div class="input-group">
                     <input [(ngModel)]="note.date" name="date" class="form-control" placeholder="yyyy-mm-dd" (focus)="dateNote.open()"
-                      id="date" name="date" ngbDatepicker #dateNote="ngbDatepicker">
+                      id="date" name="date" ngbDatepicker #dateNote="ngbDatepicker" required>
                     <div class="input-group-append">
                       <button class="btn btn-default btn-calendar calendar" (click)="dateNote.toggle()" type="button"><i
                           class="fas fa-calendar-alt"></i></button>
                     </div>
                   </div>
                 </div>
-                <div *ngIf="noteCard" class="form-group">
+                <div class="alert alert-danger" *ngIf="dateNote.touched && dateNote.invalid">
+                  <div *ngIf="dateNote.errors.required">Date is required</div>
+                </div>
+                <div class="form-group">
                   <label for="photoCard">Photo URL</label>
                   <input #photoCard="ngModel" [(ngModel)]="note.photo" name="photo" type="text" class="form-control" id="photoCard"
                     placeholder="Photo URL">
@@ -229,8 +241,8 @@
                 </div>
 
                 <div class="form-group form-group-button">
-                  <button (click)="addCardFunction(trip.id, fAddNote.value)" type="submit" class="btn btn-success"><i
-                      class="fas fa-save"></i>Save note</button>
+                  <button (click)="addCardFunction(trip.id, fAddNote.value)" type="submit" class="btn btn-success"
+                    [disabled]="fAddNote.invalid"><i class="fas fa-save"></i>Save note</button>
                 </div>
                 <!-- DANE: {{f.value | json}} -->
               </form>
@@ -259,9 +271,12 @@
                       <input #typeNote="ngModel" [(ngModel)]="type" name="type" type="radio" [value]="0">
                     </div>
                     <div class="form-group">
-                      <label for="title">Title</label>
-                      <input #titleNote="ngModel" [(ngModel)]="card.title" name="title" type="text" class="form-control"
-                        id="title" placeholder="Title">
+                      <label for="title">Title<span class="red">*</span></label>
+                      <input #titleCard="ngModel" [(ngModel)]="card.title" name="title" type="text" class="form-control"
+                        id="title" placeholder="Title" required>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="titleCard.touched && titleCard.invalid">
+                      <div *ngIf="titleCard.errors.required">Title is required</div>
                     </div>
                     <div class="form-group">
                       <label for="note">Note</label>
@@ -269,14 +284,15 @@
                         id="note" rows="3"></textarea>
                     </div>
                     <div class="form-group form-group-button">
-                      <button (click)="editNote(card.id, fCard.value)" type="submit" class="btn btn-success"><i class="fas fa-save"></i>Update
+                      <button (click)="editNote(card.id, fCard.value)" type="submit" class="btn btn-success" [disabled]="fCard.invalid"><i
+                          class="fas fa-save"></i>Update
                         card</button>
                       <button (click)="deleteNote(card.id)" type="submit" class="btn btn-danger"><i class="fas fa-trash"></i>Delete
                         card</button>
                     </div>
                     <!-- DANE: {{fCard.value | json}} -->
                   </div>
-                  <div class="col-sm-4 col-sm-4-img">
+                  <div *ngIf="card.photo" class="col-sm-4 col-sm-4-img">
                     <label for="card-img">Preview of photo</label>
                     <img [src]="card.photo" alt="" id="card-img" class="card-img-top">
                   </div>
@@ -298,9 +314,12 @@
                         id="photoNote" placeholder="Photo URL">
                     </div>
                     <div class="form-group">
-                      <label for="title">Title</label>
-                      <input #titleNote="ngModel" [(ngModel)]="card.title" name="title" type="text" class="form-control"
-                        id="title" placeholder="Title">
+                      <label for="title">Title<span class="red">*</span></label>
+                      <input #titleCardAdd="ngModel" [(ngModel)]="card.title" name="title" type="text" class="form-control"
+                        id="title" placeholder="Title" required>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="titleCardAdd.touched && titleCardAdd.invalid">
+                      <div *ngIf="titleCardAdd.errors.required">Title is required</div>
                     </div>
                     <div class="form-group">
                       <label for="note">Note</label>
@@ -312,12 +331,12 @@
                       <input #typeNote="ngModel" [(ngModel)]="type" name="type" type="radio" [value]="0">
                     </div>
                     <div class="form-group form-group-button">
-                      <button (click)="addCardFunction(trip.id, fAddCard.value)" type="submit" class="btn btn-success"><i
-                          class="fas fa-save"></i>Save card</button>
+                      <button (click)="addCardFunction(trip.id, fAddCard.value)" type="submit" class="btn btn-success"
+                        [disabled]="fAddCard.invalid"><i class="fas fa-save"></i>Save card</button>
                     </div>
                     <!-- DANE: {{fAddCard.value | json}} -->
                   </div>
-                  <div class="col-sm-4 col-sm-4-img">
+                  <div *ngIf="card.photo" class="col-sm-4 col-sm-4-img">
                     <label for="card-img">Preview of photo</label>
                     <img *ngIf="card.photo" [src]="card.photo" alt="" id="card-img" class="card-img-top">
                   </div>
@@ -330,7 +349,7 @@
       </div>
       <button *ngIf="!addCard && editCards" (click)="showAddCard()" class="btn btn-success btn-block"><i class="fas fa-plus"></i>Add
         card</button>
-      <button *ngIf="!addCard && editNotes" (click)="showAddNote()" class="btn btn-success btn-block"><i class="fas fa-plus"></i>Add
+      <button *ngIf="!addNote && editNotes" (click)="showAddNote()" class="btn btn-success btn-block"><i class="fas fa-plus"></i>Add
         note</button>
     </div>
     <div class="col-sm-2 col-edit">

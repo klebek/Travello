@@ -1,0 +1,10 @@
+.form-disabled {
+    display: none;
+}
+.bold {
+    font-weight: 600;
+}
+.modal-header-body {
+    display: flex;
+    flex-direction: column;
+}

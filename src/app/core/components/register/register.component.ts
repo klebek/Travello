@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
 
   errorRegister;
   infoRegister;
+  showForm = true;
   readonly root = 'http://localhost:9000/api';
 
   constructor(private auth: AuthService, private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
@@ -38,6 +39,7 @@ export class RegisterComponent implements OnInit {
     return this.http.post(this.root + '/account/register', body, { headers: header }).subscribe(data => {
       // this.router.navigateByUrl('/')
       this.infoRegister = "You account has been created. You can sign in now";
+      this.showForm = false;
     },
       (err: HttpErrorResponse) => {
         this.errorRegister = err.error;
@@ -60,7 +62,8 @@ export class RegisterComponent implements OnInit {
     const header = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.post(this.root + '/account/register', body, {headers : header} ).subscribe(data =>{
       // this.router.navigateByUrl('/');
-      this.infoRegister = "You account has been created but is still active and need to by accepted by the administrator";
+      this.infoRegister = "You account has been created but is still inactive and need to be activated by the administrator";
+      this.showForm = false;
     },
     (err: HttpErrorResponse) => {
       this.errorRegister = err.error;

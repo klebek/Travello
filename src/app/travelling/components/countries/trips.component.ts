@@ -38,7 +38,7 @@ export class TripsComponent implements OnInit, OnDestroy {
     this.appUser = JSON.parse(localStorage.getItem('user'));
     this.subscription = this.tripService.getAll().subscribe(t => {
       this.filteredTrips = this.trips = t;
-      this.filteredTrips = this.filteredTrips.filter(s => s.status !== "PRIVATE");
+      this.filteredTrips = this.filteredTrips.filter(s => s.status != "PRIVATE" && s.status != "BLOCKED");
     });
   }
 

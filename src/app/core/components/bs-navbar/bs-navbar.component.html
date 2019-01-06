@@ -4,6 +4,9 @@
       <img src="../../../../assets/images/logo.png" alt="">
     </a>
 
+    <!-- <span> logged: {{logged}} </span><br />
+      <span *ngIf="userek" > userek: {{userek.username}} </span> -->
+
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <li ngbDropdown *ngIf="userek && logged" class="nav-item dropdown">
         <a *ngIf="userek.admin" ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
@@ -25,11 +28,8 @@
         </div>
       </ul>
 
-      <!-- <span>logged: {{logged}}</span>
-      <span>userek: {{userek.username}}</span> -->
-
       <ul class="navbar-nav">
-        <ng-container *ngIf="!userek || !logged" #anonymousUser>
+        <ng-container *ngIf="!logged" #anonymousUser>
           <li class="nav-item">
             <a class="nav-link">
               <a routerLink="/business" class="business"><i class="fas fa-user-tie"></i>Busines offer</a>

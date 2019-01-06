@@ -11,6 +11,10 @@ body {
 .table td {
     border-top: none;
 }
+.fa-exclamation-triangle {
+    color: #ffc107;
+    margin-right: 5px;
+}
 .table th {
     border-bottom-color: #f4852b;
     border-top: none;

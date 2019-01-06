@@ -14,16 +14,16 @@ h1 {
 .btn-business:focus:active,
 .btn-business:focus,
 .btn-business:active {
-  background-color: rgb(85, 221, 43);
-  border-color: rgb(85, 221, 43);
+  background-color: #3d7ef0;
+  border-color: #3d7ef0;
   color: white;
 }
 .alert-danger {
   text-transform: capitalize;
 }
 .alert-business {
-  background-color: rgb(85, 221, 43);
-  border-color: rgb(85, 221, 43);
+  background-color: #3d7ef0;
+  border-color: #3d7ef0;
   color: white;
   margin-top: 10px;
 }

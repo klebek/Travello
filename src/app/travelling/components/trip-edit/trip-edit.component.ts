@@ -24,6 +24,7 @@ export class TripEditComponent implements OnInit, OnDestroy {
   tripCountries;
   tripStatus;
   startDateApp;
+  status;
   endDateApp;
 
   addNote = false;
@@ -93,6 +94,7 @@ export class TripEditComponent implements OnInit, OnDestroy {
   }
 
   deleteCountry(name: string) {
+    if (!confirm('Are you sure you want to delete this trip?')) return;
     const index: number = this.tripCountries.indexOf(name);
     // console.log(index)
     if (index !== -1) {
@@ -123,7 +125,10 @@ export class TripEditComponent implements OnInit, OnDestroy {
   }
 
   deleteNote(id) {
-    this.noteService.deleteNote(id).subscribe(res => { });
+    if (!confirm('Are you sure you want to delete this trip?')) return;
+    this.noteService.deleteNote(id).subscribe(res => {
+      this.ngOnInit();
+    });
     this.getCards();
     this.getNotes();
   }
@@ -136,27 +141,35 @@ export class TripEditComponent implements OnInit, OnDestroy {
   showAddNote() {
     this.addNote = true;
     this.type = 1;
+    this.note = [];
   }
   showAddCard() {
     this.addCard = true;
     this.type = 0;
+    this.card = [];
   }
 
   enableEditTrip() {
     this.editTripp = true;
     this.editNotes = false;
     this.editCards = false;
+    this.addCard = false;
+    this.addNote = false;
   }
   enableEditNotes() {
     this.editNotes = true;
     this.editTripp = false;
     this.editCards = false;
+    this.addCard = false;
+    this.addNote = false;
     this.type = 1;
   }
   enableEditCards() {
     this.editCards = true;
     this.editTripp = false;
     this.editNotes = false;
+    this.addCard = false;
+    this.addNote = false;
     this.type = 0;
   }
 

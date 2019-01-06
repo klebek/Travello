@@ -1,15 +1,18 @@
-
-import { Component } from '@angular/core';
-import { MailService } from 'app/core/services/mail.service';
-import { HttpHeaders, HttpErrorResponse, HttpClient } from '@angular/common/http';
+import { Component, OnInit, Input } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'contact',
-  templateUrl: './email-form.component.html',
-  styleUrls: ['./email-form.component.css']
+  selector: 'app-warning',
+  templateUrl: './warning.component.html',
+  styleUrls: ['./warning.component.css']
 })
-export class EmailFormComponent{
+export class WarningComponent {
   
+  @Input() name;
+  @Input() emailto;
+  @Input() idtrip;
+
   mail = [];
   showForm = true;
 
@@ -17,7 +20,7 @@ export class EmailFormComponent{
   serverError;
   emailSent;
 
-  constructor(private mailService: MailService, private http: HttpClient){}
+  constructor(public activeModal: NgbActiveModal, private http: HttpClient) { }
 
   sendMail(mail) {
     let httpHeaders = new HttpHeaders({
@@ -38,5 +41,6 @@ export class EmailFormComponent{
       });
       console.log(mail);
   }
-  
+
+
 }

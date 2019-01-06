@@ -35,6 +35,7 @@ export class MyTripsComponent implements OnDestroy {
   }
 
   deleteTrip(id, pos) {
+    if (!confirm('Are you sure you want to delete this trip?')) return;
     this.filteredTrips.splice(pos, 1);
     this.filteredTrips = [...this.filteredTrips];
     this.tripService.deleteTrip(id).subscribe(trip => { });
@@ -42,6 +43,21 @@ export class MyTripsComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  share(val: string){
+    let link = "http://localhost:4200/trip/"+val;
+    let selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = link;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
   }
 
 }

@@ -1,57 +1,63 @@
 <h1 *ngIf="!business"><i class="fas fa-user-plus"></i> Sign Up</h1>
 <form #formRegister="ngForm" class="form-sign-up">
-  <span class="inline">
-    <div class="form-group">
-      <label for="exampleInputEmail">Email address</label>
-      <input required minlength="3" ngModel name="email" #email="ngModel" type="email" class="form-control" id="exampleInputEmail"
-        aria-describedby="emailHelp" placeholder="Enter email" email>
-      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-      <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
-        <div *ngIf="email.errors.required">Email address field is required</div>
-        <div *ngIf="email.errors.email">It is not an email adress format</div>
+  <div *ngIf="infoRegister" class="alert" [class.alert-primary]="!business" [class.alert-business]="business">
+    {{infoRegister}}
+  </div>
+  <div *ngIf="showForm">
+    <span class="inline">
+      <div class="form-group">
+        <label for="exampleInputEmail">Email address</label>
+        <input required minlength="3" ngModel name="email" #email="ngModel" type="email" class="form-control" id="exampleInputEmail"
+          aria-describedby="emailHelp" placeholder="Enter email" email>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <div *ngIf="email.touched && email.invalid" class="alert alert-danger">
+          <div *ngIf="email.errors.required">Email address field is required</div>
+          <div *ngIf="email.errors.email">It is not an email adress format</div>
+        </div>
       </div>
-    </div>
-    <div class="form-group right-input">
-      <label for="exampleInputUsername">Username</label>
-      <input required minlength="3" ngModel name="username" #username="ngModel" type="text" class="form-control" id="exampleInputUsername"
-        aria-describedby="usernameHelp" placeholder="Enter username">
-      <small id="usernameHelp" class="form-text text-muted">Type your username</small>
-      <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
-        <div *ngIf="username.errors.required">Username field is required</div>
-        <div *ngIf="username.errors.minlength">Username should be at least {{ username.errors.minlength.requiredLength
-          }} characters</div>
+      <div class="form-group right-input">
+        <label for="exampleInputUsername">Username</label>
+        <input required minlength="3" ngModel name="username" #username="ngModel" type="text" class="form-control" id="exampleInputUsername"
+          aria-describedby="usernameHelp" placeholder="Enter username">
+        <small id="usernameHelp" class="form-text text-muted">Type your username</small>
+        <div *ngIf="username.touched && username.invalid" class="alert alert-danger">
+          <div *ngIf="username.errors.required">Username field is required</div>
+          <div *ngIf="username.errors.minlength">Username should be at least {{
+            username.errors.minlength.requiredLength
+            }} characters</div>
+        </div>
       </div>
-    </div>
-  </span>
-  <span class="inline">
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input required minlength="6" ngModel name="password" #password="ngModel" type="password" class="form-control" id="password"
-        placeholder="Password">
-      <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
-        <div *ngIf="password.errors.required">Password field is required</div>
-        <div *ngIf="password.errors.minlength">Password should be at least {{ password.errors.minlength.requiredLength
-          }} characters</div>
+    </span>
+    <span class="inline">
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input required minlength="6" ngModel name="password" #password="ngModel" type="password" class="form-control"
+          id="password" placeholder="Password">
+        <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
+          <div *ngIf="password.errors.required">Password field is required</div>
+          <div *ngIf="password.errors.minlength">Password should be at least {{
+            password.errors.minlength.requiredLength
+            }} characters</div>
+        </div>
       </div>
-    </div>
-    <div class="form-group right-input">
-      <label for="confirmPassword">Confirm Password</label>
-      <input ngModel name="confirmPassword" #confirmPassword="ngModel" [equalTo]="password" type="password" class="form-control"
-        id="confirmPassword" placeholder="Confirm Password">
-      <div *ngIf="confirmPassword.touched && confirmPassword.invalid" class="alert alert-danger">
-        <div *ngIf="confirmPassword.errors.equalTo">Confirm password</div>
+      <div class="form-group right-input">
+        <label for="confirmPassword">Confirm Password</label>
+        <input ngModel name="confirmPassword" #confirmPassword="ngModel" [equalTo]="password" type="password" class="form-control"
+          id="confirmPassword" placeholder="Confirm Password">
+        <div *ngIf="confirmPassword.touched && confirmPassword.invalid" class="alert alert-danger">
+          <div *ngIf="confirmPassword.errors.equalTo">Confirm password</div>
+        </div>
       </div>
+    </span>
+    <div *ngIf="errorRegister" class="alert alert-danger">
+      <div>{{errorRegister}}</div>
     </div>
-  </span>
-
-  <button *ngIf="!business" (click)="register(formRegister)" [disabled]="formRegister.invalid" type="submit" class="btn btn-primary btn-block">Sign
-    up</button>
-  <button *ngIf="business" (click)="registerBusinessPartner(formRegister)" [disabled]="formRegister.invalid" type="submit" class="btn btn-business btn-block">Sign
-    up for business</button>
-    <div *ngIf="infoRegister" class="alert" [class.alert-primary]="!business" [class.alert-business]="business">
-      {{infoRegister}}
-    </div>
-  <div *ngIf="errorRegister" class="alert alert-danger">
-    <div>{{errorRegister}}</div>
+  </div>
+  <div *ngIf="showForm" class="buttons">
+    <button *ngIf="!business" (click)="register(formRegister)" [disabled]="formRegister.invalid" type="submit" class="btn btn-primary btn-block">Sign
+      up</button>
+    <button *ngIf="business" (click)="registerBusinessPartner(formRegister)" [disabled]="formRegister.invalid" type="submit"
+      class="btn btn-business btn-block">Sign
+      up for business</button>
   </div>
 </form>

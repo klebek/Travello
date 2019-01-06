@@ -17,6 +17,8 @@ export class TripCardComponent implements OnInit, OnDestroy {
   countries = [];
   deleted = false;
 
+  photo;
+
   subscriptionNotes: Subscription;
   subscriptionCards: Subscription;
   subscriptionTrips: Subscription;
@@ -31,7 +33,10 @@ export class TripCardComponent implements OnInit, OnDestroy {
   }
 
   getNotes(id){
-    this.subscriptionNotes = this.tripService.getNotes(id).subscribe(n => this.notes = n);
+    this.subscriptionNotes = this.tripService.getNotes(id).subscribe(n => {
+      this.notes = n
+      // this.photo = this.notes[0].photo;
+    });
   }
 
   getCards(id){

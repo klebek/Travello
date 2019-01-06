@@ -23,8 +23,8 @@
   display: none;
 }
 .btn-business {
-  background-color: rgb(85, 221, 43);
-  border-color: rgb(85, 221, 43);
+  background-color: #3d7ef0;
+  border-color: #3d7ef0;
 }
 .btn-saved {
   background-color: transparent;
@@ -44,7 +44,7 @@
   background-color: #f4852b;
 }
 .badge-business {
-  background-color: rgb(85, 221, 43);
+  background-color: #3d7ef0;
   color: white;
 }
 .row-trips {

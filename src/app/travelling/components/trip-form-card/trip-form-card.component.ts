@@ -102,6 +102,7 @@ export class TripFormCardComponent implements OnInit {
   }
 
   deleteNote(id, note: Note) {
+    if (!confirm('Are you sure you want to delete this trip?')) return;
     const index: number = this.notes.indexOf(note);
     // console.log(index)
     if (index !== -1) {

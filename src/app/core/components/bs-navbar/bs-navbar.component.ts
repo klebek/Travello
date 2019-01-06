@@ -31,7 +31,15 @@ export class BsNavbarComponent implements OnInit {
     this.checkUser = this.loginComponent.logged;
     // console.log("Check user: " + this.checkUser);
     this.auth.onMainEventLogged.subscribe((onMain) => { this.logged = onMain });
-    this.auth.onMainEventUser.subscribe((onMain) => { this.userek = onMain })
+    this.auth.onMainEventUser.subscribe((onMain) => {
+      this.userek = onMain 
+      this.localStorage.setItem('user', this.userek).subscribe(() => {}, () => {});
+    });
+    this.localStorage.getItem('user').subscribe((user) => {
+      if(user != null) this.userek = user;
+    });
+    this.userek = localStorage.getItem('user');
+    // console.log("Userek: " + this.userek.username);
     // console.log("logged: " + this.logged)
   }
 
