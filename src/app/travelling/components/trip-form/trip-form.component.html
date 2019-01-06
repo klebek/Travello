@@ -66,11 +66,19 @@
                 <button (click)="addCountry(country.value)" class="btn btn-success btn-block btn-add-country" id="country"><i
                     class="fa fa-plus"></i></button>
               </div>
+
               <div *ngIf="countries.length > 0" class="form-group col-md-12">
-                <span *ngFor="let country of trip.countries; let i = index" class="badge badge-primary">
+                <span *ngFor="let country of countries; let i = index" class="badge badge-primary">
                   {{country}}
                   <i (click)="deleteCountry(country)" class="fas fa-times"></i></span>
               </div>
+
+              <!-- <div *ngIf="trip.countries.length > 0" class="form-group col-md-12">
+                <span *ngFor="let country of tripCountries; let i = index" class="badge badge-primary">
+                  {{country}}
+                  <i (click)="deleteCountry(country)" class="fas fa-times"></i></span>
+              </div> -->
+
               <div class="form-group col-md-12">
                 <label for="inputDescription">Description</label>
                 <textarea #description="ngModel" [(ngModel)]="trip.description" name="description" class="form-control"
@@ -98,34 +106,180 @@
                 </div>
               </div>
               <div class="col-sm"></div>
-              <div *ngIf="trip" class="form-group col-md-6">
+              <div *ngIf="trip && f.valid" class="form-group col-md-6">
                 <label for="options">Options</label><br />
                 <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioType">
                   <label ngbButtonLabel class="btn btn-warning btn-add">
                     <input (click)="enableNote()" (click)="addTrip(f.value)" #typeNote="ngModel" [(ngModel)]="type"
-                      name="type" ngbButton type="radio" [value]="0" [disabled]="!notNullCountry"><i class="fas fa-plus"></i>Add
+                      name="type" ngbButton type="radio" [value]="1" [disabled]="!notNullCountry"><i class="fas fa-plus"></i>Add
                     note
                   </label>
                   <label ngbButtonLabel class="btn btn-warning btn-add">
                     <input (click)="enableCard()" (click)="addTrip(f.value)" #typeNote="ngModel" [(ngModel)]="type"
-                      name="type" ngbButton type="radio" [value]="1" [disabled]="!notNullCountry"><i class="fas fa-plus"></i>Add
+                      name="type" ngbButton type="radio" [value]="0" [disabled]="!notNullCountry"><i class="fas fa-plus"></i>Add
                     card
                   </label>
                 </div>
               </div>
             </div>
             <div class="row">
-              <div class="col-sm-6">
-                <trip-form-card *ngIf="showNote" [(disabledButton)]="disabledButton" [(alertNote)]="alertNote"
-                  [(showNote)]="showNote" [noteCard]="true" [type]="type" [idTrip]="idTrip"></trip-form-card>
-                <ngb-alert *ngIf="alertNote" (click)="closeAlertNote()" type="success"><i class="fas fa-check-circle"></i>Saved
-                  note</ngb-alert>
+              <div class="col-sm-12">
+                <div *ngIf="cards.length > 0 || notes.length > 0" class="row row-badges">
+                  <div class="form-group col-sm-6">
+                    <span *ngFor="let card of cards; let i = index" class="badge badge-primary">
+                      {{card.title}}
+                      <i (click)="deleteCard(card.id, card)" class="fas fa-times"></i></span>
+                    <span *ngFor="let note of notes; let i = index" class="badge badge-primary">
+                      {{note.title}}
+                      <i (click)="deleteNote(note.id, note)" class="fas fa-times"></i></span>
+                  </div>
+                </div>
               </div>
               <div class="col-sm-6">
-                <trip-form-card *ngIf="showCard" [(alertCard)]="alertCard" [(showCard)]="showCard" [noteCard]="false"
+
+                <div *ngIf="showNote" class="card">
+                  <div class="card-header">
+                    <span class="header">Adding note</span>
+                    <div class="close">
+                      <i (click)="hideNoteForm()" class="fas fa-times"></i>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="card-text">
+                      <form #f="ngForm">
+                        <div class="form-group">
+                          <label for="photoNote">Photo URL</label>
+                          <input #photoNote="ngModel" [(ngModel)]="note.photo" name="photo" type="text" class="form-control"
+                            id="photoNote" placeholder="Photo URL">
+                          <div class="alert alert-danger" *ngIf="photoNote.touched && photoNote.invalid">
+                            <div *ngIf="photoNote.errors.required">Title is required</div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="title">Title</label>
+                          <input #titleNote="ngModel" [(ngModel)]="note.title" name="title" type="text" class="form-control"
+                            id="title" placeholder="Title" required>
+                          <div class="alert alert-danger" *ngIf="titleNote.touched && titleNote.invalid">
+                            <div *ngIf="titleNote.errors.required">Title is required</div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="note">Note</label>
+                          <textarea #description="ngModel" [(ngModel)]="note.description" name="description" class="form-control"
+                            id="note" rows="3"></textarea>
+                          <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+                            <div *ngIf="description.errors.required">Description is required</div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="date">Date</label>
+                          <div class="input-group">
+                            <input [(ngModel)]="note.date" name="date" class="form-control" placeholder="yyyy-mm-dd"
+                              (focus)="dateNote.open()" id="date" name="date" ngbDatepicker #dateNote="ngbDatepicker">
+                            <div class="input-group-append">
+                              <button class="btn btn-default btn-calendar calendar" (click)="dateNote.toggle()" type="button"><i
+                                  class="fas fa-calendar-alt"></i></button>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="form-group form-group-button form-disabled">
+                          <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
+                            <label ngbButtonLabel class="btn-primary">
+                              <input #typeNote="ngModel" [(ngModel)]="type" name="type" ngbButton type="radio" [value]="1">Note
+                            </label>
+                            <label ngbButtonLabel class="btn-primary">
+                              <input #typeNote="ngModel" [(ngModel)]="type" name="type" ngbButton type="radio" [value]="0">Card
+                            </label>
+                          </div>
+                        </div>
+                        Type {{type}};
+                        <div class="form-group form-group-button">
+                          <button (click)="addNote(f.value)" (click)="hideNoteForm()" type="submit" class="btn btn-success"
+                            [disabled]="f.invalid"><i class="fas fa-save"></i>Save
+                            note</button>
+                        </div>
+                        <!-- DANE: {{f.value | json}} -->
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <trip-form-card [(disabledButton)]="disabledButton" [(alertNote)]="alertNote"
+                  [(showNote)]="showNote" [noteCard]="true" [type]="type" [idTrip]="idTrip"></trip-form-card>
+                <ngb-alert *ngIf="alertNote" (click)="closeAlertNote()" type="success"><i class="fas fa-check-circle"></i>Saved
+                  note</ngb-alert> -->
+
+              </div>
+              <div class="col-sm-6">
+
+                <div *ngIf="showCard" class="card">
+                  <div class="card-header">
+                    <span class="header">Adding card</span>
+                    <div class="close">
+                      <i (click)="hideCardForm()" class="fas fa-times"></i>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="card-text">
+                      <form #f="ngForm">
+                        <div class="form-group">
+                          <label for="photoNote">Photo URL</label>
+                          <input #photoNote="ngModel" [(ngModel)]="note.photo" name="photo" type="text" class="form-control"
+                            id="photoNote" placeholder="Photo URL">
+                          <div class="alert alert-danger" *ngIf="photoNote.touched && photoNote.invalid">
+                            <div *ngIf="photoNote.errors.required">Title is required</div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="title">Title</label>
+                          <input #titleNote="ngModel" [(ngModel)]="note.title" name="title" type="text" class="form-control"
+                            id="title" placeholder="Title" required>
+                          <div class="alert alert-danger" *ngIf="titleNote.touched && titleNote.invalid">
+                            <div *ngIf="titleNote.errors.required">Title is required</div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="note">Note</label>
+                          <textarea #description="ngModel" [(ngModel)]="note.description" name="description" class="form-control"
+                            id="note" rows="3"></textarea>
+                          <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+                            <div *ngIf="description.errors.required">Description is required</div>
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label for="photoCard">Photo URL</label>
+                          <input #photoCard="ngModel" [(ngModel)]="note.photo" name="photo" type="text" class="form-control"
+                            id="photoCard" placeholder="Photo URL">
+                        </div>
+
+                        <div class="form-group form-group-button form-disabled">
+                          <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
+                            <label ngbButtonLabel class="btn-primary">
+                              <input #typeNote="ngModel" [(ngModel)]="type" name="type" ngbButton type="radio" [value]="1">Note
+                            </label>
+                            <label ngbButtonLabel class="btn-primary">
+                              <input #typeNote="ngModel" [(ngModel)]="type" name="type" ngbButton type="radio" [value]="0">Card
+                            </label>
+                          </div>
+                        </div>
+                        Type {{type}};
+                        <div class="form-group form-group-button">
+                          <button (click)="addNote(f.value)" (click)="hideCardForm()" type="submit" class="btn btn-success"
+                            [disabled]="f.invalid"><i class="fas fa-save"></i>Save
+                            card</button>
+                        </div>
+                        <!-- DANE: {{f.value | json}} -->
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- <trip-form-card [(alertCard)]="alertCard" [(showCard)]="showCard" [noteCard]="false"
                   [type]="type" [idTrip]="idTrip"></trip-form-card>
                 <ngb-alert *ngIf="alertCard" (click)="closeAlertCard()" type="success"><i class="fas fa-check-circle"></i>Saved
-                  card</ngb-alert>
+                  card</ngb-alert> -->
+
               </div>
             </div>
             <!-- not null: {{notNullCountry}} -->

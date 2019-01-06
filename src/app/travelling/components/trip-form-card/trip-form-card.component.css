@@ -1,43 +1,55 @@
 .btn-calendar {
-    background: white;
-    border-left: none;
-    border-color: #ced4da;
-    color: #f4852b;
+  background: white;
+  border-left: none;
+  border-color: #ced4da;
+  color: #f4852b;
 }
 .form-group-button {
-    text-align: center;
+  text-align: center;
 }
 .form-group {
-    margin-top: 20px;
-    margin-bottom: 0;
+  margin-top: 20px;
+  margin-bottom: 0;
 }
 .card-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .form-disabled {
-    display: none;
+  display: none;
 }
 .close {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.fa-times {
-    float: right;
-    font-size:18px;
-    color: #575757;
-}
+/* .fa-times {
+  float: right;
+  font-size: 18px;
+  color: #575757;
+} */
 .header {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 .btn-primary:not(:disabled):not(.disabled).active {
-    background-color: #c26b23;
-    border-color: #f4852b;
+  background-color: #c26b23;
+  border-color: #f4852b;
 }
-.btn-primary.focus, .btn-primary:not(:disabled):not(.disabled).active:focus{
-    box-shadow: none;
+.btn-primary.focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus {
+  box-shadow: none;
+}
+.badge-primary {
+    margin-right: 1rem;
+    padding: 5px 10px 5px 10px;
+}
+.fa-times {
+    padding-right: 0;
+    cursor: pointer;
+}
+.row-badges {
+    margin-bottom: 20px;
 }

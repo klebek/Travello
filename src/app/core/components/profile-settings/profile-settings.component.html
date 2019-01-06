@@ -7,7 +7,7 @@
       <button *ngIf="!myprofile" (click)="previewProfile()" placement="bottom" ngbTooltip="Edit" class="btn btn-danger"><i
           class="fas fa-edit"></i></button>
     </div>
-    <button *ngIf="myprofile" (click)="saveUser(f.value)" class="btn btn-success btn-block"><i class="fas fa-save"></i>Save</button>
+    <button *ngIf="myprofile" (click)="saveUser(f.value)" [disabled]="f.invalid" class="btn btn-success btn-block"><i class="fas fa-save"></i>Save</button>
     <button *ngIf="saved" class="btn btn-success btn-block btn-saved">Saved</button>
   </div>
   <div class="col-sm">
@@ -65,17 +65,18 @@
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="photo">Avatar</label>
-                <input #photo="ngModel" [(ngModel)]="user.photo" name="photo" type="text" class="form-control" id="photo">
+                <input #photo="ngModel" [(ngModel)]="user.photo" name="photo" type="text" class="form-control" id="photo" url>
               </div>
               <div class="alert alert-danger" *ngIf="photo.touched && photo.invalid">
                 <div *ngIf="photo.errors.required">Photo is required</div>
+                <div *ngIf="photo.errors.url">It is not an image format</div>
               </div>
             </div>
             <div class="col-sm-3">
               <div class="form-group">
                 <label for="exampleFormControlInput1">Username</label>
                 <input #username="ngModel" [(ngModel)]="user.username" name="username" type="text" class="form-control"
-                  id="exampleFormControlInput1" placeholder="Username" required>
+                  id="exampleFormControlInput1" placeholder="Username" readonly>
               </div>
               <div class="alert alert-danger" *ngIf="username.touched && username.invalid">
                 <div *ngIf="username.errors.required">Username is required</div>
@@ -107,7 +108,7 @@
         </div>
       </div>
     </form>
-    <!-- DANE: {{f.value | json}} -->
+    DANE: {{f.value | json}}
   </div>
 </div>
 <div *ngIf="user && !settings" class="row row-info">

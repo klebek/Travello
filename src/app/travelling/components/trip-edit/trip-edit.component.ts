@@ -54,7 +54,7 @@ export class TripEditComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.subscriptionTrip = this.tripService.getTrip(this.id).subscribe(t => {
       this.trip = t;
       if (this.trip.status == "PUBLIC") { this.tripStatus = 1; this.trip.status = 1 }
@@ -84,12 +84,12 @@ export class TripEditComponent implements OnInit, OnDestroy {
 
   addCardFunction(id, note) {
     this.noteService.addNote(id, note).subscribe(
-      card => { }
+      card => {
+        this.ngOnInit()
+      }
     );
     this.addCard = false;
     this.addNote = false;
-    this.getCards();
-    this.getNotes();
   }
 
   deleteCountry(name: string) {
@@ -117,9 +117,9 @@ export class TripEditComponent implements OnInit, OnDestroy {
 
   editNote(id, note: Note) {
     let tripId = this.id;
-    this.noteService.editNote(id, tripId, note).subscribe(note => { });
-    this.getCards();
-    this.getNotes();
+    this.noteService.editNote(id, tripId, note).subscribe(note => {
+      this.ngOnInit()
+    });
   }
 
   deleteNote(id) {

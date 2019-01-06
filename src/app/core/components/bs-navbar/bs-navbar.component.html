@@ -39,7 +39,7 @@
         </ng-container>
         <!--<a routerLink="/profile" *ngIf="user" class="hello"><i class="fas fa-user"></i>Profile</a>-->
         <!--<span *ngIf="user" class="hello">Hello, {{ user.username }}</span>-->
-        <a [routerLink]="['/profile', user.userId]" *ngIf="user" class="hello"><i class="fas fa-user"></i>Profile</a>
+        <a [routerLink]="['/profile', userek.userId]" *ngIf="userek && logged" class="hello"><i class="fas fa-user"></i>Profile</a>
         <ng-container *ngIf="logged">
           <span *ngIf="userek && logged" class="hello">Hello, {{ userek.username }}</span>
         </ng-container>

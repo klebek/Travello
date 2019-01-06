@@ -4,6 +4,8 @@ import { Trip } from 'app/travelling/model/trip';
 import { TripService } from 'app/travelling/services/trip.service';
 import { CountryService } from 'app/travelling/services/country.service';
 import { Router } from '@angular/router';
+import { NoteService } from 'app/travelling/services/note.service';
+import { Note } from 'app/travelling/model/note';
 
 @Component({
   selector: 'trip-form',
@@ -21,7 +23,14 @@ export class TripFormComponent implements OnInit  {
   alertNote;
   alertCard;
   countriesNames;
+
+  notes = [];
+  cards = [];
+  note = []
+  card = [];
+  
   countries = [];
+
   continents = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
   region;
   type;
@@ -32,7 +41,7 @@ export class TripFormComponent implements OnInit  {
   idTrip;
   idCard;
 
-  constructor(private tripService: TripService, private countryService: CountryService, private router: Router) {
+  constructor(private tripService: TripService, private countryService: CountryService, private router: Router, private noteService: NoteService) {
   }
 
   ngOnInit() {
@@ -74,11 +83,52 @@ export class TripFormComponent implements OnInit  {
     this.region = value;
   }
 
+  addNote(note: Note) {
+    this.noteService.addNote(this.idTrip, note).subscribe(note => {
+      this.tripService.getCards(this.idTrip).subscribe((n: any) => {
+        // this.notes.push(note);
+        this.notes = n;
+        // console.log(this.notes)
+      });
+      this.tripService.getNotes(this.idTrip).subscribe((c:any)=> {
+        this.cards = c;
+        // console.log(this.cards)
+      })
+    });
+    this.showNote = false;
+    this.showCard = false;
+    this.note = [];
+    this.card = [];
+  }
+
+  deleteNote(id, note: Note) {
+    const index: number = this.notes.indexOf(note);
+    // console.log(index)
+    if (index !== -1) {
+      this.notes.splice(index, 1);
+      console.log("id: " + id)
+      this.noteService.deleteNote(id).subscribe(res => { });
+    }
+    // console.log(this.countries);
+  }
+  deleteCard(id, card) {
+    const index: number = this.cards.indexOf(card);
+    // console.log(index)
+    if (index !== -1) {
+      this.cards.splice(index, 1);
+      console.log("id: " + id)
+      this.noteService.deleteNote(id).subscribe(res => { });
+    }
+    // console.log(this.countries);
+  }
+
   enableNote() {
+    this.showCard = false;
     this.showNote = true;
     this.type = 1;
   }
   enableCard() {
+    this.showNote = false;
     this.showCard = true;
     this.type = 0;
   }
@@ -87,5 +137,11 @@ export class TripFormComponent implements OnInit  {
   }
   closeAlertCard() {
     this.alertCard = false;
+  }
+  hideNoteForm(){
+    this.showNote = false;
+  }
+  hideCardForm(){
+    this.showNote = false;
   }
 }

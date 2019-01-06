@@ -58,7 +58,7 @@ export class LoginComponent {
     this.http.get('http://localhost:9000/principal', { headers: header }).subscribe((data: any) => {
       localStorage.setItem('user', JSON.stringify(data.principal));
       this.user$ = data.principal;
-      if(this.user$ != null) this.logged = true;
+      if(data.principal.username != null) this.logged = true;
       this.auth.onMainEventLogged.emit(this.logged);
       this.auth.onMainEventUser.emit(data.principal);
       this.router.navigateByUrl(this.returnUrlFinal);

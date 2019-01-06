@@ -1,4 +1,18 @@
-<div class="card">
+<div *ngIf="notes.length > 0" class="row row-badges">
+  <div class="form-group col-sm-6">
+    <span *ngFor="let note of notes; let i = index" class="badge badge-primary">
+      {{note.title}} SIEMANKo
+      <i (click)="deleteNote(note.id, note)" class="fas fa-times"></i></span>
+  </div>
+</div>
+<div *ngIf="cards.length > 0" class="row row-badges">
+  <div class="form-group col-sm-6">
+    <span *ngFor="let card of cards; let i = index" class="badge badge-primary">
+      {{card.title}} ELO ELO
+      <i (click)="deleteCard(card.id, card)" class="fas fa-times"></i></span>
+  </div>
+</div>
+<div *ngIf="showCard || showNote" class="card">
   <div class="card-header">
     <span *ngIf="noteCard" class="header">Adding note</span>
     <span *ngIf="!noteCard" class="header">Adding card</span>
@@ -14,25 +28,25 @@
           <label for="photoNote">Photo URL</label>
           <input #photoNote="ngModel" [(ngModel)]="note.photo" name="photo" type="text" class="form-control" id="photoNote"
             placeholder="Photo URL">
-            <div class="alert alert-danger" *ngIf="photoNote.touched && photoNote.invalid">
-              <div *ngIf="photoNote.errors.required">Title is required</div>
-            </div>
+          <div class="alert alert-danger" *ngIf="photoNote.touched && photoNote.invalid">
+            <div *ngIf="photoNote.errors.required">Title is required</div>
+          </div>
         </div>
         <div class="form-group">
           <label for="title">Title</label>
           <input #titleNote="ngModel" [(ngModel)]="note.title" name="title" type="text" class="form-control" id="title"
             placeholder="Title" required>
-            <div class="alert alert-danger" *ngIf="titleNote.touched && titleNote.invalid">
-              <div *ngIf="titleNote.errors.required">Title is required</div>
-            </div>
+          <div class="alert alert-danger" *ngIf="titleNote.touched && titleNote.invalid">
+            <div *ngIf="titleNote.errors.required">Title is required</div>
+          </div>
         </div>
         <div class="form-group">
           <label for="note">Note</label>
           <textarea #description="ngModel" [(ngModel)]="note.description" name="description" class="form-control" id="note"
             rows="3"></textarea>
-            <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
-                <div *ngIf="description.errors.required">Description is required</div>
-              </div>
+          <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+            <div *ngIf="description.errors.required">Description is required</div>
+          </div>
         </div>
         <div *ngIf="noteCard" class="form-group">
           <label for="date">Date</label>
@@ -66,12 +80,14 @@
         </div>
         Type {{type}};
         <div class="form-group form-group-button">
-          <button (click)="addNote(f.value)" *ngIf="noteCard" (click)="changeDisabledButton($event)" (click)="changeAlertNote($event)" type="submit" class="btn btn-success"><i
-              class="fas fa-save"></i>Save note</button>
-          <button (click)="addNote(f.value)" *ngIf="!noteCard" (click)="changeDisabledButton($event)" (click)="changeAlertCard($event)" type="submit" class="btn btn-success"><i class="fas fa-save"></i>Save
+          <button (click)="addNote(f.value)" *ngIf="noteCard" (click)="changeDisabledButton($event)"
+            (click)="changeAlertNote($event)" type="submit" class="btn btn-success" [disabled]="f.invalid"><i class="fas fa-save"></i>Save
+            note</button>
+          <button (click)="addNote(f.value)" *ngIf="!noteCard" (click)="changeDisabledButton($event)"
+            (click)="changeAlertCard($event)" type="submit" class="btn btn-success" [disabled]="f.invalid"><i class="fas fa-save"></i>Save
             card</button>
         </div>
-        <!-- DANE: {{f.value | json}} -->
+        DANE: {{f.value | json}}
       </form>
     </div>
   </div>

@@ -1,58 +1,92 @@
 .container {
-    margin-top: 150px;
+  margin-top: 150px;
 }
 .btn-primary:not(:disabled):not(.disabled).active {
-    background-color: #c26b23;
-    border-color: #f4852b;
+  background-color: #c26b23;
+  border-color: #f4852b;
 }
-.btn-primary.focus, .btn-primary:not(:disabled):not(.disabled).active:focus{
-    box-shadow: none;
+.btn-primary.focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus {
+  box-shadow: none;
 }
-.row /deep/ .btn-link, .row /deep/ .ngb-dp-weekday {
-    color: #f4852b !important;
+.row /deep/ .btn-link,
+.row /deep/ .ngb-dp-weekday {
+  color: #f4852b !important;
 }
 .row /deep/ .bg-primary {
-    background-color: #f4852b !important;
+  background-color: #f4852b !important;
 }
 .btn-calendar {
-    background: white;
-    border-left: none;
-    border-color: #ced4da;
-    color: #f4852b;
+  background: white;
+  border-left: none;
+  border-color: #ced4da;
+  color: #f4852b;
 }
 .col-continent {
-    display: none;
+  display: none;
 }
 .btn-add {
-    margin-right: 10px;
-    padding-right: 20px;
+  margin-right: 10px;
+  padding-right: 20px;
 }
 .form-row {
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 .badge-primary {
-    margin-right: 1rem;
-    padding: 5px 10px 5px 10px;
+  margin-right: 1rem;
+  padding: 5px 10px 5px 10px;
 }
 .fa-times {
-    padding-right: 0;
-    cursor: pointer;
+  padding-right: 0;
+  cursor: pointer;
 }
 .btn-success {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .btn-add-country {
-    margin-top: 0;
+  margin-top: 0;
 }
 .row /deep/ .alert-success {
-    background-color: #28a7467a;
-    color: white;
-    margin-top: 1rem;
+  background-color: #28a7467a;
+  color: white;
+  margin-top: 1rem;
 }
 .row /deep/ .alert-success .close {
-    color: white;
-    opacity: 0.9;
+  color: white;
+  opacity: 0.9;
 }
 .row /deep/ .alert-success .close:hover {
-    color: white;
+  color: white;
+}
+/* 
+CARD
+*/
+
+.form-group-button {
+  text-align: center;
+}
+.form-group {
+  /* margin-top: 20px; */
+  margin-bottom: 0;
+}
+.card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.form-disabled {
+  display: none;
+}
+.close {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.header {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.row-badges {
+  margin-bottom: 20px;
 }

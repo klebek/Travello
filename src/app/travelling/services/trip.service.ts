@@ -16,7 +16,7 @@ export class TripService {
   countriesUrl;
 
   constructor(private http: HttpClient) {
-    if(localStorage.getItem('user') !== null){
+    if(localStorage.getItem('user') != null){
       this.idUser = JSON.parse(localStorage.getItem('user')).userId;
     }
     this.url = "http://localhost:9000/api/trip/user/"+this.idUser+"/id/"+this.idTrip;
