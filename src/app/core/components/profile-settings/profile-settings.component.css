@@ -13,6 +13,13 @@
 .col-buttons button {
     margin-left: 10px;
 }
+.fa-exclamation-triangle {
+  color: #ffc107;
+  margin-right: 5px;
+  font-size: 15px;
+  padding-left: 0;
+  margin-left: 0;
+}
 .col-buttons {
     justify-content: flex-end;
     display: flex;

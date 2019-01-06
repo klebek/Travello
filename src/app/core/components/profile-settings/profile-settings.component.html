@@ -143,8 +143,10 @@
         </div>
         <!-- <img class="card-img-top-business" placement="top" [ngbTooltip]="country.name" [src]="country.image" alt="Card image cap"> -->
         <div *ngIf="!businessTrip" class="card-body">
-          <h5 class="card-title">{{trip.title}}</h5>
-          <p class="card-text">{{trip.description}}</p>
+          <h5 class="card-title"><i *ngIf="trip.status === 'BLOCKED'" class="fas fa-exclamation-triangle" placement="bottom-left"
+              ngbTooltip="This trip is blocked, contact with us to unblock"></i>{{trip.title}}</h5>
+          <p class="card-text">{{(trip.description.length>100)? (trip.description | slice:0:100)+'
+            [...]':(trip.description)}}</p>
         </div>
         <div *ngIf="!businessTrip" class="card-footer">
           <div class="row">

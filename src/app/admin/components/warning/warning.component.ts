@@ -12,6 +12,7 @@ export class WarningComponent {
   @Input() name;
   @Input() emailto;
   @Input() idtrip;
+  @Input() iduser;
 
   mail = [];
   showForm = true;

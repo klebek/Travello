@@ -1,6 +1,6 @@
 <div class="modal-header">
   <div class="modal-header-body">
-    <h4 class="modal-title">Send warning to {{name}}</h4>
+    <h4 class="modal-title">Send message to {{name}}</h4>
     <h5><small>Trip identificator: <span class="bold">{{idtrip}}</span></small></h5>
   </div>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
@@ -14,9 +14,17 @@
         <div *ngIf="showForm" class="email-form">
           <form #f="ngForm">
             <div class="form-group form-disabled">
-              <input #emailTo="ngModel" type="text" class="form-control" id="emailto" name="email" placeholder="Email to"
+              <input #emailToV="ngModel" type="text" class="form-control" id="emailto" name="email"
                 [(ngModel)]="emailto" required>
             </div>
+            <div class="form-group form-disabled">
+                <input #tripId="ngModel" type="text" class="form-control" id="idtrip" name="idtrip"
+                  [(ngModel)]="idtrip" required>
+              </div>
+            <div class="form-group form-disabled">
+                <input #userId="ngModel" type="text" class="form-control" id="iduser" name="iduser"
+                  [(ngModel)]="iduser" required>
+              </div>
             <div class="form-group">
               <input #subjectForm="ngModel" type="text" class="form-control" id="subject" name="subject" placeholder="Subject"
                 [(ngModel)]="subject" required>
@@ -34,7 +42,7 @@
             </div>
             <button type="button" id="submit" name="submit" class="btn btn-business btn-block" (click)="sendMail(f.value)"
               [disabled]="f.invalid"><i class="fas fa-envelope"></i>Send</button>
-            <!-- {{f.value | json}} -->
+            {{f.value | json}}
           </form>
         </div>
         <div *ngIf="serverError" class="alert alert-danger">

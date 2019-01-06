@@ -8,3 +8,6 @@
     display: flex;
     flex-direction: column;
 }
+.modal-body {
+    padding-top: 0;
+}

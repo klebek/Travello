@@ -72,9 +72,9 @@
                                     <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
                                 </div>
                             </ng-template>
-                            <button class="btn btn-warning btn-sm" (click)="warn(trip.id)"><i class="fas fa-edit"></i>Send
-                                warning</button>
-                            <button *ngIf="trip.status != 'BLOCKED'" (click)="changeStatus(trip.id, blockedStatus)"
+                            <!-- <button class="btn btn-warning btn-sm" (click)="warn(trip.id)"><i class="fas fa-edit"></i>Send
+                                warning</button> -->
+                            <button *ngIf="trip.status != 'BLOCKED'" (click)="warn(trip.id)" (click)="changeStatus(trip.id, blockedStatus)"
                                 class="btn btn-danger btn-sm"><i class="fas fa-ban"></i>Block</button>
                             <button *ngIf="trip.status === 'BLOCKED'" (click)="changeStatus(trip.id, privateStatus)"
                                 class="btn btn-success btn-sm"><i class="fas fa-globe-americas"></i>Unblock</button>
