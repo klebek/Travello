@@ -32,9 +32,6 @@ export class TripsComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private tripService: TripService,
     private auth: AuthService) {
-    }
-
-  async ngOnInit() {
     this.populateTrips();
     this.appUser = JSON.parse(localStorage.getItem('user'));
     this.subscription = this.tripService.getAll().subscribe(t => {
@@ -42,6 +39,10 @@ export class TripsComponent implements OnInit, OnDestroy {
       this.filteredTrips = this.filteredTrips.filter(s => s.status != "PRIVATE" && s.status != "BLOCKED" && s.business != true);
       this.filteredTripsBusiness = this.filteredTrips.filter(s => s.status != "PRIVATE" && s.status != "BLOCKED" && s.business === true);
     });
+  }
+
+  ngOnInit() {
+
   }
 
   filter(query: string) {
@@ -57,7 +58,7 @@ export class TripsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    if(this.subscription){
+    if (this.subscription) {
       this.subscription.unsubscribe();
     }
 
