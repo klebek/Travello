@@ -35,7 +35,7 @@ export class TripService {
     return this.idTrip;
   }
 
-  addTrip(trip: Trip): Observable<Trip> {
+  addTrip(idUser, trip: Trip): Observable<Trip> {
     let httpHeaders = new HttpHeaders({
       'Content-Type' : 'application/json',
     });
@@ -43,8 +43,7 @@ export class TripService {
       headers: httpHeaders
     };
     // console.log(trip);
-    console.log(this.userid);
-    return this.http.put<Trip>(this.url, trip, options);
+    return this.http.put<Trip>('http://localhost:9000/api/trip/user/'+idUser+'/id/'+this.idTrip, trip, options);
   }
 
   editTrip(id, trip: Trip) {

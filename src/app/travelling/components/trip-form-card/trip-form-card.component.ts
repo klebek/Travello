@@ -4,6 +4,7 @@ import { Note } from 'app/travelling/model/note';
 import { NoteService } from 'app/travelling/services/note.service';
 import { Trip } from 'app/travelling/model/trip';
 import { TripService } from 'app/travelling/services/trip.service';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Component({
   selector: 'trip-form-card',
@@ -90,7 +91,7 @@ export class TripFormCardComponent implements OnInit {
         this.notes = n;
         console.log(this.notes)
       });
-      this.tripService.getNotes(this.idTrip).subscribe((c:any)=> {
+      this.tripService.getNotes(this.idTrip).subscribe((c: any) => {
         this.cards = c;
         console.log(this.cards)
       })

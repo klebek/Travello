@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { NoteService } from 'app/travelling/services/note.service';
 import { Note } from 'app/travelling/model/note';
 import { Alert } from 'selenium-webdriver';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Component({
   selector: 'trip-form',
@@ -47,7 +48,15 @@ export class TripFormComponent implements OnInit  {
   idTrip;
   idCard;
 
-  constructor(private tripService: TripService, private countryService: CountryService, private router: Router, private noteService: NoteService) {
+  idUser;
+
+  constructor(private tripService: TripService, private countryService: CountryService, private router: Router, private noteService: NoteService, protected localStorage: LocalStorage) {
+    if (localStorage.getItem('user') != null) {
+      this.localStorage.getItem('user').subscribe((user) => {
+        this.idUser = user.userId
+        console.log(this.idUser);
+      });
+    }
   }
 
   ngOnInit() {
@@ -72,7 +81,7 @@ export class TripFormComponent implements OnInit  {
   //   console.log("Po dodaniu: " + this.countries);
   // }
   addTrip(trip: Trip) {
-    this.tripService.addTrip(trip).subscribe(trip => {});
+    this.tripService.addTrip(this.idUser, trip).subscribe(trip => {});
   }
   getTrip(id) {
     this.tripService.getTrip(id).subscribe();

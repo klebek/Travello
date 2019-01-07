@@ -3,6 +3,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from 'shared/services/auth.service';
 import { TripService } from 'app/travelling/services/trip.service';
 import { Subscription } from 'rxjs/Subscription';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Component({
   selector: 'app-my-trips',
@@ -19,19 +20,18 @@ export class MyTripsComponent implements OnDestroy {
 
   trips = [];
 
-  constructor(private authService: AuthService, private tripService: TripService) {
-    this.idUser = JSON.parse(localStorage.getItem('user')).userId;
-    this.getTrips();
+  constructor(private authService: AuthService, private tripService: TripService, protected localStorage: LocalStorage) {
+    this.localStorage.getItem('user').subscribe((user) =>{
+      this.idUser = user.userId;
+      console.log(this.idUser)
+      this.subscription = this.tripService.getUserTrip(this.idUser).subscribe((t: any[]) => this.filteredTrips = this.trips = t);
+    });
   }
 
   filter(query: string) {
     this.filteredTrips = (query) ?
       this.trips.filter(t => t.title.toLowerCase().includes(query.toLowerCase())) :
       this.trips;
-  }
-
-  getTrips() {
-    this.subscription = this.tripService.getUserTrip(this.idUser).subscribe((t: any[]) => this.filteredTrips = this.trips = t);
   }
 
   deleteTrip(id, pos) {
