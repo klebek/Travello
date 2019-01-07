@@ -1,7 +1,7 @@
 <div class="modal-header">
   <div class="modal-header-body">
     <h4 class="modal-title">Send message to {{name}}</h4>
-    <h5><small>Trip identificator: <span class="bold">{{idtrip}}</span></small></h5>
+    <h5><small>Trip identificator: <span class="bold">{{tripId}}</span></small></h5>
   </div>
   <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
@@ -14,16 +14,16 @@
         <div *ngIf="showForm" class="email-form">
           <form #f="ngForm">
             <div class="form-group form-disabled">
-              <input #emailToV="ngModel" type="text" class="form-control" id="emailto" name="email"
-                [(ngModel)]="emailto" required>
+              <input #emailToV="ngModel" type="text" class="form-control" id="userEmail" name="userEmail"
+                [(ngModel)]="userEmail" required>
             </div>
             <div class="form-group form-disabled">
-                <input #tripId="ngModel" type="text" class="form-control" id="idtrip" name="idtrip"
-                  [(ngModel)]="idtrip" required>
+                <input #tripid="ngModel" type="text" class="form-control" id="tripId" name="tripId"
+                  [(ngModel)]="tripId" required>
               </div>
             <div class="form-group form-disabled">
-                <input #userId="ngModel" type="text" class="form-control" id="iduser" name="iduser"
-                  [(ngModel)]="iduser" required>
+                <input #userid="ngModel" type="text" class="form-control" id="userId" name="userId"
+                  [(ngModel)]="userId" required>
               </div>
             <div class="form-group">
               <input #subjectForm="ngModel" type="text" class="form-control" id="subject" name="subject" placeholder="Subject"

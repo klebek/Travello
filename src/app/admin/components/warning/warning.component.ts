@@ -8,11 +8,11 @@ import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http
   styleUrls: ['./warning.component.css']
 })
 export class WarningComponent {
-  
+
   @Input() name;
-  @Input() emailto;
-  @Input() idtrip;
-  @Input() iduser;
+  @Input() userEmail;
+  @Input() tripId;
+  @Input() userId;
 
   mail = [];
   showForm = true;

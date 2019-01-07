@@ -73,9 +73,9 @@ export class AdminTripsComponent implements OnDestroy, OnInit {
     this.tripService.getTraveller(id).subscribe(t => {
       this.traveller = t
       modalRef.componentInstance.name = this.traveller.username;
-      modalRef.componentInstance.emailto = this.traveller.email;
-      modalRef.componentInstance.iduser = this.traveller.id;
-      modalRef.componentInstance.idtrip = id;
+      modalRef.componentInstance.userEmail = this.traveller.email;
+      modalRef.componentInstance.userId = this.traveller.id;
+      modalRef.componentInstance.tripId = id;
     });
     // console.log(id);
   }
