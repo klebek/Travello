@@ -14,7 +14,9 @@
   color: white;
 }
 .img-business {
-  height: 100px;
+  background-size: cover;
+  background-position: center;
+  height: 150px;
 }
 .card-img-top {
   height: 250px;

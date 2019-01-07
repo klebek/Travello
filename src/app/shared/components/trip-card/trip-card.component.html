@@ -1,6 +1,6 @@
 <a [routerLink]="['/trip/', trip.id]">
   <div class="card">
-    <ng-container *ngIf="notes">
+    <ng-container *ngIf="notes && !trip.business">
       <div *ngFor="let note of notes; index as i">
         <img *ngIf="i<1 && note.photo != null" class="card-img-top" [src]="note.photo" alt="">
         <img *ngIf="i<1 && note.photo === null" class="card-img-top" src="../../../../assets/images/default_trip.jpg" alt="">
@@ -12,11 +12,11 @@
         <img *ngIf="i<1 && card.photo === null" class="card-img-top" src="../../../../assets/images/default_trip.jpg" alt="">
       </div>
     </ng-container> -->
-    <img class="card-img-top-business" placement="top" [ngbTooltip]="trip.title" [src]="country.image" alt="Card image cap">
+    <!-- <img class="card-img-top-business" placement="top" [ngbTooltip]="trip.title" [src]="country.image" alt="Card image cap"> -->
     <ng-container *ngIf="notes && trip.business">
       <div *ngFor="let note of notes; index as i">
-        <img *ngIf="i<1 && note.photo != null" class="card-img-top img-business" placement="top" [ngbTooltip]="trip.title" [src]="note.photo" alt="">
-        <img *ngIf="i<1 && note.photo === null" class="card-img-top img-business" placement="top" [ngbTooltip]="trip.title" src="../../../../assets/images/default_trip.jpg" alt="">
+        <img *ngIf="i<1 && note.photo != null" class="img-business" placement="top" [ngbTooltip]="trip.title" [src]="note.photo" alt="">
+        <img *ngIf="i<1 && note.photo === null" class="img-business" placement="top" [ngbTooltip]="trip.title" src="../../../../assets/images/default_trip.jpg" alt="">
       </div>
     </ng-container>
     <div *ngIf="!trip.business" class="card-body">
