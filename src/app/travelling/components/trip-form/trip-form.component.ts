@@ -39,7 +39,7 @@ export class TripFormComponent implements OnInit  {
   // ZMIEN TO ZEBY USTAWIANO W NG ON INIT-> 
   businessUser = true;
 
-  notNullCountry = false;
+  tripValid = false;
 
   disabledButton = true;
   staticAlertClosed = false;
@@ -60,10 +60,12 @@ export class TripFormComponent implements OnInit  {
       this.countries = c;
     });
   }
-  addCountry(country){
+  addCountry(form, country){
+    this.tripValid = form;
     this.countries.push(country);
     this.trip.countries = this.countries;
-    this.notNullCountry = true;
+    this.tripValid = true;
+    console.log(form + " " + this.tripValid);
   }
   // addCountry(country: string) {
   //   this.tripService.addCountry(country).subscribe(country =>{});
@@ -76,14 +78,15 @@ export class TripFormComponent implements OnInit  {
     this.tripService.getTrip(id).subscribe();
   }
 
-  deleteCountry(name: string) {
+  deleteCountry(form, name: string) {
+    this.tripValid = form
     if (!confirm('Are you sure you want to delete this?')) return;
     const index: number = this.countries.indexOf(name);
     // console.log(index)
     if (index !== -1) {
       this.countries.splice(index, 1);
     }
-    if(this.countries.length < 1) this.notNullCountry = false;
+    if(this.countries.length < 1) this.trip.countries = "";
     // console.log(this.countries);
   }
 

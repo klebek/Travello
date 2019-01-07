@@ -3,7 +3,7 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-body">
-          <form #f="ngForm">
+          <form #fTrip="ngForm">
             <div class="form-row">
               <div class="form-group col-md-12">
                 <label for="inputTitle">Title<span class="red">*</span></label>
@@ -11,6 +11,16 @@
                   placeholder="Type title" required>
                 <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
                   <div *ngIf="title.errors.required">Title is required</div>
+                </div>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-12">
+                <label for="inputDescription">Description<span class="red">*</span></label>
+                <textarea #description="ngModel" [(ngModel)]="trip.description" name="description" class="form-control"
+                  id="inputDescription" rows="6" required></textarea>
+                <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
+                  <div *ngIf="description.errors.required">Description is required</div>
                 </div>
               </div>
             </div>
@@ -59,7 +69,7 @@
                   <div *ngIf="c2.errors.required">End date is required</div>
                 </div>
               </div>
-              <div class="col-sm-3">
+              <div class="form-group col-sm-3">
                 <label for="country">Country<span class="red">*</span></label>
                 <select #country="ngModel" [(ngModel)]="trip.countries" class="form-control" name="countries" required>
                   <option></option>
@@ -69,24 +79,23 @@
                   <div *ngIf="country.errors.required">Country is required</div>
                 </div>
               </div>
-              <div class="col-sm-2 col-continent">
+              <div class="form-group col-sm-2 col-continent">
                 <label for="continent">Continent</label>
-                <input #continent="ngModel" [ngModel]="region" name="continent" type="text" class="form-control" id="continent"
-                  required>
+                <input #continent="ngModel" [ngModel]="region" name="continent" type="text" class="form-control" id="continent">
                 <div class="alert alert-danger" *ngIf="continent.touched && continent.invalid">
                   <div *ngIf="continent.errors.required">Continent is required</div>
                 </div>
               </div>
-              <div class="col-sm">
+              <div class="form-group col-sm">
                 <label for="country">Add country</label>
-                <button (click)="addCountry(country.value)" class="btn btn-success btn-block btn-add-country" id="country"><i
-                    class="fa fa-plus"></i></button>
+                <button (click)="addCountry(fTrip.valid, country.value)" class="btn btn-success btn-block btn-add-country"
+                  id="country"><i class="fa fa-plus"></i></button>
               </div>
 
               <div *ngIf="countries.length > 0" class="form-group col-md-12">
                 <span *ngFor="let country of countries; let i = index" class="badge badge-primary">
                   {{country}}
-                  <i (click)="deleteCountry(country)" class="fas fa-times"></i></span>
+                  <i (click)="deleteCountry(fTrip.valid, country)" class="fas fa-times"></i></span>
               </div>
 
               <!-- <div *ngIf="trip.countries.length > 0" class="form-group col-md-12">
@@ -95,14 +104,6 @@
                   <i (click)="deleteCountry(country)" class="fas fa-times"></i></span>
               </div> -->
 
-              <div class="form-group col-md-12">
-                <label for="inputDescription">Description<span class="red">*</span></label>
-                <textarea #description="ngModel" [(ngModel)]="trip.description" name="description" class="form-control"
-                  id="inputDescription" rows="6" required></textarea>
-                <div class="alert alert-danger" *ngIf="description.touched && description.invalid">
-                  <div *ngIf="description.errors.required">Description is required</div>
-                </div>
-              </div>
             </div>
             <div class="form-row">
               <div class="form-group col-md-2">
@@ -122,17 +123,19 @@
                 </div>
               </div>
               <div class="col-sm"></div>
-              <div *ngIf="trip && f.valid" class="form-group col-md-6">
+              <div *ngIf="trip || fTrip.valid" class="form-group col-md-6">
                 <label for="options">Options</label><br />
                 <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioType">
                   <label ngbButtonLabel class="btn btn-warning btn-add">
-                    <input (click)="enableNote()" (click)="addTrip(f.value)" #typeNote="ngModel" [(ngModel)]="type"
-                      name="type" ngbButton type="radio" [value]="1" [disabled]="!notNullCountry"><i class="fas fa-plus"></i>Add
+                    <input (click)="enableNote()" (click)="addTrip(fTrip.value)" #typeNote="ngModel" [(ngModel)]="type"
+                      name="type" ngbButton type="radio" [value]="1" [disabled]="!fTrip.valid"><i
+                      class="fas fa-plus"></i>Add
                     note
                   </label>
                   <label ngbButtonLabel class="btn btn-warning btn-add">
-                    <input (click)="enableCard()" (click)="addTrip(f.value)" #typeNote="ngModel" [(ngModel)]="type"
-                      name="type" ngbButton type="radio" [value]="0" [disabled]="!notNullCountry"><i class="fas fa-plus"></i>Add
+                    <input (click)="enableCard()" (click)="addTrip(fTrip.value)" #typeNote="ngModel" [(ngModel)]="type"
+                      name="type" ngbButton type="radio" [value]="0" [disabled]="!fTrip.valid"><i
+                      class="fas fa-plus"></i>Add
                     card
                   </label>
                 </div>
@@ -162,7 +165,7 @@
                   </div>
                   <div class="card-body">
                     <div class="card-text">
-                      <form #f="ngForm">
+                      <form #fNote="ngForm">
                         <div class="form-group">
                           <p>
                             <ngb-alert *ngIf="!staticAlertClosed" type="warning" (close)="staticAlertClosed = true">First
@@ -223,11 +226,11 @@
                         </div>
                         <!-- Type {{type}}; -->
                         <div class="form-group form-group-button">
-                          <button (click)="addNote(f.value)" (click)="hideNoteForm()" type="submit" class="btn btn-success"
-                            [disabled]="f.invalid"><i class="fas fa-save"></i>Save
+                          <button (click)="addNote(fNote.value)" (click)="hideNoteForm()" type="submit" class="btn btn-success"
+                            [disabled]="!fNote.valid"><i class="fas fa-save"></i>Save
                             note</button>
                         </div>
-                        <!-- DANE: {{f.value | json}} -->
+                        <!-- DANE: {{fNote.value | json}} -->
                       </form>
                     </div>
                   </div>
@@ -250,7 +253,7 @@
                   </div>
                   <div class="card-body">
                     <div class="card-text">
-                      <form #f="ngForm">
+                      <form #fCard="ngForm">
                         <div class="form-group">
                           <label for="photoNote">Photo URL</label>
                           <input #photoNote="ngModel" [(ngModel)]="note.photo" name="photo" type="text" class="form-control"
@@ -293,11 +296,11 @@
                         </div>
                         <!-- Type {{type}}; -->
                         <div class="form-group form-group-button">
-                          <button (click)="addNote(f.value)" (click)="hideCardForm()" type="submit" class="btn btn-success"
-                            [disabled]="f.invalid"><i class="fas fa-save"></i>Save
+                          <button (click)="addNote(fCard.value)" (click)="hideCardForm()" type="submit" class="btn btn-success"
+                            [disabled]="!fCard.valid"><i class="fas fa-save"></i>Save
                             card</button>
                         </div>
-                        <!-- DANE: {{f.value | json}} -->
+                        <!-- DANE: {{fCard.value | json}} -->
                       </form>
                     </div>
                   </div>
@@ -311,10 +314,10 @@
               </div>
             </div>
             <!-- not null: {{notNullCountry}} -->
-            <a routerLink="/"><button (click)="addTrip(f.value)" [disabled]="countries.length < 1 || !f.valid" class="btn btn-success btn-block"
-                [disabled]="!notNullCountry"><i class="fas fa-save"></i>Add
+            <a routerLink="/"><button (click)="addTrip(fTrip.value)" [disabled]="!fTrip.valid"
+                class="btn btn-success btn-block"><i class="fas fa-save"></i>Add
                 your new trip</button></a>
-            <!-- DANE: {{f.value | json}} -->
+            <!-- DANE: {{fTrip.value | json}} -->
           </form>
         </div>
       </div>
