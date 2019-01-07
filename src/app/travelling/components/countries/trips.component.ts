@@ -32,13 +32,13 @@ export class TripsComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private tripService: TripService,
     private auth: AuthService) {
-    this.populateTrips();
     this.appUser = JSON.parse(localStorage.getItem('user'));
     this.subscription = this.tripService.getAll().subscribe(t => {
-      this.filteredTrips = this.trips = t;
+      this.filteredTrips = this.filteredTripsBusiness = this.trips = t;
       this.filteredTrips = this.filteredTrips.filter(s => s.status != "PRIVATE" && s.status != "BLOCKED" && s.business != true);
-      this.filteredTripsBusiness = this.trips.filter(s => s.status != "PRIVATE" && s.status != "BLOCKED" && s.business === true);
+      this.filteredTripsBusiness = this.filteredTripsBusiness.filter(s => s.status != "PRIVATE" && s.status != "BLOCKED" && s.business === true);
     });
+    this.populateTrips();
   }
 
   ngOnInit() {

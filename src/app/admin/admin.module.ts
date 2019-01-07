@@ -34,6 +34,7 @@ import { WarningComponent } from './components/warning/warning.component';
     AdminUsersComponent,
     WarningComponent
   ],
+  exports: [WarningComponent],
   providers: [
     AdminAuthGuard
   ]

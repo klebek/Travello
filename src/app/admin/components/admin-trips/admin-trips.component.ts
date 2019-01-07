@@ -21,7 +21,9 @@ export class AdminTripsComponent implements OnDestroy, OnInit {
   publicStatus = 1;
   blockedStatus = 2;
 
-  typebusiness = false;
+  businessMail = 0;
+  blockMail = 1;
+  userMail = 2;
 
   traveller;
 
@@ -73,6 +75,7 @@ export class AdminTripsComponent implements OnDestroy, OnInit {
     this.tripService.getTraveller(id).subscribe(t => {
       this.traveller = t
       modalRef.componentInstance.name = this.traveller.username;
+      modalRef.componentInstance.type = this.blockMail;
       modalRef.componentInstance.userEmail = this.traveller.email;
       modalRef.componentInstance.userId = this.traveller.id;
       modalRef.componentInstance.tripId = id;

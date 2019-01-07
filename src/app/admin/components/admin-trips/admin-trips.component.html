@@ -45,8 +45,8 @@
                         <th scope="row">{{trip.id}}</th>
                         <td>{{trip.title}}</td>
                         <td>
-                            <span *ngIf="typebusiness" class="badge badge-pill badge-business">BUSINESS</span>
-                            <span *ngIf="!typebusiness" class="badge badge-pill badge-primary">TRAVELLER</span>
+                            <span *ngIf="trip.business" class="badge badge-pill badge-business">BUSINESS</span>
+                            <span *ngIf="!trip.business" class="badge badge-pill badge-primary">TRAVELLER</span>
                         </td>
                         <td>
                             <span *ngIf="trip.status == 'PUBLIC'" class="badge badge-pill badge-success">{{trip.status}}</span>

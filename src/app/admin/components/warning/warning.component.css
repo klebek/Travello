@@ -1,13 +1,23 @@
 .form-disabled {
-    display: none;
+  display: none;
 }
 .bold {
-    font-weight: 600;
+  font-weight: 600;
 }
 .modal-header-body {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .modal-body {
-    padding-top: 0;
+  padding-top: 0;
+}
+.alert-danger {
+  text-transform: capitalize;
+  margin-top: 10px;
+}
+.alert-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  color: white;
+  margin-top: 10px;
 }

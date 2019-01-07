@@ -4,6 +4,8 @@ import { AuthService } from 'shared/services/auth.service';
 import { TripService } from 'app/travelling/services/trip.service';
 import { Subscription } from 'rxjs/Subscription';
 import { LocalStorage } from '@ngx-pwa/local-storage';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { WarningComponent } from 'app/admin/components/warning/warning.component';
 
 @Component({
   selector: 'app-my-trips',
@@ -18,12 +20,19 @@ export class MyTripsComponent implements OnDestroy {
   idUser: number;
   deleted = false;
 
+  trip;
+  traveller;
+
+  businessMail = 0;
+  blockMail = 1;
+  userMail = 2;
+
   trips = [];
 
-  constructor(private authService: AuthService, private tripService: TripService, protected localStorage: LocalStorage) {
-    this.localStorage.getItem('user').subscribe((user) =>{
+  constructor(private authService: AuthService, private tripService: TripService, protected localStorage: LocalStorage, private modalService: NgbModal) {
+    this.localStorage.getItem('user').subscribe((user) => {
       this.idUser = user.userId;
-      console.log(this.idUser)
+      // console.log(this.idUser)
       this.subscription = this.tripService.getUserTrip(this.idUser).subscribe((t: any[]) => this.filteredTrips = this.trips = t);
     });
   }
@@ -45,8 +54,8 @@ export class MyTripsComponent implements OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  share(val: string){
-    let link = "http://localhost:4200/trip/"+val;
+  share(val: string) {
+    let link = "http://localhost:4200/trip/" + val;
     let selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';
@@ -58,6 +67,19 @@ export class MyTripsComponent implements OnDestroy {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+  }
+
+  send(id, type) {
+    const modalRef = this.modalService.open(WarningComponent);
+    // modalRef.componentInstance.name = 'World';
+    this.tripService.getTraveller(id).subscribe(t => {
+      this.traveller = t;
+      modalRef.componentInstance.userEmail = this.traveller.email;
+      modalRef.componentInstance.type = type;
+      modalRef.componentInstance.userId = this.traveller.id;
+      modalRef.componentInstance.tripId = id;
+    })
+    // console.log(id);
   }
 
 }

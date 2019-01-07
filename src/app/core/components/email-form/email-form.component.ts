@@ -17,6 +17,8 @@ export class EmailFormComponent{
   serverError;
   emailSent;
 
+  type = 3;
+
   constructor(private mailService: MailService, private http: HttpClient){}
 
   sendMail(mail) {

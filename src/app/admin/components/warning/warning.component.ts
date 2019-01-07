@@ -7,11 +7,12 @@ import { HttpHeaders, HttpClient, HttpErrorResponse } from '@angular/common/http
   templateUrl: './warning.component.html',
   styleUrls: ['./warning.component.css']
 })
-export class WarningComponent {
+export class WarningComponent implements OnInit{
 
   @Input() name;
   @Input() userEmail;
   @Input() tripId;
+  @Input() type;
   @Input() userId;
 
   mail = [];
@@ -21,7 +22,8 @@ export class WarningComponent {
   serverError;
   emailSent;
 
-  constructor(public activeModal: NgbActiveModal, private http: HttpClient) { }
+  constructor(public activeModal: NgbActiveModal, private http: HttpClient) {
+  }
 
   sendMail(mail) {
     let httpHeaders = new HttpHeaders({
@@ -41,6 +43,8 @@ export class WarningComponent {
         else this.serverError = "Server-side error occurred.";
       });
       // console.log(mail);
+  }
+  ngOnInit(){
   }
 
 

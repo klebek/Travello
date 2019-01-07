@@ -17,6 +17,7 @@
   background-size: cover;
   background-position: center;
   height: 150px;
+  width: 100%;
 }
 .card-img-top {
   height: 250px;

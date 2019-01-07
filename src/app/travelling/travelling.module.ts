@@ -17,6 +17,7 @@ import { CountryService } from 'shared/services/country.service';
 import { TitlePipe } from './pipes/title.pipe';
 import { CountryPipe } from './pipes/country.pipe';
 import { TripEditComponent } from './components/trip-edit/trip-edit.component';
+import { WarningComponent } from 'app/admin/components/warning/warning.component';
 
 @NgModule({
   imports: [
