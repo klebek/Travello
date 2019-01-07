@@ -78,7 +78,9 @@ export class TripsComponent implements OnInit, OnDestroy {
 
   private applyFilter() {
     this.filteredTrips = (this.continent) ?
-      this.trips.filter(t => t.continent === this.continent) :
+      this.trips.filter(t => {
+        t.continent === this.continent
+      }) :
       this.trips;
   }
 }

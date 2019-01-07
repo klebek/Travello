@@ -30,10 +30,10 @@
         <h2>{{item.title}}</h2>
         <em>{{item.date | date:dateFormat}}</em>
         <div class="row">
-          <div *ngIf="item.photo" class="col-sm-6">
+          <div *ngIf="item.photo" class="col-sm">
             <img [src]="item.photo" class="card-img-top">
           </div>
-          <div class="col-sm">
+          <div *ngIf="item.content" class="col-sm">
             <p>{{item.content}}</p>
           </div>
         </div>

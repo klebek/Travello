@@ -155,6 +155,9 @@ h1 span, p span {
 .col-sm-3 /deep/ .ng-star-inserted {
     background-position: center;
 }
+.row /deep/ .carousel-item {
+    min-height: 700px;
+}
 .carousel-caption {
     display: flex;
     flex-direction: column;

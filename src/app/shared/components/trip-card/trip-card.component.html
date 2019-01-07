@@ -2,16 +2,16 @@
   <div class="card">
     <ng-container *ngIf="notes">
       <div *ngFor="let note of notes; index as i">
-        <img *ngIf="i<1 && note.photo != ''" class="card-img-top" [src]="note.photo" alt="">
-        <img *ngIf="i<1 && note.photo === ''" class="card-img-top" src="../../../../assets/images/default_trip.jpg" alt="">
+        <img *ngIf="i<1 && note.photo != null" class="card-img-top" [src]="note.photo" alt="">
+        <img *ngIf="i<1 && note.photo === null" class="card-img-top" src="../../../../assets/images/default_trip.jpg" alt="">
       </div>
     </ng-container>
-    <ng-container *ngIf="cards">
+    <!-- <ng-container *ngIf="cards">
       <div *ngFor="let card of cards; index as i">
-        <img *ngIf="i<1 && card.photo != ''" class="card-img-top" [src]="note.photo" alt="">
-        <img *ngIf="i<1 && card.photo === ''" class="card-img-top" src="../../../../assets/images/default_trip.jpg" alt="">
+        <img *ngIf="i<1 && card.photo != null" class="card-img-top" [src]="note.photo" alt="">
+        <img *ngIf="i<1 && card.photo === null" class="card-img-top" src="../../../../assets/images/default_trip.jpg" alt="">
       </div>
-    </ng-container>
+    </ng-container> -->
     <!-- <img class="card-img-top-business" placement="top" [ngbTooltip]="country.name" [src]="country.image" alt="Card image cap"> -->
     <div *ngIf="!businessTrip" class="card-body">
       <h5 class="card-title">{{trip.title}}</h5>

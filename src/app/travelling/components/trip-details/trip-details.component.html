@@ -4,7 +4,7 @@
       <div class="card text-center">
         <div class="card-body card-body-main">
           <div class="row">
-            <div *ngIf="images" class="col-sm-3 col-padding col-country">
+            <div *ngIf="notes[0] != undefined" class="col-sm-3 col-padding col-country">
               <ngb-carousel>
                 <ng-template *ngFor="let countries of countries$; let i = index" ngbSlide>
                   <img [src]="notes[0].photo" alt="Random first slide">

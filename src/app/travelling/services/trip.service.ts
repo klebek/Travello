@@ -3,24 +3,31 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { Trip } from '../model/trip';
+import { LocalStorage } from '@ngx-pwa/local-storage';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TripService {
 
-  idUser: 99;
+  idUser;
   idTrip = Math.floor(Math.random() * (999999 - 1 + 1)) + 1;
   url;
   editUrl;
   countriesUrl;
 
-  constructor(private http: HttpClient) {
+  userid;
+
+  constructor(private http: HttpClient, protected localStorage: LocalStorage) {
     if(localStorage.getItem('user') != null){
-      this.idUser = JSON.parse(localStorage.getItem('user')).userId;
+      // this.idUser = JSON.parse(localStorage.getItem('user')).userId;
+      this.localStorage.getItem('user').subscribe((user) => this.idUser = user.userId);
     }
-    this.url = "http://localhost:9000/api/trip/user/"+this.idUser+"/id/"+this.idTrip;
-    this.editUrl = "http://localhost:9000/api/trip/user/"+this.idUser+"/id/";
+    this.localStorage.getItem('user').subscribe((user) => {
+      this.userid= user.userId
+      this.url = "http://localhost:9000/api/trip/user/"+this.userid+"/id/"+this.idTrip;
+      this.editUrl = "http://localhost:9000/api/trip/user/"+this.userid+"/id/";
+    });
     // this.countriesUrl = "http://localhost:9000/api/trip/"+this.idTrip+"/country/add";
   }
 
@@ -36,6 +43,7 @@ export class TripService {
       headers: httpHeaders
     };
     // console.log(trip);
+    console.log(this.userid);
     return this.http.put<Trip>(this.url, trip, options);
   }
 

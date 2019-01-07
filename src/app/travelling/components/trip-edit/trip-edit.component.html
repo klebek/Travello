@@ -229,11 +229,6 @@
                 <div class="alert alert-danger" *ngIf="dateNote.touched && dateNote.invalid">
                   <div *ngIf="dateNote.errors.required">Date is required</div>
                 </div>
-                <div class="form-group">
-                  <label for="photoCard">Photo URL</label>
-                  <input #photoCard="ngModel" [(ngModel)]="note.photo" name="photo" type="text" class="form-control" id="photoCard"
-                    placeholder="Photo URL">
-                </div>
 
                 <div class="form-group form-group-button form-disabled">
                   <input #typeNote="ngModel" [(ngModel)]="type" name="type" type="radio" [value]="1">

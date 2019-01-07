@@ -10,7 +10,7 @@ import { LoginComponent } from '../login/login.component';
 @Component({
   selector: 'bs-navbar',
   templateUrl: './bs-navbar.component.html',
-  styleUrls: ['./bs-navbar.component.css'],
+  styleUrls: ['./bs-navbar.component.scss'],
   providers: [NgbDropdownConfig]
 })
 
@@ -27,7 +27,8 @@ export class BsNavbarComponent implements OnInit {
   checkUser;
   showLogout = false;
 
-  constructor(public auth: AuthService, protected localStorage: LocalStorage, private loginComponent: LoginComponent) {
+  constructor(public auth: AuthService, protected localStorage: LocalStorage, private loginComponent: LoginComponent, config: NgbDropdownConfig) {
+    config.placement = 'bottom-right';
     this.checkUser = this.loginComponent.logged;
     // console.log("Check user: " + this.checkUser);
     this.auth.onMainEventLogged.subscribe((onMain) => { this.logged = onMain });

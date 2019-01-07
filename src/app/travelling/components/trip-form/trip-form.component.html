@@ -16,7 +16,7 @@
             </div>
             <!-- USTAWIA TYP USERA -->
 
-            <div class="form-row">
+            <!-- <div class="form-row">
               <div class="form-group form-group-button form-disabled">
                 <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
                   <label ngbButtonLabel class="btn-primary">
@@ -27,7 +27,7 @@
                   </label>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <!---->
             <div class="form-row">
@@ -314,7 +314,7 @@
             <a routerLink="/"><button (click)="addTrip(f.value)" [disabled]="countries.length < 1 || !f.valid" class="btn btn-success btn-block"
                 [disabled]="!notNullCountry"><i class="fas fa-save"></i>Add
                 your new trip</button></a>
-            DANE: {{f.value | json}}
+            <!-- DANE: {{f.value | json}} -->
           </form>
         </div>
       </div>

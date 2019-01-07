@@ -8,6 +8,7 @@ import { CountryService } from 'app/travelling/services/country.service';
 import { Trip } from 'app/travelling/model/trip';
 import { TripService } from 'app/travelling/services/trip.service';
 import { Subscription } from 'rxjs/Subscription';
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-trip-details',
@@ -26,7 +27,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
 
   images = [1, 2, 3].map(() => `https://picsum.photos/600/850?random&t=${Math.random()}`);
   timeline: TimelineElement[] = [];
-  notes;
+  notes = [];
   i = 0;
   currentJustify = 'fill';
   readMore = false;
@@ -46,8 +47,11 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
     configRating.max = 5;
     configRating.readonly = false;
     this.id = this.route.snapshot.params['id'];
-    this.subscriptionNotes = this.tripService.getNotes(this.id).subscribe(n => {
+    this.subscriptionNotes = this.tripService.getNotes(this.id).subscribe((n:any) => {
       this.notes = n
+      if(this.notes[0] == undefined) {
+        this.notes[0].photo = "https://i.imgur.com/C15GrGG.png"
+      }
       this.getTimeline();
     });
     // console.log(this.images)
@@ -55,7 +59,9 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.appUser = JSON.parse(localStorage.getItem('user'));
-    this.subscriptionTrip = this.tripService.getTrip(this.id).subscribe(t => this.trip = t);
+    this.subscriptionTrip = this.tripService.getTrip(this.id).subscribe(t => {
+      this.trip = t
+    });
     this.subscriptionTraveller = this.tripService.getTraveller(this.id).subscribe(t => {
       this.traveller = t
       if (this.traveller.photo === null || this.traveller.photo === "") this.traveller.photo = "https://i.imgur.com/C15GrGG.png";
@@ -88,6 +94,8 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   }
 
   getTimeline() {
+    this.notes =_.orderBy(this.notes, ['date'], ['asc']);
+    // _.orderBy(users, ['user', 'age'], ['asc', 'desc']);
     let date = new Date('2018-12-09 00:00')
     // console.log("lol" + date);
     if (this.notes[0]) {

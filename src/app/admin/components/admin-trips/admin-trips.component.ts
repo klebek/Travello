@@ -10,7 +10,7 @@ import { WarningComponent } from '../warning/warning.component';
 @Component({
   selector: 'app-admin-trips',
   templateUrl: './admin-trips.component.html',
-  styleUrls: ['./admin-trips.component.css']
+  styleUrls: ['./admin-trips.component.scss']
 })
 export class AdminTripsComponent implements OnDestroy, OnInit {
 

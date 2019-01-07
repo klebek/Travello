@@ -1,0 +1,136 @@
+.navbarColor {
+  background: #132d4a;
+}
+li {
+  list-style: none;
+}
+.navbar {
+  color: white;
+  font-weight: 500;
+}
+.container {
+  margin-top: 0px;
+}
+.btn-default {
+  font-family: "adineuePROKZ-Black";
+  margin-top: 1.5rem;
+}
+.container-mobile {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  .col-sm {
+    .logo {
+      height: 3rem;
+    }
+  }
+  .col-menu {
+    display: flex;
+    justify-content: flex-end;
+    a {
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    .btn {
+      background-color: transparent;
+      color: white;
+      padding: 0.5rem;
+      &::after {
+        display: none;
+      }
+      .fas {
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+      }
+    }
+    .dropdown-item {
+      padding: 1rem;
+      &:active {
+        background-color: #f4852b;
+      }
+    }
+    .dropdown-menu {
+      border-radius: 0;
+    }
+  }
+}
+.navbarTrans {
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+  transition: height 2s;
+}
+.dropdown-toggle,
+.dropdown-item {
+  cursor: pointer;
+}
+.business {
+  color: #3d7ef0;
+  font-weight: 500;
+  margin-right: 50px;
+}
+.btn-primary {
+  color: #f4852b;
+  color: white;
+}
+.btn-login {
+  padding: 5px 20px 5px 20px;
+  font-weight: 500;
+}
+.logout-link {
+  color: #dc3545;
+  font-weight: 500;
+  margin-left: 10px;
+}
+.menu {
+  color: #f4852b;
+  font-weight: 500;
+}
+.hello {
+  color: white;
+  margin-right: 20px;
+  margin-left: 10px;
+}
+.menu .menu-element {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.menu button {
+  padding: 5px 20px 5px 20px;
+}
+.fas {
+  padding: 0;
+  padding-right: 10px;
+}
+.navbar-collapse {
+  justify-content: flex-end;
+  flex-grow: 3;
+}
+.navbar-expand-md .navbar-collapse {
+  // display: flex !important;
+  flex-basis: auto;
+}
+.navbar-brand {
+  font-family: "adineuePROKZ-Black";
+  font-size: 32px;
+  color: white;
+  text-transform: uppercase;
+}
+.navbar-light .navbar-nav .nav-link {
+  color: white;
+}
+@media only screen and (min-width: 845px) {
+  .container-mobile {
+    display: none;
+  }
+}
+@media only screen and (max-width: 845px) {
+  .collapse {
+    display: none !important;
+  }
+  .collapse:not(.show) {
+    display: none;
+  }
+  .navbar-brand {
+    display: none;
+  }
+}

@@ -96,10 +96,12 @@ export class TripFormComponent implements OnInit  {
       this.tripService.getCards(this.idTrip).subscribe((n: any) => {
         // this.notes.push(note);
         this.notes = n;
+        this.ngOnInit();
         // console.log(this.notes)
       });
       this.tripService.getNotes(this.idTrip).subscribe((c:any)=> {
         this.cards = c;
+        this.ngOnInit();
         // console.log(this.cards)
       })
     });
