@@ -69,7 +69,7 @@ export class AdminTripsComponent implements OnDestroy, OnInit {
 
   warn(id) {
     const modalRef = this.modalService.open(WarningComponent);
-    modalRef.componentInstance.name = 'World';
+    // modalRef.componentInstance.name = 'World';
     this.tripService.getTraveller(id).subscribe(t => {
       this.traveller = t
       modalRef.componentInstance.name = this.traveller.username;
@@ -77,7 +77,7 @@ export class AdminTripsComponent implements OnDestroy, OnInit {
       modalRef.componentInstance.iduser = this.traveller.id;
       modalRef.componentInstance.idtrip = id;
     });
-    console.log(id);
+    // console.log(id);
   }
 
 }

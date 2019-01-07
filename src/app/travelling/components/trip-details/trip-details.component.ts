@@ -47,9 +47,14 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
     configRating.max = 5;
     configRating.readonly = false;
     this.id = this.route.snapshot.params['id'];
-    this.subscriptionNotes = this.tripService.getNotes(this.id).subscribe((n:any) => {
+    this.tripService.getTraveller(this.id).subscribe(t => {
+      this.traveller = t
+      console.log(this.traveller);
+      if (this.traveller.photo === null || this.traveller.photo === "") this.traveller.photo = "https://i.imgur.com/C15GrGG.png";
+    });
+    this.subscriptionNotes = this.tripService.getNotes(this.id).subscribe((n: any) => {
       this.notes = n
-      if(this.notes[0] == undefined) {
+      if (this.notes[0] == undefined) {
         this.notes[0].photo = "https://i.imgur.com/C15GrGG.png"
       }
       this.getTimeline();
@@ -61,11 +66,6 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
     this.appUser = JSON.parse(localStorage.getItem('user'));
     this.subscriptionTrip = this.tripService.getTrip(this.id).subscribe(t => {
       this.trip = t
-    });
-    this.subscriptionTraveller = this.tripService.getTraveller(this.id).subscribe(t => {
-      this.traveller = t
-      // console.log(this.traveller);
-      if (this.traveller.photo === null || this.traveller.photo === "") this.traveller.photo = "https://i.imgur.com/C15GrGG.png";
     });
     this.getCountries(this.id);
   }
@@ -95,7 +95,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   }
 
   getTimeline() {
-    this.notes =_.orderBy(this.notes, ['date'], ['asc']);
+    this.notes = _.orderBy(this.notes, ['date'], ['asc']);
     // _.orderBy(users, ['user', 'age'], ['asc', 'desc']);
     let date = new Date('2018-12-09 00:00')
     // console.log("lol" + date);
@@ -119,7 +119,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
     this.subscriptionTrip.unsubscribe();
     this.subscriptionCountry.unsubscribe();
     this.subscriptionNotes.unsubscribe();
-    this.subscriptionTraveller.unsubscribe();
+    // this.subscriptionTraveller.unsubscribe();
   }
 
 }

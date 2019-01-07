@@ -15,6 +15,10 @@ export class UserService {
     return this.http.get('http://localhost:9000/api/account/all');
   }
 
+  getTripsUser(id){
+    return this.http.get('http://localhost:9000/api/trip/user/'+id);
+  }
+
   getUser(id:number){
     return this.http.get('http://localhost:9000/api/account/'+id);
   }

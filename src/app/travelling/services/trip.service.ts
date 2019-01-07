@@ -107,7 +107,7 @@ export class TripService {
     let options = {
       headers: httpHeaders
     };
-    console.log("serwis ID: " + id + " , " + status);
+    // console.log("serwis ID: " + id + " , " + status);
     return this.http.put("http://localhost:9000/api/trip/"+id+"/status/"+status, options);
   }
 

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { User } from 'app/core/model/user';
 import { UserService } from 'app/core/services/user.service';
+import { TripService } from 'app/travelling/services/trip.service';
 
 @Component({
   selector: 'app-admin-users',
@@ -16,12 +17,14 @@ export class AdminUsersComponent implements OnDestroy, OnInit {
   privateStatus = 0;
   publicStatus = 1;
 
+  userTrips = [];
+
   subscription: Subscription
 
   users: User[];
   filteredUsers: User[];
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private tripService: TripService) {
   }
 
   ngOnInit() {
@@ -48,9 +51,42 @@ export class AdminUsersComponent implements OnDestroy, OnInit {
       this.users;
   }
 
-  changeStatus(id, status) {
-    console.log(id + " " + status);
-    this.userService.changeStatus(id, status).subscribe(() => this.ngOnInit());
+  activate(id, status) {
+    // console.log(id + " " + status);
+    this.userService.changeStatus(id, status).subscribe(() => {
+      this.userService.getTripsUser(id).subscribe(t => {
+        this.userTrips.push(t);
+        // console.log(this.userTrips);
+        for (let trips of this.userTrips) {
+          for (let trip of trips) {
+            let id = trip.id;
+            let status = 0;
+            this.tripService.changeStatus(id, status).subscribe(() => { })
+          }
+        }
+        // console.log(this.userTrips);
+      })
+      this.ngOnInit()
+    });
+  }
+
+  block(id, status) {
+    // console.log(id + " " + status);
+    this.userService.changeStatus(id, status).subscribe(() => {
+      this.userService.getTripsUser(id).subscribe(t => {
+        this.userTrips.push(t);
+        // console.log(this.userTrips);
+        for (let trips of this.userTrips) {
+          for (let trip of trips) {
+            let id = trip.id;
+            let status = 2;
+            this.tripService.changeStatus(id, status).subscribe(() => { })
+          }
+        }
+        // console.log(this.userTrips);
+      })
+      this.ngOnInit()
+    });
 
   }
 
