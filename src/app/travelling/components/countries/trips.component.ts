@@ -37,7 +37,7 @@ export class TripsComponent implements OnInit, OnDestroy {
     this.subscription = this.tripService.getAll().subscribe(t => {
       this.filteredTrips = this.trips = t;
       this.filteredTrips = this.filteredTrips.filter(s => s.status != "PRIVATE" && s.status != "BLOCKED" && s.business != true);
-      this.filteredTripsBusiness = this.filteredTrips.filter(s => s.status != "PRIVATE" && s.status != "BLOCKED" && s.business === true);
+      this.filteredTripsBusiness = this.trips.filter(s => s.status != "PRIVATE" && s.status != "BLOCKED" && s.business === true);
     });
   }
 

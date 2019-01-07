@@ -109,9 +109,9 @@ export class TripEditComponent implements OnInit, OnDestroy {
     console.log(this.tripCountries);
   }
 
-  addTrip(trip: Trip) {
-    this.tripService.addTrip(trip).subscribe(trip => { });
-  }
+  // addTrip(trip: Trip) {
+  //   this.tripService.addTrip(trip).subscribe(trip => { });
+  // }
 
   editTrip(id, trip: Trip) {
     this.tripService.editTrip(id, trip).subscribe(trip => { });
