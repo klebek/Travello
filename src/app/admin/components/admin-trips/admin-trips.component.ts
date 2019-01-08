@@ -6,6 +6,7 @@ import { NgbRatingConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { TripService } from 'app/travelling/services/trip.service';
 import { Trip } from 'app/travelling/model/trip';
 import { WarningComponent } from '../warning/warning.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin-trips',
@@ -26,6 +27,8 @@ export class AdminTripsComponent implements OnDestroy, OnInit {
   userMail = 2;
 
   traveller;
+
+  selected;
 
   subscription: Subscription
 
@@ -81,6 +84,13 @@ export class AdminTripsComponent implements OnDestroy, OnInit {
       modalRef.componentInstance.tripId = id;
     });
     // console.log(id);
+  }
+
+  getRate(id) {
+    this.tripService.getRate(id).subscribe((rate) => {
+      console.log("Got rate: " + rate);
+      if(rate != Number) this.selected = 0;
+    })
   }
 
 }

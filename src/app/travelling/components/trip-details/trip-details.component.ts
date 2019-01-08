@@ -9,6 +9,8 @@ import { Trip } from 'app/travelling/model/trip';
 import { TripService } from 'app/travelling/services/trip.service';
 import { Subscription } from 'rxjs/Subscription';
 import * as _ from "lodash";
+import { LocalStorage } from '@ngx-pwa/local-storage';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-trip-details',
@@ -20,6 +22,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   id;
   appUser: any;
   trip;
+  token;
   subscriptionTrip: Subscription;
   subscriptionCountry: Subscription;
   subscriptionNotes: Subscription;
@@ -31,10 +34,12 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   i = 0;
   currentJustify = 'fill';
   readMore = false;
-  currentRate = 4;
-  readonly = true;
+  // readonly = true;
 
   traveller;
+  selected;
+  canVote = true;
+  readonly = true;
 
   countries$ = [];
   countriess = [];
@@ -43,13 +48,18 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
 
   firstDate;
 
-  constructor(private auth: AuthService, private route: ActivatedRoute, private tripService: TripService, private countryService: CountryService, configRating: NgbRatingConfig) {
+  constructor(
+    private route: ActivatedRoute,
+    private tripService: TripService,
+    private countryService: CountryService,
+    configRating: NgbRatingConfig,
+    protected localStorage: LocalStorage) {
     configRating.max = 5;
     configRating.readonly = false;
     this.id = this.route.snapshot.params['id'];
     this.tripService.getTraveller(this.id).subscribe(t => {
       this.traveller = t
-      console.log(this.traveller);
+      // console.log(this.traveller);
       if (this.traveller.photo === null || this.traveller.photo === "") this.traveller.photo = "https://i.imgur.com/C15GrGG.png";
     });
     this.subscriptionNotes = this.tripService.getNotes(this.id).subscribe((n: any) => {
@@ -59,6 +69,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
       }
       this.getTimeline();
     });
+    this.getRate(this.id);
     // console.log(this.images)
   }
 
@@ -87,11 +98,38 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   showTab() {
     this.readMore = !this.readMore;
   }
-  rateTrip() {
-    this.readonly = false;
+  async rateTrip(id, selected) {
+    const token = await localStorage.getItem('token');
+    this.tripService.rateTrip(id, token, selected)
+      .subscribe((t) => {
+        console.log(t)
+        this.getRate(id);
+      })
+    this.readonly = true;
+    // console.log(selected)
   }
   showRate() {
-    this.readonly = true;
+    this.readonly = false;
+  }
+
+  getRate(id) {
+    this.tripService.getRate(id).subscribe((rate) => {
+      console.log("Got rate: " + rate);
+      if(rate != Number) this.selected = 0;
+      this.tripService.getCanVote(id).subscribe(res => {
+        this.canVote = true;
+      }, (err: HttpErrorResponse) => {
+        console.log("Cannot assign CanVote")
+      })
+    })
+  }
+
+  getCanVote(id) {
+    this.tripService.getCanVote(id).subscribe((can) => {
+      console.log("Can vote?: " + can);
+    }, (err: HttpErrorResponse) => {
+      console.log("Error");
+    });
   }
 
   getTimeline() {

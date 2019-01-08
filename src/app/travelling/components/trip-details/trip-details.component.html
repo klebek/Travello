@@ -103,11 +103,25 @@
 
               </a>
               <div *ngIf="appUser" class="card card-rating">
-                <div *ngIf="readonly" class="card-header">Trip's rate</div>
-                <!-- <div *ngIf="!readonly" class="card-header">Rate trip</div> -->
-                <ngb-rating (click)="showRate()" [(rate)]="trip.publicRating" [readonly]="readonly" [rate]="trip.publicRating"></ngb-rating>
-                <button (click)="rateTrip()" *ngIf="readonly" class="btn btn-rating btn-sm">Rate this trip</button>
-                <span *ngIf="!readonly">Rate this trip above using stars form 1 to 5</span>
+                <ng-container *ngIf="readonly; else rating">
+                  <div class="card-header">Trip's rate</div>
+                  <ngb-rating [(rate)]="selected" [readonly]="readonly"></ngb-rating>
+                  <button (click)="showRate()" class="btn btn-rating btn-sm" [disabled]="!canVote">Rate trip</button>
+                  <ng-container *ngIf="!canVote">
+                    <hr />
+                    <div class="card-header">You have already rated this trip</div>
+                  </ng-container>
+                  <!-- <button (click)="getRate(trip.id)" class="btn btn-rating btn-sm">Get rate trip</button> -->
+                </ng-container>
+                <!-- <div *ngIf="readonly" class="card-header">Trip's rate</div>
+                <div *ngIf="!readonly" class="card-header">Rate trip</div>
+                <ngb-rating (click)="showRate(selected)" [(rate)]="selected" [readonly]="readonly"></ngb-rating>
+                <button (click)="rateTrip()" *ngIf="readonly" class="btn btn-rating btn-sm">Rate this trip</button> -->
+                <ng-template #rating>
+                  <span>Rate this trip using stars from 1 to 5</span>
+                  <ngb-rating [(rate)]="selected" [readonly]="readonly"></ngb-rating>
+                  <button (click)="rateTrip(trip.id, selected)" class="btn btn-rating btn-sm">Send rate</button>
+                </ng-template>
               </div>
             </div>
           </div>

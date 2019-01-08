@@ -1,222 +1,219 @@
 .card {
-    border-radius: 0;
-    padding: 0;
-    border: none;
-    background: transparent;
+  border-radius: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
 }
 .row {
-    margin-left: 0;
-    margin-right: 0;
+  margin-left: 0;
+  margin-right: 0;
 }
 .card-body-main {
-    padding: 0;
+  padding: 0;
 }
 .col-main-details {
-    padding: 20px;
-    background-color: white;
+  padding: 20px;
+  background-color: white;
 }
 .container-fluid {
-    margin-top: 120px;
+  margin-top: 120px;
 }
 .col-padding {
-    padding: 0;
+  padding: 0;
 }
 .col-right-menu {
-    background-color: #232323;
-    padding-right: 0;
+  background-color: #232323;
+  padding-right: 0;
 }
 .detail {
-    font-weight: bold;
+  font-weight: bold;
 }
 .languages-country {
-    display: flex;
-    flex-direction: column;
-    padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
 }
 .languages-country p {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 .card-buttons .btn-primary {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 .card-buttons .btn-success {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 .col-sm /deep/ .tab-content {
-    padding-top: 10px;
+  padding-top: 10px;
 }
 .row-tabs {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .jumbotron {
-    height: 50px;
-    background-size: cover;
-    background-position: center;
+  height: 50px;
+  background-size: cover;
+  background-position: center;
 }
-h1, p {
-    text-align: center;
+h1,
+p {
+  text-align: center;
 }
 .jumbotron p {
-    font-weight: 700;
+  font-weight: 700;
 }
 h1 span {
-    padding-top: 5px;
-    padding-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 .btn {
-    color: white;
+  color: white;
 }
 .row-tabs p {
-    text-align: justify;
+  text-align: justify;
 }
-h1 span, p span {
-    background-color: #232323b9;
-    color: white;
-    padding: 0 20px 0 20px;
-    text-transform: uppercase;
+h1 span,
+p span {
+  background-color: #232323b9;
+  color: white;
+  padding: 0 20px 0 20px;
+  text-transform: uppercase;
 }
 .card-map .card-header {
-    border: none;
-    color: #5c5c5c;
-    background-color: #c2c3c418;
-    font-size: 12px;
-    font-weight: 700;
+  border: none;
+  color: #5c5c5c;
+  background-color: #c2c3c418;
+  font-size: 12px;
+  font-weight: 700;
 }
 .bg-light {
-    background-color: #c2c3c4;
-    background-image: url('https://i.imgur.com/HiWoUkb.png');
-    background-size: cover;
-    height: 156px;
-    border-radius: 2px;
+  background-color: #c2c3c4;
+  background-image: url("https://i.imgur.com/HiWoUkb.png");
+  background-size: cover;
+  height: 156px;
+  border-radius: 2px;
 }
 .fa-hand-pointer {
-    font-size: 24px;
-    margin-top: 5px;
-    color: #5c5c5c;
+  font-size: 24px;
+  margin-top: 5px;
+  color: #5c5c5c;
 }
 .card-map {
-    margin-top: 10px;
-    background-color: transparent;
-    height: 225px;
+  margin-top: 10px;
+  background-color: transparent;
+  height: 225px;
 }
-.card-map .card-body{
-    padding: 0;
+.card-map .card-body {
+  padding: 0;
 }
 .buttons {
-    margin-top: 10px;
-    background-color: #c2c3c418;
-    padding: 30px;
+  margin-top: 10px;
+  background-color: #c2c3c418;
+  padding: 30px;
 }
 .buttons .btn {
-    font-size: 14px;
+  font-size: 14px;
 }
 .fa-caret-down {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 .card-rating {
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .card-rating .card-header {
-    color: white;
-    font-weight: 500;
-    padding: 5px 10px 5px 10px;
-    border: none;
+  color: white;
+  font-weight: 500;
+  padding: 5px 10px 5px 10px;
+  border: none;
 }
 .card-rating /deep/ ngb-rating {
-    color: #ffc107;
-    padding: 0;
-    font-weight: 500;
-    font-size: 32px;
-    justify-content: center;
+  color: #ffc107;
+  padding: 0;
+  font-weight: 500;
+  font-size: 48px;
+  justify-content: center;
 }
 .col-right-menu a {
-    color: #232323;
+  color: #232323;
 }
 .btn-rating {
-    background-color: #ffc107;
-    color: #232323;
-    margin-top: 10px;
-    border-radius: 0;
+  background-color: #ffc107;
+  color: #232323;
+  margin-top: 10px;
+  border-radius: 0;
 }
 .bold {
-    font-weight: 600;
+  font-weight: 600;
 }
 .logo {
-    display: flex;
-    margin-top: 30px;
-    justify-content: center;
-}
-.logo img {
-    
+  display: flex;
+  margin-top: 30px;
+  justify-content: center;
 }
 .col-sm-3 /deep/ .ng-star-inserted {
-    background-position: center;
+  background-position: center;
 }
 .row /deep/ .carousel-item {
-    min-height: 700px;
+  min-height: 700px;
 }
 .carousel-caption {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20%;
-    padding: 40px;
-    background-color: rgba(0,0,0,0.5);
-    border-radius: 5px;
-}
-.carousel-title {
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center; */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20%;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
 }
 .carousel-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .carousel-footer .btn {
-    color: white;
-    font-weight: 500;
-    background-color: transparent;
-    border: 1px solid white;
-    border-radius: 0;
-    margin-right: 5px;
+  color: white;
+  font-weight: 500;
+  background-color: transparent;
+  border: 1px solid white;
+  border-radius: 0;
+  margin-right: 5px;
 }
-.carousel-footer .btn:hover{
-    background-color: rgba(255,255,255, 0.1);
+.carousel-footer .btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 .card-traveller {
-    height: 300px;
-    color: white;
-    border-radius: 0;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+  height: 300px;
+  color: white;
+  border-radius: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .card-traveller .card-body {
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    display: flex;
-    background-color: rgba(0,0,0,0.5);
-    flex: 0;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  display: flex;
+  background-color: rgba(0, 0, 0, 0.5);
+  flex: 0;
+}
+.card-rating pre {
+  color: white;
 }
 .card-rating span {
-    color: white;
-    font-weight: 500;
-    text-align: center;
-    padding: 10px;
+  color: white;
+  font-weight: 500;
+  text-align: center;
+  padding: 10px;
 }
 .card-traveller .card-body .card-title {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 .card-traveller .card-body .card-title {
-    font-weight: 500;
+  font-weight: 500;
 }
 .flag {
-    height: 30px;
-    width: 50px;
-    margin-bottom: 30px;
+  height: 30px;
+  width: 50px;
+  margin-bottom: 30px;
 }

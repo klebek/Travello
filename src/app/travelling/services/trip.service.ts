@@ -35,6 +35,27 @@ export class TripService {
     return this.idTrip;
   }
 
+  rateTrip(id, token, rate){
+    let httpHeaders = new HttpHeaders({
+      'Content-Type' : 'application/json',
+      'Authorization': token
+    });
+    let options = {
+      headers: httpHeaders
+    };
+    // console.log(rate);
+    // console.log(id);
+    return this.http.put<Trip>('http://localhost:9000/api/trip/'+id+'/rate/'+rate, options);
+  }
+
+  getRate(id){
+    return this.http.get('http://localhost:9000/api/trip/'+id+'/rating');
+  }
+
+  getCanVote(id){
+    return this.http.get('http://localhost:9000/api/trip/'+id+'/canVote');
+  }
+
   addTrip(idUser, trip: Trip): Observable<Trip> {
     let httpHeaders = new HttpHeaders({
       'Content-Type' : 'application/json',
