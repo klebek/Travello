@@ -7,6 +7,7 @@ import { TripService } from 'app/travelling/services/trip.service';
 import { Trip } from 'app/travelling/model/trip';
 import { WarningComponent } from '../warning/warning.component';
 import { HttpErrorResponse } from '@angular/common/http';
+import * as _ from "lodash";
 
 @Component({
   selector: 'app-admin-trips',
@@ -91,6 +92,13 @@ export class AdminTripsComponent implements OnDestroy, OnInit {
       console.log("Got rate: " + rate);
       if(rate != Number) this.selected = 0;
     })
+  }
+
+  orderByType(){
+    this.filteredTrips = _.orderBy(this.filteredTrips, ['business'], ['desc']);
+  }
+  orderByStatus(){
+    this.filteredTrips = _.orderBy(this.filteredTrips, ['status'], ['desc']);
   }
 
 }

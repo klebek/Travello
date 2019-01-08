@@ -13,4 +13,6 @@ export interface Trip {
     startDate: Date;
     endDate: Date;
     countries;
+    sumRatings;
+    sumVotes;
 }

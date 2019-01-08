@@ -34,8 +34,8 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Title</th>
-                        <th scope="col">Type</th>
-                        <th scope="col">Status</th>
+                        <th (click)="orderByType()" class="order" scope="col">Type</th>
+                        <th (click)="orderByStatus()" class="order" scope="col">Status</th>
                         <th scope="col">Rating</th>
                         <th scope="col">Options</th>
                     </tr>
@@ -54,7 +54,13 @@
                             <span *ngIf="trip.status == 'BLOCKED'" class="badge badge-pill badge-danger">{{trip.status}}</span>
                         </td>
                         <td>
-                            <ngb-rating [(rate)]="selected"></ngb-rating>
+                            <ng-template #t let-fill="fill">
+                                <span class="star" [class.full]="fill === 100">
+                                    <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+                                </span>
+                            </ng-template>
+
+                            <ngb-rating [(rate)]="trip.sumRatings / trip.sumVotes" [starTemplate]="t" max="5"></ngb-rating>
                         </td>
                         <td>
                             <a [routerLink]="['/trip', trip.id]"><button class="btn btn-primary btn-sm"><i class="fas fa-eye"></i>View</button></a>

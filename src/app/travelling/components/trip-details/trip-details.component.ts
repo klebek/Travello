@@ -34,6 +34,8 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   i = 0;
   currentJustify = 'fill';
   readMore = false;
+
+  currentRate = 3.14;
   // readonly = true;
 
   traveller;
@@ -45,6 +47,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   countriess = [];
   countries;
   name = "";
+  owner;
 
   firstDate;
 
@@ -57,11 +60,6 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
     configRating.max = 5;
     configRating.readonly = false;
     this.id = this.route.snapshot.params['id'];
-    this.tripService.getTraveller(this.id).subscribe(t => {
-      this.traveller = t
-      // console.log(this.traveller);
-      if (this.traveller.photo === null || this.traveller.photo === "") this.traveller.photo = "https://i.imgur.com/C15GrGG.png";
-    });
     this.subscriptionNotes = this.tripService.getNotes(this.id).subscribe((n: any) => {
       this.notes = n
       if (this.notes[0] == undefined) {
@@ -75,6 +73,18 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.appUser = JSON.parse(localStorage.getItem('user'));
+    this.tripService.getTraveller(this.id).subscribe(t => {
+      this.traveller = t;
+      // console.log("appUser: " + this.appUser.userId);
+      // console.log("traveller.id: " + this.traveller.id);
+      if(this.appUser.userId === this.traveller.id) {
+        this.canVote = false;
+        this.owner = true;
+        // console.log("ifek: " + this.canVote)
+      }
+      // console.log(this.traveller);
+      if (this.traveller.photo === null || this.traveller.photo === "") this.traveller.photo = "https://i.imgur.com/C15GrGG.png";
+    });
     this.subscriptionTrip = this.tripService.getTrip(this.id).subscribe(t => {
       this.trip = t
     });

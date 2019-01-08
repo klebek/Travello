@@ -103,25 +103,43 @@
 
               </a>
               <div *ngIf="appUser" class="card card-rating">
-                <ng-container *ngIf="readonly; else rating">
+                <div *ngIf="readonly; else rating">
                   <div class="card-header">Trip's rate</div>
-                  <ngb-rating [(rate)]="selected" [readonly]="readonly"></ngb-rating>
-                  <button (click)="showRate()" class="btn btn-rating btn-sm" [disabled]="!canVote">Rate trip</button>
-                  <ng-container *ngIf="!canVote">
+
+                  <ng-template #t let-fill="fill">
+                    <span class="star" [class.full]="fill === 100">
+                      <span class="half" [style.width.%]="fill">&#9733;</span>&#9733;
+                    </span>
+                  </ng-template>
+
+                  <ngb-rating [(rate)]="selected" [starTemplate]="t" [readonly]="readonly" max="5"></ngb-rating>
+                  <br /><button *ngIf="!owner" (click)="showRate()" class="btn btn-rating btn-sm" [disabled]="!canVote">Rate trip</button>
+                  <ng-container>
                     <hr />
-                    <div class="card-header">You have already rated this trip</div>
+                    <div *ngIf="!canVote && !owner" class="card-header">You have already rated this trip</div>
+                    <div *ngIf="owner" class="card-header">You cannot rate your own trip :)</div>
+                    <hr />
                   </ng-container>
                   <!-- <button (click)="getRate(trip.id)" class="btn btn-rating btn-sm">Get rate trip</button> -->
-                </ng-container>
+                </div>
                 <!-- <div *ngIf="readonly" class="card-header">Trip's rate</div>
                 <div *ngIf="!readonly" class="card-header">Rate trip</div>
                 <ngb-rating (click)="showRate(selected)" [(rate)]="selected" [readonly]="readonly"></ngb-rating>
                 <button (click)="rateTrip()" *ngIf="readonly" class="btn btn-rating btn-sm">Rate this trip</button> -->
                 <ng-template #rating>
-                  <span>Rate this trip using stars from 1 to 5</span>
+                  <span class="white-span">Rate this trip using stars from 1 to 5</span>
                   <ngb-rating [(rate)]="selected" [readonly]="readonly"></ngb-rating>
                   <button (click)="rateTrip(trip.id, selected)" class="btn btn-rating btn-sm">Send rate</button>
                 </ng-template>
+              </div>
+              <div class="card card-countries">
+                <div class="card-header">Countries</div>
+                <div class="countries-card">
+                  <div *ngFor="let countries of countries$">
+                    <img *ngFor="let country of countries" placement="top" [ngbTooltip]="country.name" [src]="country.flag"
+                      alt="" class="flag-country-card">
+                  </div>
+                </div>
               </div>
             </div>
           </div>
