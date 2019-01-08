@@ -38,7 +38,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
 
   traveller;
   selected;
-  canVote = true;
+  canVote;
   readonly = true;
 
   countries$ = [];
@@ -102,7 +102,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
     const token = await localStorage.getItem('token');
     this.tripService.rateTrip(id, token, selected)
       .subscribe((t) => {
-        console.log(t)
+        console.log("t: " + t)
         this.getRate(id);
       })
     this.readonly = true;
@@ -115,9 +115,12 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
   getRate(id) {
     this.tripService.getRate(id).subscribe((rate) => {
       console.log("Got rate: " + rate);
-      if(rate != Number) this.selected = 0;
+      // if(rate != Number) this.selected = 0;
+      // else this.selected = rate;
+      this.selected = rate;
       this.tripService.getCanVote(id).subscribe(res => {
-        this.canVote = true;
+        this.canVote = res;
+        console.log("res: " + res);
       }, (err: HttpErrorResponse) => {
         console.log("Cannot assign CanVote")
       })
