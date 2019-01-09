@@ -18,11 +18,14 @@ import { TitlePipe } from './pipes/title.pipe';
 import { CountryPipe } from './pipes/country.pipe';
 import { TripEditComponent } from './components/trip-edit/trip-edit.component';
 import { WarningComponent } from 'app/admin/components/warning/warning.component';
+import { NgxGalleryModule } from 'ngx-gallery';
+import { PhotoModalComponent } from './components/photo-modal/photo-modal.component';
 
 @NgModule({
   imports: [
     SharedModule,
     HttpClientModule,
+    NgxGalleryModule,
     RouterModule.forChild([
       { path: 'trips', component: TripsComponent },
       { path: 'countries', component: TripsComponent, canActivate: [AuthGuard] },
@@ -32,6 +35,7 @@ import { WarningComponent } from 'app/admin/components/warning/warning.component
       { path: 'edit-trip/:id', component: TripEditComponent, canActivate: [AuthGuard], pathMatch: 'full' },
     ])
   ],
+  entryComponents: [PhotoModalComponent],
   declarations: [
     TripsComponent,
     CountryFilterComponent,
@@ -42,7 +46,8 @@ import { WarningComponent } from 'app/admin/components/warning/warning.component
     TripFormCardComponent,
     TitlePipe,
     CountryPipe,
-    TripEditComponent
+    TripEditComponent,
+    PhotoModalComponent
   ],
   providers: [ CountryService ]
 })

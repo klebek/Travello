@@ -31,7 +31,7 @@
         <em>{{item.date | date:dateFormat}}</em>
         <div class="row">
           <div *ngIf="item.photo" class="col-sm">
-            <img [src]="item.photo" class="card-img-top">
+            <img (click)="zoomImage(item.photo, item.title)" [src]="item.photo" class="card-img-top">
           </div>
           <div *ngIf="item.content" class="col-sm">
             <p>{{item.content}}</p>

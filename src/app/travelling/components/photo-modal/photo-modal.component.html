@@ -1,0 +1,11 @@
+<div class="modal-body">
+  <!-- <button type="button" class="close" aria-label="Close"
+    (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button> -->
+  <div class="space-between">
+    <h5 class="title-modal">{{title}}</h5>
+    <i (click)="activeModal.dismiss('Cross click')" class="fas fa-times"></i>
+  </div>
+  <img [src]="photo" alt="" class="src">
+</div>

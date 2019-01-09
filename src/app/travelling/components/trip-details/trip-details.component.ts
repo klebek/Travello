@@ -11,6 +11,7 @@ import { Subscription } from 'rxjs/Subscription';
 import * as _ from "lodash";
 import { LocalStorage } from '@ngx-pwa/local-storage';
 import { HttpErrorResponse } from '@angular/common/http';
+import 'hammerjs';
 
 @Component({
   selector: 'app-trip-details',
@@ -77,7 +78,7 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
       this.traveller = t;
       // console.log("appUser: " + this.appUser.userId);
       // console.log("traveller.id: " + this.traveller.id);
-      if(this.appUser.userId === this.traveller.id) {
+      if (this.appUser.userId === this.traveller.id) {
         this.canVote = false;
         this.owner = true;
         // console.log("ifek: " + this.canVote)

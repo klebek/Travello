@@ -5,6 +5,8 @@ import { AngularFireModule } from 'angularfire2';
 import { SharedModule } from 'shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
+import { NgxGalleryModule } from 'ngx-gallery';
+import 'hammerjs';
 
 import { environment } from './../environments/environment';
 import { AdminModule } from './admin/admin.module';
@@ -29,6 +31,7 @@ import { EmailFormComponent } from './core/components/email-form/email-form.comp
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
+    NgxGalleryModule,
     AdminModule,
     NgbModule,
     TravellingModule,

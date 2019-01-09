@@ -11,6 +11,8 @@ import {
 } from '@angular/core';
 import { TimelineElement } from './timeline-element';
 import { animate, keyframes, state, style, transition, trigger } from '@angular/animations';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PhotoModalComponent } from 'app/travelling/components/photo-modal/photo-modal.component';
 
 @Component({
   selector: 'horizontal-timeline',
@@ -72,7 +74,7 @@ export class HorizontalTimelineComponent implements AfterViewInit {
   eventsWrapperWidth: number = 0;
   private _viewInitialized = false;
 
-  constructor(private _cdr: ChangeDetectorRef) {
+  constructor(private _cdr: ChangeDetectorRef, private modalService: NgbModal) {
   }
 
   private _timelineWrapperWidth = 720;
@@ -136,6 +138,12 @@ export class HorizontalTimelineComponent implements AfterViewInit {
 
   private static pxToNumber(val: string): number {
     return Number(val.replace('px', ''));
+  }
+
+  private zoomImage(photo, title) {
+    const modalRef = this.modalService.open(PhotoModalComponent);
+    modalRef.componentInstance.photo = photo;
+    modalRef.componentInstance.title = title;
   }
 
   private static getElementWidth(element: Element): number {
@@ -274,7 +282,7 @@ export class HorizontalTimelineComponent implements AfterViewInit {
     // only negative translate value
     value = (value > 0) ? 0 : value;
     // do not translate more than timeline width
-    value = ( !(totWidth === null) && value < totWidth ) ? totWidth : value;
+    value = (!(totWidth === null) && value < totWidth) ? totWidth : value;
     HorizontalTimelineComponent.setTransformValue(this.eventsWrapper.nativeElement, 'translateX', value + 'px');
     // update navigation arrows visibility
     this.prevLinkInactive = value === 0;
