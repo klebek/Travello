@@ -7,7 +7,7 @@
           <li *ngFor="let item of timelineElements; let index = index">
             <a #timelineEvents href="#" [ngClass]="{'selected': item.selected, 'older-event': index < selectedIndex}"
               (click)="onEventClick($event, item)">{{item.date | date:dateFormat}}</a>
-            <span>{{item.caption | date | slice:0:6}}</span>
+            <span>{{item.caption | date | slice:0:5}}</span>
           </li>
         </ol>
         <span class="filling-line" aria-hidden="true" #fillingLine></span>

@@ -7,3 +7,6 @@
 .card-img-top {
     cursor: pointer;
 }
+.card-columns .card-body {
+    text-align: justify;
+  }

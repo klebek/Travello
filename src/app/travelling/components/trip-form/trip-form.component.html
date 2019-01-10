@@ -278,11 +278,6 @@
                             <div *ngIf="description.errors.required">Description is required</div>
                           </div>
                         </div>
-                        <div class="form-group">
-                          <label for="photoCard">Photo URL</label>
-                          <input #photoCard="ngModel" [(ngModel)]="note.photo" name="photo" type="text" class="form-control"
-                            id="photoCard" placeholder="Photo URL">
-                        </div>
 
                         <div class="form-group form-group-button form-disabled">
                           <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic">
