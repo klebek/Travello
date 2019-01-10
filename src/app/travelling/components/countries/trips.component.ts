@@ -34,15 +34,15 @@ export class TripsComponent implements OnInit, OnDestroy {
     private auth: AuthService) {
     this.appUser = JSON.parse(localStorage.getItem('user'));
     this.subscription = this.tripService.getAll().subscribe(t => {
-      this.filteredTrips = this.filteredTripsBusiness = this.trips = t;
-      this.filteredTrips = this.filteredTrips.filter(s => s.status != "PRIVATE" && s.status != "BLOCKED" && s.business != true);
+      this.trips = t;
+      this.filteredTrips = t;
+      this.filteredTripsBusiness = t;
       this.filteredTripsBusiness = this.filteredTripsBusiness.filter(s => s.status != "PRIVATE" && s.status != "BLOCKED" && s.business === true);
+      this.populateTrips();
     });
-    this.populateTrips();
   }
 
   ngOnInit() {
-
   }
 
   filter(query: string) {
@@ -79,9 +79,8 @@ export class TripsComponent implements OnInit, OnDestroy {
 
   private applyFilter() {
     this.filteredTrips = (this.continent) ?
-      this.trips.filter(t => {
-        t.continent === this.continent
-      }) :
+      this.trips.filter(t => t.continent === this.continent) :
       this.trips;
+      this.filteredTrips = this.filteredTrips.filter(s => s.status != "PRIVATE" && s.status != "BLOCKED" && s.business != true);
   }
 }

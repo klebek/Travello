@@ -72,9 +72,10 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
     // console.log(this.images)
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.appUser = JSON.parse(localStorage.getItem('user'));
-    this.tripService.getTraveller(this.id).subscribe(t => {
+    this.id = this.route.snapshot.params['id'];
+    await this.tripService.getTraveller(this.id).subscribe(t => {
       this.traveller = t;
       // console.log("appUser: " + this.appUser.userId);
       // console.log("traveller.id: " + this.traveller.id);
