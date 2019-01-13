@@ -19,25 +19,29 @@ export class TripService {
   userid;
 
   constructor(private http: HttpClient, protected localStorage: LocalStorage) {
-    if(localStorage.getItem('user') != null){
+    if (localStorage.getItem('user') != null) {
       // this.idUser = JSON.parse(localStorage.getItem('user')).userId;
-      this.localStorage.getItem('user').subscribe((user) => this.idUser = user.userId);
+      this.localStorage.getItem('user').subscribe((user) => {
+        if (user.userId != null) {
+          this.idUser = user.userId
+        }
+      });
     }
     this.localStorage.getItem('user').subscribe((user) => {
-      this.userid= user.userId
-      this.url = "http://localhost:9000/api/trip/user/"+this.userid+"/id/"+this.idTrip;
-      this.editUrl = "http://localhost:9000/api/trip/user/"+this.userid+"/id/";
+      this.userid = user.userId
+      this.url = "http://localhost:9000/api/trip/user/" + this.userid + "/id/" + this.idTrip;
+      this.editUrl = "http://localhost:9000/api/trip/user/" + this.userid + "/id/";
     });
     // this.countriesUrl = "http://localhost:9000/api/trip/"+this.idTrip+"/country/add";
   }
 
-  getTripId(){
+  getTripId() {
     return this.idTrip;
   }
 
-  rateTrip(id, token, rate){
+  rateTrip(id, token, rate) {
     let httpHeaders = new HttpHeaders({
-      'Content-Type' : 'application/json',
+      'Content-Type': 'application/json',
       'Authorization': token
     });
     let options = {
@@ -45,57 +49,57 @@ export class TripService {
     };
     // console.log(rate);
     // console.log(id);
-    return this.http.put<Trip>('http://localhost:9000/api/trip/'+id+'/rate/'+rate, options);
+    return this.http.put<Trip>('http://localhost:9000/api/trip/' + id + '/rate/' + rate, options);
   }
 
-  getRate(id){
-    return this.http.get('http://localhost:9000/api/trip/'+id+'/rating');
+  getRate(id) {
+    return this.http.get('http://localhost:9000/api/trip/' + id + '/rating');
   }
 
-  getCanVote(id){
-    return this.http.get('http://localhost:9000/api/trip/'+id+'/canVote');
+  getCanVote(id) {
+    return this.http.get('http://localhost:9000/api/trip/' + id + '/canVote');
   }
 
   addTrip(idUser, trip: Trip): Observable<Trip> {
     let httpHeaders = new HttpHeaders({
-      'Content-Type' : 'application/json',
+      'Content-Type': 'application/json',
     });
     let options = {
       headers: httpHeaders
     };
     // console.log(trip);
-    return this.http.put<Trip>('http://localhost:9000/api/trip/user/'+idUser+'/id/'+this.idTrip, trip, options);
+    return this.http.put<Trip>('http://localhost:9000/api/trip/user/' + idUser + '/id/' + this.idTrip, trip, options);
   }
 
   editTrip(id, trip: Trip) {
     let httpHeaders = new HttpHeaders({
-      'Content-Type' : 'application/json',
+      'Content-Type': 'application/json',
     });
     let options = {
       headers: httpHeaders
     };
-    return this.http.put(this.editUrl+id, trip, options)
+    return this.http.put(this.editUrl + id, trip, options)
   }
 
 
-  getAccount(){
+  getAccount() {
     return this.http.get('http://localhost:9000/api/account/all');
   }
 
-  getTraveller(id){
-    return this.http.get('http://localhost:9000/api/trip/'+id+'/owner');
+  getTraveller(id) {
+    return this.http.get('http://localhost:9000/api/trip/' + id + '/owner');
   }
 
-  getUserTrip(id){
-    return this.http.get('http://localhost:9000/api/trip/user/'+id);
+  getUserTrip(id) {
+    return this.http.get('http://localhost:9000/api/trip/user/' + id);
   }
 
   deleteTrip(id) {
-    return this.http.delete('http://localhost:9000/api/trip/'+id);
+    return this.http.delete('http://localhost:9000/api/trip/' + id);
   }
 
   getCountries(id) {
-    return this.http.get('http://localhost:9000/api/trip/'+id+'/countries');
+    return this.http.get('http://localhost:9000/api/trip/' + id + '/countries');
   }
 
   // addCountry(country) {
@@ -109,30 +113,30 @@ export class TripService {
   //   return this.http.put(this.countriesUrl, country, options);
   // }
 
-  getCards(id){
-    return this.http.get('http://localhost:9000/api/card/trip/'+id+'/cards');
+  getCards(id) {
+    return this.http.get('http://localhost:9000/api/card/trip/' + id + '/cards');
   }
 
   getNotes(id) {
-    return this.http.get('http://localhost:9000/api/card/trip/'+id+'/notes');
+    return this.http.get('http://localhost:9000/api/card/trip/' + id + '/notes');
   }
 
-  getAll(){
+  getAll() {
     return this.http.get('http://localhost:9000/api/trip/all');
   }
 
   changeStatus(id, status) {
     let httpHeaders = new HttpHeaders({
-      'Content-Type' : 'application/json',
+      'Content-Type': 'application/json',
     });
     let options = {
       headers: httpHeaders
     };
     // console.log("serwis ID: " + id + " , " + status);
-    return this.http.put("http://localhost:9000/api/trip/"+id+"/status/"+status, options);
+    return this.http.put("http://localhost:9000/api/trip/" + id + "/status/" + status, options);
   }
 
-  getTrip(id){
-    return this.http.get('http://localhost:9000/api/trip/'+id);
+  getTrip(id) {
+    return this.http.get('http://localhost:9000/api/trip/' + id);
   }
 }

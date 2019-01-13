@@ -79,10 +79,12 @@ export class TripDetailsComponent implements OnInit, OnDestroy {
       this.traveller = t;
       // console.log("appUser: " + this.appUser.userId);
       // console.log("traveller.id: " + this.traveller.id);
-      if (this.appUser.userId === this.traveller.id) {
-        this.canVote = false;
-        this.owner = true;
-        // console.log("ifek: " + this.canVote)
+      if(this.appUser.userId != null){
+        if (this.appUser.userId === this.traveller.id) {
+          this.canVote = false;
+          this.owner = true;
+          // console.log("ifek: " + this.canVote)
+        }
       }
       // console.log(this.traveller);
       if (this.traveller.photo === null || this.traveller.photo === "") this.traveller.photo = "https://i.imgur.com/C15GrGG.png";
