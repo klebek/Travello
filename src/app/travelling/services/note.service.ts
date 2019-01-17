@@ -15,7 +15,7 @@ export class NoteService {
   constructor(private http: HttpClient, private tripService: TripService) {
     this.idTrip = this.tripService.getTripId();
     this.url = "http://localhost:9000/api/card/trip/";
-    console.log("Z notatki:" + this.idTrip);
+    //console.log("Z notatki:" + this.idTrip);
   }
 
   addNote(id: number, note: Note): Observable<Note> {
@@ -25,7 +25,7 @@ export class NoteService {
     let options = {
       headers: httpHeaders
     };
-    // console.log(trip);
+    console.log(id);
     return this.http.post<Note>(this.url + id + "/add", note, options);
   }
 

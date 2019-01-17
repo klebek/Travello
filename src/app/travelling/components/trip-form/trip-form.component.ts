@@ -45,7 +45,7 @@ export class TripFormComponent implements OnInit  {
   disabledButton = true;
   staticAlertClosed = false;
 
-  idTrip;
+  //idTrip;
   idCard;
 
   idT;
@@ -68,8 +68,8 @@ export class TripFormComponent implements OnInit  {
     this.countryService.getName().subscribe(c => {
       this.countriesNames = c;
     });
-    this.idTrip = this.tripService.getTripId();
-    this.tripService.getCountries(this.idTrip).subscribe((c: any[]) => {
+    //this.idTrip = this.tripService.getTripId();
+    this.tripService.getCountries(this.idT).subscribe((c: any[]) => {
       this.countries = c;
     });
   }
@@ -108,14 +108,14 @@ export class TripFormComponent implements OnInit  {
   }
 
   addNote(note: Note) {
-    this.noteService.addNote(this.idTrip, note).subscribe(note => {
-      this.tripService.getCards(this.idTrip).subscribe((n: any) => {
+    this.noteService.addNote(this.idT, note).subscribe(note => {
+      this.tripService.getCards(this.idT).subscribe((n: any) => {
         // this.notes.push(note);
         this.notes = n;
         this.ngOnInit();
         // console.log(this.notes)
       });
-      this.tripService.getNotes(this.idTrip).subscribe((c:any)=> {
+      this.tripService.getNotes(this.idT).subscribe((c:any)=> {
         this.cards = c;
         this.ngOnInit();
         // console.log(this.cards)
