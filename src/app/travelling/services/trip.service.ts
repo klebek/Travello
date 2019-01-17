@@ -11,7 +11,7 @@ import { LocalStorage } from '@ngx-pwa/local-storage';
 export class TripService {
 
   idUser;
-  idTrip = Math.floor(Math.random() * (999999 - 1 + 1)) + 1;
+  idTrip; 
   url;
   editUrl;
   countriesUrl;
@@ -19,6 +19,7 @@ export class TripService {
   userid;
 
   constructor(private http: HttpClient, protected localStorage: LocalStorage) {
+    this.idTrip = Math.floor(Math.random() * (999999 - 1 + 1)) + 1;
     if (localStorage.getItem('user') != null) {
       // this.idUser = JSON.parse(localStorage.getItem('user')).userId;
       this.localStorage.getItem('user').subscribe((user) => {
@@ -60,15 +61,16 @@ export class TripService {
     return this.http.get('http://localhost:9000/api/trip/' + id + '/canVote');
   }
 
-  addTrip(idUser, trip: Trip): Observable<Trip> {
+  addTrip(idUser, trip: Trip, idT): Observable<Trip> {
     let httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
     });
     let options = {
       headers: httpHeaders
     };
+    console.log("SERWIS: " + idT);
     // console.log(trip);
-    return this.http.put<Trip>('http://localhost:9000/api/trip/user/' + idUser + '/id/' + this.idTrip, trip, options);
+    return this.http.put<Trip>('http://localhost:9000/api/trip/user/' + idUser + '/id/' + idT, trip, options);
   }
 
   editTrip(id, trip: Trip) {

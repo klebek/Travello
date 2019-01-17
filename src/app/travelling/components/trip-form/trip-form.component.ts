@@ -48,9 +48,13 @@ export class TripFormComponent implements OnInit  {
   idTrip;
   idCard;
 
+  idT;
+
   idUser;
 
   constructor(private tripService: TripService, private countryService: CountryService, private router: Router, private noteService: NoteService, protected localStorage: LocalStorage) {
+    this.idT = Math.floor(Math.random() * (999999 - 1 + 1)) + 1;
+    console.log("KOMPONENT: " + this.idT);
     if (localStorage.getItem('user') != null) {
       this.localStorage.getItem('user').subscribe((user) => {
         this.idUser = user.userId
@@ -81,7 +85,7 @@ export class TripFormComponent implements OnInit  {
   //   console.log("Po dodaniu: " + this.countries);
   // }
   addTrip(trip: Trip) {
-    this.tripService.addTrip(this.idUser, trip).subscribe(trip => {});
+    this.tripService.addTrip(this.idUser, trip, this.idT).subscribe(trip => {});
   }
   getTrip(id) {
     this.tripService.getTrip(id).subscribe();
