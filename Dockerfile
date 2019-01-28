@@ -1,19 +1,18 @@
-# base image
+
+
+
 FROM node:10.15 as builder
-# The qq is for silent output in the console
-# Copies all the content
+
 COPY / /app
 WORKDIR /app
-# Install all the packages
+
 RUN npm install
-#EXPOSE 4200
+
 RUN $(npm bin)/ng build
-#CMD $(npm bin)/ng serve
 
 #S2
-
-FROM nginx
-
-COPY --from=builder /app/* /usr/share/nginx/html/
-
+WORKDIR /app/dist/travello
 EXPOSE 80
+ENV PORT 80
+RUN npm install http-server -g
+CMD [ "http-server" ]
