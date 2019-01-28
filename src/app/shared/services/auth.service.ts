@@ -19,7 +19,7 @@ export class AuthService {
   onMainEventLogged: EventEmitter<any> = new EventEmitter();
   onMainEventUser: EventEmitter<any> = new EventEmitter();
 
-  readonly root = '/api';
+  readonly root = 'http://localhost:9000/api';
   public loggedIn = new BehaviorSubject<boolean>(false);
   user$: Observable<AppUser>
 
@@ -37,7 +37,7 @@ export class AuthService {
     let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl') || '/';
     localStorage.setItem('returnUrl', returnUrl);
 
-    return this.http.post('/oauth/token', data, { headers: header }).subscribe((data: any) => {
+    return this.http.post('http://localhost:9000/oauth/token', data, { headers: header }).subscribe((data: any) => {
       localStorage.setItem('token', data.access_token);
       this.setCurrentUser();
       this.loggedIn.next(true);
@@ -51,7 +51,7 @@ export class AuthService {
   setCurrentUser() {
     const header = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    this.http.get('/principal', { headers: header }).subscribe((data: any) => {
+    this.http.get('http://localhost:9000/principal', { headers: header }).subscribe((data: any) => {
       localStorage.setItem('user', JSON.stringify(data.principal));
     });
   }
@@ -84,7 +84,7 @@ export class AuthService {
 
   //   console.log(body);
 
-  //   return this.http.post(this.root + '/account/register', body, {headers : header} ).subscribe(data =>{
+  //   return this.http.post(this.root + 'http://localhost:9000/account/register', body, {headers : header} ).subscribe(data =>{
   //     console.log(body);
   //     console.log('registered')
   //   });
@@ -108,7 +108,7 @@ export class AuthService {
   //     new HttpHeaders({ 'Content-Type': 'application/json' });
 
 
-  //   return this.http.post(this.root + '/account/register', body, {headers : header} ).subscribe(data =>{
+  //   return this.http.post(this.root + 'http://localhost:9000/account/register', body, {headers : header} ).subscribe(data =>{
   //   });
   // }
 

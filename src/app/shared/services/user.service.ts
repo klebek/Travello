@@ -13,7 +13,7 @@ export class UserService {
 
 
   get(id:number) : Observable<any>{
-    return this.http.get('/api/account/'+id);
+    return this.http.get('http://localhost:9000/api/account/'+id);
   }
 
 }

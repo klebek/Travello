@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   errorRegister;
   infoRegister;
   showForm = true;
-  readonly root = '/api';
+  readonly root = 'http://localhost:9000/api';
 
   constructor(private auth: AuthService, private http: HttpClient, private route: ActivatedRoute, private router: Router) { }
 
