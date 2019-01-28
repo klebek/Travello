@@ -4,11 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "build": "ng build",
+    "build": "ng build --prod",
+    "postbuild": "npm run deploy",
+    "predeploy": "rimraf C:/Dokumenty/Travello JAV/travello-application/src/main/resources/static && mkdirp C:/Dokumenty/Travello JAV/travello-application/src/main/resources/static",
+    "deploy": "copyfiles -f dist/** C:/Dokumenty/Travello JAV/travello-application/src/main/resources/static",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "ng build --prod"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {

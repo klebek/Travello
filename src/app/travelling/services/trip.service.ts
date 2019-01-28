@@ -30,10 +30,10 @@ export class TripService {
     }
     this.localStorage.getItem('user').subscribe((user) => {
       this.userid = user.userId
-      this.url = "http://localhost:9000/api/trip/user/" + this.userid + "/id/" + this.idTrip;
-      this.editUrl = "http://localhost:9000/api/trip/user/" + this.userid + "/id/";
+      this.url = "/api/trip/user/" + this.userid + "/id/" + this.idTrip;
+      this.editUrl = "/api/trip/user/" + this.userid + "/id/";
     });
-    // this.countriesUrl = "http://localhost:9000/api/trip/"+this.idTrip+"/country/add";
+    // this.countriesUrl = "/api/trip/"+this.idTrip+"/country/add";
   }
 
   getTripId() {
@@ -50,15 +50,15 @@ export class TripService {
     };
     // console.log(rate);
     // console.log(id);
-    return this.http.put<Trip>('http://localhost:9000/api/trip/' + id + '/rate/' + rate, options);
+    return this.http.put<Trip>('/api/trip/' + id + '/rate/' + rate, options);
   }
 
   getRate(id) {
-    return this.http.get('http://localhost:9000/api/trip/' + id + '/rating');
+    return this.http.get('/api/trip/' + id + '/rating');
   }
 
   getCanVote(id) {
-    return this.http.get('http://localhost:9000/api/trip/' + id + '/canVote');
+    return this.http.get('/api/trip/' + id + '/canVote');
   }
 
   addTrip(idUser, trip: Trip, idT): Observable<Trip> {
@@ -70,7 +70,7 @@ export class TripService {
     };
     console.log("SERWIS: " + idT);
     // console.log(trip);
-    return this.http.put<Trip>('http://localhost:9000/api/trip/user/' + idUser + '/id/' + idT, trip, options);
+    return this.http.put<Trip>('/api/trip/user/' + idUser + '/id/' + idT, trip, options);
   }
 
   editTrip(id, trip: Trip) {
@@ -85,23 +85,23 @@ export class TripService {
 
 
   getAccount() {
-    return this.http.get('http://localhost:9000/api/account/all');
+    return this.http.get('/api/account/all');
   }
 
   getTraveller(id) {
-    return this.http.get('http://localhost:9000/api/trip/' + id + '/owner');
+    return this.http.get('/api/trip/' + id + '/owner');
   }
 
   getUserTrip(id) {
-    return this.http.get('http://localhost:9000/api/trip/user/' + id);
+    return this.http.get('/api/trip/user/' + id);
   }
 
   deleteTrip(id) {
-    return this.http.delete('http://localhost:9000/api/trip/' + id);
+    return this.http.delete('/api/trip/' + id);
   }
 
   getCountries(id) {
-    return this.http.get('http://localhost:9000/api/trip/' + id + '/countries');
+    return this.http.get('/api/trip/' + id + '/countries');
   }
 
   // addCountry(country) {
@@ -116,15 +116,15 @@ export class TripService {
   // }
 
   getCards(id) {
-    return this.http.get('http://localhost:9000/api/card/trip/' + id + '/cards');
+    return this.http.get('/api/card/trip/' + id + '/cards');
   }
 
   getNotes(id) {
-    return this.http.get('http://localhost:9000/api/card/trip/' + id + '/notes');
+    return this.http.get('/api/card/trip/' + id + '/notes');
   }
 
   getAll() {
-    return this.http.get('http://localhost:9000/api/trip/all');
+    return this.http.get('/api/trip/all');
   }
 
   changeStatus(id, status) {
@@ -135,10 +135,10 @@ export class TripService {
       headers: httpHeaders
     };
     // console.log("serwis ID: " + id + " , " + status);
-    return this.http.put("http://localhost:9000/api/trip/" + id + "/status/" + status, options);
+    return this.http.put("/api/trip/" + id + "/status/" + status, options);
   }
 
   getTrip(id) {
-    return this.http.get('http://localhost:9000/api/trip/' + id);
+    return this.http.get('/api/trip/' + id);
   }
 }

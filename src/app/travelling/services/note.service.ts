@@ -14,7 +14,7 @@ export class NoteService {
 
   constructor(private http: HttpClient, private tripService: TripService) {
     this.idTrip = this.tripService.getTripId();
-    this.url = "http://localhost:9000/api/card/trip/";
+    this.url = "/api/card/trip/";
     //console.log("Z notatki:" + this.idTrip);
   }
 
@@ -36,7 +36,7 @@ export class NoteService {
     let options = {
       headers: httpHeaders
     };
-    return this.http.delete<Note>("http://localhost:9000/api/card/" + id, options)
+    return this.http.delete<Note>("/api/card/" + id, options)
   }
 
   editNote(id, tripId, note) {
@@ -46,6 +46,6 @@ export class NoteService {
     let options = {
       headers: httpHeaders
     };
-    return this.http.put<Note>("http://localhost:9000/api/card/trip/" + tripId + "/" + id, note, options)
+    return this.http.put<Note>("/api/card/trip/" + tripId + "/" + id, note, options)
   }
 }

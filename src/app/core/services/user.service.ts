@@ -7,20 +7,20 @@ import { User } from '../model/user';
 })
 export class UserService {
 
-  editUrl = 'http://localhost:9000/api/account/edit/';
+  editUrl = '/api/account/edit/';
 
   constructor(private http: HttpClient) {}
 
   getAll(){
-    return this.http.get('http://localhost:9000/api/account/all');
+    return this.http.get('/api/account/all');
   }
 
   getTripsUser(id){
-    return this.http.get('http://localhost:9000/api/trip/user/'+id);
+    return this.http.get('/api/trip/user/'+id);
   }
 
   getUser(id:number){
-    return this.http.get('http://localhost:9000/api/account/'+id);
+    return this.http.get('/api/account/'+id);
   }
 
   changeStatus(id: number, status: boolean){
@@ -30,7 +30,7 @@ export class UserService {
     let options = {
       headers: httpHeaders
     };
-    return this.http.put('http://localhost:9000/api/account/' + id + '/status/' + status, options);
+    return this.http.put('/api/account/' + id + '/status/' + status, options);
   }
 
   editUser(id:number, user: User){

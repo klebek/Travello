@@ -15,7 +15,7 @@ export class MailService {
   //   let options = {
   //     headers: httpHeaders
   //   };
-  //   this.http.put<any>('http://localhost:9000/api/mail/send', mail, options)
+  //   this.http.put<any>('/api/mail/send', mail, options)
   //   .subscribe( res => { console.log(res) },
   //     (err: HttpErrorResponse) => {
   //       if (err.error instanceof Error) console.log("Client-side error occured.");

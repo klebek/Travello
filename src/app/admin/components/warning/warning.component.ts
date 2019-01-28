@@ -32,7 +32,7 @@ export class WarningComponent implements OnInit{
     let options = {
       headers: httpHeaders
     };
-    this.http.put<any>('http://localhost:9000/api/mail/send', mail, options)
+    this.http.put<any>('/api/mail/send', mail, options)
     .subscribe( res => {
       // console.log(res)
       this.emailSent =  "Message successfuly sent"
