@@ -86,7 +86,7 @@ ul {
   top: 0;
   height: 100%;
   width: 111%;
-  background-color: #f4852b;
+  background-color: transparent;
   -webkit-transform: scaleX(0);
   -moz-transform: scaleX(0);
   -ms-transform: scaleX(0);
@@ -107,7 +107,7 @@ ul {
   bottom: 0;
   z-index: 2;
   text-align: center;
-  font-size: 12px;
+  font-size: 14px;
   text-decoration: none;
   padding-bottom: 15px;
   color: #383838;
@@ -174,7 +174,7 @@ ul {
   position: absolute;
   left: 1700px;
   bottom: -30px;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .cd-timeline-navigation a {
