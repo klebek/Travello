@@ -84,7 +84,7 @@ export class AuthService {
 
   //   console.log(body);
 
-  //   return this.http.post(this.root + 'http://localhost:9000/account/register', body, {headers : header} ).subscribe(data =>{
+  //   return this.http.post(this.root + '/account/register', body, {headers : header} ).subscribe(data =>{
   //     console.log(body);
   //     console.log('registered')
   //   });
@@ -108,7 +108,7 @@ export class AuthService {
   //     new HttpHeaders({ 'Content-Type': 'application/json' });
 
 
-  //   return this.http.post(this.root + 'http://localhost:9000/account/register', body, {headers : header} ).subscribe(data =>{
+  //   return this.http.post(this.root + '/account/register', body, {headers : header} ).subscribe(data =>{
   //   });
   // }
 
