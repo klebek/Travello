@@ -54,7 +54,7 @@
             </div>
             <button type="button" id="submit" name="submit" class="btn btn-business btn-block" (click)="sendMail(f.value)"
               [disabled]="f.invalid"><i class="fas fa-envelope"></i>Send</button>
-            {{f.value | json}}
+            <!-- {{f.value | json}} -->
           </form>
         </div>
         <div *ngIf="serverError" class="alert alert-danger">
