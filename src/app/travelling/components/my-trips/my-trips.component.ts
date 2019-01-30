@@ -55,7 +55,7 @@ export class MyTripsComponent implements OnDestroy {
   }
 
   share(val: string) {
-    let link = "https://localhost:4200/trip/" + val;
+    let link = "http://localhost:4200/trip/" + val;
     let selBox = document.createElement('textarea');
     selBox.style.position = 'fixed';
     selBox.style.left = '0';
