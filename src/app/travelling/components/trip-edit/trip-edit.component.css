@@ -15,6 +15,9 @@ hr {
 .card-img-top {
   padding: 2rem 2rem 2rem 0;
 }
+.col-continent {
+  display: none;
+}
 .red {
   font-weight: 400;
   color: #dc3545;

@@ -33,6 +33,10 @@ export class TripEditComponent implements OnInit, OnDestroy {
   notes;
   cards;
 
+  user;
+  userid;
+
+  region;
   type;
 
   card = [];
@@ -49,6 +53,9 @@ export class TripEditComponent implements OnInit, OnDestroy {
 
   constructor(private route: ActivatedRoute, private tripService: TripService, private countryService: CountryService, private noteService: NoteService) {
     this.id = this.route.snapshot.params['id'];
+    this.user = JSON.parse(localStorage.getItem('user'));
+    this.userid = this.user.userId;
+    console.log(this.userid);
     this.subscriptionTripCountries = this.tripService.getCountries(this.id).subscribe(c => {
       this.tripCountries = c;
       this.countries = this.tripCountries;
@@ -83,6 +90,13 @@ export class TripEditComponent implements OnInit, OnDestroy {
     });
   }
 
+  showContinent(continent, value){
+    if(continent == value) this.trip.continent = continent;
+    else this.trip.continent = value;
+    console.log(continent);
+    console.log(value);
+  }
+
   addCardFunction(id, note) {
     this.noteService.addNote(id, note).subscribe(
       card => {
@@ -114,7 +128,7 @@ export class TripEditComponent implements OnInit, OnDestroy {
   // }
 
   editTrip(id, trip: Trip) {
-    this.tripService.editTrip(id, trip).subscribe(trip => { });
+    this.tripService.editTrip(this.userid, id, trip).subscribe(trip => { });
   }
 
   editNote(id, note: Note) {

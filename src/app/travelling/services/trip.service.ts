@@ -31,7 +31,7 @@ export class TripService {
     this.localStorage.getItem('user').subscribe((user) => {
       this.userid = user.userId
       this.url = "http://localhost:9000/api/trip/user/" + this.userid + "/id/" + this.idTrip;
-      this.editUrl = "http://localhost:9000/api/trip/user/" + this.userid + "/id/";
+      // this.editUrl = "http://localhost:9000/api/trip/user/" + this.userid + "/id/";
     });
     // this.countriesUrl = "http://localhost:9000/api/trip/"+this.idTrip+"/country/add";
   }
@@ -73,14 +73,14 @@ export class TripService {
     return this.http.put<Trip>('http://localhost:9000/api/trip/user/' + idUser + '/id/' + idT, trip, options);
   }
 
-  editTrip(id, trip: Trip) {
+  editTrip(userid, id, trip: Trip) {
     let httpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
     });
     let options = {
       headers: httpHeaders
     };
-    return this.http.put(this.editUrl + id, trip, options)
+    return this.http.put('http://localhost:9000/api/trip/user/' + userid + '/id/' + id, trip, options)
   }
 
 
