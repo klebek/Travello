@@ -36,7 +36,7 @@
                 <button [routerLink]="['/edit-trip/',trip.id]" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>Edit</button>
                 <button (click)="deleteTrip(trip.id, i)" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Remove</button>
                 <button *ngIf="trip.status === 'BLOCKED'" (click)="send(trip.id, userMail)" class="btn btn-warning btn-sm"><i
-                    class="fas fa-envelope"></i>Send message</button>
+                    class="fas fa-envelope"></i>Message</button>
               </td>
             </tr>
           </tbody>
