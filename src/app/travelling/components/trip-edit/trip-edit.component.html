@@ -123,7 +123,7 @@
             </div>
             <a routerLink="/my-trips"><button (click)="editTrip(trip.id, fTrip.value)" [disabled]="countries.length < 1 || !fTrip.valid"
                 class="btn btn-success btn-block"><i class="fas fa-save"></i>Edit trip</button></a>
-            DANE fTrip: {{fTrip.value | json}}
+            <!-- DANE fTrip: {{fTrip.value | json}} -->
           </form>
         </div>
       </div>
